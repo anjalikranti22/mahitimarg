@@ -1,6 +1,6 @@
 ---
-title: PM-Kisan Samman Nidhi
-description: ₹6000 annual income support directly transferred to all landholding farmers.
+title: पीएम-किसान सन्मान निधी
+description: सर्व भूधारक शेतकऱ्यांना वर्षाला ₹६००० ची आर्थिक मदत थेट बँक खात्यात.
 badge: Farmer
 apply_link: https://pmkisan.gov.in/
 ---

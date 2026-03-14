@@ -49,10 +49,12 @@ def generate_index_card(data):
                 <article class="glass-panel scheme-card animate-on-scroll" data-tags="{data.get('badge', '').lower()}">
                     <div class="scheme-img-wrapper">
                         <div class="scheme-icon-bg {bg_class}">
-                            <i class="fa-solid {icon_class}" aria-hidden="true" style="font-size: 2.5rem;"></i>
+                            <i class="fa-solid {icon_class}" aria-hidden="true"></i>
                         </div>
-                        <span class="badge badge-active">Active</span>
-                        <span class="badge badge-tag" style="top: 3.5rem;">{badge_text}</span>
+                        <div class="badge-group">
+                            <span class="badge badge-tag">{badge_text}</span>
+                            <span class="badge badge-active">Active</span>
+                        </div>
                     </div>
                     <div class="scheme-card-content">
                         <h3>{data['title']}</h3>

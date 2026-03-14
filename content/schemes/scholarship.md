@@ -1,6 +1,6 @@
 ---
-title: MahaDBT Scholarship 2026
-description: Post-matric scholarship portal for all reserved category students in Maharashtra.
+title: महाडीबीटी शिष्यवृत्ती २०२६
+description: महाराष्ट्रातील सर्व राखीव प्रवर्गातील विद्यार्थ्यांसाठी मॅट्रिकोत्तर शिष्यवृत्ती पोर्टल.
 badge: Student
 apply_link: https://mahadbt.maharashtra.gov.in/
 ---

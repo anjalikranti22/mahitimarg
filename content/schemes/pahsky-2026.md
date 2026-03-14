@@ -1,6 +1,6 @@
 ---
-title: Crop Loan Waiver Scheme 2026
-description: Complete debt relief coverage up to ₹2,00,000 for distressed farmers.
+title: पुण्यश्लोक अहिल्यादेवी होळकर शेतकरी कर्जमाफी 2026
+description: अडचणीत असलेल्या शेतकऱ्यांसाठी २ लाख रुपयांपर्यंतची संपूर्ण कर्जमाफी.
 badge: Farmer
 apply_link: #
 ---

@@ -1,11 +1,11 @@
 ---
-title: Mukhyamantri Majhi Ladki Bahin Yojana
-description: Financial assistance of ₹1500 monthly for eligible women across the state.
+title: मुख्यमंत्री माझी लाडकी बहीण योजना
+description: राज्यातील पात्र महिलांसाठी दरमहा ₹१५०० ची आर्थिक मदत.
 badge: Women
 apply_link: https://ladkibahin.maharashtra.gov.in/
 ---
 
-# मुख्यमंत्री माझी लाडकी बहीण योजना (Mukhyamantri Majhi Ladki Bahin Yojana)
+# मुख्यमंत्री माझी लाडकी बहीण योजना (मुख्यमंत्री माझी लाडकी बहीण योजना)
 
 मुख्यमंत्री माझी लाडकी बहीण योजना ही महाराष्ट्र शासनाने राज्यातील महिलांच्या आर्थिक सक्षमीकरणासाठी (Women Empowerment) सुरू केलेली एक अत्यंत महत्त्वाची योजना आहे.
 

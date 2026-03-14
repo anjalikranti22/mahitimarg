@@ -1,6 +1,6 @@
 ---
-title: PMEGP Subsidy Scheme
-description: Prime Minister's Employment Generation Programme for new enterprises.
+title: पंतप्रधान रोजगार निर्मिती कार्यक्रम (PMEGP)
+description: नवीन उद्योगांसाठी पंतप्रधान रोजगार निर्मिती कार्यक्रम (PMEGP).
 badge: Business
 apply_link: https://www.kviconline.gov.in/pmegpeportal/pmegphome/index.jsp
 ---
