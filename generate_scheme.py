@@ -146,9 +146,9 @@ def build_html_from_markdown():
 <body>
 {HEADER_HTML}
 
-    <main class="container" style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; padding: 2rem 0; max-width: 1200px;">
+    <main class="scheme-detail-layout">
         
-        <article class="glass-panel scheme-detail-page" style="padding: 2.5rem; background: #fff;">
+        <article class="glass-panel scheme-detail-page" style="padding: 2.5rem; background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft);">
             <div class="section-badge"><i class="fa-solid fa-leaf"></i> {badge}</div>
             <h1 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 2.2rem;">{title}</h1>
             
