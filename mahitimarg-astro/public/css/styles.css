@@ -190,9 +190,44 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
     top: 0; left: 0; right: 0; bottom: 0;
     background: 
         radial-gradient(ellipse at 20% 50%, rgba(249, 115, 22, 0.25) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 55%);
+        radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 55%),
+        /* Subtle geometric diamond pattern overlay */
+        url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L55 30 L30 55 L5 30 Z' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1'/%3E%3Ccircle cx='30' cy='30' r='4' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
+}
+
+/* ── Floating Decorative Icons ── */
+.hero-floaters {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+.floater {
+    position: absolute;
+    font-size: 1.8rem;
+    opacity: 0.12;
+    animation: floatDrift linear infinite;
+    filter: grayscale(0.3);
+}
+/* Position each floater at different spots */
+.floater-1 { top: 12%; left: 5%;  font-size: 2.2rem; animation-duration: 18s; animation-delay: 0s; }
+.floater-2 { top: 65%; left: 8%;  font-size: 1.6rem; animation-duration: 22s; animation-delay: -4s; }
+.floater-3 { top: 25%; right: 6%; font-size: 2rem;   animation-duration: 20s; animation-delay: -2s; }
+.floater-4 { top: 70%; right: 10%;font-size: 1.8rem; animation-duration: 24s; animation-delay: -6s; }
+.floater-5 { top: 40%; left: 3%;  font-size: 1.5rem; animation-duration: 19s; animation-delay: -8s; }
+.floater-6 { top: 80%; left: 15%; font-size: 2rem;   animation-duration: 21s; animation-delay: -3s; }
+.floater-7 { top: 15%; right: 15%;font-size: 1.7rem; animation-duration: 23s; animation-delay: -5s; }
+.floater-8 { top: 50%; right: 4%; font-size: 1.4rem; animation-duration: 17s; animation-delay: -7s; }
+
+@keyframes floatDrift {
+    0%   { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.12; }
+    25%  { transform: translateY(-20px) translateX(10px) rotate(8deg); opacity: 0.18; }
+    50%  { transform: translateY(-8px) translateX(-8px) rotate(-4deg); opacity: 0.10; }
+    75%  { transform: translateY(-25px) translateX(6px) rotate(6deg); opacity: 0.16; }
+    100% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.12; }
 }
 .hero::after {
     content: '';
@@ -1223,6 +1258,8 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
         padding: 0.9rem 1rem;
         font-size: 0.9rem;
     }
+    /* Hide floating decorations on mobile for performance */
+    .hero-floaters { display: none; }
 }
 
 @media (max-width: 480px) {
