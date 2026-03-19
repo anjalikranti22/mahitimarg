@@ -141,6 +141,10 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
 
     <style is:global>
         /* Styles specific to rendered Markdown content inside Scheme Details */
+        .markdown-content {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
         .markdown-content h2 {
             color: var(--text-dark);
             margin-top: 2.5rem;
@@ -183,11 +187,15 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.95rem;
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .markdown-content th, .markdown-content td {
             border: 1px solid rgba(0,0,0,0.1);
             padding: 0.75rem 1rem;
             text-align: left;
+            min-width: 120px;
         }
         .markdown-content th {
             background: var(--primary);
