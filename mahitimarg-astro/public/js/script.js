@@ -87,48 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // --- 4. Trust Counters Animation ---
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200; // The lower the slower
-
-    const animateCounters = () => {
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 15);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
-        });
-    };
-
-    // Use Intersection Observer to trigger counter animation when in view
-    const statsSection = document.querySelector('.hero-stats');
-    if (statsSection) {
-        const counterObserverOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5
-        };
-
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, counterObserverOptions);
-        
-        counterObserver.observe(statsSection);
-    }
 
     // --- 5. Advanced Scheme Finder Tool ---
     const runFinderBtn = document.getElementById('run-finder-btn');
