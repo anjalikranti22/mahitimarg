@@ -1,0 +1,56 @@
+---
+// SchemeCard.astro
+interface Props {
+  scheme: any;
+}
+const { scheme } = Astro.props;
+
+// Determine category styling
+let iconClass = 'fa-leaf';
+let bgClass = 'bg-blue';
+let badgeText = '📋 Scheme';
+
+const cat = scheme.data.badge.toLowerCase();
+if (cat.includes('farmer') || cat.includes('शेतकरी')) {
+  iconClass = 'fa-tractor';
+  bgClass = 'bg-green';
+  badgeText = '🧑‍🌾 Farmer';
+} else if (cat.includes('women') || cat.includes('महिला')) {
+  iconClass = 'fa-person-dress';
+  bgClass = 'bg-pink';
+  badgeText = '👩 Women';
+} else if (cat.includes('business') || cat.includes('व्यवसाय')) {
+  iconClass = 'fa-store';
+  bgClass = 'bg-orange';
+  badgeText = '💼 Business';
+} else if (cat.includes('student') || cat.includes('विद्यार्थी')) {
+  iconClass = 'fa-graduation-cap';
+  bgClass = 'bg-purple';
+  badgeText = '🎓 Students';
+}
+---
+
+<article class="glass-panel scheme-card animate-on-scroll" data-tags={scheme.data.badge.toLowerCase()}>
+  <div class="scheme-img-wrapper">
+    <div class={`scheme-icon-bg ${bgClass}`}>
+      <i class={`fa-solid ${iconClass}`} aria-hidden="true"></i>
+    </div>
+    <div class="badge-group">
+      <span class="badge badge-tag">{badgeText}</span>
+      <span class="badge badge-active">Active</span>
+    </div>
+  </div>
+  <div class="scheme-card-content">
+    <h3>{scheme.data.title}</h3>
+    <p class="scheme-desc">{scheme.data.description}</p>
+    {scheme.data.key_stat && (
+      <div class="scheme-key-stat">
+        <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+        {scheme.data.key_stat}
+      </div>
+    )}
+  </div>
+  <a href={`/schemes/${scheme.id}`} class="btn btn-primary btn-block btn-read-more ripple-effect">
+    माहिती वाचा <i class="fa-solid fa-arrow-right arrow-icon"></i>
+  </a>
+</article>
