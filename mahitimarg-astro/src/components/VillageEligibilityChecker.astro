@@ -1,0 +1,283 @@
+---
+// VillageEligibilityChecker.astro
+// This is an interactive component that loads Maharashtra village data dynamically 
+// and provides a 3-step dropdown UI to check eligibility.
+---
+
+<div class="village-eligibility-checker">
+  <h3>तुमचे गाव तपासा (Check Eligibility)</h3>
+  <p class="eligibility-desc">या योजनेसाठी तुमचे गाव पात्र आहे का ते तपासण्यासाठी खालील माहिती निवडा:</p>
+
+  <div class="checker-form">
+    <div class="form-group">
+      <label for="district-select">जिल्हा (District)</label>
+      <select id="district-select" disabled>
+        <option value="">-- जिल्हा निवडा --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="taluka-select">तालुका (Taluka)</label>
+      <select id="taluka-select" disabled>
+        <option value="">-- प्रथम जिल्हा निवडा --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="village-select">गाव (Village)</label>
+      <select id="village-select" disabled>
+        <option value="">-- प्रथम तालुका निवडा --</option>
+      </select>
+    </div>
+
+    <button id="check-eligibility-btn" class="btn-check" disabled>पात्रता तपासा</button>
+  </div>
+
+  <div id="eligibility-result" class="eligibility-result hidden">
+    <!-- Result goes here -->
+  </div>
+</div>
+
+<style>
+  .village-eligibility-checker {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .village-eligibility-checker h3 {
+    margin-top: 0;
+    color: #1e293b;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .eligibility-desc {
+    color: #475569;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .checker-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+  }
+
+  .form-group select {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #0f172a;
+    transition: all 0.2s;
+  }
+
+  .form-group select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+
+  .form-group select:disabled {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    cursor: not-allowed;
+  }
+
+  .btn-check {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-check:hover:not(:disabled) {
+    background-color: #15803d;
+  }
+
+  .btn-check:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+  }
+
+  .eligibility-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .eligibility-result.success {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (min-width: 640px) {
+    .checker-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: end;
+    }
+    .btn-check {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
+
+<script>
+  let villageData = null;
+
+  async function loadData() {
+    try {
+      const distSelect = document.getElementById('district-select');
+      distSelect.innerHTML = '<option value="">लोड होत आहे... (Loading...)</option>';
+      
+      const response = await fetch('/data/villages.json');
+      villageData = await response.json();
+      
+      populateDistricts();
+    } catch (err) {
+      console.error("Failed to load village data", err);
+      const distSelect = document.getElementById('district-select');
+      distSelect.innerHTML = '<option value="">डेटा लोड करण्यात त्रुटी (Error Loading Data)</option>';
+    }
+  }
+
+  function populateDistricts() {
+    const distSelect = document.getElementById('district-select');
+    distSelect.innerHTML = '<option value="">-- जिल्हा निवडा --</option>';
+    
+    // Check if data is properly formatted
+    if (!villageData || typeof villageData !== 'object') return;
+    
+    const districts = Object.keys(villageData).sort();
+    
+    districts.forEach(dist => {
+      const opt = document.createElement('option');
+      opt.value = dist;
+      opt.textContent = dist;
+      distSelect.appendChild(opt);
+    });
+    
+    distSelect.disabled = false;
+  }
+
+  // Set up event listeners when the DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Only run if the component is actually on the page
+    const distSelect = document.getElementById('district-select');
+    if (!distSelect) return;
+
+    loadData();
+
+    const talSelect = document.getElementById('taluka-select');
+    const vilSelect = document.getElementById('village-select');
+    const checkBtn = document.getElementById('check-eligibility-btn');
+    const resultDiv = document.getElementById('eligibility-result');
+
+    // Handle District Change
+    distSelect.addEventListener('change', (e) => {
+      const selectedDist = e.target.value;
+      
+      // Reset dependent fields
+      talSelect.innerHTML = '<option value="">-- तालुका निवडा --</option>';
+      vilSelect.innerHTML = '<option value="">-- प्रथम तालुका निवडा --</option>';
+      talSelect.disabled = true;
+      vilSelect.disabled = true;
+      checkBtn.disabled = true;
+      resultDiv.classList.add('hidden');
+      
+      if (selectedDist && villageData[selectedDist]) {
+        const talukas = Object.keys(villageData[selectedDist]).sort();
+        talukas.forEach(tal => {
+          const opt = document.createElement('option');
+          opt.value = tal;
+          opt.textContent = tal;
+          talSelect.appendChild(opt);
+        });
+        talSelect.disabled = false;
+      }
+    });
+
+    // Handle Taluka Change
+    talSelect.addEventListener('change', (e) => {
+      const selectedDist = distSelect.value;
+      const selectedTal = e.target.value;
+      
+      // Reset dependent fields
+      vilSelect.innerHTML = '<option value="">-- गाव निवडा --</option>';
+      vilSelect.disabled = true;
+      checkBtn.disabled = true;
+      resultDiv.classList.add('hidden');
+      
+      if (selectedDist && selectedTal && villageData[selectedDist][selectedTal]) {
+        const villages = villageData[selectedDist][selectedTal].sort();
+        villages.forEach(vil => {
+          const opt = document.createElement('option');
+          opt.value = vil;
+          opt.textContent = vil;
+          vilSelect.appendChild(opt);
+        });
+        vilSelect.disabled = false;
+      }
+    });
+
+    // Handle Village Change
+    vilSelect.addEventListener('change', (e) => {
+      resultDiv.classList.add('hidden');
+      if (e.target.value) {
+        checkBtn.disabled = false;
+      } else {
+        checkBtn.disabled = true;
+      }
+    });
+
+    // Handle Check Button
+    checkBtn.addEventListener('click', () => {
+      const village = vilSelect.value;
+      const taluka = talSelect.value;
+      const district = distSelect.value;
+      
+      if (village && taluka && district) {
+        resultDiv.textContent = `अभिनंदन! ${village} (${taluka}, ${district}) हे गाव महात्मा जोतीराव फुले शेतकरी कर्जमुक्ती योजनेअंतर्गत पात्र आहे.`;
+        resultDiv.className = 'eligibility-result success';
+      }
+    });
+  });
+</script>
