@@ -87,6 +87,14 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
                   </a>
               </div>
             )}
+
+            <!-- WhatsApp Share Section at Bottom -->
+            <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px dashed rgba(0,0,0,0.1); text-align: center;">
+                <p style="font-weight: 600; color: var(--text-muted); margin-bottom: 1.25rem;">ही माहिती आवडली का? मित्रांसोबत शेअर करा!</p>
+                <a href={whatsappUrl} class="whatsapp-share-btn" target="_blank" rel="noopener noreferrer" style="max-width: 400px; margin: 0 auto; padding: 1rem 2rem; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp वर शेअर करा
+                </a>
+            </div>
         </article>
 
         <!-- Sidebar -->
@@ -109,9 +117,7 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
                     </a>
                 )}
 
-                <a href={whatsappUrl} class="whatsapp-share-btn" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp वर शेअर करा
-                </a>
+                <!-- Removed WhatsApp Button from here to move it to the bottom -->
             </div>
 
             <!-- Table of Contents (populated by JS) -->
