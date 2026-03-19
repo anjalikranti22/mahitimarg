@@ -5,7 +5,7 @@ interface Props {
 }
 const { scheme } = Astro.props;
 
-// Determine category styling
+// ── Determine category styling ──
 let iconClass = 'fa-leaf';
 let bgClass = 'bg-blue';
 let badgeText = '📋 Scheme';
@@ -28,9 +28,40 @@ if (cat.includes('farmer') || cat.includes('शेतकरी')) {
   bgClass = 'bg-purple';
   badgeText = '🎓 Students';
 }
+
+// ── Build English keyword set for search ──
+// Extract English words from the title (e.g. "PMMY", "AIF", "Kisan")
+const titleEn = scheme.data.title
+  .replace(/[()]/g, ' ')
+  .split(/[\s\-–]+/)
+  .filter((w: string) => /^[a-zA-Z]/.test(w))
+  .join(' ')
+  .toLowerCase();
+
+// Map badge category to rich English keywords
+const categoryKeywords: Record<string, string> = {
+  farmer:    'farmer farming agriculture kisan agri crop fpo rural sheti',
+  शेतकरी:   'farmer farming agriculture kisan agri crop fpo rural sheti',
+  women:     'women mahila girls mother ladki bahin empowerment',
+  महिला:     'women mahila girls mother ladki bahin empowerment',
+  business:  'business loan mudra msme startup employment shop store udyam',
+  व्यवसाय:  'business loan mudra msme startup employment shop store udyam',
+  student:   'student scholarship education school college vidyarthi',
+  विद्यार्थी: 'student scholarship education school college vidyarthi',
+  agri:      'agri agriculture infrastructure farming fpo pacs aif cold storage warehouse',
+  mudra:     'mudra loan business micro finance shishu kishore tarun pmmy',
+};
+
+let extraKeywords = titleEn;
+for (const [key, words] of Object.entries(categoryKeywords)) {
+  if (cat.includes(key)) extraKeywords += ' ' + words;
+}
+// Also include slug-style id for "aif scheme guide" style searches
+const schemeId = scheme.id.toLowerCase().replace(/[_-]/g, ' ');
+extraKeywords += ' ' + schemeId;
 ---
 
-<article class="glass-panel scheme-card animate-on-scroll" data-tags={scheme.data.badge.toLowerCase()}>
+<article class="glass-panel scheme-card animate-on-scroll" data-tags={scheme.data.badge.toLowerCase()} data-keywords={extraKeywords}>
   <div class="scheme-img-wrapper">
     <div class={`scheme-icon-bg ${bgClass}`}>
       <i class={`fa-solid ${iconClass}`} aria-hidden="true"></i>

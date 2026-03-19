@@ -11,13 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
             let visibleCount = 0;
 
             allSchemeCards.forEach(card => {
-                // Get the text from the h3 (English name), the p.scheme-marathi-name, and p.scheme-desc
+                // Get text from card title, description, and marathi name
                 const titleEng = card.querySelector('h3')?.textContent.toLowerCase() || '';
                 const titleMar = card.querySelector('.scheme-marathi-name')?.textContent.toLowerCase() || '';
                 const desc = card.querySelector('.scheme-desc')?.textContent.toLowerCase() || '';
+                // Also search the English keyword bank (farmer, kisan, mudra, agri, etc.)
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const tags = (card.getAttribute('data-tags') || '').toLowerCase();
                 
-                // If any of the text content includes the typed search term, show it, otherwise hide
-                if (titleEng.includes(searchTerm) || titleMar.includes(searchTerm) || desc.includes(searchTerm)) {
+                if (titleEng.includes(searchTerm) || titleMar.includes(searchTerm) || desc.includes(searchTerm) || keywords.includes(searchTerm) || tags.includes(searchTerm)) {
                     card.classList.remove('hidden');
                     // Add quick subtle animation for feedback
                     card.style.animation = 'fadeUp 0.3s ease-out forwards';
