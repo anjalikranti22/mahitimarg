@@ -171,7 +171,7 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
     text-align: center; 
     position: relative; 
     overflow: hidden;
-    background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.7)), url('../assets/hero-image.png');
+    background-image: linear-gradient(135deg, rgba(30, 58, 138, 0.85) 0%, rgba(59, 130, 246, 0.6) 50%, rgba(249, 115, 22, 0.3) 100%), url('../assets/hero-image.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -189,27 +189,55 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
     z-index: 2;
 }
 .hero-glass { 
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.9); 
-    box-shadow: 0 25px 50px rgba(0,0,0,0.15); 
-    padding: 4.5rem 2rem; 
-    border-radius: var(--radius-xl); 
+    background: rgba(255, 255, 255, 0.65); 
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.5); 
+    padding: 4.5rem 3rem; 
+    border-radius: 28px; 
     position: relative; 
 }
 .hero-subtitle { display: inline-block; background: rgba(249, 115, 22, 0.1); color: var(--accent); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; padding: 0.5rem 1rem; border-radius: var(--radius-pill); margin-bottom: 1.5rem; font-size: 0.85rem; }
-.hero-description { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
+.hero-description { font-size: 1.15rem; color: #1e293b; font-weight: 500; max-width: 800px; margin: 0 auto 3rem; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
+
+/* Hero Quick Links Pills */
+.hero-quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.hero-quick-link:hover {
+    background: white;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(30, 58, 138, 0.15);
+    color: var(--primary-dark);
+}
+.hero-quick-link i {
+    font-size: 1.1rem;
+    color: var(--accent);
+}
 
 /* Hero Search Bar */
 .search-container-lg { max-width: 700px; margin: 0 auto; position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transition: var(--transition); }
 /* Sticky Search Wrapper Active State (handled by JS optional) */
 .search-container-lg.is-sticky { position: fixed; top: 80px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 99; background: white; padding: 1rem; border-radius: var(--radius-pill); box-shadow: var(--shadow-hover); }
 
-.search-input.input-lg { width: 100%; padding: 1.2rem 8rem 1.2rem 3.5rem; border: none; border-radius: var(--radius-pill); background: white; font-size: 1rem; color: var(--text-main); box-shadow: var(--shadow-hover); transition: var(--transition); outline: none; }
-.search-input.input-lg:focus { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), var(--shadow-hover); }
-.search-container-lg .search-icon { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: var(--primary-light); font-size: 1.3rem; pointer-events: none; }
-.btn-search-submit { position: absolute; right: 0.4rem; top: 0.4rem; bottom: 0.4rem; padding: 0 2rem; border-radius: var(--radius-pill); font-size: 0.95rem; white-space: nowrap; min-width: 90px; display: inline-flex; align-items: center; justify-content: center; }
+.search-input.input-lg { width: 100%; padding: 1.4rem 8.5rem 1.4rem 4rem; border: none; border-radius: var(--radius-pill); background: white; font-size: 1.05rem; color: var(--text-main); box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: var(--transition); outline: none; }
+.search-input.input-lg:focus { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 0 8px 30px rgba(0,0,0,0.12); }
+.search-container-lg .search-icon { position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1.4rem; pointer-events: none; }
+.btn-search-submit { position: absolute; right: 0.5rem; top: 0.5rem; bottom: 0.5rem; padding: 0 2.5rem; border-radius: var(--radius-pill); font-size: 1.05rem; white-space: nowrap; min-width: 90px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2); }
 
 /* Filter Pills */
 .filter-pills-container { margin-top: 2rem; display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; justify-content: center; }
