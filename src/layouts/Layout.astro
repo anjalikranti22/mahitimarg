@@ -1,0 +1,74 @@
+---
+import '../styles/global.css'; // Adjust path if needed once we copy CSS
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SEO } from 'astro-seo'; // We'll install this npm package later
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  keywords?: string;
+  canonical?: string;
+  jsonLd?: object;
+}
+
+const { title, description = "सर्व सरकारी योजना – एकाच ठिकाणी", image = "https://mahitimarg.example.com/images/og-image.jpg", keywords, canonical, jsonLd } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="TrtPBuQPM6VTCty_ryr4V6kj4GDO9Ki-35vr_alygxg" />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "article",
+          image: image,
+        },
+        optional: {
+          locale: "mr_IN",
+          siteName: "MahitiMarg",
+        }
+      }}
+      twitter={{
+        creator: "@mahitimarg"
+      }}
+      extend={{
+        link: [{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
+        meta: [
+          { name: "twitter:image", content: image },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
+        ],
+      }}
+    />
+    {keywords && <meta name="keywords" content={keywords} />}
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <script src="/js/script.js" defer></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEB9SJ3QXK"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BEB9SJ3QXK');
+    </script>
+</head>
+<body>
+    <Header />
+    <slot />
+    <Footer />
+</body>
+</html>

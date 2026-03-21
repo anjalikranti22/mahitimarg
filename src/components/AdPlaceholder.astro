@@ -1,0 +1,25 @@
+---
+// AdPlaceholder.astro
+// This is a placeholder component for future advertisement integration (e.g. Google AdSense)
+// It can be easily replaced with actual ad scripts later.
+interface Props {
+    type?: 'banner' | 'sidebar' | 'in-article';
+    width?: string;
+    height?: string;
+}
+
+const { type = 'banner', width = '100%', height = '100px' } = Astro.props;
+
+let style = `width: ${width}; height: ${height}; background-color: #f3f4f6; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; font-size: 0.9rem; text-align: center; border-radius: 8px; margin: 1.5rem 0;`;
+
+if (type === 'sidebar') {
+    style = `width: ${width}; min-height: 250px; background-color: #f3f4f6; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; font-size: 0.9rem; text-align: center; border-radius: 8px; margin-bottom: 1.5rem;`;
+} else if (type === 'in-article') {
+     style = `width: ${width}; height: ${height}; background-color: #f3f4f6; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #64748b; font-weight: 600; font-size: 0.9rem; text-align: center; border-radius: 8px; margin: 2rem 0; clear: both;`;
+}
+---
+
+<div class="ad-placeholder" style={style}>
+    Advertisement Space<br/>
+    <span style="font-size: 0.75rem; font-weight: 400;">({type})</span>
+</div>

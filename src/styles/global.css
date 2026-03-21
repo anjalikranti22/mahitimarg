@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Any custom global styles can go here */
+body {
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+}
