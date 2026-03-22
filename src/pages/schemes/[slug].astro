@@ -117,7 +117,7 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
     <div class="scheme-detail-grid">
 
         <!-- Main Content -->
-        <article class="glass-panel" style="padding: 2.5rem; background: #fff;">
+        <article class="glass-panel scheme-article" style="background: #fff;">
             <div class="markdown-content">
               <Content />
             </div>
@@ -189,6 +189,14 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
     </div>
 
     <style is:global>
+        .scheme-article {
+            padding: 2.5rem;
+        }
+        @media (max-width: 768px) {
+            .scheme-article {
+                padding: 1.25rem;
+            }
+        }
         /* Styles specific to rendered Markdown content inside Scheme Details */
         .markdown-content {
             overflow-wrap: anywhere;
@@ -233,12 +241,14 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
         }
         .markdown-content table {
             width: 100%;
+            max-width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.95rem;
             display: block;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
         }
         .markdown-content th, .markdown-content td {
             border: 1px solid rgba(0,0,0,0.1);
