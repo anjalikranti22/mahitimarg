@@ -114,7 +114,7 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
     </section>
 
     <!-- Detail Grid: Content + Sidebar -->
-    <div class="scheme-detail-grid">
+    <div class="scheme-detail-layout">
 
         <!-- Main Content -->
         <article class="glass-panel scheme-article" style="background: #fff;">
@@ -191,6 +191,7 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
     <style is:global>
         .scheme-article {
             padding: 2.5rem;
+            min-width: 0; /* Prevents CSS grid blowout for wide tables */
         }
         @media (max-width: 768px) {
             .scheme-article {
@@ -240,14 +241,14 @@ const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
             color: var(--primary-color);
         }
         .markdown-content table {
+            display: block;
             width: 100%;
             max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             border-collapse: collapse;
             margin: 1.5rem 0;
             font-size: 0.95rem;
-            display: block;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
             white-space: nowrap;
         }
         .markdown-content th, .markdown-content td {
