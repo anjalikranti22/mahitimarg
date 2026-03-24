@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const jobPages = [
+    {
+      id: 'government',
+      title: 'सरकारी भरती (Govt Jobs)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">सध्याच्या प्रमुख सरकारी भरती (Current Major Recruitments)</h2>
+        <p class="mb-4 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">महाराष्ट्रात आणि केंद्र सरकारमध्ये नोकरी मिळवणे हे अनेकांचे स्वप्न असते. खालील प्रमुख विभागांमध्ये वारंवार भरती निघत असते:</p>
+        <ul class="space-y-3 mb-8 text-slate-700">
+          <li class="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-lg shadow-sm">
+            <span class="text-primary font-bold text-xl"><i class="fa-solid fa-circle-check"></i></span> 
+            <div><strong>MPSC (महाराष्ट्र लोकसेवा आयोग):</strong> राज्य सेवा, संयुक्त पूर्व परीक्षा (Group B & C) द्वारे अधिकारी पदांसाठी भरती.</div>
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-lg shadow-sm">
+            <span class="text-primary font-bold text-xl"><i class="fa-solid fa-circle-check"></i></span> 
+            <div><strong>पोलीस भरती (Maharashtra Police):</strong> शिपाई, चालक, आणि SRPF पदांसाठी दरवर्षी मोठी भरती.</div>
+          </li>
+          <li class="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-lg shadow-sm">
+            <span class="text-primary font-bold text-xl"><i class="fa-solid fa-circle-check"></i></span> 
+            <div><strong>जिल्हा परिषद (Zilla Parishad):</strong> आरोग्य सेवक, ग्रामसेवक, आणि लिपिक पदांसाठी मेगा भरती.</div>
+          </li>
+        </ul>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          जाहीरात (Ad Space)
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-3" style="font-family: 'Mukta', sans-serif;">परीक्षेची तयारी कशी करावी?</h3>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">शासकीय नोकरी मिळवण्यासाठी सातत्य आणि योग्य मार्गदर्शन आवश्यक आहे. अभ्यासक्रम नीट समजून घ्या, मागील वर्षांच्या प्रश्नपत्रिका सोडवा आणि चालू घडामोडींवर (Current Affairs) लक्ष ठेवा.</p>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 text-center shadow-sm">
+          <h4 class="font-bold text-indigo-800 mb-2 text-lg">तुम्ही भरतीसाठी पात्र आहात का?</h4>
+          <p class="text-sm text-indigo-600 mb-4">शासकीय भरतीसाठी तुमचे अचूक वय (वर्ष, महिने, दिवस) तपासा.</p>
+          <a href="/tools/age-calculator" class="inline-block bg-primary text-white font-bold py-2 px-6 rounded-lg hover:brightness-110 transition-all active:scale-95 shadow-md">वय कॅल्क्युलेटर वापरा</a>
+        </div>
+      `
+    },
+    {
+      id: 'skills',
+      title: 'कौशल्य विकास प्रशिक्षण (Skill Development)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">मोफत सरकारी प्रशिक्षण योजना (Free Govt Training Schemes)</h2>
+        <p class="mb-4 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">आजच्या काळात फक्त पदवी पुरेशी नाही; तुमच्याकडे योग्य कौशल्ये (Skills) असणे आवश्यक आहे. शासनातर्फे तरुणांसाठी अनेक मोफत प्रशिक्षण योजना राबवल्या जातात.</p>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-award"></i> PMKVY</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">प्रधानमंत्री कौशल विकास योजनेंतर्गत तरुणांना मोफत उद्योग-संबंधित कौशल्य प्रशिक्षण दिले जाते. कोर्स पूर्ण झाल्यावर प्रमाणपत्र आणि रोजगार मिळवण्यासाठी मदत केली जाते.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-graduation-cap"></i> प्रमोद महाजन योजना</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">महाराष्ट्र शासनाची ही योजना राज्यातील तरुणांना रोजगाराभिमुख प्रशिक्षण देऊन त्यांना नोकरी किंवा स्वतःचा व्यवसाय सुरू करण्यास मदत करते.</p>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-3" style="font-family: 'Mukta', sans-serif;">कुठे नोंदणी करावी?</h3>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">तुम्ही <strong>'महास्वयंम' (Mahaswayam)</strong> पोर्टलवर जाऊन तुमची नोंदणी करू शकता आणि तुमच्या जवळील प्रशिक्षण केंद्रांची माहिती मिळवू शकता.</p>
+      `
+    },
+    {
+      id: 'resume-guide',
+      title: 'रेझ्युमे कसा बनवावा? (Resume Guide)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">प्रभावी रेझ्युमे (Resume) का महत्त्वाचा आहे?</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">कोणत्याही खाजगी कंपनीत नोकरी मिळवण्यासाठी तुमचा रेझ्युमे हा तुमचा पहिला 'इम्प्रेशन' असतो. एक चांगला रेझ्युमे तुम्हाला इंटरव्ह्यूची (Interview) संधी मिळवून देतो.</p>
+        <h3 class="text-xl font-bold text-slate-800 mb-3" style="font-family: 'Mukta', sans-serif;">रेझ्युमे मध्ये खालील गोष्टी नक्की असाव्यात:</h3>
+        <ul class="pl-5 space-y-3 mb-8 text-slate-700" style="font-size: 1.05rem; line-height: 1.6;">
+          <li style="list-style-type: disc;"><strong>संपर्क माहिती (Contact Info):</strong> तुमचा अचूक मोबाईल नंबर आणि प्रोफेशनल ईमेल आयडी.</li>
+          <li style="list-style-type: disc;"><strong>उद्दिष्ट (Career Objective):</strong> तुम्ही कोणत्या प्रकारची नोकरी शोधत आहात आणि कंपनीच्या प्रगतीत तुम्ही कसे योगदान द्याल.</li>
+          <li style="list-style-type: disc;"><strong>शिक्षण (Education):</strong> तुमची पदवी, कॉलेजचे नाव आणि पासिंग वर्ष (उलट्या क्रमाने - सर्वात नवीन आधी).</li>
+          <li style="list-style-type: disc;"><strong>कौशल्ये (Skills):</strong> तुम्हाला येणारी तांत्रिक (उदा. MS Excel, Tally, Coding) आणि सॉफ्ट स्किल्स (उदा. Communication, Teamwork).</li>
+          <li style="list-style-type: disc;"><strong>अनुभव (Experience):</strong> जर तुम्ही फ्रेशर नसाल, तर आधीच्या कामाचा अनुभव आणि जबाबदाऱ्या नक्की सांगा.</li>
+        </ul>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          जाहीरात (Ad Space)
+        </div>
+      `
+    },
+    {
+      id: 'freelance',
+      title: 'फ्रीलान्सिंग मार्गदर्शन (Freelancing)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">फ्रीलान्सिंग (Freelancing) म्हणजे काय?</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">फ्रीलान्सिंग म्हणजे कोणत्याही एका कंपनीत ९ ते ५ नोकरी न करता, तुमच्यातील कौशल्याचा वापर करून इंटरनेटच्या माध्यमातून वेगवेगळ्या लोकांसाठी काम करणे आणि पैसे कमवणे.</p>
+        <h3 class="text-xl font-bold text-slate-800 mb-3" style="font-family: 'Mukta', sans-serif;">फ्रीलान्सिंग मधून पैसे कसे कमवावे?</h3>
+        <div class="space-y-4 mb-8">
+          <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl">
+             <h4 class="font-bold text-slate-800 mb-1">१. कौशल्य निवडा</h4>
+             <p class="text-sm text-slate-600 text-slate-700" style="font-size: 1.05rem; line-height: 1.6;">सर्वात आधी तुम्हाला काय चांगले येते ते ठरवा. उदा. ग्राफिक डिझायनिंग, व्हिडिओ एडिटिंग, कंटेंट रायटिंग (Content Writing), किंवा वेब डेव्हलपमेंट.</p>
+          </div>
+          <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl">
+             <h4 class="font-bold text-slate-800 mb-1">२. प्रोफाईल बनवा</h4>
+             <p class="text-sm text-slate-600 text-slate-700" style="font-size: 1.05rem; line-height: 1.6;">Upwork, Fiverr, किंवा Freelancer सारख्या आंतरराष्ट्रीय वेबसाईटवर तुमचे मोफत अकाउंट आणि प्रोफाईल बनवा.</p>
+          </div>
+          <div class="p-4 bg-slate-50 border border-slate-100 rounded-xl">
+             <h4 class="font-bold text-slate-800 mb-1">३. पोर्टफोलिओ (Portfolio)</h4>
+             <p class="text-sm text-slate-600 text-slate-700" style="font-size: 1.05rem; line-height: 1.6;">क्लायंटला दाखवण्यासाठी तुम्ही आधी केलेल्या कामाचे सॅम्पल्स (Samples) एकत्र करा व ते अपलोड करा.</p>
+          </div>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 text-center shadow-sm">
+          <h4 class="font-bold text-indigo-800 mb-2 text-lg">व्यवसाय सुरू करायचा आहे का?</h4>
+          <p class="text-sm text-indigo-600 mb-4">जर तुम्हाला स्वतःचा ऑनलाइन व्यवसाय सुरू करायचा असेल, तर सरकारकडून मिळणाऱ्या कर्ज योजनांची माहिती नक्की वाचा.</p>
+          <a href="/business/loans" class="inline-block bg-primary text-white font-bold py-2 px-6 rounded-lg hover:brightness-110 transition-all active:scale-95 shadow-md">व्यवसाय कर्ज योजना बघा</a>
+        </div>
+      `
+    }
+  ];
+
+  return jobPages.map(page => ({
+    params: { id: page.id },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`${page.title} | Jobs | MahitiMarg`}>
+    <main class="container py-8 max-w-4xl mx-auto" style="min-height: 80vh;">
+        <div class="mb-6 animate-on-load">
+            <a href="/jobs" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors" style="font-family: 'Mukta', sans-serif;">
+                <i class="fa-solid fa-arrow-left"></i> नोकरी व रोजगार (Jobs Hub)
+            </a>
+        </div>
+        <article class="glass-panel animate-on-scroll shadow-md" style="padding: 3rem; border-radius: 16px; background: rgba(255, 255, 255, 0.95); border-top: 4px solid var(--accent);">
+            <header style="margin-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 1.5rem;">
+                <h1 class="title-gradient" style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: 'Mukta', sans-serif;">{page.title}</h1>
+            </header>
+            <div set:html={page.content} class="article-content scheme-detail" style="font-family: 'Mukta', sans-serif;" />
+        </article>
+    </main>
+</Layout>

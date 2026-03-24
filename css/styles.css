@@ -68,6 +68,12 @@ body {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
     padding: 2rem;
+    transition: var(--transition-bounce);
+}
+.glass-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(255, 255, 255, 1);
 }
 
 /* Typography */
@@ -192,13 +198,50 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
 .hero-subtitle { display: inline-block; background: rgba(249, 115, 22, 0.1); color: var(--accent); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; padding: 0.5rem 1rem; border-radius: var(--radius-pill); margin-bottom: 1.5rem; font-size: 0.85rem; }
 .hero-description { font-size: 1.25rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
 
+/* Interactive Floating Icons */
+.hero-floaters {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.floater {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.6;
+    animation: float-around 15s infinite linear;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+}
+.floater-1 { top: 10%; left: 10%; animation-duration: 18s; animation-name: float-var-1; font-size: 3rem; }
+.floater-2 { top: 20%; right: 15%; animation-duration: 22s; animation-delay: -2s; animation-name: float-var-2; }
+.floater-3 { bottom: 15%; left: 20%; animation-duration: 16s; animation-delay: -5s; animation-name: float-var-1; }
+.floater-4 { bottom: 10%; right: 10%; animation-duration: 20s; animation-delay: -8s; animation-name: float-var-2; font-size: 3.5rem; opacity: 0.4; }
+.floater-5 { top: 40%; left: 5%; animation-duration: 25s; animation-name: float-var-1; opacity: 0.3; }
+.floater-6 { top: 50%; right: 5%; animation-duration: 19s; animation-name: float-var-2; font-size: 2rem; opacity: 0.5; }
+.floater-7 { top: 70%; left: 30%; animation-duration: 21s; animation-name: float-var-1; opacity: 0.4; }
+.floater-8 { top: 80%; right: 25%; animation-duration: 17s; animation-name: float-var-2; }
+
+@keyframes float-var-1 {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    33% { transform: translateY(-20px) rotate(10deg) scale(1.1); }
+    66% { transform: translateY(15px) rotate(-10deg) scale(0.9); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+@keyframes float-var-2 {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    33% { transform: translateY(20px) rotate(-10deg) scale(1.1); }
+    66% { transform: translateY(-15px) rotate(10deg) scale(0.9); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
 /* Hero Search Bar */
 .search-container-lg { max-width: 700px; margin: 0 auto; position: relative; display: flex; flex-direction: column; align-items: center; z-index: 10; transition: var(--transition); }
 /* Sticky Search Wrapper Active State (handled by JS optional) */
 .search-container-lg.is-sticky { position: fixed; top: 80px; left: 50%; transform: translateX(-50%); width: 90%; z-index: 99; background: white; padding: 1rem; border-radius: var(--radius-pill); box-shadow: var(--shadow-hover); }
 
-.search-input.input-lg { width: 100%; padding: 1.2rem 8rem 1.2rem 3.5rem; border: none; border-radius: var(--radius-pill); background: white; font-size: 1rem; color: var(--text-main); box-shadow: var(--shadow-hover); transition: var(--transition); outline: none; }
-.search-input.input-lg:focus { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), var(--shadow-hover); }
+.search-input.input-lg { width: 100%; padding: 1.2rem 8rem 1.2rem 3.5rem; border: inherit; border-radius: var(--radius-pill); background: white; font-size: 1rem; color: var(--text-main); box-shadow: var(--shadow-soft); transition: var(--transition); outline: none; border: 2px solid transparent; }
+.search-input.input-lg:focus { box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25); border-color: var(--primary-light); transform: translateY(-2px); }
 .search-container-lg .search-icon { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: var(--primary-light); font-size: 1.3rem; pointer-events: none; }
 .btn-search-submit { position: absolute; right: 0.4rem; top: 0.4rem; bottom: 0.4rem; padding: 0 2rem; border-radius: var(--radius-pill); font-size: 0.95rem; white-space: nowrap; min-width: 90px; display: inline-flex; align-items: center; justify-content: center; }
 

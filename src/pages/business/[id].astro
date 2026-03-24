@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const businessPages = [
+    {
+      id: 'startup-guide',
+      title: 'नवीन व्यवसाय कसा सुरू करावा?',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">स्वतःचा व्यवसाय सुरू करण्याची स्टेप-बाय-स्टेप पद्धत</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">नोकरीपेक्षा स्वतःचा व्यवसाय (Business) सुरू करण्याचे स्वप्न अनेक तरुण पाहतात. पण योग्य माहितीअभावी ते मागे राहतात. यशस्वी व्यवसाय सुरू करण्यासाठी खालील टप्पे समजून घेणे आवश्यक आहे:</p>
+        <div class="space-y-5 mb-8 text-slate-700">
+          <div class="p-5 bg-slate-50 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-1 text-lg">१. योग्य व्यवसायाची निवड (Market Research)</h3>
+            <p class="text-sm" style="line-height: 1.5;">बाजारात कोणत्या गोष्टीची मागणी (Demand) आहे हे ओळखा. तुमच्या आवडीचा आणि कमी गुंतवणुकीत सुरू होणारा व्यवसाय निवडा.</p>
+          </div>
+          <div class="p-5 bg-slate-50 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-1 text-lg">२. व्यवसाय आराखडा (Business Plan)</h3>
+            <p class="text-sm" style="line-height: 1.5;">तुमचा व्यवसाय कसा चालेल, कच्चा माल कुठून येईल, आणि मार्केटिंग कसे कराल याचा लेखी आराखडा तयार करा. कर्ज मिळवण्यासाठी याची खूप मदत होते.</p>
+          </div>
+          <div class="p-5 bg-slate-50 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-1 text-lg">३. भांडवल उभे करणे (Capital)</h3>
+            <p class="text-sm" style="line-height: 1.5;">व्यवसायासाठी लागणारा पैसा स्वतःचा असेल की बँकेकडून कर्ज घेणार, हे ठरवा. शासनाच्या अनेक मुद्रा आणि इतर कर्ज योजना उपलब्ध आहेत.</p>
+          </div>
+        </div>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          जाहीरात (Ad Space)
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 text-center shadow-sm">
+          <h4 class="font-bold text-indigo-800 mb-2 text-lg">व्यवसायासाठी नोंदणी कशी करावी?</h4>
+          <p class="text-sm text-indigo-600 mb-4">व्यवसाय कायदेशीर करण्यासाठी शॉप ॲक्ट आणि उद्यम आधार कसे काढावे हे जाणून घ्या.</p>
+          <a href="/business/registration" class="inline-block bg-primary text-white font-bold py-2 px-6 rounded-lg hover:brightness-110 transition-all active:scale-95 shadow-md">नोंदणीची माहिती वाचा</a>
+        </div>
+      `
+    },
+    {
+      id: 'registration',
+      title: 'लागणारे परवाने व नोंदणी (Business Registration)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">व्यवसायासाठी आवश्यक परवाने (Business Licenses)</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">कोणताही नवीन व्यवसाय कायदेशीररित्या सुरू करण्यासाठी आणि सरकारी योजनांचा (सबसिडी/कर्ज) लाभ घेण्यासाठी व्यवसायाची नोंदणी करणे अत्यंत महत्त्वाचे आहे.</p>
+        <ul class="space-y-4 mb-8 text-slate-700">
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <span class="mt-1 text-emerald-500 font-bold text-2xl"><i class="fa-solid fa-check-circle"></i></span> 
+            <div>
+              <strong class="text-slate-900 block text-lg mb-1">उद्यम आधार (MSME Registration):</strong> 
+              <p class="text-sm mt-1" style="line-height: 1.5;">लघु आणि मध्यम उद्योगांसाठी हे अत्यंत महत्त्वाचे प्रमाणपत्र आहे. हे भारत सरकारच्या पोर्टलवर पूर्णपणे मोफत काढता येते. यामुळे बँकेचे कर्ज लवकर मिळण्यास मदत होते.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <span class="mt-1 text-emerald-500 font-bold text-2xl"><i class="fa-solid fa-check-circle"></i></span> 
+            <div>
+              <strong class="text-slate-900 block text-lg mb-1">शॉप ॲक्ट / गुमास्ता (Shop Act License):</strong> 
+              <p class="text-sm mt-1" style="line-height: 1.5;">महाराष्ट्रामध्ये दुकान किंवा व्यवसाय सुरू करण्यासाठी महानगरपालिका किंवा नगरपालिकेकडून हा परवाना घेणे बंधनकारक आहे. बँकेत करंट अकाउंट (Current Account) उघडण्यासाठी हे लागते.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <span class="mt-1 text-emerald-500 font-bold text-2xl"><i class="fa-solid fa-check-circle"></i></span> 
+            <div>
+              <strong class="text-slate-900 block text-lg mb-1">FSSAI आणि GST नोंदणी:</strong> 
+              <p class="text-sm mt-1" style="line-height: 1.5;">जर तुमचा व्यवसाय अन्नाशी संबंधित असेल (हॉटेल, बेकरी) तर FSSAI लायसन्स आवश्यक आहे. तसेच, वार्षिक उलाढाल ४० लाखांच्या वर असल्यास GST नंबर काढणे अनिवार्य ধর্মের अनिवार्य आहे.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          जाहीरात (Ad Space)
+        </div>
+      `
+    },
+    {
+      id: 'loans',
+      title: 'व्यवसाय कर्ज योजना (Business Loans)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">शासकीय व्यवसाय कर्ज योजना (Govt Loan Schemes)</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">तरुणांनी नोकरी शोधण्यापेक्षा नोकरी देणारे बनावे, यासाठी केंद्र आणि राज्य सरकारतर्फे कमी व्याजदरात आणि सबसिडीसह (Subsidy) अनेक कर्ज योजना राबवल्या जातात.</p>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-indian-rupee-sign"></i> १. प्रधानमंत्री मुद्रा योजना</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">कोणत्याही हमीशिवाय (Collateral free) १० लाख रुपयांपर्यंत कर्ज. यामध्ये शिशु (५० हजार), किशोर (५ लाख) आणि तरुण (१० लाख) असे तीन गट आहेत.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-industry"></i> २. PMEGP योजना</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">मॅन्युफॅक्चरिंग आणि सर्व्हिस सेक्टरसाठी ही योजना असून, यात ५० लाखांपर्यंत कर्ज मिळते. विशेष म्हणजे यात १५% ते ३५% पर्यंत सबसिडी मिळण्याची सोय आहे.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-handshake"></i> ३. अण्णासाहेब पाटील आर्थिक विकास महामंडळ</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">मराठा समाजातील तरुणांसाठी ही अतिशय लोकप्रिय योजना आहे. व्यवसाय सुरू करण्यासाठी घेतलेल्या कर्जाचे १० लाख रुपयांपर्यंतचे व्याज महामंडळ स्वतः भरते.</p>
+          </div>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-6 text-center shadow-sm">
+          <h4 class="font-bold text-emerald-800 mb-2 text-lg">तुमच्या कर्जाचा EMI किती येईल?</h4>
+          <p class="text-sm text-emerald-600 mb-4">कर्ज घेण्यापूर्वी दर महिन्याला किती हप्ता (EMI) भरावा लागेल हे आमच्या स्मार्ट टूलने सेकंदात तपासा.</p>
+          <a href="/tools/emi-calculator" class="inline-block bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-emerald-700 transition-colors active:scale-95 shadow-md">EMI कॅल्क्युलेटर वापरा</a>
+        </div>
+      `
+    },
+    {
+      id: 'pm-vishwakarma',
+      title: 'PM विश्वकर्मा योजना (PM Vishwakarma)',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">पारंपारिक कारागिरांसाठी संजीवनी</h2>
+        <p class="mb-4 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">भारतातील १८ प्रकारच्या पारंपारिक कारागिरांना (उदा. सुतार, लोहार, सोनार, शिंपी, कुंभार) आर्थिक आणि तांत्रिक मदत देण्यासाठी केंद्र सरकारने <strong>PM विश्वकर्मा योजना</strong> सुरू केली आहे.</p>
+        <h3 class="text-xl font-bold text-slate-800 mb-4 mt-6" style="font-family: 'Mukta', sans-serif;">योजनेचे मुख्य फायदे (Benefits)</h3>
+        <ul class="space-y-4 mb-8 text-slate-700">
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span class="mt-1 text-primary font-bold text-xl"><i class="fa-solid fa-user-graduate"></i></span> 
+            <div>
+              <strong class="text-slate-900 block mb-1 text-lg">प्रशिक्षण आणि विद्यावेतन:</strong> 
+              <span style="line-height: 1.5; font-size: 0.95rem;">कारागिरांना ५ ते १५ दिवसांचे मोफत कौशल्य प्रशिक्षण दिले जाते. या काळात दररोज <strong class="text-primary">₹५००</strong> विद्यावेतन (Stipend) मिळते.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span class="mt-1 text-primary font-bold text-xl"><i class="fa-solid fa-toolbox"></i></span> 
+            <div>
+              <strong class="text-slate-900 block mb-1 text-lg">टूलकिटसाठी मदत:</strong> 
+              <span style="line-height: 1.5; font-size: 0.95rem;">प्रशिक्षण पूर्ण झाल्यावर व्यवसाय सुरू करण्यासाठी आवश्यक अवजारे (Toolkit) खरेदी करण्यासाठी <strong class="text-primary">₹१५,०००</strong> चे ई-व्हाउचर मिळते.</span>
+             </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span class="mt-1 text-primary font-bold text-xl"><i class="fa-solid fa-hand-holding-dollar"></i></span> 
+            <div>
+              <strong class="text-slate-900 block mb-1 text-lg">कमी व्याजात कर्ज:</strong> 
+              <span style="line-height: 1.5; font-size: 0.95rem;">व्यवसायाच्या विस्तारासाठी पहिल्या टप्प्यात १ लाख रुपये आणि दुसऱ्या टप्प्यात २ लाख रुपयांचे कर्ज केवळ <strong class="text-primary">५% व्याजदराने</strong> (विनातारण) दिले जाते.</span>
+            </div>
+          </li>
+        </ul>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          जाहीरात (Ad Space)
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-3" style="font-family: 'Mukta', sans-serif;">अर्ज कुठे करावा?</h3>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">या योजनेसाठी तुम्ही तुमच्या जवळच्या CSC (आपले सरकार सेवा केंद्र) केंद्रात जाऊन मोफत नोंदणी करू शकता.</p>
+      `
+    }
+  ];
+
+  return businessPages.map(page => ({
+    params: { id: page.id },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`${page.title} | Business Guide | MahitiMarg`}>
+    <main class="container py-8 max-w-4xl mx-auto" style="min-height: 80vh;">
+        <div class="mb-6 animate-on-load">
+            <a href="/business" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors" style="font-family: 'Mukta', sans-serif;">
+                <i class="fa-solid fa-arrow-left"></i> व्यवसाय हब (Business Hub)
+            </a>
+        </div>
+        <article class="glass-panel animate-on-scroll shadow-md" style="padding: 3rem; border-radius: 16px; background: rgba(255, 255, 255, 0.95); border-top: 4px solid var(--accent);">
+            <header style="margin-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 1.5rem;">
+                <h1 class="title-gradient" style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: 'Mukta', sans-serif;">{page.title}</h1>
+            </header>
+            <div set:html={page.content} class="article-content scheme-detail" style="font-family: 'Mukta', sans-serif;" />
+        </article>
+    </main>
+</Layout>
