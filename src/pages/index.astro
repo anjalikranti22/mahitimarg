@@ -5,14 +5,15 @@ import { getCollection } from 'astro:content';
 
 // Fetch all schemes from the Content Collection
 const allSchemes = await getCollection('schemes');
+const featuredSchemes = allSchemes.slice(0, 6);
+const totalSchemes = allSchemes.length;
 ---
 
-<Layout title="MahitiMarg | सर्व सरकारी योजना माहिती">
+<Layout title="MahitiMarg | योजना · रोजगार · व्यवसाय · टूल्स – सर्व माहिती एकाच ठिकाणी">
     <main>
-        <!-- Hero Section -->
+        <!-- Section 1: Hero + Universal Search -->
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-bg-accent"></div>
-            <!-- Floating Decorative Icons -->
             <div class="hero-floaters" aria-hidden="true">
                 <span class="floater floater-1">🌾</span>
                 <span class="floater floater-2">📄</span>
@@ -24,11 +25,18 @@ const allSchemes = await getCollection('schemes');
                 <span class="floater floater-8">💡</span>
             </div>
             <div class="container glass-panel hero-glass animate-on-load">
-                <h1 id="hero-title" class="title-gradient">सर्व सरकारी योजना – एकाच ठिकाणी</h1>
-                <p class="hero-description">सर्व महाराष्ट्र राज्य आणि केंद्र सरकारच्या योजनांची अचूक सबसिडी, पात्रता निकष आणि अर्ज करण्याच्या लिंक्स साध्या मराठीत शोधण्यासाठी नागरिकांचे हक्काचे ठिकाण.
+                <h1 id="hero-title" class="title-gradient">योजना · रोजगार · व्यवसाय · टूल्स</h1>
+                <p class="hero-description">सर्व महाराष्ट्र राज्य आणि केंद्र सरकारच्या योजना, रोजगार माहिती, व्यवसाय मार्गदर्शन आणि उपयुक्त टूल्स – साध्या मराठीत, एकाच ठिकाणी.
                 </p>
 
-                <!-- Expanded Sticky-Aware Search Bar -->
+                <!-- Universal Tabbed Search -->
+                <div class="search-tabs" id="search-tabs">
+                    <button class="search-tab active" data-tab="all"><i class="fa-solid fa-magnifying-glass"></i> सर्व</button>
+                    <button class="search-tab" data-tab="schemes"><i class="fa-solid fa-file-lines"></i> योजना</button>
+                    <button class="search-tab" data-tab="articles"><i class="fa-solid fa-newspaper"></i> लेख</button>
+                    <button class="search-tab" data-tab="tools"><i class="fa-solid fa-wrench"></i> टूल्स</button>
+                </div>
+
                 <div class="search-container search-container-lg" id="sticky-search-wrapper">
                     <div style="position: relative; width: 100%;">
                         <i class="fa-solid fa-search search-icon" aria-hidden="true"></i>
@@ -41,89 +49,243 @@ const allSchemes = await getCollection('schemes');
                     </div>
                 </div>
 
-
-                <!-- Quick Links -->
+                <!-- Expanded Quick Links -->
                 <div class="quick-links animate-on-load mt-2"
-                    style="display: flex; justify-content: center; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;">
-                    <a href="/categories/farmer" class="hero-quick-link"><i class="fa-solid fa-tractor"></i> शेतकरी योजना</a>
-                    <a href="/categories/women" class="hero-quick-link"><i class="fa-solid fa-person-dress"></i> महिला योजना</a>
-                    <a href="/categories/business" class="hero-quick-link"><i class="fa-solid fa-briefcase"></i> व्यवसाय योजना</a>
-                    <a href="/categories/student" class="hero-quick-link"><i class="fa-solid fa-graduation-cap"></i> विद्यार्थी योजना</a>
+                    style="display: flex; justify-content: center; gap: 0.6rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <a href="/categories/farmer" class="hero-quick-link"><i class="fa-solid fa-tractor"></i> शेतकरी</a>
+                    <a href="/categories/women" class="hero-quick-link"><i class="fa-solid fa-person-dress"></i> महिला</a>
+                    <a href="/categories/business" class="hero-quick-link"><i class="fa-solid fa-briefcase"></i> व्यवसाय</a>
+                    <a href="/categories/student" class="hero-quick-link"><i class="fa-solid fa-graduation-cap"></i> विद्यार्थी</a>
+                    <a href="/categories/pension" class="hero-quick-link"><i class="fa-solid fa-piggy-bank"></i> पेन्शन</a>
+                    <a href="/categories/health" class="hero-quick-link"><i class="fa-solid fa-heart-pulse"></i> आरोग्य</a>
+                    <a href="/schemes" class="hero-quick-link hero-quick-link--accent"><i class="fa-solid fa-arrow-right"></i> सर्व पहा</a>
                 </div>
-
             </div>
         </section>
 
-        <!-- Trust Section: Popular Schemes Slider / Cards -->
+        <!-- Section 2: Featured Schemes (Top 6 Only) -->
         <section id="popular-schemes" class="container scheme-category-section" aria-labelledby="popular-schemes-title">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured</div>
+                <h2 id="popular-schemes-title">लोकप्रिय योजना (Featured Schemes)</h2>
+                <p>सर्वात जास्त शोधल्या जाणाऱ्या आणि उपयुक्त सरकारी योजना</p>
+            </div>
             <div class="schemes-grid" id="popular-schemes-list">
-                {allSchemes.map((scheme) => (
+                {featuredSchemes.map((scheme) => (
                     <SchemeCard scheme={scheme} />
                 ))}
             </div>
+            <div class="view-all-cta animate-on-scroll">
+                <a href="/schemes" class="btn btn-accent ripple-effect btn-view-all">
+                    <i class="fa-solid fa-th-list"></i> सर्व {totalSchemes}+ योजना पहा
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+            </div>
         </section>
 
-        <!-- Global No Results Message (For JS Filters) -->
-        <div id="no-results-msg" class="container no-results-msg hidden" style="text-align: center; padding: 2rem;">
-            <i class="fa-solid fa-search-minus" aria-hidden="true"
-                style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
-            <p style="font-size: 1.2rem; font-weight: 500;">कोणतीही योजना सापडली नाही. (No schemes found matching your
-                search)</p>
-            <button class="btn btn-secondary mt-2" id="clear-search-btn">Clear Search & Filters</button>
-        </div>
-
-        <!-- Section 3: Popular Categories -->
-        <section id="popular-categories" class="scheme-category-section bg-alternating"
-            aria-labelledby="popular-categories-title">
+        <!-- Section 3: Category Grid (14 Categories) -->
+        <section id="popular-categories" class="scheme-category-section bg-alternating" aria-labelledby="popular-categories-title">
             <div class="container relative-container">
                 <div class="section-header animate-on-scroll">
-                    <h2 id="popular-categories-title">योजनांचे प्रकार (Popular Categories)</h2>
-                    <p>Browse schemes by specific beneficial categories tailored for you.</p>
+                    <h2 id="popular-categories-title">योजनांचे प्रकार (Browse by Category)</h2>
+                    <p>तुमच्यासाठी योग्य योजना शोधा — श्रेणीनुसार</p>
                 </div>
-                <!-- Large Visual Blocks -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;"
-                    class="animate-on-scroll">
-                    <a href="/categories/farmer" class="glass-panel"
-                        style="text-align: center; padding: 2.5rem 1rem; border-radius: 1rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                        <div
-                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fa-solid fa-tractor" style="font-size: 2.5rem;"></i>
+                <div class="category-grid animate-on-scroll">
+                    <a href="/categories/farmer" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                            <i class="fa-solid fa-tractor"></i>
                         </div>
-                        <h3 style="margin: 0; color: var(--text-dark);">शेतकरी योजना</h3>
-                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Farmer Schemes</p>
+                        <span class="category-chip__label">शेतकरी</span>
+                        <span class="category-chip__sub">Farmer</span>
                     </a>
-                    <a href="/categories/women" class="glass-panel"
-                        style="text-align: center; padding: 2.5rem 1rem; border-radius: 1rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                        <div
-                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #ec4899, #db2777); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fa-solid fa-person-dress" style="font-size: 2.5rem;"></i>
+                    <a href="/categories/women" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
+                            <i class="fa-solid fa-person-dress"></i>
                         </div>
-                        <h3 style="margin: 0; color: var(--text-dark);">महिला योजना</h3>
-                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Women's Schemes</p>
+                        <span class="category-chip__label">महिला</span>
+                        <span class="category-chip__sub">Women</span>
                     </a>
-                    <a href="/categories/business" class="glass-panel"
-                        style="text-align: center; padding: 2.5rem 1rem; border-radius: 1rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                        <div
-                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #f97316, #ea580c); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fa-solid fa-briefcase" style="font-size: 2.5rem;"></i>
+                    <a href="/categories/student" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #a855f7, #9333ea);">
+                            <i class="fa-solid fa-graduation-cap"></i>
                         </div>
-                        <h3 style="margin: 0; color: var(--text-dark);">व्यवसाय योजना</h3>
-                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Business & Employment</p>
+                        <span class="category-chip__label">विद्यार्थी</span>
+                        <span class="category-chip__sub">Student</span>
                     </a>
-                    <a href="/categories/student" class="glass-panel"
-                        style="text-align: center; padding: 2.5rem 1rem; border-radius: 1rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                        <div
-                            style="width: 80px; height: 80px; background: linear-gradient(135deg, #a855f7, #9333ea); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fa-solid fa-graduation-cap" style="font-size: 2.5rem;"></i>
+                    <a href="/categories/business" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                            <i class="fa-solid fa-briefcase"></i>
                         </div>
-                        <h3 style="margin: 0; color: var(--text-dark);">विद्यार्थी योजना</h3>
-                        <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Student Scholarships</p>
+                        <span class="category-chip__label">व्यवसाय</span>
+                        <span class="category-chip__sub">Business</span>
+                    </a>
+                    <a href="/categories/pension" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #64748b, #475569);">
+                            <i class="fa-solid fa-piggy-bank"></i>
+                        </div>
+                        <span class="category-chip__label">पेन्शन</span>
+                        <span class="category-chip__sub">Pension</span>
+                    </a>
+                    <a href="/categories/health" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="category-chip__label">आरोग्य</span>
+                        <span class="category-chip__sub">Health</span>
+                    </a>
+                    <a href="/categories/insurance" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="category-chip__label">विमा</span>
+                        <span class="category-chip__sub">Insurance</span>
+                    </a>
+                    <a href="/categories/worker" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">
+                            <i class="fa-solid fa-hard-hat"></i>
+                        </div>
+                        <span class="category-chip__label">कामगार</span>
+                        <span class="category-chip__sub">Worker</span>
+                    </a>
+                    <a href="/categories/housing" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <span class="category-chip__label">गृहनिर्माण</span>
+                        <span class="category-chip__sub">Housing</span>
+                    </a>
+                    <a href="/categories/social-security" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="category-chip__label">सामाजिक सुरक्षा</span>
+                        <span class="category-chip__sub">Social Security</span>
+                    </a>
+                    <a href="/categories/loans" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                        <span class="category-chip__label">कर्ज/वित्त</span>
+                        <span class="category-chip__sub">Loans</span>
+                    </a>
+                    <a href="/categories/food" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #eab308, #ca8a04);">
+                            <i class="fa-solid fa-wheat-awn"></i>
+                        </div>
+                        <span class="category-chip__label">अन्न सुरक्षा</span>
+                        <span class="category-chip__sub">Food</span>
+                    </a>
+                    <a href="/categories/digital" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span class="category-chip__label">डिजिटल</span>
+                        <span class="category-chip__sub">Digital</span>
+                    </a>
+                    <a href="/categories" class="category-chip category-chip--view-all">
+                        <div class="category-chip__icon" style="background: transparent; border: 2px dashed var(--primary-light);">
+                            <i class="fa-solid fa-arrow-right" style="color: var(--primary);"></i>
+                        </div>
+                        <span class="category-chip__label" style="color: var(--primary);">सर्व पहा</span>
+                        <span class="category-chip__sub">View All</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Latest Updates (News Style) -->
+        <!-- Section 4: Smart Tools Strip -->
+        <section id="smart-tools" class="container scheme-category-section" aria-labelledby="tools-title">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge" style="background: rgba(249, 115, 22, 0.1); color: #f97316; border-color: rgba(249, 115, 22, 0.2);">
+                    <i class="fa-solid fa-wrench" aria-hidden="true"></i> Smart Tools
+                </div>
+                <h2 id="tools-title">स्मार्ट टूल्स (Smart Tools)</h2>
+                <p>कॅल्क्युलेटर, चेकलिस्ट आणि इतर उपयुक्त साधने</p>
+            </div>
+            <div class="tools-strip animate-on-scroll">
+                <a href="/tools/emi-calculator" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>EMI कॅल्क्युलेटर</h3>
+                    <p>गृहकर्ज, वाहन कर्ज EMI तपासा</p>
+                    <span class="tool-card__cta">वापरा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="/tools/eligibility-checker" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h3>पात्रता चेकर</h3>
+                    <p>तुम्ही कोणत्या योजनेसाठी पात्र आहात?</p>
+                    <span class="tool-card__cta">तपासा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="/tools/document-checklist" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3>कागदपत्र चेकलिस्ट</h3>
+                    <p>योजनेसाठी लागणारी कागदपत्रे</p>
+                    <span class="tool-card__cta">पहा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="/tools/fd-rd-calculator" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>FD/RD कॅल्क्युलेटर</h3>
+                    <p>बचतीवर किती व्याज मिळेल?</p>
+                    <span class="tool-card__cta">गणना करा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="view-all-cta animate-on-scroll" style="margin-top: 1.5rem;">
+                <a href="/tools" class="btn btn-secondary ripple-effect" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-wrench"></i> सर्व टूल्स पहा <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 5: Business & Employment Hub -->
+        <section id="biz-jobs-hub" class="scheme-category-section bg-alternating" aria-labelledby="biz-hub-title">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="biz-hub-title">व्यवसाय आणि रोजगार (Business & Jobs)</h2>
+                    <p>उद्योजक आणि नोकरी शोधणाऱ्यांसाठी एकत्रित माहिती</p>
+                </div>
+                <div class="hub-split animate-on-scroll">
+                    <div class="hub-card hub-card--biz">
+                        <div class="hub-card__icon">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3>नवीन व्यवसाय सुरू करत आहात?</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> व्यवसाय कसा सुरू करावा</li>
+                            <li><i class="fa-solid fa-check-circle"></i> लागणारे परवाने व नोंदणी</li>
+                            <li><i class="fa-solid fa-check-circle"></i> सरकारी कर्ज योजना (MUDRA, PMEGP)</li>
+                            <li><i class="fa-solid fa-check-circle"></i> PM विश्वकर्मा योजना</li>
+                        </ul>
+                        <a href="/articles" class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                            <i class="fa-solid fa-book-open"></i> व्यवसाय गाईड वाचा
+                        </a>
+                    </div>
+                    <div class="hub-card hub-card--jobs">
+                        <div class="hub-card__icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3>नोकरी / रोजगार मार्गदर्शन</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> सरकारी भरती अपडेट्स</li>
+                            <li><i class="fa-solid fa-check-circle"></i> कौशल्य प्रशिक्षण योजना</li>
+                            <li><i class="fa-solid fa-check-circle"></i> रेझ्युमे कसा बनवावा</li>
+                            <li><i class="fa-solid fa-check-circle"></i> फ्रीलान्सिंग मार्गदर्शन</li>
+                        </ul>
+                        <a href="/jobs" class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                            <i class="fa-solid fa-briefcase"></i> रोजगार माहिती पहा
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Latest Updates (News) -->
         <section id="latest-updates" class="container scheme-category-section" aria-labelledby="latest-updates-title">
             <div class="section-header animate-on-scroll">
                 <div class="section-badge"
@@ -172,7 +334,7 @@ const allSchemes = await getCollection('schemes');
             </div>
         </section>
 
-        <!-- Section 5: Scheme Finder Tool -->
+        <!-- Section 7: Advanced Scheme Finder -->
         <section id="scheme-finder-tool" class="scheme-category-section bg-alternating border-t border-b"
             aria-labelledby="finder-title"
             style="border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
@@ -188,75 +350,104 @@ const allSchemes = await getCollection('schemes');
                         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
                         <div>
                             <label for="finder-category"
-                                style="display: block; font-weight: 600; margin-bottom: 0.5rem;">लाभार्थी प्रकार
-                                (Category)</label>
+                                style="display: block; font-weight: 600; margin-bottom: 0.5rem;">लाभार्थी प्रकार</label>
                             <select id="finder-category" class="search-input" style="width: 100%; border-radius: 8px;">
                                 <option value="all">सर्व (All)</option>
                                 <option value="farmer">शेतकरी (Farmer)</option>
                                 <option value="women">महिला (Women)</option>
                                 <option value="student">विद्यार्थी (Student)</option>
+                                <option value="business">व्यवसाय (Business)</option>
+                                <option value="pension">पेन्शन (Pension)</option>
+                                <option value="health">आरोग्य (Health)</option>
+                                <option value="insurance">विमा (Insurance)</option>
+                                <option value="worker">कामगार (Worker)</option>
                             </select>
                         </div>
                         <div>
-                            <label for="finder-income"
-                                style="display: block; font-weight: 600; margin-bottom: 0.5rem;">वार्षिक उत्पन्न
-                                (Income)</label>
-                            <select id="finder-income" class="search-input" style="width: 100%; border-radius: 8px;">
-                                <option value="any">कोणतेही (Any)</option>
-                                <option value="below_1l">१ लाखापेक्षा कमी (< 1 Lakh)</option>
-                                <option value="below_8l">८ लाखापेक्षा कमी (< 8 Lakh)</option>
+                            <label for="finder-govt" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">सरकार प्रकार</label>
+                            <select id="finder-govt" class="search-input" style="width: 100%; border-radius: 8px;">
+                                <option value="all">सर्व</option>
+                                <option value="central">केंद्र सरकार</option>
+                                <option value="state">राज्य सरकार (महाराष्ट्र)</option>
                             </select>
                         </div>
                         <div>
-                            <label for="finder-age" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">वय
-                                (Age Limit)</label>
-                            <input type="number" id="finder-age" class="search-input" placeholder="उदा. 25"
-                                style="width: 100%; border-radius: 8px;">
+                            <label for="finder-type" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">योजनेचा प्रकार</label>
+                            <select id="finder-type" class="search-input" style="width: 100%; border-radius: 8px;">
+                                <option value="all">सर्व</option>
+                                <option value="loan">कर्ज (Loan)</option>
+                                <option value="subsidy">अनुदान (Subsidy)</option>
+                                <option value="pension">पेन्शन (Pension)</option>
+                                <option value="insurance">विमा (Insurance)</option>
+                            </select>
                         </div>
                         <button type="button" class="btn btn-primary ripple-effect" id="run-finder-btn"
                             style="padding: 0.75rem;"><i class="fa-solid fa-search"></i> शोधा</button>
                     </form>
                     <div id="finder-results"
                         style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(0,0,0,0.1); display: none;">
-                        <!-- Results injected by JS -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 6: Most Searched Schemes (Text Heavy) -->
-        <section id="most-searched" class="container scheme-category-section" aria-labelledby="most-searched-title">
-            <div class="section-header animate-on-scroll">
-                <h2 id="most-searched-title">सर्वाधिक शोधल्या जाणाऱ्या योजना (Most Searched)</h2>
-                <p>Detailed information on flagship programs.</p>
-            </div>
-            <div class="glass-panel animate-on-scroll"
-                style="padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem;">
-                <div>
-                    <h3 style="font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.5rem;"><i
-                            class="fa-solid fa-arrow-trend-up"></i> लाडकी बहीण योजना २०२६ अर्ज प्रक्रिया</h3>
-                    <p style="color: var(--text-dark); line-height: 1.7;">महाराष्ट्र सरकारची अत्यंत लोकप्रिय अशी
-                        <strong>मुख्यमंत्री माझी लाडकी बहीण योजना</strong> महिलांसाठी वरदान ठरत্বা आहे. या योजनेत पात्र
-                        महिलांना दरमहा १५०० रुपये मिळतात. <a href="/schemes/mukhyamantri-majhi-ladki-bahin-yojana"
-                            style="font-weight: 600; color: var(--accent-color);">लाडकी बहीण योजनेचा फॉर्म कसा
-                            भरायचा</a>, आवश्यक कागदपत्रे आणि नवीन यादी याबद्दल सविस्तर माहिती आमच्या पोर्टलवर उपलब्ध
-                        आहे.
-                    </p>
+        <!-- Section 8: Trust Stats Counter -->
+        <section id="trust-stats" class="container scheme-category-section" aria-labelledby="stats-title">
+            <div class="stats-grid animate-on-scroll">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="200">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">सरकारी योजना</span>
                 </div>
-                <div style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1.5rem;">
-                    <h3 style="font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.5rem;"><i
-                            class="fa-solid fa-arrow-trend-up"></i> पीएम किसान आणि कर्जमाफी</h3>
-                    <p style="color: var(--text-dark); line-height: 1.7;">शेतकऱ्यांसाठी <strong>पीएम-किसान सन्मान निधी
-                            (PM-Kisan)</strong> आणि नवीन <strong>पुण्यश्लोक अहिल्यादेवी होळकर शेतकरी कर्जमाफी योजना
-                            २०२६</strong> या अत्यंत महत्वाच्या योजना आहेत. <a href="/schemes/punyashlok-ahilyadevi-holkar-shetkari-karj-mafi-yojana-2026"
-                            style="font-weight: 600; color: var(--accent-color);">कर्जमाफी कॅल्क्युलेटर</a> वापरून तुमची
-                        पात्रता तपासा आणि अनुदान कधी मिळणार याची ताजी माहिती मिळवा.</p>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="14">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Smart Tools</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50000">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Users Helped</span>
                 </div>
             </div>
         </section>
 
-        <!-- Section 7: FAQ Accordion -->
-        <section id="faq-section" class="scheme-category-section bg-alternating" aria-labelledby="faq-title">
+        <!-- Section 9: Most Searched (SEO) -->
+        <section id="most-searched" class="scheme-category-section bg-alternating" aria-labelledby="most-searched-title">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="most-searched-title">सर्वाधिक शोधल्या जाणाऱ्या योजना (Most Searched)</h2>
+                    <p>Detailed information on flagship programs.</p>
+                </div>
+                <div class="glass-panel animate-on-scroll"
+                    style="padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h3 style="font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem;"><i
+                                class="fa-solid fa-arrow-trend-up"></i> लाडकी बहीण योजना २०२६ अर्ज प्रक्रिया</h3>
+                        <p style="color: var(--text-main); line-height: 1.7;">महाराष्ट्र सरकारची अत्यंत लोकप्रिय अशी
+                            <strong>मुख्यमंत्री माझी लाडकी बहीण योजना</strong> महिलांसाठी वरदान ठरत आहे. या योजनेत पात्र
+                            महिलांना दरमहा १५०० रुपये मिळतात. <a href="/schemes/mukhyamantri-majhi-ladki-bahin-yojana"
+                                style="font-weight: 600; color: var(--accent);">लाडकी बहीण योजनेचा फॉर्म कसा
+                                भरायचा</a>, आवश्यक कागदपत्रे आणि नवीन यादी याबद्दल सविस्तर माहिती आमच्या पोर्टलवर उपलब्ध
+                            आहे.
+                        </p>
+                    </div>
+                    <div style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem;"><i
+                                class="fa-solid fa-arrow-trend-up"></i> पीएम किसान आणि कर्जमाफी</h3>
+                        <p style="color: var(--text-main); line-height: 1.7;">शेतकऱ्यांसाठी <strong>पीएम-किसान सन्मान निधी
+                                (PM-Kisan)</strong> आणि नवीन <strong>पुण्यश्लोक अहिल्यादेवी होळकर शेतकरी कर्जमाफी योजना
+                                २०२६</strong> या अत्यंत महत्वाच्या योजना आहेत. <a href="/schemes/punyashlok-ahilyadevi-holkar-shetkari-karj-mafi-yojana-2026"
+                                style="font-weight: 600; color: var(--accent);">कर्जमाफी कॅल्क्युलेटर</a> वापरून तुमची
+                            पात्रता तपासा आणि अनुदान कधी मिळणार याची ताजी माहिती मिळवा.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: FAQ Accordion -->
+        <section id="faq-section" class="scheme-category-section" aria-labelledby="faq-title">
             <div class="container relative-container">
                 <div class="section-header animate-on-scroll">
                     <h2 id="faq-title">नेहमी विचारले जाणारे प्रश्न (FAQ)</h2>
@@ -264,44 +455,50 @@ const allSchemes = await getCollection('schemes');
                 </div>
                 <div class="faq-container animate-on-scroll"
                     style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
-
                     <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
                             १. लाडकी बहीण योजनेसाठी अर्ज कुठे करायचा?
-                            <span style="color: var(--primary-color);"><i class="fa-solid fa-chevron-down"></i></span>
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
                         </summary>
-                        <p style="margin-top: 1rem; color: var(--text-dark); line-height: 1.6;">लाडकी बहीण योजनेसाठी
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">लाडकी बहीण योजनेसाठी
                             तुम्ही नारी शक्ती दूत (Nari Shakti Doot) ॲपवरून किंवा जवळच्या अंगणवाडी सेविका, सेतू सुविधा
                             केंद्र (सीएससी) मार्फत ऑनलाइन अर्ज करू शकता.</p>
                     </details>
-
                     <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
                             २. शेतकरी कर्जमाफी २०२६ मध्ये किती कर्ज माफ होणार?
-                            <span style="color: var(--primary-color);"><i class="fa-solid fa-chevron-down"></i></span>
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
                         </summary>
-                        <p style="margin-top: 1rem; color: var(--text-dark); line-height: 1.6;">नवीन कर्जमाफी
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">नवीन कर्जमाफी
                             योजनेअंतर्गत शेतकऱ्यांचे २ लाख रुपयांपर्यंतचे थकीत पीककर्ज माफ केले जाणार आहे. नियमित कर्ज
                             फेडणाऱ्यांना ५० हजार रुपये प्रोत्साहनपर अनुदान दिले जाईल.</p>
                     </details>
-
                     <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
                             ३. पीएम-किसानचे पैसे जमा का होत नाहीत?
-                            <span style="color: var(--primary-color);"><i class="fa-solid fa-chevron-down"></i></span>
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
                         </summary>
-                        <p style="margin-top: 1rem; color: var(--text-dark); line-height: 1.6;">बहुतेक वेळा ई-केवायसी
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">बहुतेक वेळा ई-केवायसी
                             (e-KYC) पूर्ण नसणे किंवा बँक खात्याला आधार लिंक नसणे यामुळे पैसे अडकतात. कृपया तुमचे आधार
                             लिंकिंग आणि बँक खाते स्टेटस तपासून घ्या.</p>
                     </details>
-
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            ४. व्यवसायासाठी सरकारी कर्ज कसे मिळवावे?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">प्रधानमंत्री मुद्रा योजना (PMMY) अंतर्गत ₹10 लाखांपर्यंत, PMEGP अंतर्गत ₹50 लाखांपर्यंत आणि CMEGP अंतर्गत ₹50 लाखांपर्यंत कर्ज बिनतारण मिळू शकते. जवळच्या बँकेत किंवा udyamregistration.gov.in वर अर्ज करा.</p>
+                    </details>
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            ५. MahitiMarg वर कोणती माहिती मिळते?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">MahitiMarg वर तुम्हाला 200+ सरकारी योजना, रोजगार माहिती, व्यवसाय मार्गदर्शन, EMI/FD कॅल्क्युलेटर, कागदपत्र चेकलिस्ट, आणि इतर अनेक उपयुक्त साधने मिळतात — सर्व साध्या मराठीत.</p>
+                    </details>
                 </div>
             </div>
 
-            <!-- Generate automatic JSON-LD FAQ Schema via static HTML -->
             <script type="application/ld+json">
             {
               "@context": "https://schema.org",
@@ -320,34 +517,99 @@ const allSchemes = await getCollection('schemes');
                   "@type": "Answer",
                   "text": "नवीन कर्जमाफी योजनेअंतर्गत शेतकऱ्यांचे २ लाख रुपयांपर्यंतचे थकीत पीककर्ज माफ केले जाणार आहे."
                 }
+              },{
+                "@type": "Question",
+                "name": "व्यवसायासाठी सरकारी कर्ज कसे मिळवावे?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "प्रधानमंत्री मुद्रा योजना (PMMY) अंतर्गत ₹10 लाखांपर्यंत, PMEGP अंतर्गत ₹50 लाखांपर्यंत कर्ज बिनतारण मिळू शकते."
+                }
+              },{
+                "@type": "Question",
+                "name": "MahitiMarg वर कोणती माहिती मिळते?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MahitiMarg वर 200+ सरकारी योजना, रोजगार माहिती, व्यवसाय मार्गदर्शन, EMI/FD कॅल्क्युलेटर आणि इतर उपयुक्त साधने उपलब्ध आहेत."
+                }
               }]
             }
             </script>
         </section>
 
-        <!-- Section 8: Internal Linking Block -->
+        <!-- Section 11: Internal Links -->
         <section id="internal-links" class="container" style="padding: 3rem 0; text-align: center;">
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
-                <a href="#"
-                    style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-dark); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Maharashtra
-                    Ration Card List</a>
-                <a href="#"
-                    style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-dark); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Mahadbt
-                    Scholarship Portal</a>
-                <a href="#"
-                    style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-dark); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Sarkari
-                    Yojana in Marathi</a>
-                <a href="/schemes/punyashlok-ahilyadevi-holkar-shetkari-karj-mafi-yojana-2026"
-                    style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-dark); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Karj
-                    Mafi List 2026</a>
-                <a href="#"
-                    style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-dark); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">RTE
-                    Admission 2026</a>
-                <a href="#"
-                    style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-dark); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Magel
-                    Tyala Saur Krushi Pump</a>
+                <a href="/schemes/mukhyamantri-majhi-ladki-bahin-yojana" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Ladki Bahin Yojana</a>
+                <a href="/schemes/punyashlok-ahilyadevi-holkar-shetkari-karj-mafi-yojana-2026" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Karj Mafi 2026</a>
+                <a href="/schemes/pradhan-mantri-mudra-yojana-pmmy" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">PM Mudra Yojana</a>
+                <a href="/schemes/kisan-credit-card-kcc-scheme" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Kisan Credit Card</a>
+                <a href="/tools/emi-calculator" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">EMI Calculator</a>
+                <a href="/categories/farmer" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Sarkari Yojana Marathi</a>
+                <a href="/schemes/mahadbt-scholarship-2026" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">MahaDBT Scholarship</a>
+                <a href="/categories/business" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Business Guide Marathi</a>
             </div>
         </section>
 
+        <!-- Global No Results (For JS Search) -->
+        <div id="no-results-msg" class="container no-results-msg hidden" style="text-align: center; padding: 2rem;">
+            <i class="fa-solid fa-search-minus" aria-hidden="true"
+                style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+            <p style="font-size: 1.2rem; font-weight: 500;">कोणतीही योजना सापडली नाही.</p>
+            <button class="btn btn-secondary mt-2" id="clear-search-btn">Clear Search</button>
+        </div>
     </main>
 </Layout>
+
+<script>
+// Animated counter for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const start = 0;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+
+            if (target >= 1000) {
+                counter.textContent = current.toLocaleString('en-IN');
+            } else {
+                counter.textContent = current;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+        requestAnimationFrame(update);
+    });
+}
+
+// Intersection Observer for stats animation
+const statsSection = document.getElementById('trust-stats');
+if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    observer.observe(statsSection);
+}
+
+// Search tab switching
+const tabs = document.querySelectorAll('.search-tab');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+    });
+});
+</script>

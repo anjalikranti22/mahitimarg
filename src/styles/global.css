@@ -1,6 +1,4 @@
-@import "tailwindcss";
-
-/* Any custom global styles can go here */
+/* Global styles - no framework reset needed, using custom CSS */
 body {
   font-family: inherit;
   margin: 0;

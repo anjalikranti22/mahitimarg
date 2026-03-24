@@ -22,7 +22,16 @@
             <span style="font-size: 0.65rem; background: #fbbf24; color: #78350f; padding: 2px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Unofficial</span>
         </a>
 
-        <!-- Navigation links removed as requested -->
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+                <li><a href="/schemes">📋 योजना</a></li>
+                <li><a href="/articles">📰 लेख</a></li>
+                <li><a href="/tools">🔧 टूल्स</a></li>
+                <li><a href="/jobs">💼 रोजगार</a></li>
+                <li><a href="/contact">📞 संपर्क</a></li>
+            </ul>
+        </nav>
 
         <!-- Hamburger Button (Mobile Only) -->
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
@@ -50,15 +59,30 @@
         </button>
     </div>
     <div class="mobile-drawer-nav">
+        <p style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; padding: 0 1rem; margin-bottom: 0.5rem;">मुख्य</p>
         <ul>
             <li><a href="/"><i class="fa-solid fa-house"></i> होम (Home)</a></li>
-            <li><a href="/#popular-schemes"><i class="fa-solid fa-fire"></i> लोकप्रिय योजना</a></li>
-            <li><a href="/#popular-categories"><i class="fa-solid fa-layer-group"></i> योजनांचे प्रकार</a></li>
+            <li><a href="/schemes"><i class="fa-solid fa-file-lines"></i> सर्व योजना</a></li>
+            <li><a href="/articles"><i class="fa-solid fa-newspaper"></i> लेख (Articles)</a></li>
+            <li><a href="/tools"><i class="fa-solid fa-wrench"></i> टूल्स (Tools)</a></li>
+        </ul>
+
+        <p style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; padding: 0 1rem; margin-top: 1rem; margin-bottom: 0.5rem;">श्रेणी</p>
+        <ul>
             <li><a href="/categories/farmer"><i class="fa-solid fa-tractor"></i> शेतकरी योजना</a></li>
             <li><a href="/categories/women"><i class="fa-solid fa-person-dress"></i> महिला योजना</a></li>
             <li><a href="/categories/business"><i class="fa-solid fa-briefcase"></i> व्यवसाय योजना</a></li>
             <li><a href="/categories/student"><i class="fa-solid fa-graduation-cap"></i> विद्यार्थी योजना</a></li>
+            <li><a href="/categories/pension"><i class="fa-solid fa-piggy-bank"></i> पेन्शन योजना</a></li>
+            <li><a href="/categories/health"><i class="fa-solid fa-heart-pulse"></i> आरोग्य योजना</a></li>
+        </ul>
+
+        <p style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; padding: 0 1rem; margin-top: 1rem; margin-bottom: 0.5rem;">इतर</p>
+        <ul>
+            <li><a href="/jobs"><i class="fa-solid fa-user-tie"></i> रोजगार माहिती</a></li>
+            <li><a href="/downloads"><i class="fa-solid fa-download"></i> डाउनलोड्स</a></li>
             <li><a href="/#faq-section"><i class="fa-solid fa-circle-question"></i> FAQ / प्रश्नोत्तरे</a></li>
+            <li><a href="/contact"><i class="fa-solid fa-envelope"></i> संपर्क</a></li>
         </ul>
     </div>
 </nav>
