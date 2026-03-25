@@ -1,0 +1,21 @@
+# MahitiMarg Project Constitution
+
+## 1. Technical Identity
+- **Framework:** Astro (Zero-JS by default).
+- **Styling:** Tailwind CSS v4 (Vite-native). Never use legacy `<link>` tags for CSS; let the Vite bundler handle it.
+- **Animation:** GSAP (Vanilla JS scripts only).
+- **Company:** Logicpath Systems.
+
+## 2. The Marathi-First Rule
+- All user-facing text must be in **Marathi** by default.
+- Use the **Mukta** font family with a `line-height` of `1.6`.
+- Technical terms (GST, EMI, Resume) should be in Marathi with English in brackets where necessary for clarity.
+
+## 3. Structural Constraints
+- **SEO:** Every page must have a `GovernmentService` JSON-LD schema.
+- **Accessibility:** All interactive elements must have `active:scale-95` and clear `:focus` rings.
+- **Ads:** Always reserve space for AdSense using the `min-h-[250px]` rule to prevent layout shifts.
+
+## 4. Development Workflow
+- Before writing code, check the `.agent/skills/` folder for existing architectural rules.
+- Always use semantic HTML (`<article>`, `<header>`, `<section>`) instead of generic `<div>`.

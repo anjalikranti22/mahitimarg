@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'अर्थसाक्षरता', url: 'https://mahitimarg.in/learn/' },
+];
+
+const keywords = 'अर्थसाक्षरता मराठी, financial literacy Marathi, बचत कशी करावी, गुंतवणूक मार्गदर्शन, बँक खाते, म्युच्युअल फंड, SIP माहिती मराठी, पैसे व्यवस्थापन';
+
+const topics = [
+  { icon: 'fa-piggy-bank', label: 'बचत कशी करावी?', color: 'bg-green', desc: 'दरमहा किती बचत करावी आणि कुठे ठेवावी याचे मार्गदर्शन.', comingSoon: true },
+  { icon: 'fa-chart-line', label: 'गुंतवणूक (Investment)', color: 'bg-blue', desc: 'SIP, म्युच्युअल फंड, FD – सोप्या भाषेत समजून घ्या.', comingSoon: true },
+  { icon: 'fa-university', label: 'बँकिंग साक्षरता', color: 'bg-purple', desc: 'बँक खाते, ATM, नेट बँकिंग आणि UPI वापरण्याची माहिती.', comingSoon: true },
+  { icon: 'fa-calculator', label: 'कर (Tax) माहिती', color: 'bg-orange', desc: 'Income Tax, GST आणि ITR भरण्याची सोपी माहिती.', comingSoon: true },
+  { icon: 'fa-shield-halved', label: 'विमा (Insurance)', color: 'bg-yellow', desc: 'जीवन विमा, आरोग्य विमा – काय आवश्यक, काय नाही.', comingSoon: true },
+  { icon: 'fa-hand-holding-rupee', label: 'कर्ज व्यवस्थापन', color: 'bg-pink', desc: 'कर्ज कधी घ्यावे, व्याजदर कसा बघावा, EMI नियोजन.', comingSoon: false, link: '/tools/emi-calculator' },
+];
+---
+
+<Layout
+  title="अर्थसाक्षरता – पैसे शिकण्याचा सोपा मार्ग | MahitiMarg"
+  description="बचत, गुंतवणूक, बँकिंग, विमा आणि कर – सर्व आर्थिक विषयांची माहिती साध्या मराठीत."
+  keywords={keywords}
+  canonical="https://mahitimarg.in/learn/"
+  breadcrumbs={breadcrumbs}
+>
+  <main class="container py-12 max-w-5xl mx-auto min-h-[75vh]">
+    <div class="mb-8 animate-on-load">
+      <a href="/" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> मुख्यपृष्ठावर परत जा
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="glass-panel animate-on-load mb-10 text-center" style="padding: 3rem 2rem; border-top: 4px solid var(--accent);">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-coins" style="color: var(--accent);"></i></div>
+      <h1 class="title-gradient" style="font-size: 2.5rem; margin-bottom: 0.75rem;">अर्थसाक्षरता (Financial Literacy)</h1>
+      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto;">पैसे कमावणे, बचत करणे, गुंतवणूक करणे आणि आर्थिक सुरळीतपणा राखणे – हे सर्व साध्या मराठीत शिका.</p>
+    </div>
+
+    <!-- Topics Grid -->
+    <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      {topics.map((t) => (
+        <a href={t.link ?? '#'} class="glass-panel"
+          style={`padding: 2rem; text-align: center; border-radius: 16px; text-decoration: none; display: block; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; ${t.comingSoon ? 'pointer-events: none; opacity: 0.85;' : ''}`}
+          onmouseenter={!t.comingSoon ? "this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.1)'" : undefined}
+          onmouseleave={!t.comingSoon ? "this.style.transform=''; this.style.boxShadow=''" : undefined}
+        >
+          {t.comingSoon && <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: white; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;">लवकरच</span>}
+          {!t.comingSoon && <span style="position: absolute; top: 1rem; right: 1rem; background: #10b981; color: white; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;">उपलब्ध</span>}
+          <div class={`scheme-icon-bg ${t.color}`} style="width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 1.75rem;">
+            <i class={`fa-solid ${t.icon}`}></i>
+          </div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">{t.label}</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">{t.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Quick Tool CTA -->
+    <div class="glass-panel animate-on-scroll" style="margin-top: 3rem; padding: 2.5rem; text-align: center; border-top: 4px solid var(--primary); border-radius: 16px;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 0.75rem;">🧮 आत्ताच वापरा – EMI कॅल्क्युलेटर</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">कर्ज घेण्यापूर्वी नेमका हप्ता किती बसेल ते आधी तपासा.</p>
+      <a href="/tools/emi-calculator" class="btn btn-primary ripple-effect">
+        <i class="fa-solid fa-calculator"></i> EMI काढा
+      </a>
+    </div>
+
+    <!-- Ad Space -->
+    <div class="animate-on-scroll" style="margin-top: 3rem; min-height: 250px; background: rgba(0,0,0,0.02); border: 2px dashed rgba(0,0,0,0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;">
+      <span><i class="fa-solid fa-ad" style="margin-right: 0.5rem;"></i> जाहीरात (Ad Space)</span>
+    </div>
+  </main>
+</Layout>

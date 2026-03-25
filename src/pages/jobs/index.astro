@@ -35,9 +35,22 @@ export const jobsData = [
     featured: false
   }
 ];
+
+const jobsBreadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'नोकरी आणि रोजगार', url: 'https://mahitimarg.in/jobs/' },
+];
+
+const jobsKeywords = 'सरकारी नोकरी महाराष्ट्र, MPSC भरती 2025, government jobs Maharashtra, जिल्हा परिषद भरती, पोलीस भरती, PMKVY training, रोजगार संधी, नोकरी कुठे मिळेल, online jobs Marathi, mahitimarg jobs';
 ---
 
-<Layout title="नोकरी आणि रोजगार (Jobs & Employment) | MahitiMarg">
+<Layout
+  title="नोकरी आणि रोजगार (Jobs & Employment) | MahitiMarg"
+  description="महाराष्ट्रातील सरकारी भरती, MPSC, जिल्हा परिषद, पोलीस भरती आणि रोजगाराच्या सर्व संधी एकाच ठिकाणी."
+  keywords={jobsKeywords}
+  canonical="https://mahitimarg.in/jobs/"
+  breadcrumbs={jobsBreadcrumbs}
+>
     <main>
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="jobs-hero-title">

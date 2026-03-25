@@ -1,302 +1,27 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import EmiCalculator from '../../components/tools/EmiCalculator.astro';
+import AgeCalculator from '../../components/tools/AgeCalculator.astro';
 
 export function getStaticPaths() {
   const toolPages = [
     {
       id: 'emi-calculator',
       title: 'EMI कॅल्क्युलेटर',
-      content: `
-        <h2 class="text-2xl font-bold text-slate-800 mb-2">कर्ज हप्ता (EMI) तपासा</h2>
-        <p class="mb-8 text-slate-600">तुमचे गृहकर्ज, वाहन कर्ज किंवा वैयक्तिक कर्ज घेण्यापूर्वी दर महिन्याला नेमका किती हप्ता भरावा लागेल हे अचूकपणे काढा.</p>
-
-        <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm mb-8">
-          <div class="space-y-6">
-            
-            <div class="relative">
-              <input type="number" id="loanAmount" placeholder=" " class="peer w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 pb-2 pt-6 text-slate-900 focus:border-indigo-600 focus:outline-none focus:ring-0 transition-colors" required />
-              <label for="loanAmount" class="absolute left-4 top-4 z-10 origin-[0] -translate-y-3 scale-75 transform text-slate-500 transition-all duration-200 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75 peer-focus:text-indigo-600 font-bold">
-                कर्जाची रक्कम (Loan Amount - ₹)
-              </label>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="relative">
-                <input type="number" id="interestRate" placeholder=" " class="peer w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 pb-2 pt-6 text-slate-900 focus:border-indigo-600 focus:outline-none focus:ring-0 transition-colors" required />
-                <label for="interestRate" class="absolute left-4 top-4 z-10 origin-[0] -translate-y-3 scale-75 transform text-slate-500 transition-all duration-200 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75 peer-focus:text-indigo-600 font-bold">
-                  व्याजदर (Interest Rate - %)
-                </label>
-              </div>
-
-              <div class="relative">
-                <input type="number" id="loanTenure" placeholder=" " class="peer w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 pb-2 pt-6 text-slate-900 focus:border-indigo-600 focus:outline-none focus:ring-0 transition-colors" required />
-                <label for="loanTenure" class="absolute left-4 top-4 z-10 origin-[0] -translate-y-3 scale-75 transform text-slate-500 transition-all duration-200 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75 peer-focus:text-indigo-600 font-bold">
-                  कालावधी (Tenure - वर्षे)
-                </label>
-              </div>
-            </div>
-
-            <button type="button" id="calculateEmiBtn" class="w-full rounded-xl bg-primary px-8 py-4 font-bold text-white shadow-md transition-all hover:brightness-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-lg mt-4">
-              EMI काढा
-            </button>
-          </div>
-          
-          <div id="emiResult" class="hidden mt-6 p-4 bg-indigo-50 rounded-xl border border-indigo-100 text-center text-indigo-900 font-bold text-xl">
-            </div>
-        </div>
-
-        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
-          जाहीरात (Ad Space)
-        </div> 
-
-        <script>
-          const initEmiCalc = () => {
-            const loanAmountInput = document.getElementById('loanAmount');
-            const interestRateInput = document.getElementById('interestRate');
-            const loanTenureInput = document.getElementById('loanTenure');
-            const calculateBtn = document.getElementById('calculateEmiBtn'); 
-            const resultBox = document.getElementById('emiResult');
-
-            if(!calculateBtn) return; // Prevent errors if running on another page
-
-            // Clean up old listeners (for Astro View Transitions) - Clone node strategy
-            const newBtn = calculateBtn.cloneNode(true);
-            calculateBtn.parentNode.replaceChild(newBtn, calculateBtn);
-
-            newBtn.addEventListener('click', () => {
-              const principal = parseFloat(loanAmountInput.value);
-              const rate = parseFloat(interestRateInput.value);
-              const tenureYears = parseFloat(loanTenureInput.value);
-
-              if (isNaN(principal) || isNaN(rate) || isNaN(tenureYears) || principal <= 0 || rate <= 0 || tenureYears <= 0) {
-                newBtn.classList.add('animate-shake');
-                setTimeout(() => newBtn.classList.remove('animate-shake'), 500);
-                
-                resultBox.innerHTML = '<span class="text-red-600">कृपया सर्व माहिती योग्यरित्या भरा.</span>';
-                resultBox.classList.remove('hidden');
-                return;
-              }
-
-              const monthlyRate = (rate / 12) / 100;
-              const tenureMonths = tenureYears * 12;
-
-              const compoundFactor = Math.pow(1 + monthlyRate, tenureMonths);
-              let emi = (principal * monthlyRate * compoundFactor) / (compoundFactor - 1);
-              
-              const totalPayment = emi * tenureMonths;
-              const totalInterest = totalPayment - principal;
-
-              const formatter = new Intl.NumberFormat('en-IN', {
-                style: 'currency',
-                currency: 'INR',
-                maximumFractionDigits: 0
-              });
-
-              resultBox.innerHTML = \`
-                <div class="flex flex-col gap-2 p-2">
-                  <p class="text-sm text-indigo-700">तुमचा मासिक हप्ता (Monthly EMI)</p>
-                  <p class="text-3xl font-extrabold text-indigo-900">\${formatter.format(emi)}</p>
-                  <hr class="my-3 border-indigo-200">
-                  <div class="grid grid-cols-2 gap-4 text-sm text-slate-700">
-                    <div>
-                      <span class="block text-xs font-bold text-slate-500 mb-1">एकूण व्याज (Total Interest)</span>
-                      \${formatter.format(totalInterest)}
-                    </div>
-                    <div>
-                      <span class="block text-xs font-bold text-slate-500 mb-1">एकूण रक्कम (Total Payment)</span>
-                      \${formatter.format(totalPayment)}
-                    </div>
-                  </div>
-                </div>
-              \`;
-              
-              resultBox.classList.remove('hidden');
-            });
-          };
-
-          // Safe execution for standard DOM load AND Astro view transitions
-          document.addEventListener('DOMContentLoaded', initEmiCalc);
-          document.addEventListener('astro:page-load', initEmiCalc);
-        </script>
-
-        <style>
-          .animate-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
-          @keyframes shake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
-          }
-        </style>
-      `
+      description: 'गृहकर्ज, वाहन कर्ज किंवा वैयक्तिक कर्जाचा मासिक हप्ता (EMI) मोफत ऑनलाईन काढा. व्याजदर, कालावधी आणि व्याज तक्ता सह.',
+      keywords: 'EMI calculator Marathi, कर्ज हप्ता कॅल्क्युलेटर, home loan EMI, मासिक हप्ता, व्याजदर, गृहकर्ज, वाहन कर्ज EMI, loan calculator Maharashtra',
     },
     {
       id: 'eligibility-checker',
       title: 'पात्रता चेकर (Eligibility)',
-      content: `
-        <h2 class="text-2xl font-bold text-slate-800 mb-2">तुम्ही कोणत्या सरकारी योजनेसाठी पात्र आहात?</h2>
-        <p class="mb-8 text-slate-600">लवकरच येत आहे...</p>
-        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
-          जाहीरात (Ad Space)
-        </div>
-      `
+      description: 'तुम्ही कोणत्या सरकारी योजनेसाठी पात्र आहात हे जाणून घ्या. मोफत ऑनलाईन पात्रता तपासणी.',
+      keywords: 'government scheme eligibility, सरकारी योजना पात्रता, सरकारी योजना कोणाला मिळते, sheti yojana eligibility, महाराष्ट्र सरकारी योजना 2025',
     },
     {
       id: 'age-calculator',
-      title: 'वय कॅल्क्युलेटर (Age Calc)',
-      content: `
-        <h2 class="text-2xl font-bold text-slate-800 mb-2">शासकीय भरतीसाठी वय तपासा</h2>
-        <p class="mb-8 text-slate-600">पोलीस भरती, MPSC आणि इतर सरकारी परीक्षांसाठी फॉर्म भरताना तुमचे वय वर्षे, महिने आणि दिवसांमध्ये अचूक काढा.</p>
-
-        <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm mb-8">
-          <div class="space-y-6">
-            
-            <div class="flex flex-col">
-              <label for="dobInput" class="text-sm font-bold text-slate-600 mb-2">तुमची जन्मतारीख (Date of Birth)</label>
-              <input type="date" id="dobInput" class="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-indigo-600 focus:outline-none" required />
-            </div>
-
-            <div class="flex flex-col">
-              <label for="targetDateInput" class="text-sm font-bold text-slate-600 mb-2">या तारखेपर्यंत वय काढा (Calculate Age As Of)</label>
-              <input type="date" id="targetDateInput" class="w-full rounded-xl border-2 border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-indigo-600 focus:outline-none" required />
-              <span class="text-xs text-slate-500 mt-1">साधारणपणे जाहिरातीमध्ये दिलेल्या तारखेनुसार हे भरावे.</span>
-            </div>
-
-            <button type="button" id="calculateAgeBtn" class="w-full rounded-xl bg-primary px-8 py-4 font-bold text-white shadow-md transition-all hover:brightness-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-lg mt-4">
-              वय काढा
-            </button>
-          </div>
-          
-          <div id="ageResult" class="hidden mt-6 p-4 bg-indigo-50 rounded-xl border border-indigo-100 text-center text-indigo-900">
-          </div>
-        </div>
-
-        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
-          जाहीरात (Ad Space)
-        </div>
-
-        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 text-center mt-8 shadow-sm">
-          <h4 class="font-bold text-indigo-800 mb-2 mt-0">नवीन भरती शोधत आहात?</h4>
-          <p class="text-sm text-indigo-600 mb-4">MPSC, पोलीस भरती आणि झेडपी भरतीचे नवीनतम अपडेट्स आमच्या रोजगार विभागात वाचा.</p>
-          <a href="/jobs" class="inline-block bg-primary text-white font-bold py-2 px-6 rounded-lg hover:brightness-110 transition-colors active:scale-95 shadow-md">सरकारी भरती पहा</a>
-        </div>
-
-        <script>
-          const initAgeCalc = () => {
-            const dobInput = document.getElementById('dobInput');
-            const targetDateInput = document.getElementById('targetDateInput');
-            const calculateBtn = document.getElementById('calculateAgeBtn');
-            const resultBox = document.getElementById('ageResult');
-
-            if(!calculateBtn) return;
-
-            const today = new Date();
-            // Dont overwrite target date if it's already set (prevents reset during view transitions)
-            if(!targetDateInput.value) {
-                targetDateInput.value = today.toISOString().split('T')[0];
-            }
-
-            const newBtn = calculateBtn.cloneNode(true);
-            calculateBtn.parentNode.replaceChild(newBtn, calculateBtn);
-
-            function triggerError(message) {
-              newBtn.classList.add('animate-shake');
-              setTimeout(() => newBtn.classList.remove('animate-shake'), 500);
-              resultBox.innerHTML = \`<span class="text-red-600 font-bold">\${message}</span>\`;
-              resultBox.classList.remove('hidden');
-            }
-
-            newBtn.addEventListener('click', () => {
-              const dobValue = dobInput.value;
-              const targetValue = targetDateInput.value;
-
-              if (!dobValue || !targetValue) {
-                triggerError('कृपया दोन्ही तारखा निवडा.');
-                return;
-              }
-
-              const dob = new Date(dobValue);
-              const target = new Date(targetValue);
-
-              if (dob > target) {
-                triggerError('जन्मतारीख ही निवडलेल्या तारखेपेक्षा मोठी असू शकत नाही.');
-                return;
-              }
-
-              let d1 = dob.getDate();
-              let m1 = dob.getMonth() + 1;
-              let y1 = dob.getFullYear();
-
-              let d2 = target.getDate();
-              let m2 = target.getMonth() + 1;
-              let y2 = target.getFullYear();
-
-              let exactDays, exactMonths, exactYears;
-
-              exactYears = y2 - y1;
-
-              if (m2 >= m1) {
-                exactMonths = m2 - m1;
-              } else {
-                exactYears--;
-                exactMonths = 12 + m2 - m1;
-              }
-
-              if (d2 >= d1) {
-                exactDays = d2 - d1;
-              } else {
-                exactMonths--;
-                let daysInPrevMonth = new Date(y2, m2 - 1, 0).getDate();
-                exactDays = daysInPrevMonth + d2 - d1;
-                
-                if (exactMonths < 0) {
-                  exactMonths = 11;
-                  exactYears--;
-                }
-              }
-
-              resultBox.innerHTML = \`
-                <div class="flex flex-col gap-2 p-2">
-                  <p class="text-sm text-indigo-700 font-bold mb-2">तुमचे अचूक वय:</p>
-                  <div class="flex justify-center items-center gap-4">
-                    <div class="text-center">
-                      <span class="block text-3xl font-extrabold text-indigo-900">\${exactYears}</span>
-                      <span class="text-xs text-slate-500 font-bold uppercase tracking-wider">वर्षे</span>
-                    </div>
-                    <div class="text-2xl text-indigo-300 font-light">:</div>
-                    <div class="text-center">
-                      <span class="block text-3xl font-extrabold text-indigo-900">\${exactMonths}</span>
-                      <span class="text-xs text-slate-500 font-bold uppercase tracking-wider">महिने</span>
-                    </div>
-                    <div class="text-2xl text-indigo-300 font-light">:</div>
-                    <div class="text-center">
-                      <span class="block text-3xl font-extrabold text-indigo-900">\${exactDays}</span>
-                      <span class="text-xs text-slate-500 font-bold uppercase tracking-wider">दिवस</span>
-                    </div>
-                  </div>
-                </div>
-              \`;
-              
-              resultBox.classList.remove('hidden');
-            });
-          };
-
-          document.addEventListener('DOMContentLoaded', initAgeCalc);
-          document.addEventListener('astro:page-load', initAgeCalc);
-        </script>
-
-        <style>
-          .animate-shake {
-            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-          }
-          @keyframes shake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
-          }
-        </style>
-      `
+      title: 'वय कॅल्क्युलेटर',
+      description: 'तुमचे अचूक वय वर्षे, महिने आणि दिवसांत काढा. सरकारी योजना, नोकरी अर्ज, आणि शिष्यवृत्तीसाठी उपयुक्त.',
+      keywords: 'age calculator Marathi, वय कॅल्क्युलेटर, वय किती आहे, age in years months days, date of birth calculator, जन्मतारीख वय',
     }
   ];
 
@@ -307,9 +32,21 @@ export function getStaticPaths() {
 }
 
 const { page } = Astro.props;
+
+const breadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'स्मार्ट टूल्स', url: 'https://mahitimarg.in/tools/' },
+  { name: page.title, url: `https://mahitimarg.in/tools/${page.id}/` },
+];
 ---
 
-<Layout title={`${page.title} | Tools | MahitiMarg`}>
+<Layout
+  title={`${page.title} | MahitiMarg`}
+  description={page.description}
+  keywords={page.keywords}
+  canonical={`https://mahitimarg.in/tools/${page.id}/`}
+  breadcrumbs={breadcrumbs}
+>
     <main class="container py-8 max-w-4xl mx-auto" style="min-height: 80vh;">
         <div class="mb-6 animate-on-load">
             <a href="/tools" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors" style="font-family: 'Mukta', sans-serif;">
@@ -321,7 +58,19 @@ const { page } = Astro.props;
                 <h1 class="title-gradient" style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: 'Mukta', sans-serif;">{page.title}</h1>
             </header>
             
-            <div set:html={page.content} class="article-content scheme-detail" style="font-family: 'Mukta', sans-serif;" />
+            <div class="article-content scheme-detail" style="font-family: 'Mukta', sans-serif;">
+                {page.id === 'emi-calculator' && <EmiCalculator />}
+                {page.id === 'age-calculator' && <AgeCalculator />}
+                {page.id === 'eligibility-checker' && (
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">तुम्ही कोणत्या सरकारी योजनेसाठी पात्र आहात?</h2>
+                    <p class="mb-8 text-slate-600">लवकरच येत आहे...</p>
+                    <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+                      जाहीरात (Ad Space)
+                    </div>
+                  </div>
+                )}
+            </div>
             
         </article>
     </main>

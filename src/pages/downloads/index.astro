@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'डाउनलोड्स', url: 'https://mahitimarg.in/downloads/' },
+];
+
+const keywords = 'सरकारी अर्ज डाउनलोड, government form download Marathi, योजना अर्जाचा नमुना, शेतकरी अर्ज PDF, महाराष्ट्र सरकार अर्ज, free government forms Maharashtra';
+
+const downloadCategories = [
+  { icon: 'fa-tractor', label: 'शेतकरी अर्ज', color: 'bg-green', desc: 'कृषी योजनांसाठी अर्जाचे नमुने', comingSoon: true },
+  { icon: 'fa-person-dress', label: 'महिला योजना अर्ज', color: 'bg-pink', desc: 'महिलांसाठी सरकारी अर्जाचे नमुने', comingSoon: true },
+  { icon: 'fa-graduation-cap', label: 'शिष्यवृत्ती अर्ज', color: 'bg-blue', desc: 'विद्यार्थ्यांसाठी शिष्यवृत्तीचे अर्ज', comingSoon: true },
+  { icon: 'fa-store', label: 'व्यवसाय परवाने', color: 'bg-orange', desc: 'व्यवसाय नोंदणी व परवाना अर्ज', comingSoon: true },
+  { icon: 'fa-heart-pulse', label: 'आरोग्य योजना अर्ज', color: 'bg-purple', desc: 'आरोग्य विमा व उपचार अर्ज', comingSoon: true },
+  { icon: 'fa-piggy-bank', label: 'पेन्शन अर्ज', color: 'bg-yellow', desc: 'निवृत्तीवेतन योजनांचे अर्ज', comingSoon: true },
+];
+---
+
+<Layout
+  title="डाउनलोड्स – सरकारी अर्ज व नमुने | MahitiMarg"
+  description="महाराष्ट्र सरकारच्या विविध योजनांचे अर्ज, नमुने आणि PDF मोफत डाउनलोड करा."
+  keywords={keywords}
+  canonical="https://mahitimarg.in/downloads/"
+  breadcrumbs={breadcrumbs}
+>
+  <main class="container py-12 max-w-5xl mx-auto min-h-[75vh]">
+    <div class="mb-8 animate-on-load">
+      <a href="/" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> मुख्यपृष्ठावर परत जा
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="glass-panel animate-on-load mb-10 text-center" style="padding: 3rem 2rem; border-top: 4px solid var(--primary);">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-download" style="color: var(--primary);"></i></div>
+      <h1 class="title-gradient" style="font-size: 2.5rem; margin-bottom: 0.75rem;">डाउनलोड्स (Downloads)</h1>
+      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">सरकारी योजनांचे अर्ज, वेलफेअर फॉर्म, आणि उपयुक्त pdf नमुने – एकाच ठिकाणी मोफत डाउनलोड करा.</p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      {downloadCategories.map((cat) => (
+        <div class="glass-panel" style="padding: 2rem; text-align: center; border-radius: 16px; position: relative; overflow: hidden;">
+          {cat.comingSoon && (
+            <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: white; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.5px;">लवकरच</span>
+          )}
+          <div class={`scheme-icon-bg ${cat.color}`} style="width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 1.75rem;">
+            <i class={`fa-solid ${cat.icon}`}></i>
+          </div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">{cat.label}</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">{cat.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Ad Space -->
+    <div class="animate-on-scroll" style="margin-top: 3rem; min-height: 250px; background: rgba(0,0,0,0.02); border: 2px dashed rgba(0,0,0,0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;">
+      <span><i class="fa-solid fa-ad" style="margin-right: 0.5rem;"></i> जाहीरात (Ad Space)</span>
+    </div>
+  </main>
+</Layout>

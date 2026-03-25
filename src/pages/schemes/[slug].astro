@@ -81,9 +81,29 @@ const whatsappUrl = `https://api.whatsapp.com/send?text=${whatsappText}`;
 // Fetch other schemes for sidebar
 const allSchemes = await getCollection('schemes');
 const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
+
+// --- Breadcrumbs ---
+const breadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'सरकारी योजना', url: 'https://mahitimarg.in/schemes/' },
+  { name: marathiTitle, url: pageUrl },
+];
+
+// --- Rich keyword generation (Marathi + English) ---
+const autoKeywords = [
+  marathiTitle,
+  englishTitle,
+  entry.data.badge,
+  'सरकारी योजना',
+  'महाराष्ट्र सरकार',
+  'शासकीय योजना 2025',
+  'government scheme Maharashtra',
+  'mahitimarg',
+  entry.data.keywords,
+].filter(Boolean).join(', ');
 ---
 
-<Layout title={seoTitle} description={seoDescription} keywords={seoKeywords} canonical={pageUrl} jsonLd={jsonLd}>
+<Layout title={seoTitle} description={seoDescription} keywords={autoKeywords} canonical={pageUrl} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
     <!-- Premium Header Banner -->
     <section class="scheme-detail-banner">
         <div class="container">

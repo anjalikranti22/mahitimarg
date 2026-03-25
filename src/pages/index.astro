@@ -7,58 +7,87 @@ import { getCollection } from 'astro:content';
 const allSchemes = await getCollection('schemes');
 const featuredSchemes = allSchemes.slice(0, 6);
 const totalSchemes = allSchemes.length;
+
+// Build search data for live search
+const schemeSearchData = allSchemes.map(s => ({
+  title: s.data.title || '',
+  category: s.data.category || '',
+  description: (s.data.description || '').slice(0, 120),
+  slug: s.slug,
+}));
 ---
 
 <Layout title="MahitiMarg | योजना · रोजगार · व्यवसाय · टूल्स – सर्व माहिती एकाच ठिकाणी">
+    <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
     <main>
         <!-- Section 1: Hero + Universal Search -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-bg-accent"></div>
-            <div class="hero-floaters" aria-hidden="true">
-                <span class="floater floater-1">🌾</span>
-                <span class="floater floater-2">📄</span>
-                <span class="floater floater-3">💰</span>
-                <span class="floater floater-4">🎓</span>
-                <span class="floater floater-5">🤝</span>
-                <span class="floater floater-6">🌱</span>
-                <span class="floater floater-7">🏛️</span>
-                <span class="floater floater-8">💡</span>
+        <section class="hp-hero" aria-labelledby="hero-title">
+            <div class="hp-hero__bg" aria-hidden="true">
+                <div class="hp-hero__blob hp-hero__blob--1"></div>
+                <div class="hp-hero__blob hp-hero__blob--2"></div>
+                <div class="hp-hero__ring hp-hero__ring--1"></div>
+                <div class="hp-hero__ring hp-hero__ring--2"></div>
             </div>
-            <div class="container glass-panel hero-glass animate-on-load">
-                <h1 id="hero-title" class="title-gradient">योजना · रोजगार · व्यवसाय · टूल्स</h1>
-                <p class="hero-description">सर्व महाराष्ट्र राज्य आणि केंद्र सरकारच्या योजना, रोजगार माहिती, व्यवसाय मार्गदर्शन आणि उपयुक्त टूल्स – साध्या मराठीत, एकाच ठिकाणी.
+
+            <div class="container hp-hero__inner animate-on-load">
+                <span class="hp-badge">
+                    <i class="fa-solid fa-info-circle" aria-hidden="true"></i> माहितीचा नवा मार्ग
+                </span>
+                <h1 id="hero-title" class="hp-hero__title">
+                    योजना <span class="hp-dot">·</span> रोजगार <span class="hp-dot">·</span> व्यवसाय <span class="hp-dot">·</span> टूल्स
+                </h1>
+                <p class="hp-hero__sub">
+                    सर्व महाराष्ट्र राज्य आणि केंद्र सरकारच्या योजना, रोजगार माहिती आणि उपयुक्त टूल्स – साध्या मराठीत, एकाच ठिकाणी.
                 </p>
 
-                <!-- Universal Tabbed Search -->
-                <div class="search-tabs" id="search-tabs">
+                <!-- Search -->
+                <div class="hp-search-wrap">
+                    <div class="hp-search-glow" aria-hidden="true"></div>
+                    <div class="hp-search-box">
+                        <i class="fa-solid fa-search hp-search-icon" aria-hidden="true"></i>
+                        <input type="text" id="scheme-search" class="hp-search-input"
+                            placeholder="योजना शोधा... (उदा. शेतकरी, महिला, EMI, लाडकी)"
+                            aria-label="Search schemes"
+                            autocomplete="off">
+                        <button id="search-clear-btn" class="hp-search-clear" aria-label="Clear search" style="display:none;">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                        <button class="btn btn-primary hp-search-btn ripple-effect" aria-label="Submit search">शोधा</button>
+                    </div>
+                    <div id="search-dropdown" class="hp-search-dropdown" role="listbox" style="display:none;">
+                        <div id="search-dropdown-inner"></div>
+                        <div id="search-dropdown-empty" class="hp-search-empty" style="display:none;">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>कोणतीही योजना सापडली नाही</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Tabs -->
+                <div class="search-tabs" id="search-tabs" style="margin-top: 1.25rem;">
                     <button class="search-tab active" data-tab="all"><i class="fa-solid fa-magnifying-glass"></i> सर्व</button>
                     <button class="search-tab" data-tab="schemes"><i class="fa-solid fa-file-lines"></i> योजना</button>
                     <button class="search-tab" data-tab="articles"><i class="fa-solid fa-newspaper"></i> लेख</button>
                     <button class="search-tab" data-tab="tools"><i class="fa-solid fa-wrench"></i> टूल्स</button>
                 </div>
 
-                <div class="search-container search-container-lg" id="sticky-search-wrapper">
-                    <div style="position: relative; width: 100%;">
-                        <i class="fa-solid fa-search search-icon" aria-hidden="true"></i>
-                        <input type="text" id="scheme-search" class="search-input input-lg"
-                            placeholder="योजना शोधा... (Search schemes, e.g. 'Farmer', 'Women')"
-                            aria-label="Search schemes">
-                        <button class="btn btn-primary btn-search-submit ripple-effect" aria-label="Submit search">
-                            शोधा
-                        </button>
-                    </div>
+                <!-- Quick Category Links -->
+                <div class="hp-quick-links">
+                    <a href="/categories/farmer" class="hp-qlink"><i class="fa-solid fa-tractor"></i> शेतकरी</a>
+                    <a href="/categories/women" class="hp-qlink"><i class="fa-solid fa-person-dress"></i> महिला</a>
+                    <a href="/categories/business" class="hp-qlink"><i class="fa-solid fa-briefcase"></i> व्यवसाय</a>
+                    <a href="/categories/student" class="hp-qlink"><i class="fa-solid fa-graduation-cap"></i> विद्यार्थी</a>
+                    <a href="/categories/pension" class="hp-qlink"><i class="fa-solid fa-piggy-bank"></i> पेन्शन</a>
+                    <a href="/categories/health" class="hp-qlink"><i class="fa-solid fa-heart-pulse"></i> आरोग्य</a>
+                    <a href="/schemes" class="hp-qlink hp-qlink--accent"><i class="fa-solid fa-arrow-right"></i> सर्व पहा</a>
                 </div>
 
-                <!-- Expanded Quick Links -->
-                <div class="quick-links animate-on-load mt-2"
-                    style="display: flex; justify-content: center; gap: 0.6rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="/categories/farmer" class="hero-quick-link"><i class="fa-solid fa-tractor"></i> शेतकरी</a>
-                    <a href="/categories/women" class="hero-quick-link"><i class="fa-solid fa-person-dress"></i> महिला</a>
-                    <a href="/categories/business" class="hero-quick-link"><i class="fa-solid fa-briefcase"></i> व्यवसाय</a>
-                    <a href="/categories/student" class="hero-quick-link"><i class="fa-solid fa-graduation-cap"></i> विद्यार्थी</a>
-                    <a href="/categories/pension" class="hero-quick-link"><i class="fa-solid fa-piggy-bank"></i> पेन्शन</a>
-                    <a href="/categories/health" class="hero-quick-link"><i class="fa-solid fa-heart-pulse"></i> आरोग्य</a>
-                    <a href="/schemes" class="hero-quick-link hero-quick-link--accent"><i class="fa-solid fa-arrow-right"></i> सर्व पहा</a>
+                <!-- Trust Stats -->
+                <div class="hp-stats">
+                    <div class="hp-stat"><span class="hp-stat__num">२००+</span><span class="hp-stat__label">सरकारी योजना</span></div>
+                    <div class="hp-stat"><span class="hp-stat__num">१४+</span><span class="hp-stat__label">कॅटेगरी</span></div>
+                    <div class="hp-stat"><span class="hp-stat__num">१०+</span><span class="hp-stat__label">स्मार्ट टूल्स</span></div>
+                    <div class="hp-stat"><span class="hp-stat__num">५०,०००+</span><span class="hp-stat__label">मदत मिळालेले</span></div>
                 </div>
             </div>
         </section>
@@ -83,7 +112,98 @@ const totalSchemes = allSchemes.length;
             </div>
         </section>
 
-        <!-- Section 3: Category Grid (14 Categories) -->
+        <!-- Section 2.5: Bento Gateway – Modern Redesign -->
+        <section id="gateway-sections" class="hp-bento-section" aria-labelledby="gateway-title">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fa-solid fa-compass" aria-hidden="true"></i> MahitiMarg</div>
+                    <h2 id="gateway-title">आम्ही काय देतो? (What We Offer)</h2>
+                    <p>तुमच्या विकासासाठी तुम्हाला लागणारी सर्व माहिती आणि सेवा एकाच ठिकाणी</p>
+                </div>
+
+                <div class="hp-bento animate-on-scroll">
+
+                    <!-- Large featured card: Schemes (2-col span) -->
+                    <a href="/schemes" class="hp-bento__card hp-bento__card--large hp-bento__card--green">
+                        <div class="hp-bento__icon-wrap" style="background:#16a34a;">
+                            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">सरकारी योजना</h3>
+                        <p class="hp-bento__desc">केंद्र आणि राज्य सरकारच्या सर्व योजनांची सविस्तर माहिती मराठीत जाणून घ्या.</p>
+                        <div class="hp-bento__tags">
+                            <span>शेतकरी योजना</span><span>महिला कल्याण</span><span>शिक्षण शिष्यवृत्ती</span><span>आरोग्य विमा</span>
+                        </div>
+                        <span class="hp-bento__cta">योजना पहा <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- Jobs -->
+                    <a href="/jobs" class="hp-bento__card hp-bento__card--orange">
+                        <div class="hp-bento__icon-wrap" style="background:#ea580c;">
+                            <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">रोजगार आणि करिअर</h3>
+                        <p class="hp-bento__desc">सरकारी नोकरी, MPSC आणि भरती अपडेट्स.</p>
+                    </a>
+
+                    <!-- Services -->
+                    <a href="/services" class="hp-bento__card hp-bento__card--indigo">
+                        <div class="hp-bento__icon-wrap" style="background:#4f46e5;">
+                            <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">सरकारी सेवा</h3>
+                        <p class="hp-bento__desc">आधार, रेशन, दाखले – ऑनलाईन मदत.</p>
+                    </a>
+
+                    <!-- Training -->
+                    <a href="/training" class="hp-bento__card hp-bento__card--amber">
+                        <div class="hp-bento__icon-wrap" style="background:#d97706;">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">प्रशिक्षण</h3>
+                        <p class="hp-bento__desc">कौशल्य विकास व PMKVY योजना.</p>
+                    </a>
+
+                    <!-- Articles -->
+                    <a href="/articles" class="hp-bento__card hp-bento__card--purple">
+                        <div class="hp-bento__icon-wrap" style="background:#7c3aed;">
+                            <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">लेख</h3>
+                        <p class="hp-bento__desc">माहितीपूर्ण विशेष लेख.</p>
+                    </a>
+
+                    <!-- Downloads -->
+                    <a href="/downloads" class="hp-bento__card hp-bento__card--sky">
+                        <div class="hp-bento__icon-wrap" style="background:#0284c7;">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">डाउनलोड्स</h3>
+                        <p class="hp-bento__desc">सरकारी अर्ज नमुने PDF.</p>
+                    </a>
+
+                    <!-- Financial Literacy -->
+                    <a href="/learn" class="hp-bento__card hp-bento__card--pink">
+                        <div class="hp-bento__icon-wrap" style="background:#be185d;">
+                            <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">अर्थसाक्षरता</h3>
+                        <p class="hp-bento__desc">बचत आणि गुंतवणूक मार्गदर्शन.</p>
+                    </a>
+
+                    <!-- Smart Tools -->
+                    <a href="/tools" class="hp-bento__card hp-bento__card--teal">
+                        <div class="hp-bento__icon-wrap" style="background:#0d9488;">
+                            <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">स्मार्ट टूल्स</h3>
+                        <p class="hp-bento__desc">उपयुक्त कॅल्क्युलेटर.</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Category Grid – Modern Pill Cards -->
         <section id="popular-categories" class="scheme-category-section bg-alternating" aria-labelledby="popular-categories-title">
             <div class="container relative-container">
                 <div class="section-header animate-on-scroll">
@@ -262,7 +382,7 @@ const totalSchemes = allSchemes.length;
                             <li><i class="fa-solid fa-check-circle"></i> सरकारी कर्ज योजना (MUDRA, PMEGP)</li>
                             <li><i class="fa-solid fa-check-circle"></i> PM विश्वकर्मा योजना</li>
                         </ul>
-                        <a href="/articles" class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                        <a href="/business" class="btn btn-primary ripple-effect" style="margin-top: auto;">
                             <i class="fa-solid fa-book-open"></i> व्यवसाय गाईड वाचा
                         </a>
                     </div>
@@ -560,56 +680,174 @@ const totalSchemes = allSchemes.length;
     </main>
 </Layout>
 
+
 <script>
-// Animated counter for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000;
-        const start = 0;
-        const startTime = performance.now();
+// ============================================================
+// LIVE SEARCH ENGINE – MahitiMarg Homepage
+// ============================================================
 
-        function update(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(eased * target);
+const schemeDataEl = document.getElementById('scheme-data');
+const SCHEMES = schemeDataEl ? JSON.parse(schemeDataEl.textContent) : [];
 
-            if (target >= 1000) {
-                counter.textContent = current.toLocaleString('en-IN');
-            } else {
-                counter.textContent = current;
-            }
+// Bento card keyword mapping (order matches DOM order of .hp-bento__card)
+const BENTO_DATA = [
+  { terms: ['योजना','scheme','yojana','sarkari','सरकार','farmer','शेतकरी','women','महिला','student','विद्यार्थी','सरकारी'], href: '/schemes' },
+  { terms: ['job','नोकरी','रोजगार','mpsc','career','भरती','rojgar'], href: '/jobs' },
+  { terms: ['service','सेवा','aadhar','आधार','ration','रेशन','दाखले'], href: '/services' },
+  { terms: ['training','प्रशिक्षण','pmkvy','skill','कौशल्य'], href: '/training' },
+  { terms: ['article','लेख','news','बातमी'], href: '/articles' },
+  { terms: ['download','डाउनलोड','pdf','form','अर्ज'], href: '/downloads' },
+  { terms: ['learn','अर्थ','finance','emi','बचत','गुंतवणूक','कर्ज','loan','savings'], href: '/learn' },
+  { terms: ['tool','टूल','calculator','कॅल्क्युलेटर','emi','fd','rd','age','वय'], href: '/tools' },
+];
 
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            }
-        }
-        requestAnimationFrame(update);
-    });
+const bentoCards = [...document.querySelectorAll('.hp-bento__card')];
+const input        = document.getElementById('scheme-search');
+const dropdown     = document.getElementById('search-dropdown');
+const dropInner    = document.getElementById('search-dropdown-inner');
+const dropEmpty    = document.getElementById('search-dropdown-empty');
+const clearBtn     = document.getElementById('search-clear-btn');
+
+function norm(s) { return (s||'').toLowerCase(); }
+
+function highlight(text, q) {
+  if (!q) return text;
+  const safe = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp('('+safe+')', 'gi'), '<mark class="hp-mark">$1</mark>');
 }
 
-// Intersection Observer for stats animation
-const statsSection = document.getElementById('trust-stats');
-if (statsSection) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    observer.observe(statsSection);
+// Filter bento tiles
+function filterBento(q) {
+  bentoCards.forEach((card, i) => {
+    const data = BENTO_DATA[i];
+    if (!data) { card.style.opacity = '1'; return; }
+    const matches = !q || data.terms.some(t => norm(t).includes(q) || q.includes(norm(t)));
+    card.style.transition = 'all 0.3s ease';
+    card.style.opacity    = matches ? '1' : '0.22';
+    card.style.transform  = matches ? (q ? 'scale(1.02) translateY(-3px)' : '') : 'scale(0.96)';
+    card.style.pointerEvents = matches ? '' : 'none';
+  });
+}
+
+// Filter category chips
+function filterChips(q) {
+  document.querySelectorAll('.category-chip').forEach(chip => {
+    const matches = !q || norm(chip.textContent).includes(q);
+    chip.style.transition = 'all 0.25s ease';
+    chip.style.opacity    = matches ? '1' : '0.2';
+    chip.style.transform  = matches ? '' : 'scale(0.93)';
+  });
+}
+
+// Build dropdown HTML
+function renderDropdown(q) {
+  if (!q || q.length < 2) { dropdown.style.display = 'none'; return; }
+
+  const matched = SCHEMES.filter(s =>
+    norm(s.title+' '+s.category+' '+s.description).includes(q)
+  ).slice(0, 7);
+
+  const bentoMatches = BENTO_DATA.filter(b =>
+    b.terms.some(t => norm(t).includes(q) || q.includes(norm(t)))
+  );
+
+  if (matched.length === 0 && bentoMatches.length === 0) {
+    dropInner.innerHTML = '';
+    dropEmpty.style.display = 'flex';
+    dropdown.style.display = 'block';
+    return;
+  }
+
+  dropEmpty.style.display = 'none';
+  let html = '';
+
+  if (bentoMatches.length) {
+    html += '<div class="hp-sdrop-group">विभाग (Sections)</div>';
+    bentoMatches.forEach(b => {
+      const card = bentoCards[BENTO_DATA.indexOf(b)];
+      const title = card ? (card.querySelector('.hp-bento__title')?.textContent || b.href) : b.href;
+      html += `<a href="${b.href}" class="hp-sdrop-item hp-sdrop-item--section">
+        <i class="fa-solid fa-compass"></i>
+        <span>${highlight(title, q)}</span>
+        <span class="hp-sdrop-meta">${b.href}</span>
+      </a>`;
+    });
+  }
+
+  if (matched.length) {
+    html += '<div class="hp-sdrop-group">योजना (Schemes)</div>';
+    matched.forEach(s => {
+      const cat = s.category ? `<span class="hp-sdrop-cat">${s.category}</span>` : '';
+      html += `<a href="/schemes/${s.slug}" class="hp-sdrop-item">
+        <i class="fa-solid fa-file-lines"></i>
+        <span>${highlight(s.title, q)}</span>
+        ${cat}
+      </a>`;
+    });
+  }
+
+  html += `<div class="hp-sdrop-footer">
+    <a href="/schemes?q=${encodeURIComponent(q)}">सर्व परिणाम पहा <i class="fa-solid fa-arrow-right"></i></a>
+  </div>`;
+
+  dropInner.innerHTML = html;
+  dropdown.style.display = 'block';
+}
+
+function doSearch() {
+  const q = norm(input.value.trim());
+  clearBtn.style.display = q ? 'flex' : 'none';
+  renderDropdown(q);
+  filterBento(q);
+  filterChips(q);
+}
+
+function clearSearch() {
+  input.value = '';
+  clearBtn.style.display = 'none';
+  dropdown.style.display = 'none';
+  filterBento('');
+  filterChips('');
+}
+
+if (input) {
+  input.addEventListener('input', doSearch);
+  input.addEventListener('keydown', e => { if (e.key === 'Escape') clearSearch(); });
+  input.addEventListener('focus', () => { if (input.value.trim().length >= 2) dropdown.style.display = 'block'; });
+}
+if (clearBtn) clearBtn.addEventListener('click', clearSearch);
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.hp-search-wrap')) dropdown.style.display = 'none';
+});
+
+// ---- Counter animation ----
+function animateCounters() {
+  document.querySelectorAll('.stat-number').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const startTime = performance.now();
+    (function update(now) {
+      const p = Math.min((now - startTime) / 2000, 1);
+      const v = Math.floor((1 - Math.pow(1-p,3)) * target);
+      counter.textContent = target >= 1000 ? v.toLocaleString('en-IN') : v;
+      if (p < 1) requestAnimationFrame(update);
+    })(startTime);
+  });
+}
+
+const statsSec = document.getElementById('trust-stats');
+if (statsSec) {
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); } });
+  }, { threshold: 0.3 }).observe(statsSec);
 }
 
 // Search tab switching
-const tabs = document.querySelectorAll('.search-tab');
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-    });
+document.querySelectorAll('.search-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
 });
 </script>
+
