@@ -1,18 +1,40 @@
 ---
 // Header.astro
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isEn = lang === 'en';
+
+const navLinks = [
+    { label: t('nav.schemes'), icon: '📋', href: isEn ? '/en/schemes' : '/schemes' },
+    { label: t('nav.articles'), icon: '📰', href: isEn ? '/en/articles' : '/articles' },
+    { label: t('nav.tools'), icon: '🔧', href: isEn ? '/en/tools' : '/tools' },
+    { label: t('nav.jobs'), icon: '💼', href: isEn ? '/en/jobs' : '/jobs' },
+    { label: t('nav.services'), icon: '🏛️', href: isEn ? '/en/services' : '/services' },
+    { label: t('nav.training'), icon: '🎓', href: isEn ? '/en/training' : '/training' },
+    { label: t('nav.downloads'), icon: '📥', href: isEn ? '/en/downloads' : '/downloads' },
+    { label: t('nav.finance'), icon: '🧮', href: isEn ? '/en/learn' : '/learn' },
+    { label: t('nav.contact'), icon: '📞', href: isEn ? '/en/contact' : '/contact' }
+];
+
+const currentPath = Astro.url.pathname;
+const localeFreePath = isEn ? currentPath.replace(/^\/en/, '') : currentPath;
+const mrUrl = localeFreePath || '/';
+const enUrl = `/en${localeFreePath === '/' ? '' : localeFreePath}`;
 ---
 <div class="news-ticker-container" aria-label="Latest Scheme Updates">
-    <div class="ticker-label"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> नवीन अपडेट्स:</div>
+    <div class="ticker-label"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> {t('ticker.label')}</div>
     <div class="ticker-content-wrapper">
         <div class="ticker-content">
-            <span><span class="ticker-badge">INFO</span> पीएम-किसान योजनेचा 22 वा हप्ता वितरित.</span>
+            <span><span class="ticker-badge">INFO</span> {t('ticker.content')}</span>
         </div>
     </div>
 </div>
 
 <header class="main-header">
-    <div class="container nav-container">
-        <a href="/" class="logo" aria-label="Go to MahitiMarg Homepage" style="display: flex; align-items: center; gap: 8px;">
+    <div class="container nav-container" style="display: flex; justify-content: space-between; align-items: center;">
+        <a href={isEn ? "/en" : "/"} class="logo" aria-label="Go to MahitiMarg Homepage" style="display: flex; align-items: center; gap: 8px;">
             <div class="logo-icon" aria-hidden="true" style="margin-right: 0;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="currentColor">
                     <path d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-103.3-68.4-141.3C287.3 74.8 340.9 50.4 399.7 45.4C433.8 42.6 470 34.6 512 32zM216 256c0 10.6-2.5 20.6-6.4 29.8C194 322.9 160.8 352 120 352c-48.6 0-88-39.4-88-88c0-40.8 29.1-74 66.2-89.6c9.2-3.9 19.2-6.4 29.8-6.4c53 0 96 43 96 96z" />
@@ -25,17 +47,16 @@
         <!-- Desktop Navigation -->
         <nav class="desktop-nav" aria-label="Main Navigation">
             <ul class="nav-links">
-                <li><a href="/schemes">📋 योजना</a></li>
-                <li><a href="/articles">📰 लेख</a></li>
-                <li><a href="/tools">🔧 टूल्स</a></li>
-                <li><a href="/jobs">💼 रोजगार</a></li>
-                <li><a href="/services">🏛️ सेवा</a></li>
-                <li><a href="/training">🎓 प्रशिक्षण</a></li>
-                <li><a href="/downloads">📥 डाउनलोड्स</a></li>
-                <li><a href="/learn">🧮 अर्थसाक्षरता</a></li>
-                <li><a href="/contact">📞 संपर्क</a></li>
+                {navLinks.map((link) => (
+                    <li><a href={link.href}>{link.icon} {link.label}</a></li>
+                ))}
             </ul>
         </nav>
 
+        <!-- Language Switcher -->
+        <div class="language-switcher" style="display: flex; gap: 0.5rem; background: var(--surface); padding: 4px; border-radius: 6px; border: 1px solid var(--border-color);">
+            <a href={mrUrl} class={`lang-btn ${!isEn ? 'active' : ''}`} style={!isEn ? 'background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; text-decoration: none;' : 'padding: 2px 8px; font-weight: 500; font-size: 0.85rem; color: var(--text-main); text-decoration: none;'}>मराठी</a>
+            <a href={enUrl} class={`lang-btn ${isEn ? 'active' : ''}`} style={isEn ? 'background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.85rem; text-decoration: none;' : 'padding: 2px 8px; font-weight: 500; font-size: 0.85rem; color: var(--text-main); text-decoration: none;'}>EN</a>
+        </div>
     </div>
 </header>

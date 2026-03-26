@@ -1,0 +1,198 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout 
+  title="आमच्याबद्दल | MahitiMarg – महाराष्ट्र सरकारी योजना माहिती"
+  description="MahitiMarg बद्दल जाणून घ्या – महाराष्ट्रातील शेतकरी, महिला, विद्यार्थी आणि नागरिकांसाठी सरकारी योजनांची सोप्या मराठीत माहिती देणारा विश्वसनीय माहिती मंच."
+>
+  <main class="static-page-wrapper">
+    <section class="static-page-hero">
+      <div class="container">
+        <div class="static-hero-icon"><i class="fa-solid fa-seedling"></i></div>
+        <h1>{t('about.title')}<span class="hero-sub">{t('about.title_sub')}</span></h1>
+        <p class="lead">{t('about.lead')}</p>
+        
+        <div style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); padding: 0.75rem 1.5rem; border-radius: 8px; margin: 1.5rem auto 0; max-width: 650px; text-align: left; display: inline-block;">
+          <strong><i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 0.5rem;"></i>{t('about.disclaimer.title')}</strong><br>
+          <span style="font-size: 0.9em; opacity: 0.9;">{t('about.disclaimer.desc')}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="static-page-content">
+      <div class="container">
+        <div class="static-grid">
+
+          <article class="static-card">
+            <div class="static-card-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h2>{t('about.mission.title')}</h2>
+            <p>{t('about.mission.p1')}</p>
+            <p>{t('about.mission.p2')}</p>
+          </article>
+
+          <article class="static-card">
+            <div class="static-card-icon"><i class="fa-solid fa-users"></i></div>
+            <h2>{t('about.who.title')}</h2>
+            <p>{t('about.who.p1')}</p>
+            <p>{t('about.who.p2')}</p>
+          </article>
+
+          <article class="static-card">
+            <div class="static-card-icon"><i class="fa-solid fa-list-check"></i></div>
+            <h2>{t('section.gateway.title')}</h2>
+            <ul class="static-list">
+              <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li1')}</li>
+              <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li2')}</li>
+              <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li3')}</li>
+              <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li4')}</li>
+            </ul>
+          </article>
+
+          <article class="static-card">
+            <div class="static-card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h2>{t('about.offer.disclaimer.title')}</h2>
+            <p>{t('about.offer.disclaimer.p1')}</p>
+            <p>{t('about.offer.disclaimer.p2')}</p>
+          </article>
+
+        </div>
+
+        <div class="static-cta">
+          <p>{t('about.cta.p')}</p>
+          <a href="/contact" class="btn btn-primary"><i class="fa-solid fa-envelope"></i>{t('about.cta.btn1')}</a>
+          <a href="/" class="btn btn-secondary" style="margin-left:1rem;"><i class="fa-solid fa-house"></i>{t('about.cta.btn2')}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .static-page-wrapper {
+    min-height: 60vh;
+  }
+
+  .static-page-hero {
+    background: linear-gradient(135deg, #1a6e3c 0%, #2d8a5e 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+  }
+
+  .static-hero-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .static-page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub {
+    font-weight: 400;
+    opacity: 0.8;
+    font-size: 0.7em;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    opacity: 0.92;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .static-page-content {
+    padding: 3rem 0 4rem;
+    background: #f8fafc;
+  }
+
+  .static-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .static-grid { grid-template-columns: 1fr; }
+  }
+
+  .static-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid #e8edf2;
+    transition: box-shadow 0.2s;
+  }
+
+  .static-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+
+  .static-card-icon {
+    font-size: 1.75rem;
+    color: #16a34a;
+    margin-bottom: 1rem;
+  }
+
+  .static-card h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #d1fae5;
+    padding-bottom: 0.5rem;
+  }
+
+  .static-card p {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .static-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .static-list li {
+    color: #475569;
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .static-list li i {
+    color: #16a34a;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  .static-cta {
+    text-align: center;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e8edf2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .static-cta p {
+    color: #475569;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+</style>

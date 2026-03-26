@@ -1,0 +1,1078 @@
+﻿[2m18:57:50[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m18:57:51[22m [34m[content][39m Syncing content
+[2m18:57:51[22m [34m[content][39m Synced content
+[2m18:57:51[22m [34m[types][39m Generated [2m699ms[22m
+[2m18:57:51[22m [34m[check][39m Getting diagnostics for Astro files in C:\Users\agrik\Documents\mahitimarg-astro...
+[96mjs/script.js[0m:[93m84[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'answer' is declared but its value is never read.
+
+[7m84[0m                 const answer = item.querySelector('.faq-answer');
+[7m  [0m [93m                      ~~~~~~[0m
+
+[96mpublic/js/script.js[0m:[93m87[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'answer' is declared but its value is never read.
+
+[7m87[0m                     const answer = item.querySelector('.faq-answer');
+[7m  [0m [93m                          ~~~~~~[0m
+
+[96mscripts/translate-ui.mjs[0m:[93m64[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'match' is declared but its value is never read.
+
+[7m64[0m   code = code.replace(attrRegex, (match) => {
+[7m  [0m [93m                                  ~~~~~[0m
+[96mscripts/translate-ui.mjs[0m:[93m57[0m:[93m40[0m - [93mwarning[0m[90m ts(6133): [0m'match' is declared but its value is never read.
+
+[7m57[0m   code = code.replace(innerHtmlRegex, (match) => {
+[7m  [0m [93m                                       ~~~~~[0m
+
+[96msrc/content.config.ts[0m:[93m13[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m13[0m     keywords: z.string().optional().nullable(),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m12[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m12[0m     english_title: z.string().optional().nullable(),
+[7m  [0m [93m                   ~[0m
+[96msrc/content.config.ts[0m:[93m11[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m11[0m     key_stat: z.string().optional().nullable(),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m10[0m:[93m17[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m10[0m     apply_link: z.string().optional().nullable(),
+[7m  [0m [93m                ~[0m
+[96msrc/content.config.ts[0m:[93m9[0m:[93m12[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m9[0m     badge: z.string(),
+[7m [0m [93m           ~[0m
+[96msrc/content.config.ts[0m:[93m8[0m:[93m18[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m8[0m     description: z.string(),
+[7m [0m [93m                 ~[0m
+[96msrc/content.config.ts[0m:[93m7[0m:[93m12[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m7[0m     title: z.string(),
+[7m [0m [93m           ~[0m
+[96msrc/content.config.ts[0m:[93m6[0m:[93m11[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m6[0m   schema: z.object({
+[7m [0m [93m          ~[0m
+[96msrc/content.config.ts[0m:[93m1[0m:[93m10[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m1[0m import { z, defineCollection } from 'astro:content';
+[7m [0m [93m         ~[0m
+
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m279[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'resultDiv' is possibly 'null'.
+
+[7m279[0m         resultDiv.className = 'eligibility-result success';
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m278[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'resultDiv' is possibly 'null'.
+
+[7m278[0m         resultDiv.textContent = `αñàαñ¡αñ┐αñ¿αñéαñªαñ¿! ${village} (${taluka}, ${district}) αñ╣αÑç αñùαñ╛αñ╡ αñ¬αÑüαñúαÑìαñ»αñ╢αÑìαñ▓αÑïαñò αñàαñ╣αñ┐αñ▓αÑìαñ»αñ╛αñªαÑçαñ╡αÑÇ αñ╣αÑïαñ│αñòαñ░ αñ╢αÑçαññαñòαñ░αÑÇ αñòαñ░αÑìαñ£αñ«αñ╛αñ½αÑÇ αñ»αÑïαñ£αñ¿αÑçαñàαñéαññαñ░αÑìαñùαññ αñ¬αñ╛αññαÑìαñ░ αñåαñ╣αÑç.`;
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m275[0m:[93m35[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m275[0m       const district = distSelect.value;
+[7m   [0m [91m                                  ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m274[0m:[93m32[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m274[0m       const taluka = talSelect.value;
+[7m   [0m [91m                               ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m274[0m:[93m22[0m - [91merror[0m[90m ts(18047): [0m'talSelect' is possibly 'null'.
+
+[7m274[0m       const taluka = talSelect.value;
+[7m   [0m [91m                     ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m273[0m:[93m33[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m273[0m       const village = vilSelect.value;
+[7m   [0m [91m                                ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m273[0m:[93m23[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m273[0m       const village = vilSelect.value;
+[7m   [0m [91m                      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m272[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'checkBtn' is possibly 'null'.
+
+[7m272[0m     checkBtn.addEventListener('click', () => {
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m267[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m267[0m         checkBtn.disabled = true;
+[7m   [0m [91m                 ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m267[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'checkBtn' is possibly 'null'.
+
+[7m267[0m         checkBtn.disabled = true;
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m265[0m:[93m18[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m265[0m         checkBtn.disabled = false;
+[7m   [0m [91m                 ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m265[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'checkBtn' is possibly 'null'.
+
+[7m265[0m         checkBtn.disabled = false;
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m264[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'EventTarget'.
+
+[7m264[0m       if (e.target.value) {
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m264[0m:[93m11[0m - [91merror[0m[90m ts(18047): [0m'e.target' is possibly 'null'.
+
+[7m264[0m       if (e.target.value) {
+[7m   [0m [91m          ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m263[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'resultDiv' is possibly 'null'.
+
+[7m263[0m       resultDiv.classList.add('hidden');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m262[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m262[0m     vilSelect.addEventListener('change', (e) => {
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m257[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m257[0m         vilSelect.disabled = false;
+[7m   [0m [91m                  ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m257[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m257[0m         vilSelect.disabled = false;
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m255[0m:[93m11[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m255[0m           vilSelect.appendChild(opt);
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m251[0m:[93m26[0m - [91merror[0m[90m ts(7006): [0mParameter 'vil' implicitly has an 'any' type.
+
+[7m251[0m         villages.forEach(vil => {
+[7m   [0m [91m                         ~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m250[0m:[93m26[0m - [91merror[0m[90m ts(7005): [0mVariable 'villageData' implicitly has an 'any' type.
+
+[7m250[0m         const villages = villageData[selectedDist][selectedTal].sort();
+[7m   [0m [91m                         ~~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m249[0m:[93m42[0m - [91merror[0m[90m ts(7005): [0mVariable 'villageData' implicitly has an 'any' type.
+
+[7m249[0m       if (selectedDist && selectedTal && villageData[selectedDist][selectedTal]) {
+[7m   [0m [91m                                         ~~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m247[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'resultDiv' is possibly 'null'.
+
+[7m247[0m       resultDiv.classList.add('hidden');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m246[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m246[0m       checkBtn.disabled = true;
+[7m   [0m [91m               ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m246[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'checkBtn' is possibly 'null'.
+
+[7m246[0m       checkBtn.disabled = true;
+[7m   [0m [91m      ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m245[0m:[93m17[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m245[0m       vilSelect.disabled = true;
+[7m   [0m [91m                ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m245[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m245[0m       vilSelect.disabled = true;
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m244[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m244[0m       vilSelect.innerHTML = '<option value="">-- αñùαñ╛αñ╡ αñ¿αñ┐αñ╡αñíαñ╛ --</option>';
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m241[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'EventTarget'.
+
+[7m241[0m       const selectedTal = e.target.value;
+[7m   [0m [91m                                   ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m241[0m:[93m27[0m - [91merror[0m[90m ts(18047): [0m'e.target' is possibly 'null'.
+
+[7m241[0m       const selectedTal = e.target.value;
+[7m   [0m [91m                          ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m240[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m240[0m       const selectedDist = distSelect.value;
+[7m   [0m [91m                                      ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m239[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'talSelect' is possibly 'null'.
+
+[7m239[0m     talSelect.addEventListener('change', (e) => {
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m234[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m234[0m         talSelect.disabled = false;
+[7m   [0m [91m                  ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m234[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'talSelect' is possibly 'null'.
+
+[7m234[0m         talSelect.disabled = false;
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m232[0m:[93m11[0m - [91merror[0m[90m ts(18047): [0m'talSelect' is possibly 'null'.
+
+[7m232[0m           talSelect.appendChild(opt);
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m227[0m:[93m37[0m - [91merror[0m[90m ts(7005): [0mVariable 'villageData' implicitly has an 'any' type.
+
+[7m227[0m         const talukas = Object.keys(villageData[selectedDist]).sort();
+[7m   [0m [91m                                    ~~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m226[0m:[93m27[0m - [91merror[0m[90m ts(7005): [0mVariable 'villageData' implicitly has an 'any' type.
+
+[7m226[0m       if (selectedDist && villageData[selectedDist]) {
+[7m   [0m [91m                          ~~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m224[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'resultDiv' is possibly 'null'.
+
+[7m224[0m       resultDiv.classList.add('hidden');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m223[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m223[0m       checkBtn.disabled = true;
+[7m   [0m [91m               ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m223[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'checkBtn' is possibly 'null'.
+
+[7m223[0m       checkBtn.disabled = true;
+[7m   [0m [91m      ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m222[0m:[93m17[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m222[0m       vilSelect.disabled = true;
+[7m   [0m [91m                ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m222[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m222[0m       vilSelect.disabled = true;
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m221[0m:[93m17[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m221[0m       talSelect.disabled = true;
+[7m   [0m [91m                ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m221[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'talSelect' is possibly 'null'.
+
+[7m221[0m       talSelect.disabled = true;
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m220[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'vilSelect' is possibly 'null'.
+
+[7m220[0m       vilSelect.innerHTML = '<option value="">-- αñ¬αÑìαñ░αñÑαñ« αññαñ╛αñ▓αÑüαñòαñ╛ αñ¿αñ┐αñ╡αñíαñ╛ --</option>';
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m219[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'talSelect' is possibly 'null'.
+
+[7m219[0m       talSelect.innerHTML = '<option value="">-- αññαñ╛αñ▓αÑüαñòαñ╛ αñ¿αñ┐αñ╡αñíαñ╛ --</option>';
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m216[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'EventTarget'.
+
+[7m216[0m       const selectedDist = e.target.value;
+[7m   [0m [91m                                    ~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m216[0m:[93m28[0m - [91merror[0m[90m ts(18047): [0m'e.target' is possibly 'null'.
+
+[7m216[0m       const selectedDist = e.target.value;
+[7m   [0m [91m                           ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m198[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m198[0m     distSelect.disabled = false;
+[7m   [0m [91m               ~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m198[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'distSelect' is possibly 'null'.
+
+[7m198[0m     distSelect.disabled = false;
+[7m   [0m [91m    ~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m195[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'distSelect' is possibly 'null'.
+
+[7m195[0m       distSelect.appendChild(opt);
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m187[0m:[93m10[0m - [91merror[0m[90m ts(7005): [0mVariable 'villageData' implicitly has an 'any' type.
+
+[7m187[0m     if (!villageData || typeof villageData !== 'object') return;
+[7m   [0m [91m         ~~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m184[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'distSelect' is possibly 'null'.
+
+[7m184[0m     distSelect.innerHTML = '<option value="">-- αñ£αñ┐αñ▓αÑìαñ╣αñ╛ αñ¿αñ┐αñ╡αñíαñ╛ --</option>';
+[7m   [0m [91m    ~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m178[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'distSelect' is possibly 'null'.
+
+[7m178[0m       distSelect.innerHTML = '<option value="">αñíαÑçαñƒαñ╛ αñ▓αÑïαñí αñòαñ░αñúαÑìαñ»αñ╛αññ αññαÑìαñ░αÑüαñƒαÑÇ (Error Loading Data)</option>';
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m169[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'distSelect' is possibly 'null'.
+
+[7m169[0m       distSelect.innerHTML = '<option value="">αñ▓αÑïαñí αñ╣αÑïαññ αñåαñ╣αÑç... (Loading...)</option>';
+[7m   [0m [91m      ~~~~~~~~~~[0m
+[96msrc/components/VillageEligibilityChecker.astro[0m:[93m164[0m:[93m7[0m - [91merror[0m[90m ts(7034): [0mVariable 'villageData' implicitly has type 'any' in some locations where its type cannot be determined.
+
+[7m164[0m   let villageData = null;
+[7m   [0m [91m      ~~~~~~~~~~~[0m
+
+[96msrc/components/pages/AboutPage.astro[0m:[93m64[0m:[93m109[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m64[0m           <a href="/" class="btn btn-secondary" style="margin-left:1rem;"><i class="fa-solid fa-house"></i>{t('about.cta.btn2')}</a>
+[7m  [0m [91m                                                                                                            ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m63[0m:[93m91[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m63[0m           <a href="/contact" class="btn btn-primary"><i class="fa-solid fa-envelope"></i>{t('about.cta.btn1')}</a>
+[7m  [0m [91m                                                                                          ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m62[0m:[93m15[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m62[0m           <p>{t('about.cta.p')}</p>
+[7m  [0m [91m              ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m56[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m56[0m             <p>{t('about.offer.disclaimer.p2')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m55[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m55[0m             <p>{t('about.offer.disclaimer.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m54[0m:[93m18[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m54[0m             <h2>{t('about.offer.disclaimer.title')}</h2>
+[7m  [0m [91m                 ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m48[0m:[93m60[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m48[0m               <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li4')}</li>
+[7m  [0m [91m                                                           ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m47[0m:[93m60[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m47[0m               <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li3')}</li>
+[7m  [0m [91m                                                           ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m46[0m:[93m60[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m46[0m               <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li2')}</li>
+[7m  [0m [91m                                                           ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m45[0m:[93m60[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m45[0m               <li><i class="fa-solid fa-check-circle"></i>{t('about.offer.li1')}</li>
+[7m  [0m [91m                                                           ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m43[0m:[93m18[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m43[0m             <h2>{t('section.gateway.title')}</h2>
+[7m  [0m [91m                 ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m38[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m38[0m             <p>{t('about.who.p2')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m37[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m37[0m             <p>{t('about.who.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m36[0m:[93m18[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m36[0m             <h2>{t('about.who.title')}</h2>
+[7m  [0m [91m                 ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m31[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m31[0m             <p>{t('about.mission.p2')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m30[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m30[0m             <p>{t('about.mission.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m29[0m:[93m18[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m29[0m             <h2>{t('about.mission.title')}</h2>
+[7m  [0m [91m                 ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m18[0m:[93m58[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m18[0m           <span style="font-size: 0.9em; opacity: 0.9;">{t('about.disclaimer.desc')}</span>
+[7m  [0m [91m                                                         ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m17[0m:[93m114[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m17[0m           <strong><i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 0.5rem;"></i>{t('about.disclaimer.title')}</strong><br>
+[7m  [0m [91m                                                                                                                 ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m14[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m14[0m         <p class="lead">{t('about.lead')}</p>
+[7m  [0m [91m                         ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m13[0m:[93m55[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m13[0m         <h1>{t('about.title')}<span class="hero-sub">{t('about.title_sub')}</span></h1>
+[7m  [0m [91m                                                      ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m13[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m13[0m         <h1>{t('about.title')}<span class="hero-sub">{t('about.title_sub')}</span></h1>
+[7m  [0m [91m             ~[0m
+[96msrc/components/pages/AboutPage.astro[0m:[93m2[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../layouts/Layout.astro' or its corresponding type declarations.
+
+[7m2[0m import Layout from '../layouts/Layout.astro';
+[7m [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/pages/ContactPage.astro[0m:[93m104[0m:[93m59[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m104[0m                   <i class="fa-solid fa-paper-plane"></i>{t('contact.form.btn')}</button>
+[7m   [0m [91m                                                          ~[0m
+[96msrc/components/pages/ContactPage.astro[0m:[93m82[0m:[93m47[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m82[0m                   <label for="contact-email">{t('contact.email.title')}<span class="required">*</span></label>
+[7m  [0m [91m                                              ~[0m
+[96msrc/components/pages/ContactPage.astro[0m:[93m78[0m:[93m81[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m78[0m                   <input type="text" id="contact-name" name="name" placeholder={t('contact.form.name.ph')} required>
+[7m  [0m [91m                                                                                ~[0m
+[96msrc/components/pages/ContactPage.astro[0m:[93m28[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m28[0m               <h2>{t('contact.email.title')}</h2>
+[7m  [0m [91m                   ~[0m
+[96msrc/components/pages/ContactPage.astro[0m:[93m13[0m:[93m48[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m13[0m         <h1>αñ╕αñéαñ¬αñ░αÑìαñò αñòαñ░αñ╛ <span class="hero-sub">{t('contact.title_sub')}</span></h1>
+[7m  [0m [91m                                               ~[0m
+[96msrc/components/pages/ContactPage.astro[0m:[93m2[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../layouts/Layout.astro' or its corresponding type declarations.
+
+[7m2[0m import Layout from '../layouts/Layout.astro';
+[7m [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/pages/HomePage.astro[0m:[93m20[0m:[93m11[0m - [91merror[0m[90m ts(2339): [0mProperty 'slug' does not exist on type '{ id: string; body?: string | undefined; collection: "schemes"; data: { title: string; description: string; badge: string; apply_link?: string | null | undefined; key_stat?: string | null | undefined; english_title?: string | ... 1 more ... | undefined; keywords?: string | ... 1 more ... | undefined; }; rendered?: R...'.
+
+[7m20[0m   slug: s.slug,
+[7m  [0m [91m          ~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m18[0m:[93m20[0m - [91merror[0m[90m ts(2339): [0mProperty 'category' does not exist on type '{ title: string; description: string; badge: string; apply_link?: string | null | undefined; key_stat?: string | null | undefined; english_title?: string | null | undefined; keywords?: string | null | undefined; }'.
+
+[7m18[0m   category: s.data.category || '',
+[7m  [0m [91m                   ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m7[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../components/SchemeCard.astro' or its corresponding type declarations.
+
+[7m7[0m import SchemeCard from '../components/SchemeCard.astro';
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m6[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../layouts/Layout.astro' or its corresponding type declarations.
+
+[7m6[0m import Layout from '../layouts/Layout.astro';
+[7m [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m834[0m:[93m7[0m - [91merror[0m[90m ts(2322): [0mType 'string | number' is not assignable to type 'string | null'.
+  Type 'number' is not assignable to type 'string'.
+
+[7m834[0m       counter.textContent = target >= 1000 ? v.toLocaleString('en-IN') : v;
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m829[0m:[93m29[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+
+[7m829[0m     const target = parseInt(counter.getAttribute('data-target'));
+[7m   [0m [91m                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m823[0m:[93m45[0m - [91merror[0m[90m ts(18047): [0m'dropdown' is possibly 'null'.
+
+[7m823[0m   if (!e.target.closest('.hp-search-wrap')) dropdown.style.display = 'none';
+[7m   [0m [91m                                            ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m823[0m:[93m17[0m - [91merror[0m[90m ts(2339): [0mProperty 'closest' does not exist on type 'EventTarget'.
+
+[7m823[0m   if (!e.target.closest('.hp-search-wrap')) dropdown.style.display = 'none';
+[7m   [0m [91m                ~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m823[0m:[93m8[0m - [91merror[0m[90m ts(18047): [0m'e.target' is possibly 'null'.
+
+[7m823[0m   if (!e.target.closest('.hp-search-wrap')) dropdown.style.display = 'none';
+[7m   [0m [91m       ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m818[0m:[93m79[0m - [91merror[0m[90m ts(18047): [0m'dropdown' is possibly 'null'.
+
+[7m818[0m   input.addEventListener('focus', () => { if (input.value.trim().length >= 2) dropdown.style.display = 'block'; });
+[7m   [0m [91m                                                                              ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m818[0m:[93m53[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m818[0m   input.addEventListener('focus', () => { if (input.value.trim().length >= 2) dropdown.style.display = 'block'; });
+[7m   [0m [91m                                                    ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m810[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'dropdown' is possibly 'null'.
+
+[7m810[0m   dropdown.style.display = 'none';
+[7m   [0m [91m  ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m809[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'clearBtn' is possibly 'null'.
+
+[7m809[0m   clearBtn.style.display = 'none';
+[7m   [0m [91m  ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m808[0m:[93m9[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m808[0m   input.value = '';
+[7m   [0m [91m        ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m808[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'input' is possibly 'null'.
+
+[7m808[0m   input.value = '';
+[7m   [0m [91m  ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m801[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'clearBtn' is possibly 'null'.
+
+[7m801[0m   clearBtn.style.display = q ? 'flex' : 'none';
+[7m   [0m [91m  ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m800[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m800[0m   const q = norm(input.value.trim());
+[7m   [0m [91m                       ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m800[0m:[93m18[0m - [91merror[0m[90m ts(18047): [0m'input' is possibly 'null'.
+
+[7m800[0m   const q = norm(input.value.trim());
+[7m   [0m [91m                 ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m796[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'dropdown' is possibly 'null'.
+
+[7m796[0m   dropdown.style.display = 'block';
+[7m   [0m [91m  ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m795[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'dropInner' is possibly 'null'.
+
+[7m795[0m   dropInner.innerHTML = html;
+[7m   [0m [91m  ~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m781[0m:[93m21[0m - [91merror[0m[90m ts(7006): [0mParameter 's' implicitly has an 'any' type.
+
+[7m781[0m     matched.forEach(s => {
+[7m   [0m [91m                    ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m763[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'dropEmpty' is possibly 'null'.
+
+[7m763[0m   dropEmpty.style.display = 'none';
+[7m   [0m [91m  ~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m759[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'dropdown' is possibly 'null'.
+
+[7m759[0m     dropdown.style.display = 'block';
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m758[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'dropEmpty' is possibly 'null'.
+
+[7m758[0m     dropEmpty.style.display = 'flex';
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m757[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'dropInner' is possibly 'null'.
+
+[7m757[0m     dropInner.innerHTML = '';
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m748[0m:[93m34[0m - [91merror[0m[90m ts(7006): [0mParameter 's' implicitly has an 'any' type.
+
+[7m748[0m   const matched = SCHEMES.filter(s =>
+[7m   [0m [91m                                 ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m746[0m:[93m29[0m - [91merror[0m[90m ts(18047): [0m'dropdown' is possibly 'null'.
+
+[7m746[0m   if (!q || q.length < 2) { dropdown.style.display = 'none'; return; }
+[7m   [0m [91m                            ~~~~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m745[0m:[93m25[0m - [91merror[0m[90m ts(7006): [0mParameter 'q' implicitly has an 'any' type.
+
+[7m745[0m function renderDropdown(q) {
+[7m   [0m [91m                        ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m740[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m740[0m     chip.style.transform  = matches ? '' : 'scale(0.93)';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m739[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m739[0m     chip.style.opacity    = matches ? '1' : '0.2';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m738[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m738[0m     chip.style.transition = 'all 0.25s ease';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m735[0m:[93m22[0m - [91merror[0m[90m ts(7006): [0mParameter 'q' implicitly has an 'any' type.
+
+[7m735[0m function filterChips(q) {
+[7m   [0m [91m                     ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m730[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m730[0m     card.style.pointerEvents = matches ? '' : 'none';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m729[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m729[0m     card.style.transform  = matches ? (q ? 'scale(1.02) translateY(-3px)' : '') : 'scale(0.96)';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m728[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m728[0m     card.style.opacity    = matches ? '1' : '0.22';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m727[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m727[0m     card.style.transition = 'all 0.3s ease';
+[7m   [0m [91m         ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m725[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m725[0m     if (!data) { card.style.opacity = '1'; return; }
+[7m   [0m [91m                      ~~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m722[0m:[93m22[0m - [91merror[0m[90m ts(7006): [0mParameter 'q' implicitly has an 'any' type.
+
+[7m722[0m function filterBento(q) {
+[7m   [0m [91m                     ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m715[0m:[93m26[0m - [91merror[0m[90m ts(7006): [0mParameter 'q' implicitly has an 'any' type.
+
+[7m715[0m function highlight(text, q) {
+[7m   [0m [91m                         ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m715[0m:[93m20[0m - [91merror[0m[90m ts(7006): [0mParameter 'text' implicitly has an 'any' type.
+
+[7m715[0m function highlight(text, q) {
+[7m   [0m [91m                   ~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m713[0m:[93m15[0m - [91merror[0m[90m ts(7006): [0mParameter 's' implicitly has an 'any' type.
+
+[7m713[0m function norm(s) { return (s||'').toLowerCase(); }
+[7m   [0m [91m              ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m700[0m:[93m23[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m700[0m   { terms: ['article',t('search.tab.articles'),'news','αñ¼αñ╛αññαñ«αÑÇ'], href: '/articles' },
+[7m   [0m [91m                      ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m699[0m:[93m24[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m699[0m   { terms: ['training',t('bento.training.title'),'pmkvy','skill','αñòαÑîαñ╢αñ▓αÑìαñ»'], href: '/training' },
+[7m   [0m [91m                       ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m697[0m:[93m27[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m697[0m   { terms: ['job','αñ¿αÑïαñòαñ░αÑÇ',t('hero.title.jobs'),'mpsc','career','αñ¡αñ░αññαÑÇ','rojgar'], href: '/jobs' },
+[7m   [0m [91m                          ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m696[0m:[93m135[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m696[0m   { terms: [t('hero.title.schemes'),'scheme','yojana','sarkari','αñ╕αñ░αñòαñ╛αñ░','farmer',t('qlink.farmer'),'women',t('qlink.women'),'student',t('qlink.student'),'αñ╕αñ░αñòαñ╛αñ░αÑÇ'], href: '/schemes' },
+[7m   [0m [91m                                                                                                                                      ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m696[0m:[93m108[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m696[0m   { terms: [t('hero.title.schemes'),'scheme','yojana','sarkari','αñ╕αñ░αñòαñ╛αñ░','farmer',t('qlink.farmer'),'women',t('qlink.women'),'student',t('qlink.student'),'αñ╕αñ░αñòαñ╛αñ░αÑÇ'], href: '/schemes' },
+[7m   [0m [91m                                                                                                           ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m696[0m:[93m82[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m696[0m   { terms: [t('hero.title.schemes'),'scheme','yojana','sarkari','αñ╕αñ░αñòαñ╛αñ░','farmer',t('qlink.farmer'),'women',t('qlink.women'),'student',t('qlink.student'),'αñ╕αñ░αñòαñ╛αñ░αÑÇ'], href: '/schemes' },
+[7m   [0m [91m                                                                                 ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m696[0m:[93m13[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m696[0m   { terms: [t('hero.title.schemes'),'scheme','yojana','sarkari','αñ╕αñ░αñòαñ╛αñ░','farmer',t('qlink.farmer'),'women',t('qlink.women'),'student',t('qlink.student'),'αñ╕αñ░αñòαñ╛αñ░αÑÇ'], href: '/schemes' },
+[7m   [0m [91m            ~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m623[0m:[93m21[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m623[0m             <script type="application/ld+json">
+[7m   [0m [93m                    ~~~~[0m
+[96msrc/components/pages/HomePage.astro[0m:[93m28[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m28[0m     <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
+[7m  [0m [93m            ~~~~[0m
+
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m73[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m73[0m             <p>{t('privacy.s8.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m72[0m:[93m54[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m72[0m             <h2><i class="fa-solid fa-envelope"></i>{t('privacy.s8.title')}</h2>
+[7m  [0m [91m                                                     ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m68[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m68[0m             <p>{t('privacy.s7.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m67[0m:[93m59[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m67[0m             <h2><i class="fa-solid fa-pen-to-square"></i>{t('privacy.s7.title')}</h2>
+[7m  [0m [91m                                                          ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m63[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m63[0m             <p>{t('privacy.s6.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m58[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m58[0m             <p>{t('privacy.s5.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m57[0m:[93m50[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m57[0m             <h2><i class="fa-solid fa-link"></i>{t('privacy.s5.title')}</h2>
+[7m  [0m [91m                                                 ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m53[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m53[0m             <p>{t('privacy.s4.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m52[0m:[93m55[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m52[0m             <h2><i class="fa-solid fa-chart-bar"></i>{t('privacy.s4.title')}</h2>
+[7m  [0m [91m                                                      ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m42[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m42[0m             <p>{t('privacy.s3.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m41[0m:[93m57[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m41[0m             <h2><i class="fa-solid fa-cookie-bite"></i>{t('privacy.s3.title')}</h2>
+[7m  [0m [91m                                                        ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m37[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m37[0m             <p>{t('privacy.s2.p2')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m35[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m35[0m               <li>{t('privacy.s2.li3')}</li>
+[7m  [0m [91m                   ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m34[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m34[0m               <li>{t('privacy.s2.li2')}</li>
+[7m  [0m [91m                   ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m33[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m33[0m               <li>{t('privacy.s2.li1')}</li>
+[7m  [0m [91m                   ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m31[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m31[0m             <p>{t('privacy.s2.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m30[0m:[93m54[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m30[0m             <h2><i class="fa-solid fa-database"></i>{t('privacy.s2.title')}</h2>
+[7m  [0m [91m                                                     ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m26[0m:[93m17[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m26[0m             <p>{t('privacy.s1.p1')}</p>
+[7m  [0m [91m                ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m25[0m:[93m57[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m25[0m             <h2><i class="fa-solid fa-info-circle"></i>{t('privacy.s1.title')}</h2>
+[7m  [0m [91m                                                        ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m15[0m:[93m26[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m15[0m         <p class="lead">{t('privacy.lead')}</p>
+[7m  [0m [91m                         ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m14[0m:[93m57[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m14[0m         <h1>{t('privacy.title')}<span class="hero-sub">{t('privacy.title.sub')}</span></h1>
+[7m  [0m [91m                                                        ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m14[0m:[93m14[0m - [91merror[0m[90m ts(2304): [0mCannot find name 't'.
+
+[7m14[0m         <h1>{t('privacy.title')}<span class="hero-sub">{t('privacy.title.sub')}</span></h1>
+[7m  [0m [91m             ~[0m
+[96msrc/components/pages/PrivacyPage.astro[0m:[93m2[0m:[93m20[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../layouts/Layout.astro' or its corresponding type declarations.
+
+[7m2[0m import Layout from '../layouts/Layout.astro';
+[7m [0m [91m                   ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m181[0m:[93m14[0m - [91merror[0m[90m ts(7005): [0mVariable 'startTimestamp' implicitly has an 'any' type.
+
+[7m181[0m         if (!startTimestamp) startTimestamp = timestamp;
+[7m   [0m [91m             ~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m180[0m:[93m21[0m - [91merror[0m[90m ts(7006): [0mParameter 'timestamp' implicitly has an 'any' type.
+
+[7m180[0m       const step = (timestamp) => {
+[7m   [0m [91m                    ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m179[0m:[93m11[0m - [91merror[0m[90m ts(7034): [0mVariable 'startTimestamp' implicitly has type 'any' in some locations where its type cannot be determined.
+
+[7m179[0m       let startTimestamp = null;
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m177[0m:[93m44[0m - [91merror[0m[90m ts(7006): [0mParameter 'duration' implicitly has an 'any' type.
+
+[7m177[0m     function animateValue(obj, start, end, duration) {
+[7m   [0m [91m                                           ~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m177[0m:[93m39[0m - [91merror[0m[90m ts(7006): [0mParameter 'end' implicitly has an 'any' type.
+
+[7m177[0m     function animateValue(obj, start, end, duration) {
+[7m   [0m [91m                                      ~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m177[0m:[93m32[0m - [91merror[0m[90m ts(7006): [0mParameter 'start' implicitly has an 'any' type.
+
+[7m177[0m     function animateValue(obj, start, end, duration) {
+[7m   [0m [91m                               ~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m177[0m:[93m27[0m - [91merror[0m[90m ts(7006): [0mParameter 'obj' implicitly has an 'any' type.
+
+[7m177[0m     function animateValue(obj, start, end, duration) {
+[7m   [0m [91m                          ~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m173[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'resultBox' is possibly 'null'.
+
+[7m173[0m         resultBox.classList.add('scale-100', 'opacity-100');
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m172[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'resultBox' is possibly 'null'.
+
+[7m172[0m         resultBox.classList.remove('scale-95', 'opacity-0');
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m169[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'resultBox' is possibly 'null'.
+
+[7m169[0m       resultBox.classList.remove('hidden');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m166[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'ageMessage' is possibly 'null'.
+
+[7m166[0m         ageMessage.classList.add('hidden');
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m164[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'ageMessage' is possibly 'null'.
+
+[7m164[0m         ageMessage.classList.remove('hidden');
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m163[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'ageMessage' is possibly 'null'.
+
+[7m163[0m         ageMessage.innerHTML = '≡ƒÄë αññαÑüαñ«αÑìαñ╣αñ╛αñ▓αñ╛ αñ╡αñ╛αñóαñªαñ┐αñ╡αñ╕αñ╛αñÜαÑìαñ»αñ╛ αñ╣αñ╛αñ░αÑìαñªαñ┐αñò αñ╢αÑüαñ¡αÑçαñÜαÑìαñ¢αñ╛!';
+[7m   [0m [91m        ~~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m103[0m:[93m24[0m - [91merror[0m[90m ts(18047): [0m'resultBox' is possibly 'null'.
+
+[7m103[0m       setTimeout(() => resultBox.classList.add('hidden'), 500);
+[7m   [0m [91m                       ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m102[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'resultBox' is possibly 'null'.
+
+[7m102[0m       resultBox.classList.add('scale-95', 'opacity-0');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m101[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'resultBox' is possibly 'null'.
+
+[7m101[0m       resultBox.classList.remove('scale-100', 'opacity-100');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m98[0m:[93m27[0m - [91merror[0m[90m ts(7006): [0mParameter 'element' implicitly has an 'any' type.
+
+[7m98[0m     function triggerError(element) {
+[7m  [0m [91m                          ~~~~~~~[0m
+[96msrc/components/tools/AgeCalculator.astro[0m:[93m96[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'calculateBtn.parentNode' is possibly 'null'.
+
+[7m96[0m     calculateBtn.parentNode.replaceChild(newBtn, calculateBtn);
+[7m  [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m355[0m:[93m9[0m - [91merror[0m[90m ts(18047): [0m'watermark' is possibly 'null'.
+
+[7m355[0m         watermark.classList.add('hidden');
+[7m   [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m351[0m:[93m7[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'html2pdf'.
+
+[7m351[0m       html2pdf().set(opt).from(element).save().then(() => {
+[7m   [0m [91m      ~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m341[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'watermark' is possibly 'null'.
+
+[7m341[0m       watermark.classList.remove('hidden');
+[7m   [0m [91m      ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m327[0m:[93m66[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m327[0m     slider.addEventListener('input', () => { text.value = slider.value; calculateEMI(); });
+[7m   [0m [91m                                                                 ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m327[0m:[93m59[0m - [91merror[0m[90m ts(18047): [0m'slider' is possibly 'null'.
+
+[7m327[0m     slider.addEventListener('input', () => { text.value = slider.value; calculateEMI(); });
+[7m   [0m [91m                                                          ~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m327[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m327[0m     slider.addEventListener('input', () => { text.value = slider.value; calculateEMI(); });
+[7m   [0m [91m                                                  ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m327[0m:[93m46[0m - [91merror[0m[90m ts(18047): [0m'text' is possibly 'null'.
+
+[7m327[0m     slider.addEventListener('input', () => { text.value = slider.value; calculateEMI(); });
+[7m   [0m [91m                                             ~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m327[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'slider' is possibly 'null'.
+
+[7m327[0m     slider.addEventListener('input', () => { text.value = slider.value; calculateEMI(); });
+[7m   [0m [91m    ~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m326[0m:[93m64[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m326[0m     text.addEventListener('input', () => { slider.value = text.value; calculateEMI(); });
+[7m   [0m [91m                                                               ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m326[0m:[93m59[0m - [91merror[0m[90m ts(18047): [0m'text' is possibly 'null'.
+
+[7m326[0m     text.addEventListener('input', () => { slider.value = text.value; calculateEMI(); });
+[7m   [0m [91m                                                          ~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m326[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m326[0m     text.addEventListener('input', () => { slider.value = text.value; calculateEMI(); });
+[7m   [0m [91m                                                  ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m326[0m:[93m44[0m - [91merror[0m[90m ts(18047): [0m'slider' is possibly 'null'.
+
+[7m326[0m     text.addEventListener('input', () => { slider.value = text.value; calculateEMI(); });
+[7m   [0m [91m                                           ~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m326[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'text' is possibly 'null'.
+
+[7m326[0m     text.addEventListener('input', () => { slider.value = text.value; calculateEMI(); });
+[7m   [0m [91m    ~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m323[0m:[93m31[0m - [91merror[0m[90m ts(7006): [0mParameter 'sliderId' implicitly has an 'any' type.
+
+[7m323[0m   const syncInputs = (textId, sliderId) => {
+[7m   [0m [91m                              ~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m323[0m:[93m23[0m - [91merror[0m[90m ts(7006): [0mParameter 'textId' implicitly has an 'any' type.
+
+[7m323[0m   const syncInputs = (textId, sliderId) => {
+[7m   [0m [91m                      ~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m320[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'tbody' is possibly 'null'.
+
+[7m320[0m     tbody.innerHTML = html;
+[7m   [0m [91m    ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m251[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'totalColHeader' is possibly 'null'.
+
+[7m251[0m       totalColHeader.innerText = 'αñ«αñ╛αñ╕αñ┐αñò αñ╣αñ¬αÑìαññαñ╛ (EMI)';
+[7m   [0m [91m      ~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m250[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'periodHeader' is possibly 'null'.
+
+[7m250[0m       periodHeader.innerText = 'αñ«αñ╣αñ┐αñ¿αñ╛ (Month)';
+[7m   [0m [91m      ~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m248[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'totalColHeader' is possibly 'null'.
+
+[7m248[0m       totalColHeader.innerText = 'αñ╡αñ╛αñ░αÑìαñ╖αñ┐αñò αñ░αñòαÑìαñòαñ«';
+[7m   [0m [91m      ~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m247[0m:[93m7[0m - [91merror[0m[90m ts(18047): [0m'periodHeader' is possibly 'null'.
+
+[7m247[0m       periodHeader.innerText = 'αñ╡αñ░αÑìαñ╖ (Year)';
+[7m   [0m [91m      ~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m236[0m:[93m72[0m - [91merror[0m[90m ts(7006): [0mParameter 'emi' implicitly has an 'any' type.
+
+[7m236[0m   const generateAmortizationSchedule = (principal, monthlyRate, years, emi) => {
+[7m   [0m [91m                                                                       ~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m236[0m:[93m65[0m - [91merror[0m[90m ts(7006): [0mParameter 'years' implicitly has an 'any' type.
+
+[7m236[0m   const generateAmortizationSchedule = (principal, monthlyRate, years, emi) => {
+[7m   [0m [91m                                                                ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m236[0m:[93m52[0m - [91merror[0m[90m ts(7006): [0mParameter 'monthlyRate' implicitly has an 'any' type.
+
+[7m236[0m   const generateAmortizationSchedule = (principal, monthlyRate, years, emi) => {
+[7m   [0m [91m                                                   ~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m236[0m:[93m41[0m - [91merror[0m[90m ts(7006): [0mParameter 'principal' implicitly has an 'any' type.
+
+[7m236[0m   const generateAmortizationSchedule = (principal, monthlyRate, years, emi) => {
+[7m   [0m [91m                                        ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m223[0m:[93m20[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'Chart'.
+
+[7m223[0m     emiChart = new Chart(ctx, {
+[7m   [0m [91m                   ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m222[0m:[93m5[0m - [91merror[0m[90m ts(2304): [0mCannot find name 'Chart'.
+
+[7m222[0m     Chart.defaults.font.family = "'Mukta', sans-serif";
+[7m   [0m [91m    ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m220[0m:[93m9[0m - [91merror[0m[90m ts(7005): [0mVariable 'emiChart' implicitly has an 'any' type.
+
+[7m220[0m     if (emiChart) emiChart.destroy();
+[7m   [0m [91m        ~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m219[0m:[93m56[0m - [91merror[0m[90m ts(2339): [0mProperty 'getContext' does not exist on type 'HTMLElement'.
+
+[7m219[0m     const ctx = document.getElementById('emiPieChart').getContext('2d');
+[7m   [0m [91m                                                       ~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m219[0m:[93m17[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m219[0m     const ctx = document.getElementById('emiPieChart').getContext('2d');
+[7m   [0m [91m                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m218[0m:[93m35[0m - [91merror[0m[90m ts(7006): [0mParameter 'interest' implicitly has an 'any' type.
+
+[7m218[0m   const updateChart = (principal, interest) => {
+[7m   [0m [91m                                  ~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m218[0m:[93m24[0m - [91merror[0m[90m ts(7006): [0mParameter 'principal' implicitly has an 'any' type.
+
+[7m218[0m   const updateChart = (principal, interest) => {
+[7m   [0m [91m                       ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m212[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m212[0m     document.getElementById('m1TotalEmi').innerText = formatter.format(emi);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m211[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m211[0m     document.getElementById('m1Interest').innerText = formatter.format(m1Interest);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m210[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m210[0m     document.getElementById('m1Principal').innerText = formatter.format(m1Principal);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m207[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m207[0m     document.getElementById('totalPayment').innerText = formatter.format(totalPayable);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m206[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m206[0m     document.getElementById('totalInterest').innerText = formatter.format(totalInt);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m205[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m205[0m     document.getElementById('emiValue').innerText = formatter.format(emi);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m190[0m:[93m70[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m190[0m     const N_years = parseFloat(document.getElementById('loanTenure').value);
+[7m   [0m [91m                                                                     ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m190[0m:[93m32[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m190[0m     const N_years = parseFloat(document.getElementById('loanTenure').value);
+[7m   [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m189[0m:[93m66[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m189[0m     const R = parseFloat(document.getElementById('interestRate').value);
+[7m   [0m [91m                                                                 ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m189[0m:[93m26[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m189[0m     const R = parseFloat(document.getElementById('interestRate').value);
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m188[0m:[93m64[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'HTMLElement'.
+
+[7m188[0m     const P = parseFloat(document.getElementById('loanAmount').value);
+[7m   [0m [91m                                                               ~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m188[0m:[93m26[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m188[0m     const P = parseFloat(document.getElementById('loanAmount').value);
+[7m   [0m [91m                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m183[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnYearly' is possibly 'null'.
+
+[7m183[0m     btnYearly.classList.add('text-slate-500', 'hover:text-slate-800');
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m182[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnYearly' is possibly 'null'.
+
+[7m182[0m     btnYearly.classList.remove('bg-white', 'text-indigo-700', 'shadow-sm');
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m181[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnMonthly' is possibly 'null'.
+
+[7m181[0m     btnMonthly.classList.remove('text-slate-500', 'hover:text-slate-800');
+[7m   [0m [91m    ~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m180[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnMonthly' is possibly 'null'.
+
+[7m180[0m     btnMonthly.classList.add('bg-white', 'text-indigo-700', 'shadow-sm');
+[7m   [0m [91m    ~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m178[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'btnMonthly' is possibly 'null'.
+
+[7m178[0m   btnMonthly.addEventListener('click', () => {
+[7m   [0m [91m  ~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m174[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnMonthly' is possibly 'null'.
+
+[7m174[0m     btnMonthly.classList.add('text-slate-500', 'hover:text-slate-800');
+[7m   [0m [91m    ~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m173[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnMonthly' is possibly 'null'.
+
+[7m173[0m     btnMonthly.classList.remove('bg-white', 'text-indigo-700', 'shadow-sm');
+[7m   [0m [91m    ~~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m172[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnYearly' is possibly 'null'.
+
+[7m172[0m     btnYearly.classList.remove('text-slate-500', 'hover:text-slate-800');
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m171[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btnYearly' is possibly 'null'.
+
+[7m171[0m     btnYearly.classList.add('bg-white', 'text-indigo-700', 'shadow-sm');
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m169[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'btnYearly' is possibly 'null'.
+
+[7m169[0m   btnYearly.addEventListener('click', () => {
+[7m   [0m [91m  ~~~~~~~~~[0m
+[96msrc/components/tools/EmiCalculator.astro[0m:[93m161[0m:[93m7[0m - [91merror[0m[90m ts(7034): [0mVariable 'emiChart' implicitly has type 'any' in some locations where its type cannot be determined.
+
+[7m161[0m   let emiChart = null;
+[7m   [0m [91m      ~~~~~~~~[0m
+
+[96msrc/layouts/Layout.astro[0m:[93m99[0m:[93m136[0m - [93mwarning[0m[90m ts(6133): [0m'media' is declared but its value is never read.
+
+[7m99[0m     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+[7m  [0m [93m                                                                                                                                       ~~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m104[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m104[0m     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEB9SJ3QXK"></script>
+[7m   [0m [93m            ~~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m101[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m101[0m     <script src="/js/script.js" defer></script>
+[7m   [0m [93m            ~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m95[0m:[93m34[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m95[0m     {breadcrumbJsonLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />}
+[7m  [0m [93m                                 ~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m94[0m:[93m24[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m94[0m     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+[7m  [0m [93m                       ~~~~[0m
+
+[96msrc/pages/schemes/[slug].astro[0m:[93m296[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m296[0m     <script define:vars={{ shareTitle: seoTitle, shareDesc: seoDescription, shareUrl: pageUrl }}>
+[7m   [0m [93m            ~~~~~~~~~~~[0m
+
+[96msrc/pages/schemes/index.astro[0m:[93m78[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m78[0m                         item.style.display = 'none';
+[7m  [0m [91m                             ~~~~~[0m
+[96msrc/pages/schemes/index.astro[0m:[93m75[0m:[93m30[0m - [91merror[0m[90m ts(2339): [0mProperty 'style' does not exist on type 'Element'.
+
+[7m75[0m                         item.style.display = 'block';
+[7m  [0m [91m                             ~~~~~[0m
+[96msrc/pages/schemes/index.astro[0m:[93m74[0m:[93m73[0m - [91merror[0m[90m ts(18047): [0m'desc' is possibly 'null'.
+
+[7m74[0m                     if (title.includes(term) || badge.includes(term) || desc.includes(term)) {
+[7m  [0m [91m                                                                        ~~~~[0m
+[96msrc/pages/schemes/index.astro[0m:[93m74[0m:[93m49[0m - [91merror[0m[90m ts(18047): [0m'badge' is possibly 'null'.
+
+[7m74[0m                     if (title.includes(term) || badge.includes(term) || desc.includes(term)) {
+[7m  [0m [91m                                                ~~~~~[0m
+[96msrc/pages/schemes/index.astro[0m:[93m74[0m:[93m25[0m - [91merror[0m[90m ts(18047): [0m'title' is possibly 'null'.
+
+[7m74[0m                     if (title.includes(term) || badge.includes(term) || desc.includes(term)) {
+[7m  [0m [91m                        ~~~~~[0m
+[96msrc/pages/schemes/index.astro[0m:[93m66[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'value' does not exist on type 'EventTarget'.
+
+[7m66[0m                 const term = e.target.value.toLowerCase();
+[7m  [0m [91m                                      ~~~~~[0m
+[96msrc/pages/schemes/index.astro[0m:[93m66[0m:[93m30[0m - [91merror[0m[90m ts(18047): [0m'e.target' is possibly 'null'.
+
+[7m66[0m                 const term = e.target.value.toLowerCase();
+[7m  [0m [91m                             ~~~~~~~~[0m
+
+Result (44 files): 
+- 235 errors
+- 0 warnings
+- 21 hints
+

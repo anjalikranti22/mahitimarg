@@ -1,0 +1,856 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+import Layout from '../../layouts/Layout.astro';
+import SchemeCard from '../SchemeCard.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch all schemes from the Content Collection
+const allSchemes = await getCollection('schemes');
+const featuredSchemes = allSchemes.slice(0, 6);
+const totalSchemes = allSchemes.length;
+
+// Build search data for live search
+const schemeSearchData = allSchemes.map(s => ({
+  title: s.data.title || '',
+  category: s.data.badge || '',
+  description: (s.data.description || '').slice(0, 120),
+  slug: s.id,
+}));
+---
+
+<Layout 
+    title={t('site.title')}
+    canonical="https://mahitimarg.in/"
+>
+    <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
+    <main>
+        <!-- Section 1: Hero + Universal Search -->
+        <section class="hp-hero" aria-labelledby="hero-title">
+            <div class="hp-hero__bg" aria-hidden="true">
+                <div class="hp-hero__blob hp-hero__blob--1"></div>
+                <div class="hp-hero__blob hp-hero__blob--2"></div>
+                <div class="hp-hero__ring hp-hero__ring--1"></div>
+                <div class="hp-hero__ring hp-hero__ring--2"></div>
+            </div>
+
+            <div class="container hp-hero__inner animate-on-load">
+                <span class="hp-badge">
+                    <i class="fa-solid fa-info-circle" aria-hidden="true"></i>{t('badge.new_path')}</span>
+                <h1 id="hero-title" class="hp-hero__title">{t('hero.title.schemes')}<span class="hp-dot">·</span>{t('hero.title.jobs')}<span class="hp-dot">·</span>{t('hero.title.business')}<span class="hp-dot">·</span>{t('hero.title.tools')}</h1>
+                <p class="hp-hero__sub">{t('site.description')}</p>
+
+                <!-- Search -->
+                <div class="hp-search-wrap">
+                    <div class="hp-search-glow" aria-hidden="true"></div>
+                    <div class="hp-search-box">
+                        <i class="fa-solid fa-search hp-search-icon" aria-hidden="true"></i>
+                        <input type="text" id="scheme-search" class="hp-search-input"
+                            placeholder={t('search.placeholder')}
+                            aria-label="Search schemes"
+                            autocomplete="off">
+                        <button id="search-clear-btn" class="hp-search-clear" aria-label="Clear search" style="display:none;">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                        <button class="btn btn-primary hp-search-btn ripple-effect" aria-label="Submit search">{t('search.button')}</button>
+                    </div>
+                    <div id="search-dropdown" class="hp-search-dropdown" role="listbox" style="display:none;">
+                        <div id="search-dropdown-inner"></div>
+                        <div id="search-dropdown-empty" class="hp-search-empty" style="display:none;">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>{t('search.no_results')}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Tabs -->
+                <div class="search-tabs" id="search-tabs" style="margin-top: 1.25rem;">
+                    <button class="search-tab active" data-tab="all"><i class="fa-solid fa-magnifying-glass"></i>{t('search.tab.all')}</button>
+                    <button class="search-tab" data-tab="schemes"><i class="fa-solid fa-file-lines"></i>{t('hero.title.schemes')}</button>
+                    <button class="search-tab" data-tab="articles"><i class="fa-solid fa-newspaper"></i>{t('search.tab.articles')}</button>
+                    <button class="search-tab" data-tab="tools"><i class="fa-solid fa-wrench"></i>{t('hero.title.tools')}</button>
+                </div>
+
+                <!-- Quick Category Links -->
+                <div class="hp-quick-links">
+                    <a href="/categories/farmer" class="hp-qlink"><i class="fa-solid fa-tractor"></i>{t('qlink.farmer')}</a>
+                    <a href="/categories/women" class="hp-qlink"><i class="fa-solid fa-person-dress"></i>{t('qlink.women')}</a>
+                    <a href="/categories/business" class="hp-qlink"><i class="fa-solid fa-briefcase"></i>{t('hero.title.business')}</a>
+                    <a href="/categories/student" class="hp-qlink"><i class="fa-solid fa-graduation-cap"></i>{t('qlink.student')}</a>
+                    <a href="/categories/pension" class="hp-qlink"><i class="fa-solid fa-piggy-bank"></i>{t('qlink.pension')}</a>
+                    <a href="/categories/health" class="hp-qlink"><i class="fa-solid fa-heart-pulse"></i>{t('qlink.health')}</a>
+                    <a href="/schemes" class="hp-qlink hp-qlink--accent"><i class="fa-solid fa-arrow-right"></i>{t('qlink.view_all')}</a>
+                </div>
+
+                <!-- Trust Stats -->
+                <div class="hp-stats">
+                    <div class="hp-stat"><span class="hp-stat__num">२००+</span><span class="hp-stat__label">{t('stats.schemes')}</span></div>
+                    <div class="hp-stat"><span class="hp-stat__num">१४+</span><span class="hp-stat__label">{t('stats.categories')}</span></div>
+                    <div class="hp-stat"><span class="hp-stat__num">१०+</span><span class="hp-stat__label">{t('stats.tools')}</span></div>
+                    <div class="hp-stat"><span class="hp-stat__num">५०,०००+</span><span class="hp-stat__label">{t('stats.users')}</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Featured Schemes (Top 6 Only) -->
+        <section id="popular-schemes" class="container scheme-category-section" aria-labelledby="popular-schemes-title">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge"><i class="fa-solid fa-star" aria-hidden="true"></i>{t('section.featured.badge')}</div>
+                <h2 id="popular-schemes-title">{t('section.featured.title')}</h2>
+                <p>{t('section.featured.sub')}</p>
+            </div>
+            <div class="schemes-grid" id="popular-schemes-list">
+                {featuredSchemes.map((scheme) => (
+                    <SchemeCard scheme={scheme} />
+                ))}
+            </div>
+            <div class="view-all-cta animate-on-scroll">
+                <a href="/schemes" class="btn btn-accent ripple-effect btn-view-all">
+                    <i class="fa-solid fa-th-list"></i> सर्व {totalSchemes}+ योजना पहा
+                    <i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 2.5: Bento Gateway – Modern Redesign -->
+        <section id="gateway-sections" class="hp-bento-section" aria-labelledby="gateway-title">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-badge"><i class="fa-solid fa-compass" aria-hidden="true"></i>{t('section.gateway.badge')}</div>
+                    <h2 id="gateway-title">{t('section.gateway.title')}</h2>
+                    <p>{t('section.gateway.sub')}</p>
+                </div>
+
+                <div class="hp-bento animate-on-scroll">
+
+                    <!-- Large featured card: Schemes (2-col span) -->
+                    <a href="/schemes" class="hp-bento__card hp-bento__card--large hp-bento__card--green">
+                        <div class="hp-bento__icon-wrap" style="background:#16a34a;">
+                            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('stats.schemes')}</h3>
+                        <p class="hp-bento__desc">{t('bento.schemes.desc')}</p>
+                        <div class="hp-bento__tags">
+                            <span>शेतकरी योजना</span><span>महिला कल्याण</span><span>शिक्षण शिष्यवृत्ती</span><span>आरोग्य विमा</span>
+                        </div>
+                        <span class="hp-bento__cta">{t('bento.schemes.cta')}<i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- Jobs -->
+                    <a href="/jobs" class="hp-bento__card hp-bento__card--orange">
+                        <div class="hp-bento__icon-wrap" style="background:#ea580c;">
+                            <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('bento.jobs.title')}</h3>
+                        <p class="hp-bento__desc">{t('bento.jobs.desc')}</p>
+                    </a>
+
+                    <!-- Services -->
+                    <a href="/services" class="hp-bento__card hp-bento__card--indigo">
+                        <div class="hp-bento__icon-wrap" style="background:#4f46e5;">
+                            <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('bento.services.title')}</h3>
+                        <p class="hp-bento__desc">{t('bento.services.desc')}</p>
+                    </a>
+
+                    <!-- Training -->
+                    <a href="/training" class="hp-bento__card hp-bento__card--amber">
+                        <div class="hp-bento__icon-wrap" style="background:#d97706;">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('bento.training.title')}</h3>
+                        <p class="hp-bento__desc">{t('bento.training.desc')}</p>
+                    </a>
+
+                    <!-- Articles -->
+                    <a href="/articles" class="hp-bento__card hp-bento__card--purple">
+                        <div class="hp-bento__icon-wrap" style="background:#7c3aed;">
+                            <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('search.tab.articles')}</h3>
+                        <p class="hp-bento__desc">{t('bento.articles.desc')}</p>
+                    </a>
+
+                    <!-- Downloads -->
+                    <a href="/downloads" class="hp-bento__card hp-bento__card--sky">
+                        <div class="hp-bento__icon-wrap" style="background:#0284c7;">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('bento.downloads.title')}</h3>
+                        <p class="hp-bento__desc">{t('bento.downloads.desc')}</p>
+                    </a>
+
+                    <!-- Financial Literacy -->
+                    <a href="/learn" class="hp-bento__card hp-bento__card--pink">
+                        <div class="hp-bento__icon-wrap" style="background:#be185d;">
+                            <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('bento.learn.title')}</h3>
+                        <p class="hp-bento__desc">{t('bento.learn.desc')}</p>
+                    </a>
+
+                    <!-- Smart Tools -->
+                    <a href="/tools" class="hp-bento__card hp-bento__card--teal">
+                        <div class="hp-bento__icon-wrap" style="background:#0d9488;">
+                            <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="hp-bento__title">{t('stats.tools')}</h3>
+                        <p class="hp-bento__desc">{t('bento.tools.desc')}</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Category Grid – Modern Pill Cards -->
+        <section id="popular-categories" class="scheme-category-section bg-alternating" aria-labelledby="popular-categories-title">
+            <div class="container relative-container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="popular-categories-title">{t('section.categories.title')}</h2>
+                    <p>{t('section.categories.sub')}</p>
+                </div>
+                <div class="category-grid animate-on-scroll">
+                    <a href="/categories/farmer" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                            <i class="fa-solid fa-tractor"></i>
+                        </div>
+                        <span class="category-chip__label">{t('qlink.farmer')}</span>
+                        <span class="category-chip__sub">Farmer</span>
+                    </a>
+                    <a href="/categories/women" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
+                            <i class="fa-solid fa-person-dress"></i>
+                        </div>
+                        <span class="category-chip__label">{t('qlink.women')}</span>
+                        <span class="category-chip__sub">Women</span>
+                    </a>
+                    <a href="/categories/student" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #a855f7, #9333ea);">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="category-chip__label">{t('qlink.student')}</span>
+                        <span class="category-chip__sub">Student</span>
+                    </a>
+                    <a href="/categories/business" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <span class="category-chip__label">{t('hero.title.business')}</span>
+                        <span class="category-chip__sub">Business</span>
+                    </a>
+                    <a href="/categories/pension" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #64748b, #475569);">
+                            <i class="fa-solid fa-piggy-bank"></i>
+                        </div>
+                        <span class="category-chip__label">{t('qlink.pension')}</span>
+                        <span class="category-chip__sub">Pension</span>
+                    </a>
+                    <a href="/categories/health" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="category-chip__label">{t('qlink.health')}</span>
+                        <span class="category-chip__sub">Health</span>
+                    </a>
+                    <a href="/categories/insurance" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="category-chip__label">विमा</span>
+                        <span class="category-chip__sub">Insurance</span>
+                    </a>
+                    <a href="/categories/worker" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">
+                            <i class="fa-solid fa-hard-hat"></i>
+                        </div>
+                        <span class="category-chip__label">कामगार</span>
+                        <span class="category-chip__sub">Worker</span>
+                    </a>
+                    <a href="/categories/housing" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <span class="category-chip__label">गृहनिर्माण</span>
+                        <span class="category-chip__sub">Housing</span>
+                    </a>
+                    <a href="/categories/social-security" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="category-chip__label">सामाजिक सुरक्षा</span>
+                        <span class="category-chip__sub">Social Security</span>
+                    </a>
+                    <a href="/categories/loans" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                        <span class="category-chip__label">कर्ज/वित्त</span>
+                        <span class="category-chip__sub">Loans</span>
+                    </a>
+                    <a href="/categories/food" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #eab308, #ca8a04);">
+                            <i class="fa-solid fa-wheat-awn"></i>
+                        </div>
+                        <span class="category-chip__label">अन्न सुरक्षा</span>
+                        <span class="category-chip__sub">Food</span>
+                    </a>
+                    <a href="/categories/digital" class="category-chip">
+                        <div class="category-chip__icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span class="category-chip__label">डिजिटल</span>
+                        <span class="category-chip__sub">Digital</span>
+                    </a>
+                    <a href="/categories" class="category-chip category-chip--view-all">
+                        <div class="category-chip__icon" style="background: transparent; border: 2px dashed var(--primary-light);">
+                            <i class="fa-solid fa-arrow-right" style="color: var(--primary);"></i>
+                        </div>
+                        <span class="category-chip__label" style="color: var(--primary);">{t('qlink.view_all')}</span>
+                        <span class="category-chip__sub">View All</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Smart Tools Strip -->
+        <section id="smart-tools" class="container scheme-category-section" aria-labelledby="tools-title">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge" style="background: rgba(249, 115, 22, 0.1); color: #f97316; border-color: rgba(249, 115, 22, 0.2);">
+                    <i class="fa-solid fa-wrench" aria-hidden="true"></i>{t('section.tools.badge')}</div>
+                <h2 id="tools-title">{t('section.tools.title')}</h2>
+                <p>{t('section.tools.sub')}</p>
+            </div>
+            <div class="tools-strip animate-on-scroll">
+                <a href="/tools/emi-calculator" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>EMI कॅल्क्युलेटर</h3>
+                    <p>गृहकर्ज, वाहन कर्ज EMI तपासा</p>
+                    <span class="tool-card__cta">वापरा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="/tools/eligibility-checker" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <h3>पात्रता चेकर</h3>
+                    <p>तुम्ही कोणत्या योजनेसाठी पात्र आहात?</p>
+                    <span class="tool-card__cta">तपासा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="/tools/document-checklist" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3>कागदपत्र चेकलिस्ट</h3>
+                    <p>योजनेसाठी लागणारी कागदपत्रे</p>
+                    <span class="tool-card__cta">पहा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="/tools/fd-rd-calculator" class="tool-card">
+                    <div class="tool-card__icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>FD/RD कॅल्क्युलेटर</h3>
+                    <p>बचतीवर किती व्याज मिळेल?</p>
+                    <span class="tool-card__cta">गणना करा <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="view-all-cta animate-on-scroll" style="margin-top: 1.5rem;">
+                <a href="/tools" class="btn btn-secondary ripple-effect" style="gap: 0.5rem;">
+                    <i class="fa-solid fa-wrench"></i>{t('section.tools.view_all')}<i class="fa-solid fa-arrow-right arrow-icon"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 5: Business & Employment Hub -->
+        <section id="biz-jobs-hub" class="scheme-category-section bg-alternating" aria-labelledby="biz-hub-title">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="biz-hub-title">{t('section.hub.title')}</h2>
+                    <p>{t('section.hub.sub')}</p>
+                </div>
+                <div class="hub-split animate-on-scroll">
+                    <div class="hub-card hub-card--biz">
+                        <div class="hub-card__icon">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3>नवीन व्यवसाय सुरू करत आहात?</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> व्यवसाय कसा सुरू करावा</li>
+                            <li><i class="fa-solid fa-check-circle"></i> लागणारे परवाने व नोंदणी</li>
+                            <li><i class="fa-solid fa-check-circle"></i> सरकारी कर्ज योजना (MUDRA, PMEGP)</li>
+                            <li><i class="fa-solid fa-check-circle"></i> PM विश्वकर्मा योजना</li>
+                        </ul>
+                        <a href="/business" class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                            <i class="fa-solid fa-book-open"></i> व्यवसाय गाईड वाचा
+                        </a>
+                    </div>
+                    <div class="hub-card hub-card--jobs">
+                        <div class="hub-card__icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3>नोकरी / रोजगार मार्गदर्शन</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-check-circle"></i> सरकारी भरती अपडेट्स</li>
+                            <li><i class="fa-solid fa-check-circle"></i> कौशल्य प्रशिक्षण योजना</li>
+                            <li><i class="fa-solid fa-check-circle"></i> रेझ्युमे कसा बनवावा</li>
+                            <li><i class="fa-solid fa-check-circle"></i> फ्रीलान्सिंग मार्गदर्शन</li>
+                        </ul>
+                        <a href="/jobs" class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                            <i class="fa-solid fa-briefcase"></i> रोजगार माहिती पहा
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Latest Updates (News) -->
+        <section id="latest-updates" class="container scheme-category-section" aria-labelledby="latest-updates-title">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge"
+                    style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.2);"><i
+                        class="fa-solid fa-bullhorn" aria-hidden="true"></i>{t('section.news.badge')}</div>
+                <h2 id="latest-updates-title">{t('section.news.title')}</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;"
+                class="animate-on-scroll">
+                <article class="glass-panel"
+                    style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-left: 4px solid #ef4444;">
+                    <div style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-clock"></i> 2
+                        Hours Ago</div>
+                    <h3 style="margin: 0; font-size: 1.1rem; line-height: 1.4;">लाडकी बहीण योजनेचा दुसरा हप्ता जमा
+                        होण्यास सुरुवात</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted);">मुख्यमंत्री माझी लाडकी बहीण
+                        योजनेअंतर्गत पात्र महिलांच्या खात्यात दुसरा हप्ता जमा केला जात आहे...</p>
+                    <a href="#"
+                        style="color: var(--primary-color); font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-top: auto;">अधिक
+                        वाचा <i class="fa-solid fa-angle-right"></i></a>
+                </article>
+                <article class="glass-panel"
+                    style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-left: 4px solid #f59e0b;">
+                    <div style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-clock"></i>
+                        Yesterday</div>
+                    <h3 style="margin: 0; font-size: 1.1rem; line-height: 1.4;">कृषी पंप योजनेसाठी नवीन अर्ज २४
+                        तारखेपासून सुरू</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted);">शेतकऱ्यांना दिवसा वीज पुरवठा
+                        करण्यासाठी सौर पंप योजनेचे नवीन पोर्टल सुरू करण्यात आले आहे...</p>
+                    <a href="#"
+                        style="color: var(--primary-color); font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-top: auto;">अधिक
+                        वाचा <i class="fa-solid fa-angle-right"></i></a>
+                </article>
+                <article class="glass-panel"
+                    style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-left: 4px solid #3b82f6;">
+                    <div style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-clock"></i> 3
+                        Days Ago</div>
+                    <h3 style="margin: 0; font-size: 1.1rem; line-height: 1.4;">पीएम-किसान योजनेचा १८ वा हप्ता वितरित
+                    </h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted);">पंतप्रधान किसान सन्मान निधी
+                        योजनेचा नवीनतम हप्ता थेट लाभार्थ्यांच्या बँक खात्यात ट्रान्सफर...</p>
+                    <a href="#"
+                        style="color: var(--primary-color); font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-top: auto;">अधिक
+                        वाचा <i class="fa-solid fa-angle-right"></i></a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 7: Advanced Scheme Finder -->
+        <section id="scheme-finder-tool" class="scheme-category-section bg-alternating border-t border-b"
+            aria-labelledby="finder-title"
+            style="border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+            <div class="container relative-container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="finder-title"><i class="fa-solid fa-sliders" aria-hidden="true"
+                            style="color: var(--primary-color);"></i>{t('section.finder.badge')}</h2>
+                    <p>{t('section.finder.sub')}</p>
+                </div>
+
+                <div class="glass-panel animate-on-scroll" style="padding: 2rem;">
+                    <form id="advanced-finder-form"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+                        <div>
+                            <label for="finder-category"
+                                style="display: block; font-weight: 600; margin-bottom: 0.5rem;">{t('finder.category')}</label>
+                            <select id="finder-category" class="search-input" style="width: 100%; border-radius: 8px;">
+                                <option value="all">{t('finder.all')}</option>
+                                <option value="farmer">शेतकरी (Farmer)</option>
+                                <option value="women">महिला (Women)</option>
+                                <option value="student">विद्यार्थी (Student)</option>
+                                <option value="business">व्यवसाय (Business)</option>
+                                <option value="pension">पेन्शन (Pension)</option>
+                                <option value="health">आरोग्य (Health)</option>
+                                <option value="insurance">विमा (Insurance)</option>
+                                <option value="worker">कामगार (Worker)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="finder-govt" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">{t('finder.govt')}</label>
+                            <select id="finder-govt" class="search-input" style="width: 100%; border-radius: 8px;">
+                                <option value="all">{t('search.tab.all')}</option>
+                                <option value="central">केंद्र सरकार</option>
+                                <option value="state">राज्य सरकार (महाराष्ट्र)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="finder-type" style="display: block; font-weight: 600; margin-bottom: 0.5rem;">{t('finder.type')}</label>
+                            <select id="finder-type" class="search-input" style="width: 100%; border-radius: 8px;">
+                                <option value="all">{t('search.tab.all')}</option>
+                                <option value="loan">कर्ज (Loan)</option>
+                                <option value="subsidy">अनुदान (Subsidy)</option>
+                                <option value="pension">पेन्शन (Pension)</option>
+                                <option value="insurance">विमा (Insurance)</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary ripple-effect" id="run-finder-btn"
+                            style="padding: 0.75rem;"><i class="fa-solid fa-search"></i>{t('search.button')}</button>
+                    </form>
+                    <div id="finder-results"
+                        style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(0,0,0,0.1); display: none;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Trust Stats Counter -->
+        <section id="trust-stats" class="container scheme-category-section" aria-labelledby="stats-title">
+            <div class="stats-grid animate-on-scroll">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="200">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">{t('stats.schemes')}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="14">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">{t('section.tools.badge')}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50000">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Users Helped</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Most Searched (SEO) -->
+        <section id="most-searched" class="scheme-category-section bg-alternating" aria-labelledby="most-searched-title">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="most-searched-title">सर्वाधिक शोधल्या जाणाऱ्या योजना (Most Searched)</h2>
+                    <p>Detailed information on flagship programs.</p>
+                </div>
+                <div class="glass-panel animate-on-scroll"
+                    style="padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem;">
+                    <div>
+                        <h3 style="font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem;"><i
+                                class="fa-solid fa-arrow-trend-up"></i> लाडकी बहीण योजना २०२६ अर्ज प्रक्रिया</h3>
+                        <p style="color: var(--text-main); line-height: 1.7;">महाराष्ट्र सरकारची अत्यंत लोकप्रिय अशी
+                            <strong>मुख्यमंत्री माझी लाडकी बहीण योजना</strong> महिलांसाठी वरदान ठरत आहे. या योजनेत पात्र
+                            महिलांना दरमहा १५०० रुपये मिळतात. <a href="/schemes/mukhyamantri-majhi-ladki-bahin-yojana"
+                                style="font-weight: 600; color: var(--accent);">लाडकी बहीण योजनेचा फॉर्म कसा
+                                भरायचा</a>, आवश्यक कागदपत्रे आणि नवीन यादी याबद्दल सविस्तर माहिती आमच्या पोर्टलवर उपलब्ध
+                            आहे.
+                        </p>
+                    </div>
+                    <div style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem;"><i
+                                class="fa-solid fa-arrow-trend-up"></i> पीएम किसान आणि कर्जमाफी</h3>
+                        <p style="color: var(--text-main); line-height: 1.7;">शेतकऱ्यांसाठी <strong>पीएम-किसान सन्मान निधी
+                                (PM-Kisan)</strong> आणि नवीन <strong>पुण्यश्लोक अहिल्यादेवी होळकर शेतकरी कर्जमाफी योजना
+                                २०२६</strong> या अत्यंत महत्वाच्या योजना आहेत. <a href="/schemes/punyashlok-ahilyadevi-holkar-shetkari-karj-mafi-yojana-2026"
+                                style="font-weight: 600; color: var(--accent);">कर्जमाफी कॅल्क्युलेटर</a> वापरून तुमची
+                            पात्रता तपासा आणि अनुदान कधी मिळणार याची ताजी माहिती मिळवा.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: FAQ Accordion -->
+        <section id="faq-section" class="scheme-category-section" aria-labelledby="faq-title">
+            <div class="container relative-container">
+                <div class="section-header animate-on-scroll">
+                    <h2 id="faq-title">नेहमी विचारले जाणारे प्रश्न (FAQ)</h2>
+                    <p>Frequently asked questions about government schemes in Maharashtra.</p>
+                </div>
+                <div class="faq-container animate-on-scroll"
+                    style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            १. लाडकी बहीण योजनेसाठी अर्ज कुठे करायचा?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">लाडकी बहीण योजनेसाठी
+                            तुम्ही नारी शक्ती दूत (Nari Shakti Doot) ॲपवरून किंवा जवळच्या अंगणवाडी सेविका, सेतू सुविधा
+                            केंद्र (सीएससी) मार्फत ऑनलाइन अर्ज करू शकता.</p>
+                    </details>
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            २. शेतकरी कर्जमाफी २०२६ मध्ये किती कर्ज माफ होणार?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">नवीन कर्जमाफी
+                            योजनेअंतर्गत शेतकऱ्यांचे २ लाख रुपयांपर्यंतचे थकीत पीककर्ज माफ केले जाणार आहे. नियमित कर्ज
+                            फेडणाऱ्यांना ५० हजार रुपये प्रोत्साहनपर अनुदान दिले जाईल.</p>
+                    </details>
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            ३. पीएम-किसानचे पैसे जमा का होत नाहीत?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">बहुतेक वेळा ई-केवायसी
+                            (e-KYC) पूर्ण नसणे किंवा बँक खात्याला आधार लिंक नसणे यामुळे पैसे अडकतात. कृपया तुमचे आधार
+                            लिंकिंग आणि बँक खाते स्टेटस तपासून घ्या.</p>
+                    </details>
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            ४. व्यवसायासाठी सरकारी कर्ज कसे मिळवावे?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">प्रधानमंत्री मुद्रा योजना (PMMY) अंतर्गत ₹10 लाखांपर्यंत, PMEGP अंतर्गत ₹50 लाखांपर्यंत आणि CMEGP अंतर्गत ₹50 लाखांपर्यंत कर्ज बिनतारण मिळू शकते. जवळच्या बँकेत किंवा udyamregistration.gov.in वर अर्ज करा.</p>
+                    </details>
+                    <details class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 700; font-size: 1.1rem; outline: none; display: flex; justify-content: space-between; align-items: center;">
+                            ५. MahitiMarg वर कोणती माहिती मिळते?
+                            <span style="color: var(--primary);"><i class="fa-solid fa-chevron-down"></i></span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--text-main); line-height: 1.6;">MahitiMarg वर तुम्हाला 200+ सरकारी योजना, रोजगार माहिती, व्यवसाय मार्गदर्शन, EMI/FD कॅल्क्युलेटर, कागदपत्र चेकलिस्ट, आणि इतर अनेक उपयुक्त साधने मिळतात — सर्व साध्या मराठीत.</p>
+                    </details>
+                </div>
+            </div>
+
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "लाडकी बहीण योजनेसाठी अर्ज कुठे करायचा?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "लाडकी बहीण योजनेसाठी तुम्ही नारी शक्ती दूत ॲपवरून किंवा जवळच्या अंगणवाडी सेविका, सेतू सुविधा केंद्र (सीएससी) मार्फत ऑनलाइन अर्ज करू शकता."
+                }
+              },{
+                "@type": "Question",
+                "name": "शेतकरी कर्जमाफी २०२६ मध्ये किती कर्ज माफ होणार?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "नवीन कर्जमाफी योजनेअंतर्गत शेतकऱ्यांचे २ लाख रुपयांपर्यंतचे थकीत पीककर्ज माफ केले जाणार आहे."
+                }
+              },{
+                "@type": "Question",
+                "name": "व्यवसायासाठी सरकारी कर्ज कसे मिळवावे?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "प्रधानमंत्री मुद्रा योजना (PMMY) अंतर्गत ₹10 लाखांपर्यंत, PMEGP अंतर्गत ₹50 लाखांपर्यंत कर्ज बिनतारण मिळू शकते."
+                }
+              },{
+                "@type": "Question",
+                "name": "MahitiMarg वर कोणती माहिती मिळते?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MahitiMarg वर 200+ सरकारी योजना, रोजगार माहिती, व्यवसाय मार्गदर्शन, EMI/FD कॅल्क्युलेटर आणि इतर उपयुक्त साधने उपलब्ध आहेत."
+                }
+              }]
+            }
+            </script>
+        </section>
+
+        <!-- Section 11: Internal Links -->
+        <section id="internal-links" class="container" style="padding: 3rem 0; text-align: center;">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+                <a href="/schemes/mukhyamantri-majhi-ladki-bahin-yojana" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Ladki Bahin Yojana</a>
+                <a href="/schemes/punyashlok-ahilyadevi-holkar-shetkari-karj-mafi-yojana-2026" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Karj Mafi 2026</a>
+                <a href="/schemes/pradhan-mantri-mudra-yojana-pmmy" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">PM Mudra Yojana</a>
+                <a href="/schemes/kisan-credit-card-kcc-scheme" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Kisan Credit Card</a>
+                <a href="/tools/emi-calculator" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">EMI Calculator</a>
+                <a href="/categories/farmer" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Sarkari Yojana Marathi</a>
+                <a href="/schemes/mahadbt-scholarship-2026" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">MahaDBT Scholarship</a>
+                <a href="/categories/business" style="padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); color: var(--text-main); text-decoration: none; border-radius: 4px; font-size: 0.85rem;">Business Guide Marathi</a>
+            </div>
+        </section>
+
+        <!-- Global No Results (For JS Search) -->
+        <div id="no-results-msg" class="container no-results-msg hidden" style="text-align: center; padding: 2rem;">
+            <i class="fa-solid fa-search-minus" aria-hidden="true"
+                style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+            <p style="font-size: 1.2rem; font-weight: 500;">कोणतीही योजना सापडली नाही.</p>
+            <button class="btn btn-secondary mt-2" id="clear-search-btn">Clear Search</button>
+        </div>
+    </main>
+</Layout>
+
+
+<script>
+document.addEventListener('astro:page-load', () => {
+// ============================================================
+// LIVE SEARCH ENGINE – MahitiMarg Homepage
+// ============================================================
+
+const schemeDataEl = document.getElementById('scheme-data');
+const SCHEMES = schemeDataEl ? JSON.parse(schemeDataEl.textContent) : [];
+
+// Bento card keyword mapping (order matches DOM order of .hp-bento__card)
+const BENTO_DATA = [
+  { terms: [t('hero.title.schemes'),'scheme','yojana','sarkari','सरकार','farmer',t('qlink.farmer'),'women',t('qlink.women'),'student',t('qlink.student'),'सरकारी'], href: '/schemes' },
+  { terms: ['job','नोकरी',t('hero.title.jobs'),'mpsc','career','भरती','rojgar'], href: '/jobs' },
+  { terms: ['service','सेवा','aadhar','आधार','ration','रेशन','दाखले'], href: '/services' },
+  { terms: ['training',t('bento.training.title'),'pmkvy','skill','कौशल्य'], href: '/training' },
+  { terms: ['article',t('search.tab.articles'),'news','बातमी'], href: '/articles' },
+  { terms: ['download','डाउनलोड','pdf','form','अर्ज'], href: '/downloads' },
+  { terms: ['learn','अर्थ','finance','emi','बचत','गुंतवणूक','कर्ज','loan','savings'], href: '/learn' },
+  { terms: ['tool','टूल','calculator','कॅल्क्युलेटर','emi','fd','rd','age','वय'], href: '/tools' },
+];
+
+const bentoCards = [...document.querySelectorAll('.hp-bento__card')];
+const input        = document.getElementById('scheme-search');
+const dropdown     = document.getElementById('search-dropdown');
+const dropInner    = document.getElementById('search-dropdown-inner');
+const dropEmpty    = document.getElementById('search-dropdown-empty');
+const clearBtn     = document.getElementById('search-clear-btn');
+
+function norm(s) { return (s||'').toLowerCase(); }
+
+function highlight(text, q) {
+  if (!q) return text;
+  const safe = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp('('+safe+')', 'gi'), '<mark class="hp-mark">$1</mark>');
+}
+
+// Filter bento tiles
+function filterBento(q) {
+  bentoCards.forEach((card, i) => {
+    const data = BENTO_DATA[i];
+    if (!data) { card.style.opacity = '1'; return; }
+    const matches = !q || data.terms.some(t => norm(t).includes(q) || q.includes(norm(t)));
+    card.style.transition = 'all 0.3s ease';
+    card.style.opacity    = matches ? '1' : '0.22';
+    card.style.transform  = matches ? (q ? 'scale(1.02) translateY(-3px)' : '') : 'scale(0.96)';
+    card.style.pointerEvents = matches ? '' : 'none';
+  });
+}
+
+// Filter category chips
+function filterChips(q) {
+  document.querySelectorAll('.category-chip').forEach(chip => {
+    const matches = !q || norm(chip.textContent).includes(q);
+    chip.style.transition = 'all 0.25s ease';
+    chip.style.opacity    = matches ? '1' : '0.2';
+    chip.style.transform  = matches ? '' : 'scale(0.93)';
+  });
+}
+
+// Build dropdown HTML
+function renderDropdown(q) {
+  if (!q || q.length < 2) { dropdown.style.display = 'none'; return; }
+
+  const matched = SCHEMES.filter(s =>
+    norm(s.title+' '+s.category+' '+s.description).includes(q)
+  ).slice(0, 7);
+
+  const bentoMatches = BENTO_DATA.filter(b =>
+    b.terms.some(t => norm(t).includes(q) || q.includes(norm(t)))
+  );
+
+  if (matched.length === 0 && bentoMatches.length === 0) {
+    dropInner.innerHTML = '';
+    dropEmpty.style.display = 'flex';
+    dropdown.style.display = 'block';
+    return;
+  }
+
+  dropEmpty.style.display = 'none';
+  let html = '';
+
+  if (bentoMatches.length) {
+    html += '<div class="hp-sdrop-group">विभाग (Sections)</div>';
+    bentoMatches.forEach(b => {
+      const card = bentoCards[BENTO_DATA.indexOf(b)];
+      const title = card ? (card.querySelector('.hp-bento__title')?.textContent || b.href) : b.href;
+      html += `<a href="${b.href}" class="hp-sdrop-item hp-sdrop-item--section">
+        <i class="fa-solid fa-compass"></i>
+        <span>${highlight(title, q)}</span>
+        <span class="hp-sdrop-meta">${b.href}</span>
+      </a>`;
+    });
+  }
+
+  if (matched.length) {
+    html += '<div class="hp-sdrop-group">योजना (Schemes)</div>';
+    matched.forEach(s => {
+      const cat = s.category ? `<span class="hp-sdrop-cat">${s.category}</span>` : '';
+      html += `<a href="/schemes/${s.slug}" class="hp-sdrop-item">
+        <i class="fa-solid fa-file-lines"></i>
+        <span>${highlight(s.title, q)}</span>
+        ${cat}
+      </a>`;
+    });
+  }
+
+  html += `<div class="hp-sdrop-footer">
+    <a href="/schemes?q=${encodeURIComponent(q)}">सर्व परिणाम पहा <i class="fa-solid fa-arrow-right"></i></a>
+  </div>`;
+
+  dropInner.innerHTML = html;
+  dropdown.style.display = 'block';
+}
+
+function doSearch() {
+  const q = norm(input.value.trim());
+  clearBtn.style.display = q ? 'flex' : 'none';
+  renderDropdown(q);
+  filterBento(q);
+  filterChips(q);
+}
+
+function clearSearch() {
+  input.value = '';
+  clearBtn.style.display = 'none';
+  dropdown.style.display = 'none';
+  filterBento('');
+  filterChips('');
+}
+
+if (input) {
+  input.addEventListener('input', doSearch);
+  input.addEventListener('keydown', e => { if (e.key === 'Escape') clearSearch(); });
+  input.addEventListener('focus', () => { if (input.value.trim().length >= 2) dropdown.style.display = 'block'; });
+}
+if (clearBtn) clearBtn.addEventListener('click', clearSearch);
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.hp-search-wrap')) dropdown.style.display = 'none';
+});
+
+// ---- Counter animation ----
+function animateCounters() {
+  document.querySelectorAll('.stat-number').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const startTime = performance.now();
+    (function update(now) {
+      const p = Math.min((now - startTime) / 2000, 1);
+      const v = Math.floor((1 - Math.pow(1-p,3)) * target);
+      counter.textContent = target >= 1000 ? v.toLocaleString('en-IN') : v;
+      if (p < 1) requestAnimationFrame(update);
+    })(startTime);
+  });
+}
+
+const statsSec = document.getElementById('trust-stats');
+if (statsSec) {
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); } });
+  }, { threshold: 0.3 }).observe(statsSec);
+}
+
+// Search tab switching
+document.querySelectorAll('.search-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+});
+</script>
+

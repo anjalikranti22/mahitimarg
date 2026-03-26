@@ -1,26 +1,44 @@
 ---
 // Footer.astro
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isEn = lang === 'en';
+
+const links = {
+    home: isEn ? '/en' : '/',
+    schemes: isEn ? '/en/schemes' : '/schemes',
+    articles: isEn ? '/en/articles' : '/articles',
+    tools: isEn ? '/en/tools' : '/tools',
+    jobs: isEn ? '/en/jobs' : '/jobs',
+    about: isEn ? '/en/about' : '/about',
+    privacy: isEn ? '/en/privacy' : '/privacy',
+    contact: isEn ? '/en/contact' : '/contact',
+};
+
+const searchUrl = isEn ? '/en#scheme-search' : '/#scheme-search';
 ---
 <nav class="mobile-bottom-nav hidden-desktop" aria-label="Mobile Navigation">
-    <a href="/" class="nav-item active" aria-label="Home">
+    <a href={links.home} class="nav-item active" aria-label="Home">
         <i class="fa-solid fa-house" aria-hidden="true"></i>
-        <span>होम</span>
+        <span>{t('nav.home')}</span>
     </a>
-    <a href="/schemes" class="nav-item" aria-label="Schemes">
+    <a href={links.schemes} class="nav-item" aria-label="Schemes">
         <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
-        <span>योजना</span>
+        <span>{t('nav.schemes')}</span>
     </a>
-    <a href="/tools" class="nav-item" aria-label="Tools">
+    <a href={links.tools} class="nav-item" aria-label="Tools">
         <i class="fa-solid fa-wrench" aria-hidden="true"></i>
-        <span>टूल्स</span>
+        <span>{t('nav.tools')}</span>
     </a>
-    <a href="/jobs" class="nav-item" aria-label="Jobs">
+    <a href={links.jobs} class="nav-item" aria-label="Jobs">
         <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
-        <span>रोजगार</span>
+        <span>{t('nav.jobs')}</span>
     </a>
-    <a href="/#scheme-search" class="nav-item" aria-label="Search">
+    <a href={searchUrl} class="nav-item" aria-label="Search">
         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-        <span>शोधा</span>
+        <span>{t('nav.search')}</span>
     </a>
 </nav>
 
@@ -31,42 +49,42 @@
                 <i class="fa-solid fa-seedling"></i>
             </div>
             <h2>MahitiMarg Portal</h2>
-            <p>Your ultimate resource for Maharashtra state and central government schemes, employment guides, business tools, and more — provided in simple Marathi. Empowering citizens through information.</p>
+            <p>{t('footer.brandDesc')}</p>
         </div>
 
         <div class="footer-links-col">
-            <h3>Quick Links</h3>
+            <h3>{t('footer.quickLinks')}</h3>
             <nav aria-label="Footer Navigation">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/schemes">सर्व योजना (All Schemes)</a></li>
-                    <li><a href="/articles">लेख (Articles)</a></li>
-                    <li><a href="/tools">टूल्स (Tools)</a></li>
-                    <li><a href="/jobs">रोजगार (Jobs)</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href={links.home}>{t('nav.home')}</a></li>
+                    <li><a href={links.schemes}>{t('footer.allSchemes')}</a></li>
+                    <li><a href={links.articles}>{t('nav.articles')}</a></li>
+                    <li><a href={links.tools}>{t('nav.tools')}</a></li>
+                    <li><a href={links.jobs}>{t('nav.jobs')}</a></li>
+                    <li><a href={links.about}>{t('nav.about')}</a></li>
+                    <li><a href={links.privacy}>{t('nav.privacy')}</a></li>
+                    <li><a href={links.contact}>{t('nav.contact')}</a></li>
                 </ul>
             </nav>
         </div>
 
         <div class="footer-contact-col">
-            <h3>Contact & Support</h3>
+            <h3>{t('footer.contactSupport')}</h3>
             <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@logicpathsystems.com" style="color:inherit;">contact@logicpathsystems.com</a></p>
-            <p style="margin-top:0.5rem; font-size:0.85rem; opacity:0.8;"><i class="fa-solid fa-circle-info"></i>ही वेबसाईट एक खाजगी माहितीपट आहे. शासनाशी संलग्न नाही.</p>
+            <p style="margin-top:0.5rem; font-size:0.85rem; opacity:0.8;"><i class="fa-solid fa-circle-info"></i> {t('footer.privateNote')}</p>
         </div>
     </div>
 
     <div class="footer-disclaimer">
         <div class="container">
             <i class="fa-solid fa-triangle-exclamation" aria-hidden="true" style="color: #fbbf24; margin-right: 0.5rem;"></i>
-            <strong>Disclaimer / अस्वीकरण:</strong> ही वेबसाईट महाराष्ट्र शासनाची अधिकृत वेबसाईट नाही. हा एक खाजगी माहितीपट (Informational Tool) आहे. अधिकृत माहितीसाठी शासनाच्या वेबसाईट्सला भेट द्या.
+            <strong>{t('footer.disclaimerLabel')}</strong> {t('footer.disclaimerText')}
         </div>
     </div>
 
     <div class="footer-copyright">
         <div class="container">
-            &copy; 2026 MahitiMarg Information Portal. All rights reserved.
+            &copy; 2026 {t('footer.rights')}
         </div>
     </div>
 </footer>

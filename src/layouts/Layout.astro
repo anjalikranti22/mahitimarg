@@ -43,14 +43,26 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0
       }))
     }
   : null;
+// Handle i18n URL generation
+const currentPath = Astro.url.pathname;
+const isEn = Astro.currentLocale === 'en';
+const localeFreePath = isEn ? currentPath.replace(/^\/en/, '') : currentPath;
+const mrPath = localeFreePath || '/';
+const enPath = `/en${localeFreePath === '/' ? '' : localeFreePath}`;
+
+const mrUrl = new URL(mrPath, Astro.site || 'https://mahitimarg.in');
+const enUrl = new URL(enPath, Astro.site || 'https://mahitimarg.in');
 ---
 <!DOCTYPE html>
-<html lang="mr">
+<html lang={Astro.currentLocale || "mr"}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="TrtPBuQPM6VTCty_ryr4V6kj4GDO9Ki-35vr_alygxg" />
     <ClientRouter />
+    <link rel="alternate" hreflang="mr" href={mrUrl.href} />
+    <link rel="alternate" hreflang="en" href={enUrl.href} />
+    <link rel="alternate" hreflang="x-default" href={mrUrl.href} />
     <SEO
       title={title}
       description={description}
@@ -62,7 +74,7 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0
           image: image,
         },
         optional: {
-          locale: "mr_IN",
+          locale: Astro.currentLocale === 'en' ? "en_IN" : "mr_IN",
           siteName: "MahitiMarg",
         }
       }}

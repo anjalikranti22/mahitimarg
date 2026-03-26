@@ -1,0 +1,269 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title="संपर्क करा | MahitiMarg"
+  description="MahitiMarg शी संपर्क करा. तुमचे प्रश्न, सूचना किंवा अभिप्राय आम्हाला पाठवा. आम्ही लवकरात लवकर उत्तर देण्याचा प्रयत्न करू."
+>
+  <main class="static-page-wrapper">
+    <section class="static-page-hero contact-hero">
+      <div class="container">
+        <div class="static-hero-icon"><i class="fa-solid fa-headset"></i></div>
+        <h1>संपर्क करा <span class="hero-sub">{t('contact.title_sub')}</span></h1>
+        <p class="lead">तुमचे प्रश्न, सूचना किंवा कोणत्याही योजनेबद्दल माहिती हवी असल्यास आमच्याशी संपर्क करा. आम्ही लवकरात लवकर उत्तर देण्याचा प्रयत्न करू.</p>
+      </div>
+    </section>
+
+    <section class="static-page-content">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Contact Info Cards -->
+          <div class="contact-info-col">
+            <div class="contact-card">
+              <div class="contact-card-icon email-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <h2>{t('contact.email.title')}</h2>
+              <p>सामान्य चौकशी, बग रिपोर्ट, किंवा कोणताही अभिप्राय:</p>
+              <a href="mailto:contact@logicpathsystems.com" class="contact-link">
+                contact@logicpathsystems.com
+              </a>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card-icon wa-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <h2>WhatsApp</h2>
+              <p>योजनांची माहिती मित्रांना पाठवण्यासाठी प्रत्येक योजनेच्या पेजवर WhatsApp शेअर बटण उपलब्ध आहे.</p>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card-icon web-icon">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <h2>वेबसाईट</h2>
+              <p>आमच्या होमपेज वर सर्व योजनांची यादी पहा:</p>
+              <a href="https://mahitimarg.in" class="contact-link" target="_blank" rel="noopener noreferrer">
+                www.mahitimarg.in
+              </a>
+            </div>
+
+            <div class="contact-card disclaimer-card">
+              <div class="contact-card-icon warn-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h2>महत्त्वाची नोंद</h2>
+              <p>MahitiMarg ही <strong>खाजगी माहितीपट वेबसाईट</strong> आहे. आम्ही सरकारी योजनांचे लाभ दिल्यासारखे कोणते <strong>पैसे मागत नाही</strong> आणि कोणत्याही अर्जाची हमी देत नाही.</p>
+              <p>अधिकृत अर्ज करण्यासाठी संबंधित शासकीय वेबसाईटला भेट द्या.</p>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-col">
+            <div class="contact-form-card">
+              <h2><i class="fa-solid fa-pen-nib"></i> संदेश पाठवा (Send a Message)</h2>
+              <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@logicpathsystems.com" method="POST">
+                <!-- Honeypot (anti-spam) -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- Disable CAPTCHA -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="MahitiMarg - New Contact Message">
+                <input type="hidden" name="_next" value="https://mahitimarg.in/contact?sent=true">
+
+                <div class="form-field">
+                  <label for="contact-name">तुमचे नाव (Your Name) <span class="required">*</span></label>
+                  <input type="text" id="contact-name" name="name" placeholder={t('contact.form.name.ph')} required>
+                </div>
+
+                <div class="form-field">
+                  <label for="contact-email">{t('contact.email.title')}<span class="required">*</span></label>
+                  <input type="email" id="contact-email" name="email" placeholder="example@gmail.com" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="contact-subject">विषय (Subject)</label>
+                  <select id="contact-subject" name="subject">
+                    <option value="">-- विषय निवडा --</option>
+                    <option value="योजनेबद्दल माहिती">योजनेबद्दल माहिती</option>
+                    <option value="चुकीची माहिती कळवणे">चुकीची माहिती कळवणे</option>
+                    <option value="नवीन योजना सुचवणे">नवीन योजना सुचवणे</option>
+                    <option value="तांत्रिक समस्या">तांत्रिक समस्या (Bug Report)</option>
+                    <option value="इतर">इतर (Other)</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="contact-message">संदेश (Message) <span class="required">*</span></label>
+                  <textarea id="contact-message" name="message" rows="5" placeholder="तुमचा संदेश इथे लिहा..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">
+                  <i class="fa-solid fa-paper-plane"></i>{t('contact.form.btn')}</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .static-page-wrapper { min-height: 60vh; }
+
+  .static-page-hero {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+  }
+
+  .static-hero-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.9; }
+
+  .static-page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub { font-weight: 400; opacity: 0.8; font-size: 0.7em; }
+
+  .lead {
+    font-size: 1.1rem;
+    opacity: 0.92;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .static-page-content { padding: 3rem 0 4rem; background: #f8fafc; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-info-col { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-card {
+    background: white;
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e8edf2;
+  }
+
+  .contact-card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: white;
+  }
+
+  .email-icon { background: #2563eb; }
+  .wa-icon { background: #16a34a; }
+  .web-icon { background: #7c3aed; }
+  .warn-icon { background: #d97706; }
+
+  .contact-card h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-card p {
+    color: #475569;
+    line-height: 1.7;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-link {
+    display: inline-block;
+    color: #2563eb;
+    font-weight: 600;
+    word-break: break-all;
+    text-decoration: none;
+  }
+
+  .contact-link:hover { text-decoration: underline; }
+
+  .disclaimer-card { border-left: 4px solid #f59e0b; }
+
+  .contact-form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid #e8edf2;
+  }
+
+  .contact-form-card h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .contact-form-card h2 i { color: #7c3aed; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-field label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.9rem;
+  }
+
+  .required { color: #ef4444; }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #0f172a;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: white;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  }
+
+  .form-field textarea { resize: vertical; }
+
+  .btn-full { width: 100%; justify-content: center; }
+</style>

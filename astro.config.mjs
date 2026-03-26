@@ -6,6 +6,13 @@ import tailwind from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://mahitimarg.in',
   integrations: [sitemap(), mdx()],
+  i18n: {
+    defaultLocale: "mr",
+    locales: ["mr", "en"],
+    routing: {
+      prefixDefaultLocale: false,
+    }
+  },
   vite: {
     plugins: [tailwind()],
   },
