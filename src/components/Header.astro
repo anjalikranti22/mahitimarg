@@ -22,20 +22,36 @@
             <span style="font-size: 0.65rem; background: #fbbf24; color: #78350f; padding: 2px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Unofficial</span>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav" aria-label="Main Navigation">
-            <ul class="nav-links">
-                <li><a href="/schemes">📋 योजना</a></li>
-                <li><a href="/articles">📰 लेख</a></li>
-                <li><a href="/tools">🔧 टूल्स</a></li>
-                <li><a href="/jobs">💼 रोजगार</a></li>
-                <li><a href="/services">🏛️ सेवा</a></li>
-                <li><a href="/training">🎓 प्रशिक्षण</a></li>
-                <li><a href="/downloads">📥 डाउनलोड्स</a></li>
-                <li><a href="/learn">🧮 अर्थसाक्षरता</a></li>
-                <li><a href="/contact">📞 संपर्क</a></li>
-            </ul>
-        </nav>
+        <!-- Navigation & Actions Group (Right) -->
+        <div class="nav-right">
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="/schemes">📋 योजना</a></li>
+                    <li><a href="/articles">📰 लेख</a></li>
+                    <li><a href="/tools">🔧 टूल्स</a></li>
+                    <li><a href="/jobs">💼 रोजगार</a></li>
+                    <li><a href="/services">🏛️ सेवा</a></li>
+                    <li><a href="/training">🎓 प्रशिक्षण</a></li>
+                    <li><a href="/downloads">📥 डाउनलोड्स</a></li>
+                    <li><a href="/learn">🧮 अर्थसाक्षरता</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="header-search-btn" id="header-search-trigger" aria-label="Open Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a href="/contact" class="btn-portal">
+                    <i class="fa-solid fa-headset"></i> संपर्क
+                </a>
+                <button class="mobile-menu-btn" id="mobile-menu-trigger" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+
+        </div>
 
     </div>
 </header>
+

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SEO } from 'astro-seo';
+import { ClientRouter } from 'astro:transitions';
 
 interface BreadcrumbItem {
   name: string;
@@ -49,6 +50,7 @@ const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="TrtPBuQPM6VTCty_ryr4V6kj4GDO9Ki-35vr_alygxg" />
+    <ClientRouter />
     <SEO
       title={title}
       description={description}

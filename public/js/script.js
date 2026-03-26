@@ -136,4 +136,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 6. Header Actions ---
+    const headerSearchBtn = document.getElementById('header-search-trigger');
+    const mainSearchInput = document.getElementById('scheme-search');
+    
+    if (headerSearchBtn) {
+        headerSearchBtn.addEventListener('click', () => {
+            if (mainSearchInput) {
+                mainSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => mainSearchInput.focus(), 600);
+            } else {
+                window.location.href = '/?search=true';
+            }
+        });
+    }
+
+    // Auto-focus search if URL param exists
+    if (window.location.search.includes('search=true') && mainSearchInput) {
+        setTimeout(() => {
+            mainSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            mainSearchInput.focus();
+        }, 500);
+    }
+
+    const mobileMenuBtn = document.getElementById('mobile-menu-trigger');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            alert('मोबाइल मेनू लवकरच येत आहे! (Mobile menu coming soon!)');
+        });
+    }
+
 });
+

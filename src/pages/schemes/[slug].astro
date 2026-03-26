@@ -151,12 +151,17 @@ const autoKeywords = [
               </div>
             )}
 
-            <!-- WhatsApp Share Section at Bottom -->
+            <!-- Share Section at Bottom -->
             <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px dashed rgba(0,0,0,0.1); text-align: center;">
                 <p style="font-weight: 600; color: var(--text-muted); margin-bottom: 1.25rem;">ही माहिती आवडली का? मित्रांसोबत शेअर करा!</p>
-                <a href={whatsappUrl} class="whatsapp-share-btn" target="_blank" rel="noopener noreferrer" style="max-width: 400px; margin: 0 auto; padding: 1rem 2rem; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp वर शेअर करा
-                </a>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href={whatsappUrl} class="whatsapp-share-btn" target="_blank" rel="noopener noreferrer" style="padding: 1rem 2rem; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); border-radius: 8px;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp
+                    </a>
+                    <button id="native-share-btn" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius: 8px; border: 1px solid var(--primary-light); background: transparent; color: var(--primary); cursor: pointer; transition: all 0.3s;">
+                        <i class="fa-solid fa-share-nodes"></i> पर्याय
+                    </button>
+                </div>
             </div>
         </article>
 
@@ -287,31 +292,49 @@ const autoKeywords = [
         }
     </style>
 
-    <!-- TOC Generation Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <!-- Navigation and Share Handlers -->
+    <script define:vars={{ shareTitle: seoTitle, shareDesc: seoDescription, shareUrl: pageUrl }}>
+        document.addEventListener('astro:page-load', () => {
+            // TOC Logic
             const content = document.querySelector('.markdown-content');
             const tocList = document.getElementById('toc-list');
             const tocContainer = document.getElementById('toc-container');
-            if (!content || !tocList) return;
-
-            const headings = content.querySelectorAll('h2');
-            if (headings.length === 0) {
-                // Hide TOC if no headings
-                if (tocContainer) tocContainer.style.display = 'none';
-                return;
+            if (content && tocList) {
+                // Clear existing TOC to prevent duplicates on view transition
+                tocList.innerHTML = '';
+                const headings = content.querySelectorAll('h2');
+                if (headings.length === 0) {
+                    if (tocContainer) tocContainer.style.display = 'none';
+                } else {
+                    if (tocContainer) tocContainer.style.display = 'block';
+                    headings.forEach((h, i) => {
+                        const id = 'section-' + i;
+                        h.id = id;
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = '#' + id;
+                        a.textContent = h.textContent;
+                        li.appendChild(a);
+                        tocList.appendChild(li);
+                    });
+                }
             }
 
-            headings.forEach((h, i) => {
-                const id = 'section-' + i;
-                h.id = id;
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = '#' + id;
-                a.textContent = h.textContent;
-                li.appendChild(a);
-                tocList.appendChild(li);
-            });
+            // Web Share API Logic
+            const nativeShareBtn = document.getElementById('native-share-btn');
+            if (nativeShareBtn) {
+                if (navigator.share) {
+                    nativeShareBtn.addEventListener('click', () => {
+                        navigator.share({
+                            title: shareTitle,
+                            text: shareDesc,
+                            url: shareUrl
+                        }).catch(err => console.log('Share error:', err));
+                    });
+                } else {
+                    nativeShareBtn.style.display = 'none'; // Fallback for browsers without share
+                }
+            }
         });
     </script>
 

@@ -17,7 +17,10 @@ const schemeSearchData = allSchemes.map(s => ({
 }));
 ---
 
-<Layout title="MahitiMarg | योजना · रोजगार · व्यवसाय · टूल्स – सर्व माहिती एकाच ठिकाणी">
+<Layout 
+    title="MahitiMarg | योजना · रोजगार · व्यवसाय · टूल्स – सर्व माहिती एकाच ठिकाणी"
+    canonical="https://mahitimarg.in/"
+>
     <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
     <main>
         <!-- Section 1: Hero + Universal Search -->
