@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
 
     // --- 1. Client-Side Search Filtering Logic ---
     const searchInput = document.getElementById('scheme-search');
@@ -69,24 +69,26 @@ document.addEventListener('DOMContentLoaded', () => {
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         
-        question.addEventListener('click', () => {
-            // Check if this item is currently active
-            const isActive = item.classList.contains('active');
-            
-            // First, close all other FAQ items (optional, but good for UX)
-            faqItems.forEach(otherItem => {
-                otherItem.classList.remove('active');
-                const otherAnswer = otherItem.querySelector('.faq-answer');
-                if(otherAnswer) otherAnswer.style.maxHeight = null;
+        if (question) {
+            question.addEventListener('click', () => {
+                // Check if this item is currently active
+                const isActive = item.classList.contains('active');
+                
+                // First, close all other FAQ items (optional, but good for UX)
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    if(otherAnswer) otherAnswer.style.maxHeight = null;
+                });
+                
+                // If it wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                    const answer = item.querySelector('.faq-answer');
+                    // Handled gracefully via CSS classes
+                }
             });
-            
-            // If it wasn't active, open it
-            if (!isActive) {
-                item.classList.add('active');
-                const answer = item.querySelector('.faq-answer');
-                // Handled gracefully via CSS classes
-            }
-        });
+        }
     });
     
 
@@ -136,35 +138,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 6. Header Actions ---
-    const headerSearchBtn = document.getElementById('header-search-trigger');
-    const mainSearchInput = document.getElementById('scheme-search');
-    
-    if (headerSearchBtn) {
-        headerSearchBtn.addEventListener('click', () => {
-            if (mainSearchInput) {
-                mainSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => mainSearchInput.focus(), 600);
-            } else {
-                window.location.href = '/?search=true';
-            }
-        });
-    }
-
-    // Auto-focus search if URL param exists
-    if (window.location.search.includes('search=true') && mainSearchInput) {
-        setTimeout(() => {
-            mainSearchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            mainSearchInput.focus();
-        }, 500);
-    }
-
-    const mobileMenuBtn = document.getElementById('mobile-menu-trigger');
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            alert('मोबाइल मेनू लवकरच येत आहे! (Mobile menu coming soon!)');
-        });
-    }
-
 });
-

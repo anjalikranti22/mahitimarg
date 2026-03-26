@@ -685,6 +685,7 @@ const schemeSearchData = allSchemes.map(s => ({
 
 
 <script>
+document.addEventListener('astro:page-load', () => {
 // ============================================================
 // LIVE SEARCH ENGINE – MahitiMarg Homepage
 // ============================================================
@@ -851,6 +852,7 @@ document.querySelectorAll('.search-tab').forEach(tab => {
     document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
   });
+});
 });
 </script>
 

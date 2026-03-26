@@ -56,6 +56,7 @@ const schemesKeywords = 'सर्व सरकारी योजना, मह
     </main>
 
     <script>
+        document.addEventListener('astro:page-load', () => {
         const searchInput = document.getElementById('scheme-search-page');
         const schemeItems = document.querySelectorAll('.scheme-item');
         const noResults = document.getElementById('no-results-search');
@@ -83,5 +84,6 @@ const schemesKeywords = 'सर्व सरकारी योजना, मह
                 }
             });
         }
+        });
     </script>
 </Layout>
