@@ -1,0 +1,94 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const toolsData = [
+  {
+    id: "emi-calculator",
+    title: "EMI Calculator",
+    description: "Check EMI for home loan, vehicle loan, and personal loan.",
+    icon: "fa-solid fa-calculator",
+    link: "/en/tools/emi-calculator",
+    isInteractive: true
+  },
+  {
+    id: "eligibility-checker",
+    title: "Eligibility Checker",
+    description: "Check which government scheme you are eligible for with one click.",
+    icon: "fa-solid fa-circle-check",
+    link: "/en/tools/eligibility-checker",
+    isInteractive: true
+  },
+  {
+    id: "age-calculator",
+    title: "Age Calculator",
+    description: "Calculate your exact age in years, months, and days for government recruitment.",
+    icon: "fa-solid fa-calendar-days",
+    link: "/en/tools/age-calculator",
+    isInteractive: true
+  }
+];
+---
+
+<Layout title="Smart Tools | MahitiMarg">
+    <main>
+        <section class="hero" aria-labelledby="tools-hero-title">
+            <div class="hero-bg-accent"></div>
+            <div class="container glass-panel hero-glass animate-on-load" style="padding: 3rem 2rem; text-align: center;">
+                <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                    <i class="fa-solid fa-wrench"></i>
+                </div>
+                <h1 id="tools-hero-title" class="title-gradient">Smart Tools</h1>
+                <p class="hero-description" style="max-width: 700px; margin: 0 auto;">
+                    Useful calculators and verification tools for your daily needs.
+                </p>
+            </div>
+        </section>
+
+        <section class="container scheme-category-section" style="padding-top: 2rem; padding-bottom: 4rem;">
+            <div class="section-header animate-on-scroll">
+                <h2>Available Tools</h2>
+                <p>Select a tool below and get instant answers</p>
+            </div>
+            
+            <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                {toolsData.map((tool) => (
+                    <a href={tool.link} class="glass-panel" style={`
+                        display: flex; 
+                        flex-direction: column; 
+                        padding: 2.5rem 2rem; 
+                        text-decoration: none; 
+                        border: 1px solid rgba(255,255,255,0.2); 
+                        border-top: 4px solid var(--accent);
+                        border-radius: 16px; 
+                        background: rgba(255, 255, 255, 0.85);
+                        backdrop-filter: blur(12px);
+                        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+                        position: relative;
+                        overflow: hidden;
+                    `}
+                    onmouseenter="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 30px -5px rgba(0, 0, 0, 0.1)'"
+                    onmouseleave="this.style.transform='scale(1)'; this.style.boxShadow='none'"
+                    >
+                        {tool.isInteractive && (
+                            <div style="position: absolute; top: 1rem; right: 1rem; background: var(--primary); color: white; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                <i class="fa-solid fa-bolt"></i> Interactive
+                            </div>
+                        )}
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class={tool.icon}></i>
+                        </div>
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.75rem; font-family: 'Mukta', sans-serif;">
+                            {tool.title}
+                        </h3>
+                        <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+                            {tool.description}
+                        </p>
+                        <div style="color: var(--primary-color); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto; font-size: 0.95rem;">
+                            Use Now <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+    </main>
+</Layout>

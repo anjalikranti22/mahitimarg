@@ -3,6 +3,8 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const isEn = lang === 'en';
+const p = isEn ? '/en' : ''; // link prefix
 import Layout from '../../layouts/Layout.astro';
 import SchemeCard from '../SchemeCard.astro';
 import { getCollection } from 'astro:content';
@@ -75,13 +77,13 @@ const schemeSearchData = allSchemes.map(s => ({
 
                 <!-- Quick Category Links -->
                 <div class="hp-quick-links">
-                    <a href="/categories/farmer" class="hp-qlink"><i class="fa-solid fa-tractor"></i>{t('qlink.farmer')}</a>
-                    <a href="/categories/women" class="hp-qlink"><i class="fa-solid fa-person-dress"></i>{t('qlink.women')}</a>
-                    <a href="/categories/business" class="hp-qlink"><i class="fa-solid fa-briefcase"></i>{t('hero.title.business')}</a>
-                    <a href="/categories/student" class="hp-qlink"><i class="fa-solid fa-graduation-cap"></i>{t('qlink.student')}</a>
-                    <a href="/categories/pension" class="hp-qlink"><i class="fa-solid fa-piggy-bank"></i>{t('qlink.pension')}</a>
-                    <a href="/categories/health" class="hp-qlink"><i class="fa-solid fa-heart-pulse"></i>{t('qlink.health')}</a>
-                    <a href="/schemes" class="hp-qlink hp-qlink--accent"><i class="fa-solid fa-arrow-right"></i>{t('qlink.view_all')}</a>
+                    <a href={`${p}/categories/farmer`} class="hp-qlink"><i class="fa-solid fa-tractor"></i>{t('qlink.farmer')}</a>
+                    <a href={`${p}/categories/women`} class="hp-qlink"><i class="fa-solid fa-person-dress"></i>{t('qlink.women')}</a>
+                    <a href={`${p}/categories/business`} class="hp-qlink"><i class="fa-solid fa-briefcase"></i>{t('hero.title.business')}</a>
+                    <a href={`${p}/categories/student`} class="hp-qlink"><i class="fa-solid fa-graduation-cap"></i>{t('qlink.student')}</a>
+                    <a href={`${p}/categories/pension`} class="hp-qlink"><i class="fa-solid fa-piggy-bank"></i>{t('qlink.pension')}</a>
+                    <a href={`${p}/categories/health`} class="hp-qlink"><i class="fa-solid fa-heart-pulse"></i>{t('qlink.health')}</a>
+                    <a href={`${p}/schemes`} class="hp-qlink hp-qlink--accent"><i class="fa-solid fa-arrow-right"></i>{t('qlink.view_all')}</a>
                 </div>
 
                 <!-- Trust Stats -->
@@ -103,12 +105,12 @@ const schemeSearchData = allSchemes.map(s => ({
             </div>
             <div class="schemes-grid" id="popular-schemes-list">
                 {featuredSchemes.map((scheme) => (
-                    <SchemeCard scheme={scheme} />
+                    <SchemeCard scheme={scheme} lang={lang} />
                 ))}
             </div>
             <div class="view-all-cta animate-on-scroll">
-                <a href="/schemes" class="btn btn-accent ripple-effect btn-view-all">
-                    <i class="fa-solid fa-th-list"></i> सर्व {totalSchemes}+ योजना पहा
+                <a href={`${p}/schemes`} class="btn btn-accent ripple-effect btn-view-all">
+                    <i class="fa-solid fa-th-list"></i> {isEn ? `View All ${totalSchemes}+ Schemes` : `सर्व ${totalSchemes}+ योजना पहा`}
                     <i class="fa-solid fa-arrow-right arrow-icon"></i>
                 </a>
             </div>
@@ -126,20 +128,20 @@ const schemeSearchData = allSchemes.map(s => ({
                 <div class="hp-bento animate-on-scroll">
 
                     <!-- Large featured card: Schemes (2-col span) -->
-                    <a href="/schemes" class="hp-bento__card hp-bento__card--large hp-bento__card--green">
+                    <a href={`${p}/schemes`} class="hp-bento__card hp-bento__card--large hp-bento__card--green">
                         <div class="hp-bento__icon-wrap" style="background:#16a34a;">
                             <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
                         </div>
                         <h3 class="hp-bento__title">{t('stats.schemes')}</h3>
                         <p class="hp-bento__desc">{t('bento.schemes.desc')}</p>
                         <div class="hp-bento__tags">
-                            <span>शेतकरी योजना</span><span>महिला कल्याण</span><span>शिक्षण शिष्यवृत्ती</span><span>आरोग्य विमा</span>
+                            <span>{isEn ? 'Farmer Schemes' : 'शेतकरी योजना'}</span><span>{isEn ? 'Women Welfare' : 'महिला कल्याण'}</span><span>{isEn ? 'Scholarships' : 'शिक्षण शिष्यवृत्ती'}</span><span>{isEn ? 'Health Insurance' : 'आरोग्य विमा'}</span>
                         </div>
                         <span class="hp-bento__cta">{t('bento.schemes.cta')}<i class="fa-solid fa-arrow-right"></i></span>
                     </a>
 
                     <!-- Jobs -->
-                    <a href="/jobs" class="hp-bento__card hp-bento__card--orange">
+                    <a href={`${p}/jobs`} class="hp-bento__card hp-bento__card--orange">
                         <div class="hp-bento__icon-wrap" style="background:#ea580c;">
                             <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                         </div>
@@ -148,7 +150,7 @@ const schemeSearchData = allSchemes.map(s => ({
                     </a>
 
                     <!-- Services -->
-                    <a href="/services" class="hp-bento__card hp-bento__card--indigo">
+                    <a href={`${p}/services`} class="hp-bento__card hp-bento__card--indigo">
                         <div class="hp-bento__icon-wrap" style="background:#4f46e5;">
                             <i class="fa-solid fa-landmark" aria-hidden="true"></i>
                         </div>
@@ -157,7 +159,7 @@ const schemeSearchData = allSchemes.map(s => ({
                     </a>
 
                     <!-- Training -->
-                    <a href="/training" class="hp-bento__card hp-bento__card--amber">
+                    <a href={`${p}/training`} class="hp-bento__card hp-bento__card--amber">
                         <div class="hp-bento__icon-wrap" style="background:#d97706;">
                             <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
                         </div>
@@ -166,7 +168,7 @@ const schemeSearchData = allSchemes.map(s => ({
                     </a>
 
                     <!-- Articles -->
-                    <a href="/articles" class="hp-bento__card hp-bento__card--purple">
+                    <a href={`${p}/articles`} class="hp-bento__card hp-bento__card--purple">
                         <div class="hp-bento__icon-wrap" style="background:#7c3aed;">
                             <i class="fa-solid fa-newspaper" aria-hidden="true"></i>
                         </div>
@@ -175,7 +177,7 @@ const schemeSearchData = allSchemes.map(s => ({
                     </a>
 
                     <!-- Downloads -->
-                    <a href="/downloads" class="hp-bento__card hp-bento__card--sky">
+                    <a href={`${p}/downloads`} class="hp-bento__card hp-bento__card--sky">
                         <div class="hp-bento__icon-wrap" style="background:#0284c7;">
                             <i class="fa-solid fa-download" aria-hidden="true"></i>
                         </div>
@@ -184,7 +186,7 @@ const schemeSearchData = allSchemes.map(s => ({
                     </a>
 
                     <!-- Financial Literacy -->
-                    <a href="/learn" class="hp-bento__card hp-bento__card--pink">
+                    <a href={`${p}/learn`} class="hp-bento__card hp-bento__card--pink">
                         <div class="hp-bento__icon-wrap" style="background:#be185d;">
                             <i class="fa-solid fa-coins" aria-hidden="true"></i>
                         </div>
@@ -193,7 +195,7 @@ const schemeSearchData = allSchemes.map(s => ({
                     </a>
 
                     <!-- Smart Tools -->
-                    <a href="/tools" class="hp-bento__card hp-bento__card--teal">
+                    <a href={`${p}/tools`} class="hp-bento__card hp-bento__card--teal">
                         <div class="hp-bento__icon-wrap" style="background:#0d9488;">
                             <i class="fa-solid fa-calculator" aria-hidden="true"></i>
                         </div>
@@ -213,98 +215,98 @@ const schemeSearchData = allSchemes.map(s => ({
                     <p>{t('section.categories.sub')}</p>
                 </div>
                 <div class="category-grid animate-on-scroll">
-                    <a href="/categories/farmer" class="category-chip">
+                    <a href={`${p}/categories/farmer`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
                             <i class="fa-solid fa-tractor"></i>
                         </div>
                         <span class="category-chip__label">{t('qlink.farmer')}</span>
                         <span class="category-chip__sub">Farmer</span>
                     </a>
-                    <a href="/categories/women" class="category-chip">
+                    <a href={`${p}/categories/women`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
                             <i class="fa-solid fa-person-dress"></i>
                         </div>
                         <span class="category-chip__label">{t('qlink.women')}</span>
                         <span class="category-chip__sub">Women</span>
                     </a>
-                    <a href="/categories/student" class="category-chip">
+                    <a href={`${p}/categories/student`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #a855f7, #9333ea);">
                             <i class="fa-solid fa-graduation-cap"></i>
                         </div>
                         <span class="category-chip__label">{t('qlink.student')}</span>
                         <span class="category-chip__sub">Student</span>
                     </a>
-                    <a href="/categories/business" class="category-chip">
+                    <a href={`${p}/categories/business`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
                             <i class="fa-solid fa-briefcase"></i>
                         </div>
                         <span class="category-chip__label">{t('hero.title.business')}</span>
                         <span class="category-chip__sub">Business</span>
                     </a>
-                    <a href="/categories/pension" class="category-chip">
+                    <a href={`${p}/categories/pension`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #64748b, #475569);">
                             <i class="fa-solid fa-piggy-bank"></i>
                         </div>
                         <span class="category-chip__label">{t('qlink.pension')}</span>
                         <span class="category-chip__sub">Pension</span>
                     </a>
-                    <a href="/categories/health" class="category-chip">
+                    <a href={`${p}/categories/health`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
                             <i class="fa-solid fa-heart-pulse"></i>
                         </div>
                         <span class="category-chip__label">{t('qlink.health')}</span>
                         <span class="category-chip__sub">Health</span>
                     </a>
-                    <a href="/categories/insurance" class="category-chip">
+                    <a href={`${p}/categories/insurance`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
-                        <span class="category-chip__label">विमा</span>
+                        <span class="category-chip__label">{isEn ? 'Insurance' : 'विमा'}</span>
                         <span class="category-chip__sub">Insurance</span>
                     </a>
-                    <a href="/categories/worker" class="category-chip">
+                    <a href={`${p}/categories/worker`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">
                             <i class="fa-solid fa-hard-hat"></i>
                         </div>
-                        <span class="category-chip__label">कामगार</span>
+                        <span class="category-chip__label">{isEn ? 'Worker' : 'कामगार'}</span>
                         <span class="category-chip__sub">Worker</span>
                     </a>
-                    <a href="/categories/housing" class="category-chip">
+                    <a href={`${p}/categories/housing`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
                             <i class="fa-solid fa-house-chimney"></i>
                         </div>
-                        <span class="category-chip__label">गृहनिर्माण</span>
+                        <span class="category-chip__label">{isEn ? 'Housing' : 'गृहनिर्माण'}</span>
                         <span class="category-chip__sub">Housing</span>
                     </a>
-                    <a href="/categories/social-security" class="category-chip">
+                    <a href={`${p}/categories/social-security`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
                             <i class="fa-solid fa-hand-holding-heart"></i>
                         </div>
-                        <span class="category-chip__label">सामाजिक सुरक्षा</span>
+                        <span class="category-chip__label">{isEn ? 'Social Security' : 'सामाजिक सुरक्षा'}</span>
                         <span class="category-chip__sub">Social Security</span>
                     </a>
-                    <a href="/categories/loans" class="category-chip">
+                    <a href={`${p}/categories/loans`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #10b981, #059669);">
                             <i class="fa-solid fa-coins"></i>
                         </div>
-                        <span class="category-chip__label">कर्ज/वित्त</span>
+                        <span class="category-chip__label">{isEn ? 'Loans / Finance' : 'कर्ज/वित्त'}</span>
                         <span class="category-chip__sub">Loans</span>
                     </a>
-                    <a href="/categories/food" class="category-chip">
+                    <a href={`${p}/categories/food`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #eab308, #ca8a04);">
                             <i class="fa-solid fa-wheat-awn"></i>
                         </div>
-                        <span class="category-chip__label">अन्न सुरक्षा</span>
+                        <span class="category-chip__label">{isEn ? 'Food Security' : 'अन्न सुरक्षा'}</span>
                         <span class="category-chip__sub">Food</span>
                     </a>
-                    <a href="/categories/digital" class="category-chip">
+                    <a href={`${p}/categories/digital`} class="category-chip">
                         <div class="category-chip__icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
                             <i class="fa-solid fa-laptop-code"></i>
                         </div>
-                        <span class="category-chip__label">डिजिटल</span>
+                        <span class="category-chip__label">{isEn ? 'Digital' : 'डिजिटल'}</span>
                         <span class="category-chip__sub">Digital</span>
                     </a>
-                    <a href="/categories" class="category-chip category-chip--view-all">
+                    <a href={`${p}/categories`} class="category-chip category-chip--view-all">
                         <div class="category-chip__icon" style="background: transparent; border: 2px dashed var(--primary-light);">
                             <i class="fa-solid fa-arrow-right" style="color: var(--primary);"></i>
                         </div>
@@ -324,41 +326,41 @@ const schemeSearchData = allSchemes.map(s => ({
                 <p>{t('section.tools.sub')}</p>
             </div>
             <div class="tools-strip animate-on-scroll">
-                <a href="/tools/emi-calculator" class="tool-card">
+                <a href={`${p}/tools/emi-calculator`} class="tool-card">
                     <div class="tool-card__icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
                         <i class="fa-solid fa-calculator"></i>
                     </div>
-                    <h3>EMI कॅल्क्युलेटर</h3>
-                    <p>गृहकर्ज, वाहन कर्ज EMI तपासा</p>
-                    <span class="tool-card__cta">वापरा <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>{isEn ? 'EMI Calculator' : 'EMI कॅल्क्युलेटर'}</h3>
+                    <p>{isEn ? 'Check home loan, vehicle loan EMI' : 'गृहकर्ज, वाहन कर्ज EMI तपासा'}</p>
+                    <span class="tool-card__cta">{isEn ? 'Use' : 'वापरा'} <i class="fa-solid fa-arrow-right"></i></span>
                 </a>
-                <a href="/tools/eligibility-checker" class="tool-card">
+                <a href={`${p}/tools/eligibility-checker`} class="tool-card">
                     <div class="tool-card__icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
                         <i class="fa-solid fa-clipboard-check"></i>
                     </div>
-                    <h3>पात्रता चेकर</h3>
-                    <p>तुम्ही कोणत्या योजनेसाठी पात्र आहात?</p>
-                    <span class="tool-card__cta">तपासा <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>{isEn ? 'Eligibility Checker' : 'पात्रता चेकर'}</h3>
+                    <p>{isEn ? 'Which schemes are you eligible for?' : 'तुम्ही कोणत्या योजनेसाठी पात्र आहात?'}</p>
+                    <span class="tool-card__cta">{isEn ? 'Check' : 'तपासा'} <i class="fa-solid fa-arrow-right"></i></span>
                 </a>
-                <a href="/tools/document-checklist" class="tool-card">
+                <a href={`${p}/tools/document-checklist`} class="tool-card">
                     <div class="tool-card__icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
                         <i class="fa-solid fa-list-check"></i>
                     </div>
-                    <h3>कागदपत्र चेकलिस्ट</h3>
-                    <p>योजनेसाठी लागणारी कागदपत्रे</p>
-                    <span class="tool-card__cta">पहा <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>{isEn ? 'Document Checklist' : 'कागदपत्र चेकलिस्ट'}</h3>
+                    <p>{isEn ? 'Documents required for schemes' : 'योजनेसाठी लागणारी कागदपत्रे'}</p>
+                    <span class="tool-card__cta">{isEn ? 'View' : 'पहा'} <i class="fa-solid fa-arrow-right"></i></span>
                 </a>
-                <a href="/tools/fd-rd-calculator" class="tool-card">
+                <a href={`${p}/tools/fd-rd-calculator`} class="tool-card">
                     <div class="tool-card__icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
-                    <h3>FD/RD कॅल्क्युलेटर</h3>
-                    <p>बचतीवर किती व्याज मिळेल?</p>
-                    <span class="tool-card__cta">गणना करा <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>{isEn ? 'FD/RD Calculator' : 'FD/RD कॅल्क्युलेटर'}</h3>
+                    <p>{isEn ? 'How much interest on savings?' : 'बचतीवर किती व्याज मिळेल?'}</p>
+                    <span class="tool-card__cta">{isEn ? 'Calculate' : 'गणना करा'} <i class="fa-solid fa-arrow-right"></i></span>
                 </a>
             </div>
             <div class="view-all-cta animate-on-scroll" style="margin-top: 1.5rem;">
-                <a href="/tools" class="btn btn-secondary ripple-effect" style="gap: 0.5rem;">
+                <a href={`${p}/tools`} class="btn btn-secondary ripple-effect" style="gap: 0.5rem;">
                     <i class="fa-solid fa-wrench"></i>{t('section.tools.view_all')}<i class="fa-solid fa-arrow-right arrow-icon"></i>
                 </a>
             </div>
@@ -376,30 +378,30 @@ const schemeSearchData = allSchemes.map(s => ({
                         <div class="hub-card__icon">
                             <i class="fa-solid fa-rocket"></i>
                         </div>
-                        <h3>नवीन व्यवसाय सुरू करत आहात?</h3>
+                        <h3>{isEn ? 'Starting a New Business?' : 'नवीन व्यवसाय सुरू करत आहात?'}</h3>
                         <ul>
-                            <li><i class="fa-solid fa-check-circle"></i> व्यवसाय कसा सुरू करावा</li>
-                            <li><i class="fa-solid fa-check-circle"></i> लागणारे परवाने व नोंदणी</li>
-                            <li><i class="fa-solid fa-check-circle"></i> सरकारी कर्ज योजना (MUDRA, PMEGP)</li>
-                            <li><i class="fa-solid fa-check-circle"></i> PM विश्वकर्मा योजना</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'How to start a business' : 'व्यवसाय कसा सुरू करावा'}</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'Required licenses & registration' : 'लागणारे परवाने व नोंदणी'}</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'Govt loan schemes (MUDRA, PMEGP)' : 'सरकारी कर्ज योजना (MUDRA, PMEGP)'}</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'PM Vishwakarma Yojana' : 'PM विश्वकर्मा योजना'}</li>
                         </ul>
-                        <a href="/business" class="btn btn-primary ripple-effect" style="margin-top: auto;">
-                            <i class="fa-solid fa-book-open"></i> व्यवसाय गाईड वाचा
+                        <a href={`${p}/business`} class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                            <i class="fa-solid fa-book-open"></i> {isEn ? 'Read Business Guide' : 'व्यवसाय गाईड वाचा'}
                         </a>
                     </div>
                     <div class="hub-card hub-card--jobs">
                         <div class="hub-card__icon">
                             <i class="fa-solid fa-user-tie"></i>
                         </div>
-                        <h3>नोकरी / रोजगार मार्गदर्शन</h3>
+                        <h3>{isEn ? 'Jobs / Employment Guide' : 'नोकरी / रोजगार मार्गदर्शन'}</h3>
                         <ul>
-                            <li><i class="fa-solid fa-check-circle"></i> सरकारी भरती अपडेट्स</li>
-                            <li><i class="fa-solid fa-check-circle"></i> कौशल्य प्रशिक्षण योजना</li>
-                            <li><i class="fa-solid fa-check-circle"></i> रेझ्युमे कसा बनवावा</li>
-                            <li><i class="fa-solid fa-check-circle"></i> फ्रीलान्सिंग मार्गदर्शन</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'Govt recruitment updates' : 'सरकारी भरती अपडेट्स'}</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'Skill training schemes' : 'कौशल्य प्रशिक्षण योजना'}</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'How to make a resume' : 'रेझ्युमे कसा बनवावा'}</li>
+                            <li><i class="fa-solid fa-check-circle"></i> {isEn ? 'Freelancing guidance' : 'फ्रीलान्सिंग मार्गदर्शन'}</li>
                         </ul>
-                        <a href="/jobs" class="btn btn-primary ripple-effect" style="margin-top: auto;">
-                            <i class="fa-solid fa-briefcase"></i> रोजगार माहिती पहा
+                        <a href={`${p}/jobs`} class="btn btn-primary ripple-effect" style="margin-top: auto;">
+                            <i class="fa-solid fa-briefcase"></i> {isEn ? 'View Job Info' : 'रोजगार माहिती पहा'}
                         </a>
                     </div>
                 </div>

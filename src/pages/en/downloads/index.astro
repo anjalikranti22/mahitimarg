@@ -1,0 +1,63 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://mahitimarg.in/en/' },
+  { name: 'Downloads', url: 'https://mahitimarg.in/en/downloads/' },
+];
+
+const keywords = 'government form download, application form PDF, farmer application, scholarship form, Maharashtra government forms, free government forms';
+
+const downloadCategories = [
+  { icon: 'fa-tractor', label: 'Farmer Applications', color: 'bg-green', desc: 'Application forms for agricultural schemes', comingSoon: true },
+  { icon: 'fa-person-dress', label: 'Women Scheme Forms', color: 'bg-pink', desc: 'Government application forms for women', comingSoon: true },
+  { icon: 'fa-graduation-cap', label: 'Scholarship Forms', color: 'bg-blue', desc: 'Scholarship application forms for students', comingSoon: true },
+  { icon: 'fa-store', label: 'Business Licenses', color: 'bg-orange', desc: 'Business registration and license forms', comingSoon: true },
+  { icon: 'fa-heart-pulse', label: 'Health Scheme Forms', color: 'bg-purple', desc: 'Health insurance and treatment application forms', comingSoon: true },
+  { icon: 'fa-piggy-bank', label: 'Pension Forms', color: 'bg-yellow', desc: 'Pension scheme application forms', comingSoon: true },
+];
+---
+
+<Layout
+  title="Downloads – Government Forms & Templates | MahitiMarg"
+  description="Download various Maharashtra government scheme applications, forms, and PDF templates for free."
+  keywords={keywords}
+  canonical="https://mahitimarg.in/en/downloads/"
+  breadcrumbs={breadcrumbs}
+>
+  <main class="container py-12 max-w-5xl mx-auto min-h-[75vh]">
+    <div class="mb-8 animate-on-load">
+      <a href="/en" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="glass-panel animate-on-load mb-10 text-center" style="padding: 3rem 2rem; border-top: 4px solid var(--primary);">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-download" style="color: var(--primary);"></i></div>
+      <h1 class="title-gradient" style="font-size: 2.5rem; margin-bottom: 0.75rem;">Downloads</h1>
+      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Government scheme applications, welfare forms, and useful PDF templates – download for free from one place.</p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      {downloadCategories.map((cat) => (
+        <div class="glass-panel" style="padding: 2rem; text-align: center; border-radius: 16px; position: relative; overflow: hidden;">
+          {cat.comingSoon && (
+            <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: white; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.5px;">Coming Soon</span>
+          )}
+          <div class={`scheme-icon-bg ${cat.color}`} style="width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 1.75rem;">
+            <i class={`fa-solid ${cat.icon}`}></i>
+          </div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">{cat.label}</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">{cat.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Ad Space -->
+    <div class="animate-on-scroll" style="margin-top: 3rem; min-height: 250px; background: rgba(0,0,0,0.02); border: 2px dashed rgba(0,0,0,0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;">
+      <span><i class="fa-solid fa-ad" style="margin-right: 0.5rem;"></i> Ad Space</span>
+    </div>
+  </main>
+</Layout>

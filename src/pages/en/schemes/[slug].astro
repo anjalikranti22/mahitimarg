@@ -1,0 +1,336 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const schemeEntries = await getCollection('schemes');
+  return schemeEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// --- Automatic Bilingual SEO ---
+const marathiTitle = entry.data.title;
+const englishTitle = entry.data.english_title;
+const marathiDesc = entry.data.description;
+const pageUrl = `https://mahitimarg.in/en/schemes/${entry.id}`;
+
+// Bilingual title: "English Title | मराठी Title | MahitiMarg"
+const seoTitle = englishTitle
+  ? `${englishTitle} | ${marathiTitle} | MahitiMarg`
+  : `${marathiTitle} | MahitiMarg`;
+
+// Bilingual description
+const seoDescription = englishTitle
+  ? `${englishTitle} – ${marathiDesc} Eligibility, documents & full information.`
+  : `${marathiDesc} Eligibility, documents & full information.`;
+
+// Keywords from frontmatter
+const seoKeywords = entry.data.keywords ?? undefined;
+
+// JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": englishTitle ?? marathiTitle,
+  "alternativeHeadline": marathiTitle,
+  "description": seoDescription,
+  "url": pageUrl,
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "name": "MahitiMarg",
+    "url": "https://mahitimarg.in"
+  },
+  "about": {
+    "@type": "GovernmentService",
+    "name": englishTitle ?? marathiTitle,
+    "alternateName": englishTitle
+      ? [englishTitle, marathiTitle]
+      : [marathiTitle],
+    "provider": {
+      "@type": "GovernmentOrganization",
+      "name": "Government of Maharashtra"
+    }
+  },
+  ...(seoKeywords ? { "keywords": seoKeywords } : {})
+};
+
+
+let iconClass = 'fa-file-lines';
+const cat = entry.data.badge.toLowerCase();
+if (cat.includes('farmer') || cat.includes('शेतकरी')) {
+  iconClass = 'fa-tractor';
+} else if (cat.includes('women') || cat.includes('महिला')) {
+  iconClass = 'fa-person-dress';
+} else if (cat.includes('business') || cat.includes('व्यवसाय') || cat.includes('employment')) {
+  iconClass = 'fa-store';
+} else if (cat.includes('student') || cat.includes('विद्यार्थी')) {
+  iconClass = 'fa-graduation-cap';
+}
+
+// WhatsApp share URL
+const whatsappText = encodeURIComponent(`${entry.data.title}\n\n${entry.data.description}\n\nRead full details:\n${pageUrl}`);
+const whatsappUrl = `https://api.whatsapp.com/send?text=${whatsappText}`;
+
+// Fetch other schemes for sidebar
+const allSchemes = await getCollection('schemes');
+const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
+
+// --- Breadcrumbs ---
+const breadcrumbs = [
+  { name: 'Home', url: 'https://mahitimarg.in/en/' },
+  { name: 'Government Schemes', url: 'https://mahitimarg.in/en/schemes/' },
+  { name: englishTitle ?? marathiTitle, url: pageUrl },
+];
+
+// --- Rich keyword generation ---
+const autoKeywords = [
+  marathiTitle,
+  englishTitle,
+  entry.data.badge,
+  'government scheme',
+  'Maharashtra government',
+  'government scheme 2025',
+  'government scheme Maharashtra',
+  'mahitimarg',
+  entry.data.keywords,
+].filter(Boolean).join(', ');
+---
+
+<Layout title={seoTitle} description={seoDescription} keywords={autoKeywords} canonical={pageUrl} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+    <!-- Premium Header Banner -->
+    <section class="scheme-detail-banner">
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <nav class="scheme-breadcrumbs" aria-label="Breadcrumb">
+                <a href="/en"><i class="fa-solid fa-house"></i> Home</a>
+                <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
+                <a href="/en/schemes">Schemes</a>
+                <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
+                <span>{englishTitle ?? entry.data.title}</span>
+            </nav>
+
+            <!-- Icon + Badges -->
+            <div class="scheme-banner-meta">
+                <div class="scheme-banner-icon">
+                    <i class={`fa-solid ${iconClass}`}></i>
+                </div>
+                <div class="scheme-banner-badges">
+                    <span class="badge">{entry.data.badge}</span>
+                    <span class="badge badge-active">Active</span>
+                </div>
+            </div>
+
+            <!-- Title and Description -->
+            <h1>{entry.data.title}</h1>
+            <p>{entry.data.description}</p>
+        </div>
+    </section>
+
+    <!-- Detail Grid: Content + Sidebar -->
+    <div class="scheme-detail-layout">
+
+        <!-- Main Content -->
+        <article class="glass-panel scheme-article" style="background: #fff;">
+            <div class="markdown-content">
+              <Content />
+            </div>
+
+            {entry.data.apply_link && entry.data.apply_link !== '#' && (
+              <div style="margin-top: 3rem; text-align: center; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08);">
+                  <h2 style="color: var(--text-dark); margin-bottom: 1rem;"><i class="fa-solid fa-laptop-file" style="color: var(--primary);"></i> Apply Online</h2>
+                  <a href={entry.data.apply_link} class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Apply Now
+                  </a>
+              </div>
+            )}
+
+            <!-- Share Section at Bottom -->
+            <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px dashed rgba(0,0,0,0.1); text-align: center;">
+                <p style="font-weight: 600; color: var(--text-muted); margin-bottom: 1.25rem;">Found this useful? Share with friends!</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href={whatsappUrl} class="whatsapp-share-btn" target="_blank" rel="noopener noreferrer" style="padding: 1rem 2rem; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); border-radius: 8px;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> WhatsApp
+                    </a>
+                    <button id="native-share-btn" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem; border-radius: 8px; border: 1px solid var(--primary-light); background: transparent; color: var(--primary); cursor: pointer; transition: all 0.3s;">
+                        <i class="fa-solid fa-share-nodes"></i> Share
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="scheme-quick-info">
+
+            <!-- Quick Info Card -->
+            <div class="quick-info-card">
+                <h3><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Quick Info</h3>
+
+                {entry.data.key_stat && (
+                    <div class="quick-info-stat">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>{entry.data.key_stat}</span>
+                    </div>
+                )}
+
+                {entry.data.apply_link && entry.data.apply_link !== '#' && (
+                    <a href={entry.data.apply_link} class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer" style="margin-bottom: 0.75rem;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply Online
+                    </a>
+                )}
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="scheme-toc" id="toc-container">
+                <h3><i class="fa-solid fa-list"></i> Table of Contents</h3>
+                <ul id="toc-list">
+                </ul>
+            </div>
+
+            <!-- Other Popular Schemes -->
+            <div class="quick-info-card">
+                <h3><i class="fa-solid fa-fire" style="color: var(--accent);"></i> Other Popular Schemes</h3>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    {otherSchemes.map(s => (
+                        <li>
+                            <a href={`/en/schemes/${s.id}`} style="text-decoration: none; color: var(--primary); font-weight: 500; display: flex; align-items: center; gap: 0.4rem;">
+                                <i class="fa-solid fa-angle-right" aria-hidden="true"></i> {s.data.title}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+        </aside>
+    </div>
+
+    <style is:global>
+        .scheme-article {
+            padding: 2.5rem;
+            min-width: 0;
+        }
+        @media (max-width: 768px) {
+            .scheme-article {
+                padding: 1.25rem;
+            }
+        }
+        .markdown-content {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .markdown-content h2 {
+            color: var(--text-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 0.5rem;
+        }
+        .markdown-content h3 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        .markdown-content p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .markdown-content ul {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--text-dark);
+        }
+        .markdown-content ol {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: var(--text-dark);
+        }
+        .markdown-content li {
+            margin-bottom: 0.5rem;
+        }
+        .markdown-content strong {
+            color: var(--primary-color);
+        }
+        .markdown-content table {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .markdown-content th, .markdown-content td {
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            min-width: 120px;
+        }
+        .markdown-content th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        .markdown-content tr:nth-child(even) {
+            background: rgba(0,0,0,0.02);
+        }
+    </style>
+
+    <!-- Navigation and Share Handlers -->
+    <script define:vars={{ shareTitle: seoTitle, shareDesc: seoDescription, shareUrl: pageUrl }}>
+        document.addEventListener('astro:page-load', () => {
+            // TOC Logic
+            const content = document.querySelector('.markdown-content');
+            const tocList = document.getElementById('toc-list');
+            const tocContainer = document.getElementById('toc-container');
+            if (content && tocList) {
+                tocList.innerHTML = '';
+                const headings = content.querySelectorAll('h2');
+                if (headings.length === 0) {
+                    if (tocContainer) tocContainer.style.display = 'none';
+                } else {
+                    if (tocContainer) tocContainer.style.display = 'block';
+                    headings.forEach((h, i) => {
+                        const id = 'section-' + i;
+                        h.id = id;
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = '#' + id;
+                        a.textContent = h.textContent;
+                        li.appendChild(a);
+                        tocList.appendChild(li);
+                    });
+                }
+            }
+
+            // Web Share API Logic
+            const nativeShareBtn = document.getElementById('native-share-btn');
+            if (nativeShareBtn) {
+                if (navigator.share) {
+                    nativeShareBtn.addEventListener('click', () => {
+                        navigator.share({
+                            title: shareTitle,
+                            text: shareDesc,
+                            url: shareUrl
+                        }).catch(err => console.log('Share error:', err));
+                    });
+                } else {
+                    nativeShareBtn.style.display = 'none';
+                }
+            }
+        });
+    </script>
+
+</Layout>

@@ -2,8 +2,16 @@
 // SchemeCard.astro
 interface Props {
   scheme: any;
+  lang?: 'mr' | 'en';
 }
-const { scheme } = Astro.props;
+const { scheme, lang = 'mr' } = Astro.props;
+const isEn = lang === 'en';
+
+// ── Determine display title ──
+const displayTitle = isEn && scheme.data.english_title ? scheme.data.english_title : scheme.data.title;
+const displayDesc = scheme.data.description;
+const linkPrefix = isEn ? '/en' : '';
+const ctaText = isEn ? 'Read More' : 'माहिती वाचा';
 
 // ── Determine category styling ──
 let iconClass = 'fa-leaf';
@@ -72,8 +80,8 @@ extraKeywords += ' ' + schemeId;
     </div>
   </div>
   <div class="scheme-card-content">
-    <h3>{scheme.data.title}</h3>
-    <p class="scheme-desc">{scheme.data.description}</p>
+    <h3>{displayTitle}</h3>
+    <p class="scheme-desc">{displayDesc}</p>
     {scheme.data.key_stat && (
       <div class="scheme-key-stat">
         <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
@@ -81,7 +89,7 @@ extraKeywords += ' ' + schemeId;
       </div>
     )}
   </div>
-  <a href={`/schemes/${scheme.id}`} class="btn btn-primary btn-block btn-read-more ripple-effect">
-    माहिती वाचा <i class="fa-solid fa-arrow-right arrow-icon"></i>
+  <a href={`${linkPrefix}/schemes/${scheme.id}`} class="btn btn-primary btn-block btn-read-more ripple-effect">
+    {ctaText} <i class="fa-solid fa-arrow-right arrow-icon"></i>
   </a>
 </article>

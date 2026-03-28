@@ -1,0 +1,159 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const businessPages = [
+    {
+      id: 'startup-guide',
+      title: 'How to Start a New Business?',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">Step-by-Step Guide to Starting Your Own Business</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">Many young people dream of starting their own business instead of working a job. But they fall behind due to lack of proper information. Understanding the following steps is essential for starting a successful business:</p>
+        <div class="space-y-5 mb-8 text-slate-700">
+          <div class="p-5 bg-slate-50 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-1 text-lg">1. Choose the Right Business (Market Research)</h3>
+            <p class="text-sm" style="line-height: 1.5;">Identify what is in demand in the market. Choose a business that matches your interest and can be started with low investment.</p>
+          </div>
+          <div class="p-5 bg-slate-50 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-1 text-lg">2. Business Plan</h3>
+            <p class="text-sm" style="line-height: 1.5;">Prepare a written plan of how your business will run, where raw materials will come from, and how you will market. This helps greatly in getting loans.</p>
+          </div>
+          <div class="p-5 bg-slate-50 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-1 text-lg">3. Raise Capital</h3>
+            <p class="text-sm" style="line-height: 1.5;">Decide whether the money needed for business will be your own or a bank loan. Many government MUDRA and other loan schemes are available.</p>
+          </div>
+        </div>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          Ad Space
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 text-center shadow-sm">
+          <h4 class="font-bold text-indigo-800 mb-2 text-lg">How to Register Your Business?</h4>
+          <p class="text-sm text-indigo-600 mb-4">Learn how to get Shop Act and Udyam Aadhaar to make your business legal.</p>
+          <a href="/en/business/registration" class="inline-block bg-primary text-white font-bold py-2 px-6 rounded-lg hover:brightness-110 transition-all active:scale-95 shadow-md">Read Registration Info</a>
+        </div>
+      `
+    },
+    {
+      id: 'registration',
+      title: 'Required Licenses & Registration',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">Business Licenses Required</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">To legally start any new business and avail government scheme benefits (subsidies/loans), business registration is extremely important.</p>
+        <ul class="space-y-4 mb-8 text-slate-700">
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <span class="mt-1 text-emerald-500 font-bold text-2xl"><i class="fa-solid fa-check-circle"></i></span> 
+            <div>
+              <strong class="text-slate-900 block text-lg mb-1">Udyam Aadhaar (MSME Registration):</strong> 
+              <p class="text-sm mt-1" style="line-height: 1.5;">This is an extremely important certificate for small and medium enterprises. It can be obtained completely free on the Government of India portal. It helps in getting bank loans faster.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <span class="mt-1 text-emerald-500 font-bold text-2xl"><i class="fa-solid fa-check-circle"></i></span> 
+            <div>
+              <strong class="text-slate-900 block text-lg mb-1">Shop Act License (Gumasta):</strong> 
+              <p class="text-sm mt-1" style="line-height: 1.5;">In Maharashtra, it is mandatory to get this license from the Municipal Corporation or Municipality to start a shop or business. It is required to open a Current Account in a bank.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <span class="mt-1 text-emerald-500 font-bold text-2xl"><i class="fa-solid fa-check-circle"></i></span> 
+            <div>
+              <strong class="text-slate-900 block text-lg mb-1">FSSAI and GST Registration:</strong> 
+              <p class="text-sm mt-1" style="line-height: 1.5;">If your business is food-related (hotel, bakery), FSSAI license is required. Also, if annual turnover exceeds ₹40 lakhs, GST number is mandatory.</p>
+            </div>
+          </li>
+        </ul>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          Ad Space
+        </div>
+      `
+    },
+    {
+      id: 'loans',
+      title: 'Business Loan Schemes',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">Government Business Loan Schemes</h2>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">To encourage youth to become job creators rather than job seekers, the Central and State Governments offer many loan schemes with low interest rates and subsidies.</p>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-indian-rupee-sign"></i> 1. PM MUDRA Yojana</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">Collateral-free loan up to ₹10 lakh. Three categories: Shishu (₹50K), Kishor (₹5L) and Tarun (₹10L).</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-industry"></i> 2. PMEGP Scheme</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">For manufacturing and service sector, loans up to ₹50 lakh with 15% to 35% subsidy.</p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
+            <h3 class="font-bold text-primary mb-2 text-lg"><i class="fa-solid fa-handshake"></i> 3. Annasaheb Patil Financial Dev. Corporation</h3>
+            <p class="text-sm text-slate-600" style="line-height: 1.5;">Very popular scheme for Maratha community youth. The corporation pays interest on business loans up to ₹10 lakh.</p>
+          </div>
+        </div>
+        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-6 text-center shadow-sm">
+          <h4 class="font-bold text-emerald-800 mb-2 text-lg">What will be your loan EMI?</h4>
+          <p class="text-sm text-emerald-600 mb-4">Before taking a loan, check your monthly installment (EMI) instantly with our smart tool.</p>
+          <a href="/en/tools/emi-calculator" class="inline-block bg-emerald-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-emerald-700 transition-colors active:scale-95 shadow-md">Use EMI Calculator</a>
+        </div>
+      `
+    },
+    {
+      id: 'pm-vishwakarma',
+      title: 'PM Vishwakarma Yojana',
+      content: `
+        <h2 class="text-2xl font-bold text-slate-800 mb-4" style="font-family: 'Mukta', sans-serif;">A Lifeline for Traditional Artisans</h2>
+        <p class="mb-4 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">The Central Government has launched the <strong>PM Vishwakarma Yojana</strong> to provide financial and technical support to 18 types of traditional artisans (e.g., carpenters, blacksmiths, goldsmiths, tailors, potters) in India.</p>
+        <h3 class="text-xl font-bold text-slate-800 mb-4 mt-6" style="font-family: 'Mukta', sans-serif;">Key Benefits</h3>
+        <ul class="space-y-4 mb-8 text-slate-700">
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span class="mt-1 text-primary font-bold text-xl"><i class="fa-solid fa-user-graduate"></i></span> 
+            <div>
+              <strong class="text-slate-900 block mb-1 text-lg">Training and Stipend:</strong> 
+              <span style="line-height: 1.5; font-size: 0.95rem;">Artisans receive 5 to 15 days of free skill training. During this period, a daily stipend of <strong class="text-primary">₹500</strong> is provided.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span class="mt-1 text-primary font-bold text-xl"><i class="fa-solid fa-toolbox"></i></span> 
+            <div>
+              <strong class="text-slate-900 block mb-1 text-lg">Toolkit Assistance:</strong> 
+              <span style="line-height: 1.5; font-size: 0.95rem;">After training completion, an e-voucher of <strong class="text-primary">₹15,000</strong> is provided for purchasing required tools.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span class="mt-1 text-primary font-bold text-xl"><i class="fa-solid fa-hand-holding-dollar"></i></span> 
+            <div>
+              <strong class="text-slate-900 block mb-1 text-lg">Low-Interest Loans:</strong> 
+              <span style="line-height: 1.5; font-size: 0.95rem;">For business expansion: ₹1 lakh in the first phase and ₹2 lakh in the second phase, at only <strong class="text-primary">5% interest rate</strong> (collateral-free).</span>
+            </div>
+          </li>
+        </ul>
+        <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+          Ad Space
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-3" style="font-family: 'Mukta', sans-serif;">Where to Apply?</h3>
+        <p class="mb-6 text-slate-600" style="font-size: 1.1rem; line-height: 1.6;">You can register for free at your nearest CSC (Common Service Center / Aaple Sarkar Seva Kendra).</p>
+      `
+    }
+  ];
+
+  return businessPages.map(page => ({
+    params: { id: page.id },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`${page.title} | Business Guide | MahitiMarg`}>
+    <main class="container py-8 max-w-4xl mx-auto" style="min-height: 80vh;">
+        <div class="mb-6 animate-on-load">
+            <a href="/en/business" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors" style="font-family: 'Mukta', sans-serif;">
+                <i class="fa-solid fa-arrow-left"></i> Business Hub
+            </a>
+        </div>
+        <article class="glass-panel animate-on-scroll shadow-md" style="padding: 3rem; border-radius: 16px; background: rgba(255, 255, 255, 0.95); border-top: 4px solid var(--accent);">
+            <header style="margin-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 1.5rem;">
+                <h1 class="title-gradient" style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: 'Mukta', sans-serif;">{page.title}</h1>
+            </header>
+            <div set:html={page.content} class="article-content scheme-detail" style="font-family: 'Mukta', sans-serif;" />
+        </article>
+    </main>
+</Layout>
