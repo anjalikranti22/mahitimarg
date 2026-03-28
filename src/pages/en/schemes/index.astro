@@ -3,14 +3,14 @@ import Layout from '../../../layouts/Layout.astro';
 import SchemeCard from '../../../components/SchemeCard.astro';
 import { getCollection } from 'astro:content';
 
-const allSchemes = await getCollection('schemes');
+const allSchemes = await getCollection('schemes-en');
 
 const schemesBreadcrumbs = [
   { name: 'Home', url: 'https://mahitimarg.in/en/' },
   { name: 'All Schemes', url: 'https://mahitimarg.in/en/schemes/' },
 ];
 
-const schemesKeywords = 'all government schemes Maharashtra, सर्व सरकारी योजना, Maharashtra government schemes 2025, farmer schemes, women schemes, student schemes, business schemes, central government schemes Marathi, mahitimarg yojana';
+const schemesKeywords = 'all government schemes Maharashtra, government schemes 2025, farmer schemes, women schemes, student schemes, business schemes, central government schemes, mahitimarg yojana';
 ---
 
 <Layout
@@ -38,7 +38,7 @@ const schemesKeywords = 'all government schemes Maharashtra, सर्व सर
             <div class="schemes-grid" id="all-schemes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 {allSchemes.map((scheme) => (
                     <div class="scheme-item" data-title={scheme.data.title.toLowerCase()} data-badge={scheme.data.badge.toLowerCase()} data-desc={scheme.data.description.toLowerCase()}>
-                        <SchemeCard scheme={scheme} lang="en" />
+                        <SchemeCard scheme={scheme} lang="en" collection="schemes-en" />
                     </div>
                 ))}
             </div>

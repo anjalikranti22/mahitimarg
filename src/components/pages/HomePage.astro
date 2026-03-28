@@ -10,7 +10,8 @@ import SchemeCard from '../SchemeCard.astro';
 import { getCollection } from 'astro:content';
 
 // Fetch all schemes from the Content Collection
-const allSchemes = await getCollection('schemes');
+const collectionName = isEn ? 'schemes-en' : 'schemes';
+const allSchemes = await getCollection(collectionName);
 const featuredSchemes = allSchemes.slice(0, 6);
 const totalSchemes = allSchemes.length;
 

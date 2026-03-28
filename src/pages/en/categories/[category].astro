@@ -21,7 +21,7 @@ export async function getStaticPaths() {
     { slug: 'student', name: 'Student Schemes', badgeKeyword: 'Student' },
   ];
 
-  const allSchemes = await getCollection('schemes');
+  const allSchemes = await getCollection('schemes-en');
 
   return categories.map(category => {
     const filteredSchemes = allSchemes.filter(scheme => 

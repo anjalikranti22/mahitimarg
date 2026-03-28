@@ -4,7 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const schemeEntries = await getCollection('schemes');
+  const schemeEntries = await getCollection('schemes-en');
   return schemeEntries.map(entry => ({
     params: { slug: entry.id }, props: { entry },
   }));
@@ -14,31 +14,20 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-// --- Automatic Bilingual SEO ---
-const marathiTitle = entry.data.title;
-const englishTitle = entry.data.english_title;
-const marathiDesc = entry.data.description;
+// --- SEO ---
+const pageTitle = entry.data.title;
+const pageDesc = entry.data.description;
 const pageUrl = `https://mahitimarg.in/en/schemes/${entry.id}`;
-
-// Bilingual title: "English Title | मराठी Title | MahitiMarg"
-const seoTitle = englishTitle
-  ? `${englishTitle} | ${marathiTitle} | MahitiMarg`
-  : `${marathiTitle} | MahitiMarg`;
-
-// Bilingual description
-const seoDescription = englishTitle
-  ? `${englishTitle} – ${marathiDesc} Eligibility, documents & full information.`
-  : `${marathiDesc} Eligibility, documents & full information.`;
-
-// Keywords from frontmatter
 const seoKeywords = entry.data.keywords ?? undefined;
+
+const seoTitle = `${pageTitle} | MahitiMarg`;
+const seoDescription = `${pageDesc} Eligibility, documents & full information.`;
 
 // JSON-LD Structured Data
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": englishTitle ?? marathiTitle,
-  "alternativeHeadline": marathiTitle,
+  "headline": pageTitle,
   "description": seoDescription,
   "url": pageUrl,
   "inLanguage": "en",
@@ -49,10 +38,7 @@ const jsonLd = {
   },
   "about": {
     "@type": "GovernmentService",
-    "name": englishTitle ?? marathiTitle,
-    "alternateName": englishTitle
-      ? [englishTitle, marathiTitle]
-      : [marathiTitle],
+    "name": pageTitle,
     "provider": {
       "@type": "GovernmentOrganization",
       "name": "Government of Maharashtra"
@@ -75,24 +61,23 @@ if (cat.includes('farmer') || cat.includes('शेतकरी')) {
 }
 
 // WhatsApp share URL
-const whatsappText = encodeURIComponent(`${entry.data.title}\n\n${entry.data.description}\n\nRead full details:\n${pageUrl}`);
+const whatsappText = encodeURIComponent(`${pageTitle}\n\n${pageDesc}\n\nRead full details:\n${pageUrl}`);
 const whatsappUrl = `https://api.whatsapp.com/send?text=${whatsappText}`;
 
 // Fetch other schemes for sidebar
-const allSchemes = await getCollection('schemes');
+const allSchemes = await getCollection('schemes-en');
 const otherSchemes = allSchemes.filter(s => s.id !== entry.id).slice(0, 4);
 
 // --- Breadcrumbs ---
 const breadcrumbs = [
   { name: 'Home', url: 'https://mahitimarg.in/en/' },
   { name: 'Government Schemes', url: 'https://mahitimarg.in/en/schemes/' },
-  { name: englishTitle ?? marathiTitle, url: pageUrl },
+  { name: pageTitle, url: pageUrl },
 ];
 
 // --- Rich keyword generation ---
 const autoKeywords = [
-  marathiTitle,
-  englishTitle,
+  pageTitle,
   entry.data.badge,
   'government scheme',
   'Maharashtra government',
@@ -113,7 +98,7 @@ const autoKeywords = [
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <a href="/en/schemes">Schemes</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
-                <span>{englishTitle ?? entry.data.title}</span>
+                <span>{pageTitle}</span>
             </nav>
 
             <!-- Icon + Badges -->
@@ -128,8 +113,8 @@ const autoKeywords = [
             </div>
 
             <!-- Title and Description -->
-            <h1>{entry.data.title}</h1>
-            <p>{entry.data.description}</p>
+            <h1>{pageTitle}</h1>
+            <p>{pageDesc}</p>
         </div>
     </section>
 
