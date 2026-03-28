@@ -69,7 +69,7 @@ const schemeSearchData = allSchemes.map(s => ({
                 </div>
 
                 <!-- Search Tabs -->
-                <div class="search-tabs" id="search-tabs" style="margin-top: 1.25rem;">
+                <div class="search-tabs hidden-mobile" id="search-tabs" style="margin-top: 1.25rem;">
                     <button class="search-tab active" data-tab="all"><i class="fa-solid fa-magnifying-glass"></i>{t('search.tab.all')}</button>
                     <button class="search-tab" data-tab="schemes"><i class="fa-solid fa-file-lines"></i>{t('hero.title.schemes')}</button>
                     <button class="search-tab" data-tab="articles"><i class="fa-solid fa-newspaper"></i>{t('search.tab.articles')}</button>
@@ -77,7 +77,7 @@ const schemeSearchData = allSchemes.map(s => ({
                 </div>
 
                 <!-- Quick Category Links -->
-                <div class="hp-quick-links">
+                <div class="hp-quick-links hidden-mobile">
                     <a href={`${p}/categories/farmer`} class="hp-qlink"><i class="fa-solid fa-tractor"></i>{t('qlink.farmer')}</a>
                     <a href={`${p}/categories/women`} class="hp-qlink"><i class="fa-solid fa-person-dress"></i>{t('qlink.women')}</a>
                     <a href={`${p}/categories/business`} class="hp-qlink"><i class="fa-solid fa-briefcase"></i>{t('hero.title.business')}</a>
