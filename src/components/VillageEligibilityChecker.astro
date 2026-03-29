@@ -2,35 +2,54 @@
 // VillageEligibilityChecker.astro
 // This is an interactive component that loads Maharashtra village data dynamically 
 // and provides a 3-step dropdown UI to check eligibility.
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="village-eligibility-checker">
-  <h3>तुमचे गाव तपासा (Check Eligibility)</h3>
-  <p class="eligibility-desc">या योजनेसाठी तुमचे गाव पात्र आहे का ते तपासण्यासाठी खालील माहिती निवडा:</p>
+  <h3>{t('checker.title')}</h3>
+  <p class="eligibility-desc">{t('checker.desc')}</p>
 
   <div class="checker-form">
     <div class="form-group">
-      <label for="district-select">जिल्हा (District)</label>
+      <label for="district-select">{t('checker.district')}</label>
       <select id="district-select" disabled>
-        <option value="">-- जिल्हा निवडा --</option>
+        <option value="">{t('checker.district.opt')}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="taluka-select">तालुका (Taluka)</label>
+      <label for="taluka-select">{t('checker.taluka')}</label>
       <select id="taluka-select" disabled>
-        <option value="">-- प्रथम जिल्हा निवडा --</option>
+        <option value="">{t('checker.taluka.opt')}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="village-select">गाव (Village)</label>
+      <label for="village-select">{t('checker.village')}</label>
       <select id="village-select" disabled>
-        <option value="">-- प्रथम तालुका निवडा --</option>
+        <option value="">{t('checker.village.opt')}</option>
       </select>
     </div>
 
-    <button id="check-eligibility-btn" class="btn-check" disabled>पात्रता तपासा</button>
+    <div class="form-group">
+      <label for="loanStatus">{t('checker.loan.status')}</label>
+      <select id="loanStatus">
+        <option value="default">{t('checker.loan.status.opt')}</option>
+        <option value="thakit">{t('checker.loan.thakit')}</option>
+        <option value="niyamit">{t('checker.loan.niyamit')}</option>
+      </select>
+      <span class="info-note">{t('checker.loan.note')}</span>
+    </div>
+
+    <div class="form-group" id="loanAmountGroup">
+      <label for="loanAmount">{t('checker.loan.amount')}</label>
+      <input type="number" id="loanAmount" placeholder={t('checker.loan.ph')} min="0" />
+    </div>
+
+    <button id="check-eligibility-btn" class="btn-check" disabled>{t('checker.btn.check')}</button>
   </div>
 
   <div id="eligibility-result" class="eligibility-result hidden">
@@ -79,7 +98,7 @@
     font-size: 0.9rem;
   }
 
-  .form-group select {
+  .form-group select, .form-group input[type="number"] {
     padding: 0.75rem;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
@@ -89,13 +108,13 @@
     transition: all 0.2s;
   }
 
-  .form-group select:focus {
+  .form-group select:focus, .form-group input[type="number"]:focus {
     outline: none;
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   }
 
-  .form-group select:disabled {
+  .form-group select:disabled, .form-group input[type="number"]:disabled {
     background-color: #f1f5f9;
     color: #94a3b8;
     cursor: not-allowed;
@@ -139,6 +158,18 @@
     border: 1px solid #bbf7d0;
   }
 
+  .eligibility-result.error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+
+  .info-note {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: -0.25rem;
+  }
+
   .hidden {
     display: none;
   }
@@ -152,7 +183,7 @@
     .checker-form {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      align-items: end;
+      align-items: start;
     }
     .btn-check {
       grid-column: 1 / -1;
@@ -160,14 +191,43 @@
   }
 </style>
 
+<script id="checker-translations" type="application/json" set:html={JSON.stringify({
+  loading: t('checker.js.loading'),
+  error: t('checker.js.error'),
+  distOpt: t('checker.district.opt'),
+  talOpt: t('checker.taluka.opt'),
+  vilOpt: t('checker.village.opt'),
+  errSelectAll: t('checker.js.err.select_all'),
+  errSelectType: t('checker.js.err.select_type'),
+  errAmount: t('checker.js.err.amount'),
+  succThakit: t('checker.js.success.thakit'),
+  errLimit: t('checker.js.err.limit'),
+  succNiyamit: t('checker.js.success.niyamit')
+})}></script>
+
 <script>
   // @ts-nocheck
   let villageData = null;
+  
+  // Translation helper
+  function getTranslations() {
+    const el = document.getElementById('checker-translations');
+    return el ? JSON.parse(el.textContent) : {};
+  }
+  
+  function t(key, params = {}) {
+    const dict = getTranslations();
+    let str = dict[key] || '';
+    for(let k in params) {
+        str = str.replace(`{${k}}`, params[k]);
+    }
+    return str;
+  }
 
   async function loadData() {
     try {
       const distSelect = document.getElementById('district-select');
-      distSelect.innerHTML = '<option value="">लोड होत आहे... (Loading...)</option>';
+      distSelect.innerHTML = `<option value="">${t('loading')}</option>`;
       
       const response = await fetch('/data/villages.json');
       villageData = await response.json();
@@ -176,13 +236,13 @@
     } catch (err) {
       console.error("Failed to load village data", err);
       const distSelect = document.getElementById('district-select');
-      distSelect.innerHTML = '<option value="">डेटा लोड करण्यात त्रुटी (Error Loading Data)</option>';
+      distSelect.innerHTML = `<option value="">${t('error')}</option>`;
     }
   }
 
   function populateDistricts() {
     const distSelect = document.getElementById('district-select');
-    distSelect.innerHTML = '<option value="">-- जिल्हा निवडा --</option>';
+    distSelect.innerHTML = `<option value="">${t('distOpt')}</option>`;
     
     // Check if data is properly formatted
     if (!villageData || typeof villageData !== 'object') return;
@@ -199,8 +259,8 @@
     distSelect.disabled = false;
   }
 
-  // Set up event listeners when the DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
+  // Set up event listeners when the component gets loaded by Astro's ClientRouter
+  document.addEventListener('astro:page-load', () => {
     // Only run if the component is actually on the page
     const distSelect = document.getElementById('district-select');
     if (!distSelect) return;
@@ -217,8 +277,8 @@
       const selectedDist = e.target.value;
       
       // Reset dependent fields
-      talSelect.innerHTML = '<option value="">-- तालुका निवडा --</option>';
-      vilSelect.innerHTML = '<option value="">-- प्रथम तालुका निवडा --</option>';
+      talSelect.innerHTML = `<option value="">${t('talOpt')}</option>`;
+      vilSelect.innerHTML = `<option value="">${t('vilOpt')}</option>`;
       talSelect.disabled = true;
       vilSelect.disabled = true;
       checkBtn.disabled = true;
@@ -242,7 +302,7 @@
       const selectedTal = e.target.value;
       
       // Reset dependent fields
-      vilSelect.innerHTML = '<option value="">-- गाव निवडा --</option>';
+      vilSelect.innerHTML = `<option value="">${t('vilOpt')}</option>`;
       vilSelect.disabled = true;
       checkBtn.disabled = true;
       resultDiv.classList.add('hidden');
@@ -269,15 +329,59 @@
       }
     });
 
+    // Loan Status display toggle
+    const loanStatusEl = document.getElementById('loanStatus');
+    const loanAmountGroup = document.getElementById('loanAmountGroup');
+    const loanAmountEl = document.getElementById('loanAmount');
+
+    loanStatusEl.addEventListener('change', function() {
+        if(this.value === 'niyamit') {
+            loanAmountGroup.style.display = 'none';
+        } else {
+            loanAmountGroup.style.display = 'flex';
+        }
+    });
+
     // Handle Check Button
     checkBtn.addEventListener('click', () => {
       const village = vilSelect.value;
       const taluka = talSelect.value;
       const district = distSelect.value;
+      const status = loanStatusEl.value;
+      const amountStr = loanAmountEl.value;
       
-      if (village && taluka && district) {
-        resultDiv.textContent = `अभिनंदन! ${village} (${taluka}, ${district}) हे गाव पुण्यश्लोक अहिल्यादेवी होळकर शेतकरी कर्जमाफी योजनेअंतर्गत पात्र आहे.`;
-        resultDiv.className = 'eligibility-result success';
+      resultDiv.classList.remove('hidden', 'success', 'error');
+      
+      if (!village || !taluka || !district) {
+          resultDiv.innerHTML = t('errSelectAll');
+          resultDiv.className = 'eligibility-result error';
+          return;
+      }
+
+      if (status === 'default') {
+          resultDiv.innerHTML = t('errSelectType');
+          resultDiv.className = 'eligibility-result error';
+          return;
+      }
+
+      if (status === 'thakit') {
+          if (amountStr === '' || amountStr <= 0) {
+              resultDiv.innerHTML = t('errAmount');
+              resultDiv.className = 'eligibility-result error';
+              return;
+          }
+          const amount = parseFloat(amountStr);
+          if (amount <= 200000) {
+              const formattedAmt = amount.toLocaleString('en-IN');
+              resultDiv.innerHTML = t('succThakit', {village: village, amount: formattedAmt});
+              resultDiv.className = 'eligibility-result success';
+          } else {
+              resultDiv.innerHTML = t('errLimit');
+              resultDiv.className = 'eligibility-result error';
+          }
+      } else if (status === 'niyamit') {
+          resultDiv.innerHTML = t('succNiyamit', {village: village});
+          resultDiv.className = 'eligibility-result success';
       }
     });
   });

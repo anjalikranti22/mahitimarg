@@ -206,6 +206,34 @@ export const ui = {
     
     'privacy.s8.title': 'संपर्क (Contact)',
     'privacy.s8.p1': 'या गोपनीयता धोरणाबद्दल कोणतेही प्रश्न असल्यास, कृपया आमच्याशी संपर्क करा:',
+
+    // Village Eligibility Checker
+    'checker.title': 'पात्रता तपासा (Check Eligibility)',
+    'checker.desc': 'या योजनेसाठी तुम्ही पात्र आहात का ते तपासण्यासाठी खालील माहिती निवडा:',
+    'checker.district': 'जिल्हा (District)',
+    'checker.district.opt': '-- जिल्हा निवडा --',
+    'checker.taluka': 'तालुका (Taluka)',
+    'checker.taluka.opt': '-- प्रथम जिल्हा निवडा --',
+    'checker.village': 'गाव (Village)',
+    'checker.village.opt': '-- प्रथम तालुका निवडा --',
+    'checker.loan.status': 'कर्ज स्थिती (Loan Status)',
+    'checker.loan.status.opt': '-- निवडा --',
+    'checker.loan.thakit': 'थकीत कर्ज (Defaulted)',
+    'checker.loan.niyamit': 'नियमित भरणारे (Regular)',
+    'checker.loan.note': 'सूचना: ३०/०९/२०२५ रोजी किंवा त्यापूर्वी कर्ज थकीत असणे आवश्यक आहे.',
+    'checker.loan.amount': 'कर्ज रक्कम (Loan Amount ₹)',
+    'checker.loan.ph': 'उदा. 150000',
+    'checker.btn.check': 'पात्रता आणि लाभ तपासा',
+    
+    // JS specific
+    'checker.js.loading': 'लोड होत आहे... (Loading...)',
+    'checker.js.error': 'डेटा लोड करण्यात त्रुटी (Error Loading Data)',
+    'checker.js.err.select_all': 'कृपया जिल्हा, तालुका आणि गाव निवडा.',
+    'checker.js.err.select_type': 'कृपया तुमच्या कर्जाचा प्रकार निवडा.',
+    'checker.js.err.amount': 'कृपया योग्य कर्ज रक्कम टाका.',
+    'checker.js.success.thakit': '🎉 अभिनंदन! {village} मधील तुमचे <strong>₹{amount}</strong> चे संपूर्ण कर्ज माफ होऊ शकते.',
+    'checker.js.err.limit': '⚠️ क्षमस्व, आपण पात्र नाही. योजनेच्या नियमानुसार फक्त ₹२,००,००० पर्यंतचे कर्ज माफ केले जाते. तुमचे कर्ज या मर्यादेपेक्षा जास्त आहे.',
+    'checker.js.success.niyamit': '🎉 अभिनंदन! {village} चे तुम्ही नियमित कर्ज भरणारे शेतकरी असल्यामुळे तुम्हाला <strong>₹५०,००० प्रोत्साहन अनुदान</strong> मिळण्यास तुम्ही पात्र आहात.'
   },
   en: {
     // Shared
@@ -405,7 +433,34 @@ export const ui = {
     'privacy.s7.title': 'Changes to This Policy',
     'privacy.s7.p1': 'We may update this privacy policy from time to time. Any significant changes will be published on this page. You are advised to review this page periodically.',
     
-    'privacy.s8.title': 'Contact',
     'privacy.s8.p1': 'If you have any questions about this privacy policy, please contact us:',
+
+    // Village Eligibility Checker
+    'checker.title': 'Check Eligibility',
+    'checker.desc': 'Select the following options to check your eligibility for this scheme:',
+    'checker.district': 'District',
+    'checker.district.opt': '-- Select District --',
+    'checker.taluka': 'Taluka',
+    'checker.taluka.opt': '-- Select District First --',
+    'checker.village': 'Village',
+    'checker.village.opt': '-- Select Taluka First --',
+    'checker.loan.status': 'Loan Status',
+    'checker.loan.status.opt': '-- Select --',
+    'checker.loan.thakit': 'Defaulted Loan',
+    'checker.loan.niyamit': 'Regular Repayment',
+    'checker.loan.note': 'Note: Loan must be defaulted on or before 30/09/2025.',
+    'checker.loan.amount': 'Loan Amount (₹)',
+    'checker.loan.ph': 'e.g., 150000',
+    'checker.btn.check': 'Check Eligibility & Benefits',
+    
+    // JS specific
+    'checker.js.loading': 'Loading...',
+    'checker.js.error': 'Error Loading Data',
+    'checker.js.err.select_all': 'Please select District, Taluka, and Village.',
+    'checker.js.err.select_type': 'Please select your loan type.',
+    'checker.js.err.amount': 'Please enter a valid loan amount.',
+    'checker.js.success.thakit': '🎉 Congratulations! Your entire loan of <strong>₹{amount}</strong> in {village} can be waived off.',
+    'checker.js.err.limit': '⚠️ Sorry, you are not eligible. As per scheme rules, only loans up to ₹2,00,000 are waived. Your loan exceeds limit.',
+    'checker.js.success.niyamit': '🎉 Congratulations! Since you are a regular loan-paying farmer from {village}, you are eligible to receive an <strong>incentive subsidy of ₹50,000</strong>.'
   },
 } as const;

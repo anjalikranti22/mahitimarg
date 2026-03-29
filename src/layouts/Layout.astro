@@ -100,15 +100,19 @@ const enUrl = new URL(enPath, Astro.site || 'https://mahitimarg.in');
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <script src="/js/script.js" defer></script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEB9SJ3QXK"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- Google tag (gtag.js) - Only load in production -->
+    {import.meta.env.PROD && (
+      <>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEB9SJ3QXK"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-      gtag('config', 'G-BEB9SJ3QXK');
-    </script>
+          gtag('config', 'G-BEB9SJ3QXK');
+        </script>
+      </>
+    )}
 </head>
 <body>
     <Header />
