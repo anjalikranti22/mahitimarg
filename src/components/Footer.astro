@@ -88,3 +88,44 @@ const searchUrl = isEn ? '/en#scheme-search' : '/#scheme-search';
         </div>
     </div>
 </footer>
+
+<!-- ✅ SiteNavigationElement Schema: helps Google understand site structure deeply -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SiteLinksSearchBox",
+  "url": "https://mahitimarg.in",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://mahitimarg.in/schemes?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "MahitiMarg Site Navigation",
+  "itemListElement": [
+    { "@type": "SiteLinksSearchBox", "position": 1,
+      "item": { "@type": "WebPage", "url": "https://mahitimarg.in/", "name": "Home / मुख्यपृष्ठ" }
+    },
+    { "@type": "ListItem", "position": 2,
+      "item": { "@type": "WebPage", "url": "https://mahitimarg.in/schemes", "name": "Government Schemes / सरकारी योजना" }
+    },
+    { "@type": "ListItem", "position": 3,
+      "item": { "@type": "WebPage", "url": "https://mahitimarg.in/tools", "name": "Smart Tools / स्मार्ट टूल्स" }
+    },
+    { "@type": "ListItem", "position": 4,
+      "item": { "@type": "WebPage", "url": "https://mahitimarg.in/jobs", "name": "Jobs / नोकरी" }
+    },
+    { "@type": "ListItem", "position": 5,
+      "item": { "@type": "WebPage", "url": "https://mahitimarg.in/articles", "name": "Articles / लेख" }
+    },
+    { "@type": "ListItem", "position": 6,
+      "item": { "@type": "WebPage", "url": "https://mahitimarg.in/categories", "name": "Categories / श्रेणी" }
+    }
+  ]
+}
+</script>

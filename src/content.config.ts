@@ -9,6 +9,11 @@ const schemeSchema = z.object({
   key_stat: z.string().optional().nullable(),
   english_title: z.string().optional().nullable(),
   keywords: z.string().optional().nullable(),
+  // Dynamic OG/Twitter image (optional — falls back to badge-based or default)
+  image: z.string().optional().nullable(),
+  // Content freshness signals for JSON-LD & Google ranking
+  pubDate: z.string().optional().nullable(),
+  updatedDate: z.string().optional().nullable(),
 });
 
 const schemeCollection = defineCollection({

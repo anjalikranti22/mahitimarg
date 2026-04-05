@@ -28,6 +28,56 @@ const schemeSearchData = allSchemes.map(s => ({
     title={t('site.title')}
     canonical="https://mahitimarg.in/"
 >
+    <!-- ✅ WebSite Schema: enables Google Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MahitiMarg",
+      "alternateName": ["महितीमार्ग", "MahitiMarg Portal"],
+      "url": "https://mahitimarg.in",
+      "description": "Maharashtra government schemes, jobs, and tools in Marathi",
+      "inLanguage": ["mr", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mahitimarg.in/schemes?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- ✅ Organization Schema: establishes E-E-A-T, logo, social presence -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MahitiMarg",
+      "alternateName": "महितीमार्ग",
+      "url": "https://mahitimarg.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mahitimarg.in/images/og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "description": "Maharashtra's leading portal for government schemes, jobs, and citizen tools in Marathi.",
+      "areaServed": {
+        "@type": "State",
+        "name": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "contact@logicpathsystems.com",
+        "availableLanguage": ["Marathi", "English"]
+      }
+    }
+    </script>
+
     <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
     <main>
         <!-- Section 1: Hero + Universal Search -->

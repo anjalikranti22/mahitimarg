@@ -18,10 +18,36 @@ const { Content } = await render(entry);
 const pageTitle = entry.data.title;
 const pageDesc = entry.data.description;
 const pageUrl = `https://mahitimarg.in/en/schemes/${entry.id}`;
+// ✅ Canonical points to Marathi version to prevent duplicate PageRank split
+const canonicalUrl = `https://mahitimarg.in/schemes/${entry.id}`;
 const seoKeywords = entry.data.keywords ?? undefined;
 
 const seoTitle = `${pageTitle} | MahitiMarg`;
 const seoDescription = `${pageDesc} Eligibility, documents & full information.`;
+
+// --- Dynamic OG Image: scheme-specific > badge-based fallback > default ---
+const badgeImageMap: Record<string, string> = {
+  'farmer':   '/images/og-farmer.jpg',
+  'agri':     '/images/og-farmer.jpg',
+  'women':    '/images/og-women.jpg',
+  'mahila':   '/images/og-women.jpg',
+  'student':  '/images/og-student.jpg',
+  'business': '/images/og-business.jpg',
+  'health':   '/images/og-health.jpg',
+  'pension':  '/images/og-pension.jpg',
+  'housing':  '/images/og-housing.jpg',
+};
+const badgeLower = (entry.data.badge || '').toLowerCase();
+const badgeFallbackImage = Object.entries(badgeImageMap).find(([k]) => badgeLower.includes(k))?.[1];
+const schemeOgImage = entry.data.image
+  ? `https://mahitimarg.in${entry.data.image}`
+  : (badgeFallbackImage
+    ? `https://mahitimarg.in${badgeFallbackImage}`
+    : 'https://mahitimarg.in/images/og-image.jpg');
+
+// --- Content Freshness ---
+const pubDate     = entry.data.pubDate     ?? null;
+const updatedDate = entry.data.updatedDate ?? null;
 
 // JSON-LD Structured Data
 const jsonLd = {
@@ -30,11 +56,19 @@ const jsonLd = {
   "headline": pageTitle,
   "description": seoDescription,
   "url": pageUrl,
+  "image": schemeOgImage,
   "inLanguage": "en",
+  // ✅ Content freshness signals
+  ...(pubDate     ? { "datePublished": pubDate }     : {}),
+  ...(updatedDate ? { "dateModified":  updatedDate } : {}),
   "publisher": {
     "@type": "Organization",
     "name": "MahitiMarg",
-    "url": "https://mahitimarg.in"
+    "url": "https://mahitimarg.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mahitimarg.in/favicon.svg"
+    }
   },
   "about": {
     "@type": "GovernmentService",
@@ -46,6 +80,7 @@ const jsonLd = {
   },
   ...(seoKeywords ? { "keywords": seoKeywords } : {})
 };
+
 
 
 let iconClass = 'fa-file-lines';
@@ -88,7 +123,7 @@ const autoKeywords = [
 ].filter(Boolean).join(', ');
 ---
 
-<Layout title={seoTitle} description={seoDescription} keywords={autoKeywords} canonical={pageUrl} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+<Layout title={seoTitle} description={seoDescription} keywords={autoKeywords} canonical={canonicalUrl} jsonLd={jsonLd} breadcrumbs={breadcrumbs} image={schemeOgImage}>
     <!-- Premium Header Banner -->
     <section class="scheme-detail-banner">
         <div class="container">
