@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import AdPlaceholder from '../../components/AdPlaceholder.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -220,6 +221,11 @@ const autoKeywords = [
                 )}
 
                 <!-- Removed WhatsApp Button from here to move it to the bottom -->
+            </div>
+
+            <!-- AdSense Sticky Sidebar Placeholder -->
+            <div style="position: sticky; top: 100px; z-index: 10;">
+                <AdPlaceholder type="sidebar" />
             </div>
 
             <!-- Table of Contents (populated by JS) -->

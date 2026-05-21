@@ -7,6 +7,7 @@ const isEn = lang === 'en';
 const p = isEn ? '/en' : ''; // link prefix
 import Layout from '../../layouts/Layout.astro';
 import SchemeCard from '../SchemeCard.astro';
+import AdPlaceholder from '../AdPlaceholder.astro';
 import { getCollection } from 'astro:content';
 
 // Fetch all schemes from the Content Collection
@@ -78,6 +79,32 @@ const schemeSearchData = allSchemes.map(s => ({
     }
     </script>
 
+    <!-- ✅ FAQPage Schema: enables Google FAQ rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "लाडकी बहीण योजनेसाठी अर्ज कुठे करायचा?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "लाडकी बहीण योजनेसाठी तुम्ही नारी शक्ती दूत (Nari Shakti Doot) ॲपवरून किंवा जवळच्या अंगणवाडी सेविका, सेतू सुविधा केंद्र (सीएससी) मार्फत ऑनलाइन अर्ज करू शकता."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "शेतकरी कर्जमाफी २०२६ मध्ये किती कर्ज माफ होणार?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "नवीन कर्जमाफी योजनेअंतर्गत शेतकऱ्यांचे २ लाख रुपयांपर्यंतचे थकीत पीककर्ज माफ केले जाणार आहे. नियमित कर्ज फेडणाऱ्यांना ५० हजार रुपये प्रोत्साहनपर अनुदान दिले जाईल."
+          }
+        }
+      ]
+    }
+    </script>
+
     <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
     <main>
         <!-- Section 1: Hero + Universal Search -->
@@ -100,10 +127,11 @@ const schemeSearchData = allSchemes.map(s => ({
                     <div class="hp-search-glow" aria-hidden="true"></div>
                     <div class="hp-search-box">
                         <i class="fa-solid fa-search hp-search-icon" aria-hidden="true"></i>
-                        <input type="text" id="scheme-search" class="hp-search-input"
-                            placeholder={t('search.placeholder')}
+                        <input type="text" id="scheme-search" class="search-input input-lg hp-search-input"
+                            placeholder=" "
                             aria-label="Search schemes"
                             autocomplete="off">
+                        <label for="scheme-search" class="floating-label">{t('search.placeholder')}</label>
                         <button id="search-clear-btn" class="hp-search-clear" aria-label="Clear search" style="display:none;">
                             <i class="fa-solid fa-times"></i>
                         </button>
@@ -368,6 +396,11 @@ const schemeSearchData = allSchemes.map(s => ({
             </div>
         </section>
 
+        <!-- Ad Placement 1: After Categories -->
+        <div class="container" style="padding: 0 1.5rem;">
+            <AdPlaceholder type="banner" height="150px" />
+        </div>
+
         <!-- Section 4: Smart Tools Strip -->
         <section id="smart-tools" class="container scheme-category-section" aria-labelledby="tools-title">
             <div class="section-header animate-on-scroll">
@@ -564,6 +597,11 @@ const schemeSearchData = allSchemes.map(s => ({
                 </div>
             </div>
         </section>
+
+        <!-- Ad Placement 2: Before Trust Stats -->
+        <div class="container" style="padding: 0 1.5rem;">
+            <AdPlaceholder type="banner" height="150px" />
+        </div>
 
         <!-- Section 8: Trust Stats Counter -->
         <section id="trust-stats" class="container scheme-category-section" aria-labelledby="stats-title">

@@ -41,27 +41,43 @@ document.addEventListener('astro:page-load', () => {
         });
     }
 
-    // --- 2. Scroll Animations Setup ---
-    const scrollElements = document.querySelectorAll('.animate-on-scroll');
-    
-    // Create intersection observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // If the element is visible
-            if (entry.isIntersecting) {
-                // Add the animating class
-                entry.target.classList.add('visible');
-                // Unobserve after animating once
-                observer.unobserve(entry.target);
-            }
+    // --- 2. Scroll Animations Setup (GSAP) ---
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        const scrollElements = document.querySelectorAll('.animate-on-scroll');
+        
+        scrollElements.forEach(el => {
+            // Remove CSS transition to let GSAP handle it smoothly
+            el.style.transition = 'none';
+            gsap.fromTo(el, 
+                { y: 40, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 90%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
         });
-    }, {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: "0px 0px -50px 0px"
-    });
-    
-    // Observe all scroll elements
-    scrollElements.forEach(el => observer.observe(el));
+
+        // Hover animations for scheme cards (GSAP)
+        const schemeCards = document.querySelectorAll('.scheme-card');
+        schemeCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    gsap.to(card, { scale: 1.03, duration: 0.3, ease: 'power1.out' });
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, { scale: 1, duration: 0.3, ease: 'power1.out' });
+            });
+        });
+    }
 
     // --- 3. FAQ Accordion Setup (for other pages) ---
     const faqItems = document.querySelectorAll('.faq-item');

@@ -41,7 +41,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Outfit', 'Noto Sans Devanagari', sans-serif;
+    font-family: 'Mukta', 'Outfit', sans-serif;
     color: var(--text-main);
     background-color: var(--bg-color);
     background-image: 
@@ -105,6 +105,12 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(30, 58, 138, 0.35); background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
 .btn-primary:hover .arrow-icon { transform: translateX(6px); }
 .arrow-icon { transition: transform 0.3s ease; }
+
+/* Accessibility Focus Rings */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, .category-chip:focus-visible, .tool-card:focus-visible, details:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
 
 .btn-secondary { background: #e2e8f0; color: var(--text-muted); }
 .btn-accent { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white; box-shadow: 0 6px 15px rgba(249, 115, 22, 0.25); }
@@ -262,8 +268,35 @@ p { margin-bottom: 1rem; font-size: 1.05rem; }
 
 .search-input.input-lg { width: 100%; padding: 1.2rem 8rem 1.2rem 3.5rem; border: none; border-radius: var(--radius-pill); background: white; font-size: 1rem; color: var(--text-main); box-shadow: var(--shadow-hover); transition: var(--transition); outline: none; }
 .search-input.input-lg:focus { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), var(--shadow-hover); }
-.search-container-lg .search-icon { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: var(--primary-light); font-size: 1.3rem; pointer-events: none; }
+.search-container-lg .search-icon { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: var(--primary-light); font-size: 1.3rem; pointer-events: none; z-index: 2; }
 .btn-search-submit { position: absolute; right: 0.4rem; top: 0.4rem; bottom: 0.4rem; padding: 0 2rem; border-radius: var(--radius-pill); font-size: 0.95rem; white-space: nowrap; min-width: 90px; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Floating Label Styles */
+.hp-search-box { position: relative; display: flex; width: 100%; align-items: center; }
+.floating-label {
+    position: absolute;
+    left: 3.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+    font-size: 1.05rem;
+    background: transparent;
+    z-index: 1;
+}
+.hp-search-input:focus ~ .floating-label,
+.hp-search-input:not(:placeholder-shown) ~ .floating-label {
+    top: 0;
+    left: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: white;
+    padding: 0 0.5rem;
+    border-radius: 4px;
+    transform: translateY(-50%);
+}
 
 /* Filter Pills */
 .filter-pills-container { margin-top: 2rem; display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; justify-content: center; }
