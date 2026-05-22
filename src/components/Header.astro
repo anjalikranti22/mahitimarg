@@ -6,11 +6,14 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const isEn = lang === 'en';
 
-const navLinks = [
+const mainNavLinks = [
     { label: t('nav.schemes'), icon: 'fa-solid fa-list-check', href: isEn ? '/en/schemes' : '/schemes' },
-    { label: t('nav.articles'), icon: 'fa-regular fa-newspaper', href: isEn ? '/en/articles' : '/articles' },
-    { label: t('nav.tools'), icon: 'fa-solid fa-screwdriver-wrench', href: isEn ? '/en/tools' : '/tools' },
     { label: t('nav.jobs'), icon: 'fa-solid fa-briefcase', href: isEn ? '/en/jobs' : '/jobs' },
+    { label: t('nav.tools'), icon: 'fa-solid fa-screwdriver-wrench', href: isEn ? '/en/tools' : '/tools' },
+    { label: t('nav.articles'), icon: 'fa-regular fa-newspaper', href: isEn ? '/en/articles' : '/articles' },
+];
+
+const moreNavLinks = [
     { label: t('nav.services'), icon: 'fa-solid fa-building-columns', href: isEn ? '/en/services' : '/services' },
     { label: t('nav.training'), icon: 'fa-solid fa-graduation-cap', href: isEn ? '/en/training' : '/training' },
     { label: t('nav.downloads'), icon: 'fa-solid fa-download', href: isEn ? '/en/downloads' : '/downloads' },
@@ -47,7 +50,7 @@ const enUrl = `/en${localeFreePath === '/' ? '' : localeFreePath}`;
         <!-- Desktop Navigation -->
         <nav class="desktop-nav" aria-label="Main Navigation">
             <ul class="nav-links">
-                {navLinks.map((link) => (
+                {mainNavLinks.map((link) => (
                     <li>
                         <a href={link.href}>
                             <i class={link.icon} aria-hidden="true"></i>
@@ -55,13 +58,31 @@ const enUrl = `/en${localeFreePath === '/' ? '' : localeFreePath}`;
                         </a>
                     </li>
                 ))}
+                <li class="dropdown">
+                    <a href="#" class="dropbtn" aria-haspopup="true">
+                        <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+                        <span>{isEn ? 'More' : 'अधिक'}</span>
+                    </a>
+                    <div class="dropdown-content">
+                        {moreNavLinks.map((link) => (
+                            <a href={link.href}>
+                                <i class={link.icon} aria-hidden="true"></i>
+                                <span>{link.label}</span>
+                            </a>
+                        ))}
+                    </div>
+                </li>
             </ul>
         </nav>
 
         <!-- Language Switcher -->
-        <div class="header-lang-switcher">
-            <a href={mrUrl} class={`lang-btn ${!isEn ? 'active' : ''}`}>मराठी</a>
-            <a href={enUrl} class={`lang-btn ${isEn ? 'active' : ''}`}>EN</a>
+        <div class="header-lang">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            {isEn ? (
+                <a href={mrUrl} title="मराठीत पहा">मराठी</a>
+            ) : (
+                <a href={enUrl} title="View in English">English</a>
+            )}
         </div>
     </div>
 </header>
