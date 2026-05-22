@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Mukhyamantri Majhi Ladki Bahin Yojana"
 english_title: "Mukhyamantri Majhi Ladki Bahin Yojana"
 description: "Monthly financial assistance of ₹1500 for eligible women in the state."

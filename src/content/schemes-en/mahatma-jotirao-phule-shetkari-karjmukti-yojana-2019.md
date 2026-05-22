@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Mahatma Jotirao Phule Shetkari Karjmukti Yojana 2019"
 english_title: "Mahatma Jotirao Phule Shetkari Karjmukti Yojana 2019"
 description: "Maharashtra Government's loan waiver scheme and ₹50,000 incentive for regular repayers. Details on eligibility dates, criteria, and full GR information."

@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Prime Minister Employment Generation Programme (PMEGP)"
 english_title: "Prime Minister Employment Generation Programme (PMEGP)"
 keywords: "pmegp loan, prime minister employment generation programme, pmegp scheme maharashtra, business loan subsidy india"

@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "National Livestock Mission (NLM) - Full Information"
 english_title: "National Livestock Mission (NLM)"
 description: "Complete information about the 50% subsidy available for poultry farming, goat-sheep rearing, piggery, and fodder production under the National Livestock Mission (NLM)."

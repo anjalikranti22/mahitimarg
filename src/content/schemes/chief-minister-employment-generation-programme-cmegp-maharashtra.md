@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: मुख्यमंत्री रोजगार निर्मिती कार्यक्रम (CMEGP)
 english_title: "Chief Minister Employment Generation Programme (CMEGP) Maharashtra"
 description: महाराष्ट्र शासनाने ग्रामीण आणि शहरी भागात सूक्ष्म आणि लघु उद्योग स्थापन करून रोजगाराच्या संधी निर्माण करण्यासाठी सुरू केलेली पत-संलग्न अनुदान योजना.

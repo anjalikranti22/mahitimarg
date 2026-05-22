@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Bhausaheb Fundkar Falbag Lagvad Scheme"
 english_title: "Bhausaheb Fundkar Falbag Lagvad Scheme"
 description: "Subsidy over 3 years for plantation of 16 perennial fruit crops — for boosting horticulture and farmer income."

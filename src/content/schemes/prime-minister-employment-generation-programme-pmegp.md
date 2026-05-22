@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: पंतप्रधान रोजगार निर्मिती कार्यक्रम (PMEGP)
 english_title: "Prime Minister Employment Generation Programme (PMEGP)"
 keywords: "pmegp loan, prime minister employment generation programme, pmegp scheme maharashtra, business loan subsidy india"
@@ -75,4 +77,3 @@ __५\. आवश्यक कागदपत्रे__
 3. प्रकल्पाचा अहवाल \(Detailed Project Report \- DPR\)\.
 4. आधार कार्ड आणि पॅन कार्ड\.
 5. ग्रामीण भागातील युनिट असल्यास लोकसंख्या प्रमाणपत्र\.
-

@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Namo Shetkari Mahasanman Nidhi Yojana"
 english_title: "Namo Shetkari Mahasanman Nidhi Yojana"
 keywords: "namo shetkari yojana, namo shetkari mahasanman nidhi, pm kisan maharashtra 12000, farmer subsidy maharashtra scheme"

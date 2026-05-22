@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: भाऊसाहेब फुंडकर फळबाग लागवड योजना
 english_title: "Bhausaheb Fundkar Falbag Lagvad Scheme"
 keywords: "bhausaheb fundkar falbag lagvad yojana, fruit plantation scheme maharashtra, falbag anudan, shetkari falbag scheme, mango cashew plantation subsidy"

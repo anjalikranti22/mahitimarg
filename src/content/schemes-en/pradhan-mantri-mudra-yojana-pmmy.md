@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Pradhan Mantri Mudra Yojana (PMMY)"
 english_title: "Pradhan Mantri Mudra Yojana (PMMY)"
 keywords: "pradhan mantri mudra yojana, pmmy, mudra loan, mudra yojana maharashtra, shishu kishore tarun loan, mudra loan apply"

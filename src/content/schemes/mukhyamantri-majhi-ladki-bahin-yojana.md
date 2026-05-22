@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: मुख्यमंत्री माझी लाडकी बहीण योजना
 english_title: "Mukhyamantri Majhi Ladki Bahin Yojana"
 description: राज्यातील पात्र महिलांसाठी दरमहा ₹१५०० ची आर्थिक मदत.

@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Agriculture Infrastructure Fund (AIF) Scheme"
 english_title: "Agriculture Infrastructure Fund (AIF) Scheme"
 description: "3% interest subvention on loans up to ₹2 crore for farmers and agri-entrepreneurs for post-harvest infrastructure."

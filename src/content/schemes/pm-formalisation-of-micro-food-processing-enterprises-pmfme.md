@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: प्रधानमंत्री सूक्ष्म अन्न प्रक्रिया उद्योग योजना (PMFME)
 english_title: "PM Formalisation of Micro food processing Enterprises (PMFME)"
 keywords: "pmfme scheme maharashtra, pradhan mantri sukshma anna prakriya udyog yojana, food processing subsidy, aatmanirbhar bharat food processing loan"

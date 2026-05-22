@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Deendayal Antyodaya Yojana - National Rural Livelihoods Mission (DAY-NRLM)"
 english_title: "Deendayal Antyodaya Yojana - National Rural Livelihoods Mission (DAY-NRLM)"
 keywords: "day nrlm, deendayal antyodaya yojana, national rural livelihoods mission, shg loan, nrlm maharashtra"

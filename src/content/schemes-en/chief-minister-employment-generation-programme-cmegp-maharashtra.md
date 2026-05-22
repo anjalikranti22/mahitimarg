@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Chief Minister Employment Generation Programme (CMEGP) Maharashtra"
 english_title: "Chief Minister Employment Generation Programme (CMEGP) Maharashtra"
 description: "Maharashtra Government's credit-linked subsidy scheme for establishing micro and small enterprises to generate employment in rural and urban areas."

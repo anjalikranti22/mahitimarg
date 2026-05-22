@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Dr. Panjabrao Deshmukh Hostel Maintenance Allowance Scheme"
 english_title: "Dr. Panjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojana"
 description: "Hostel maintenance allowance for economically weaker section students pursuing professional education in Maharashtra."

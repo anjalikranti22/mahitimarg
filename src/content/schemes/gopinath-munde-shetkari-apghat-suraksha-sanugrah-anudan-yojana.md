@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: गोपीनाथ मुंडे शेतकरी अपघात सुरक्षा सानुग्रह अनुदान योजना
 english_title: "Gopinath Munde Shetkari Apghat Suraksha Sanugrah Anudan Yojana"
 keywords: "gopinath munde shetkari apghat suraksha yojana, shetkari apghat vima maharashtra, farmer accident insurance maharashtra, 2 lakh farmer insurance scheme"

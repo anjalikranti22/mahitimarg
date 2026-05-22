@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Kisan Credit Card (KCC) Scheme"
 english_title: "Kisan Credit Card (KCC) Scheme"
 keywords: "kisan credit card, KCC scheme, kisan credit card apply, KCC yojana maharashtra, 4% interest rate crop loan"

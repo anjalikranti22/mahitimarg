@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: प्रधानमंत्री मुद्रा योजना (PMMY)
 english_title: "Pradhan Mantri Mudra Yojana (PMMY)"
 description: सूक्ष्म उद्योगांना २० लाख रुपयांपर्यंतचे विनातारण कर्ज.

@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Chhatrapati Shivaji Maharaj Shetkari Sanman Yojana 2017"
 english_title: "Chhatrapati Shivaji Maharaj Shetkari Sanman Yojana 2017"
 description: "Maharashtra Government's historic farm loan waiver of ₹34,000 crore benefiting 89 lakh farmers and clearing 7/12 records of 40 lakh farmers."

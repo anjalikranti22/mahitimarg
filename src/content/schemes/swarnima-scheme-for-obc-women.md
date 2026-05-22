@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: स्वर्णिमा योजना (इतर मागासवर्गीय महिलांसाठी)
 english_title: "Swarnima Scheme for OBC Women"
 keywords: "swarnima yojana maharashtra, swarnima scheme obc women, mahila business loan maharashtra, obc women loan scheme 5 lakh"

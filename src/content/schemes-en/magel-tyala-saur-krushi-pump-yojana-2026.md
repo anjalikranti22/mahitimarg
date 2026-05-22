@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Magel Tyala Saur Krushi Pump Yojana 2026"
 english_title: "Magel Tyala Saur Krushi Pump Yojana 2026"
 keywords: "magel tyala saur krushi pump yojana, mukhyamantri saur krushi pump yojana, solar pump scheme maharashtra, free solar pump for farmers"

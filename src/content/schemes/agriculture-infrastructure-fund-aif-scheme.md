@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: कृषी पायाभूत सुविधा निधी (AIF)
 english_title: "Agriculture Infrastructure Fund (AIF) Scheme"
 description: शेतकरी आणि कृषी उद्योजकांसाठी ₹२ कोटींपर्यंतच्या कर्जावर ३% व्याज सवलत.

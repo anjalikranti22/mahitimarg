@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "MahaDBT Scholarship 2026"
 english_title: "MahaDBT Scholarship 2026"
 keywords: "mahadbt scholarship 2026, maharashtra student scholarship, post matric scholarship mahadbt, ebc scholarship maharashtra"

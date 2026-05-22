@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: डॉ. पंजाबराव देशमुख वसतिगृह निर्वाह भत्ता योजना
 english_title: "Dr. Panjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojana"
 description: महाराष्ट्रातील आर्थिकदृष्ट्या दुर्बल घटकातील विद्यार्थ्यांसाठी व्यावसायिक शिक्षण वसतिगृह भत्ता.

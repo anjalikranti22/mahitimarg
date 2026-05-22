@@ -1,4 +1,6 @@
 ---
+pubDate: "2026-03-20"
+updatedDate: "2026-05-22"
 title: "Nanaji Deshmukh Krishi Sanjivani Prakalp (PoCRA)"
 english_title: "Nanaji Deshmukh Krishi Sanjivani Prakalp (PoCRA)"
 keywords: "nanaji deshmukh krishi sanjivani prakalp, pocra maharashtra, climate resilience farming scheme, drought farmer scheme maharashtra"
