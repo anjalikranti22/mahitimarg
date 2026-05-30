@@ -107,63 +107,186 @@ const schemeSearchData = allSchemes.map(s => ({
 
     <script type="application/json" id="scheme-data" set:html={JSON.stringify(schemeSearchData)}></script>
     <main>
-        <!-- Section 1: Hero + Universal Search -->
+        <!-- Section 1: Hero – Persona-First + Editorial Split -->
         <section class="hp-hero" aria-labelledby="hero-title">
             <div class="hp-hero__bg" aria-hidden="true">
                 <div class="hp-hero__blob hp-hero__blob--1"></div>
                 <div class="hp-hero__blob hp-hero__blob--2"></div>
-                <div class="hp-hero__ring hp-hero__ring--1"></div>
-                <div class="hp-hero__ring hp-hero__ring--2"></div>
             </div>
 
-            <div class="container hp-hero__inner animate-on-load">
-                <span class="hp-badge">
-                    <i class="fa-solid fa-info-circle" aria-hidden="true"></i>{t('badge.new_path')}</span>
-                <h1 id="hero-title" class="hp-hero__title">{t('hero.title.schemes')}<span class="hp-dot">·</span>{t('hero.title.jobs')}<span class="hp-dot">·</span>{t('hero.title.business')}<span class="hp-dot">·</span>{t('hero.title.tools')}</h1>
-                <p class="hp-hero__sub">{t('site.description')}</p>
+            <div class="container hp-hero__inner hp-hero__split animate-on-load">
 
-                <!-- Search -->
-                <div class="hp-search-wrap">
-                    <div class="hp-search-glow" aria-hidden="true"></div>
-                    <div class="hp-search-box">
-                        <i class="fa-solid fa-search hp-search-icon" aria-hidden="true"></i>
-                        <input type="text" id="scheme-search" class="search-input input-lg hp-search-input"
-                            placeholder=" "
-                            aria-label="Search schemes"
-                            autocomplete="off">
-                        <label for="scheme-search" class="floating-label">{t('search.placeholder')}</label>
-                        <button id="search-clear-btn" class="hp-search-clear" aria-label="Clear search" style="display:none;">
+                <!-- LEFT: Persona picker + Search -->
+                <div class="hp-hero__left">
+                    <span class="hp-badge">
+                        <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+                        {isEn ? 'Maharashtra Govt. Info Portal' : 'महाराष्ट्र सरकारी माहिती पोर्टल'}
+                    </span>
+
+                    <h1 id="hero-title" class="hp-hero__title">
+                        {isEn ? 'Who Are' : 'आपण कोण'} <span class="hp-hero__highlight">{isEn ? 'You?' : 'आहात?'}</span>
+                    </h1>
+                    <p class="hp-hero__sub">
+                        {isEn ? 'Find government schemes tailored for you' : 'तुमच्यासाठी सरकारी योजना शोधा'}
+                    </p>
+
+                    <!-- 8-tile Persona Grid -->
+                    <div class="persona-grid" id="persona-grid" role="group" aria-label={isEn ? 'Select your category' : 'तुमची श्रेणी निवडा'}>
+                        <button class="persona-tile" data-category="farmer" data-color="#16a34a" data-href={`${p}/categories/farmer`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#22c55e,#16a34a);">
+                                <i class="fa-solid fa-tractor" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Farmer' : 'शेतकरी'}</span>
+                            <span class="persona-tile__sub">Farmer</span>
+                        </button>
+                        <button class="persona-tile" data-category="women" data-color="#db2777" data-href={`${p}/categories/women`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#ec4899,#db2777);">
+                                <i class="fa-solid fa-person-dress" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Women' : 'महिला'}</span>
+                            <span class="persona-tile__sub">Women</span>
+                        </button>
+                        <button class="persona-tile" data-category="student" data-color="#7c3aed" data-href={`${p}/categories/student`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed);">
+                                <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Student' : 'विद्यार्थी'}</span>
+                            <span class="persona-tile__sub">Student</span>
+                        </button>
+                        <button class="persona-tile" data-category="worker" data-color="#0d9488" data-href={`${p}/categories/worker`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#14b8a6,#0d9488);">
+                                <i class="fa-solid fa-hard-hat" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Worker' : 'कामगार'}</span>
+                            <span class="persona-tile__sub">Worker</span>
+                        </button>
+                        <button class="persona-tile" data-category="business" data-color="#ea580c" data-href={`${p}/categories/business`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#f97316,#ea580c);">
+                                <i class="fa-solid fa-store" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Business' : 'व्यवसाय'}</span>
+                            <span class="persona-tile__sub">Business</span>
+                        </button>
+                        <button class="persona-tile" data-category="housing" data-color="#d97706" data-href={`${p}/categories/housing`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);">
+                                <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Housing' : 'गृहनिर्माण'}</span>
+                            <span class="persona-tile__sub">Housing</span>
+                        </button>
+                        <button class="persona-tile" data-category="health" data-color="#dc2626" data-href={`${p}/categories/health`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#ef4444,#dc2626);">
+                                <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Health' : 'आरोग्य'}</span>
+                            <span class="persona-tile__sub">Health</span>
+                        </button>
+                        <button class="persona-tile" data-category="pension" data-color="#475569" data-href={`${p}/categories/pension`}>
+                            <div class="persona-tile__icon" style="background:linear-gradient(135deg,#64748b,#475569);">
+                                <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i>
+                            </div>
+                            <span class="persona-tile__label">{isEn ? 'Senior' : 'ज्येष्ठ / पेन्शन'}</span>
+                            <span class="persona-tile__sub">Senior</span>
+                        </button>
+                    </div>
+
+                    <!-- Filter banner: appears after persona is selected -->
+                    <div id="persona-banner" class="persona-banner" style="display:none;" role="status" aria-live="polite">
+                        <i class="fa-solid fa-filter" aria-hidden="true"></i>
+                        <span id="persona-banner-text"></span>
+                        <a id="persona-banner-link" href="#" class="persona-banner__link">
+                            {isEn ? 'See All' : 'सर्व पहा'} <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <button id="persona-clear" class="persona-banner__clear" aria-label="Clear filter">
                             <i class="fa-solid fa-times"></i>
                         </button>
-                        <button class="btn btn-primary hp-search-btn ripple-effect" aria-label="Submit search">{t('search.button')}</button>
                     </div>
-                    <div id="search-dropdown" class="hp-search-dropdown" role="listbox" style="display:none;">
-                        <div id="search-dropdown-inner"></div>
-                        <div id="search-dropdown-empty" class="hp-search-empty" style="display:none;">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span>{t('search.no_results')}</span>
+
+                    <!-- Search -->
+                    <div class="hp-search-wrap" style="margin-top:1.25rem;">
+                        <div class="hp-search-glow" aria-hidden="true"></div>
+                        <div class="hp-search-box">
+                            <i class="fa-solid fa-search hp-search-icon" aria-hidden="true"></i>
+                            <input type="text" id="scheme-search" class="search-input input-lg hp-search-input"
+                                placeholder=" "
+                                aria-label="Search schemes"
+                                autocomplete="off">
+                            <label for="scheme-search" class="floating-label">{t('search.placeholder')}</label>
+                            <button id="search-clear-btn" class="hp-search-clear" aria-label="Clear search" style="display:none;">
+                                <i class="fa-solid fa-times"></i>
+                            </button>
+                            <button class="btn btn-primary hp-search-btn ripple-effect" aria-label="Submit search">{t('search.button')}</button>
+                        </div>
+                        <div id="search-dropdown" class="hp-search-dropdown" role="listbox" style="display:none;">
+                            <div id="search-dropdown-inner"></div>
+                            <div id="search-dropdown-empty" class="hp-search-empty" style="display:none;">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span>{t('search.no_results')}</span>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Search Tabs (desktop only) -->
+                    <div class="search-tabs hidden-mobile" id="search-tabs" style="margin-top:1rem;">
+                        <button class="search-tab active" data-tab="all"><i class="fa-solid fa-magnifying-glass"></i>{t('search.tab.all')}</button>
+                        <button class="search-tab" data-tab="schemes"><i class="fa-solid fa-file-lines"></i>{t('hero.title.schemes')}</button>
+                        <button class="search-tab" data-tab="articles"><i class="fa-solid fa-newspaper"></i>{t('search.tab.articles')}</button>
+                        <button class="search-tab" data-tab="tools"><i class="fa-solid fa-wrench"></i>{t('hero.title.tools')}</button>
+                    </div>
                 </div>
 
-                <!-- Search Tabs -->
-                <div class="search-tabs hidden-mobile" id="search-tabs" style="margin-top: 1.25rem;">
-                    <button class="search-tab active" data-tab="all"><i class="fa-solid fa-magnifying-glass"></i>{t('search.tab.all')}</button>
-                    <button class="search-tab" data-tab="schemes"><i class="fa-solid fa-file-lines"></i>{t('hero.title.schemes')}</button>
-                    <button class="search-tab" data-tab="articles"><i class="fa-solid fa-newspaper"></i>{t('search.tab.articles')}</button>
-                    <button class="search-tab" data-tab="tools"><i class="fa-solid fa-wrench"></i>{t('hero.title.tools')}</button>
-                </div>
-
-                <!-- Quick Category Links -->
-                <div class="hp-quick-links hidden-mobile">
-                    <a href={`${p}/categories/farmer`} class="hp-qlink"><i class="fa-solid fa-tractor"></i>{t('qlink.farmer')}</a>
-                    <a href={`${p}/categories/women`} class="hp-qlink"><i class="fa-solid fa-person-dress"></i>{t('qlink.women')}</a>
-                    <a href={`${p}/categories/business`} class="hp-qlink"><i class="fa-solid fa-briefcase"></i>{t('hero.title.business')}</a>
-                    <a href={`${p}/categories/student`} class="hp-qlink"><i class="fa-solid fa-graduation-cap"></i>{t('qlink.student')}</a>
-                    <a href={`${p}/categories/pension`} class="hp-qlink"><i class="fa-solid fa-piggy-bank"></i>{t('qlink.pension')}</a>
-                    <a href={`${p}/categories/health`} class="hp-qlink"><i class="fa-solid fa-heart-pulse"></i>{t('qlink.health')}</a>
-                    <a href={`${p}/schemes`} class="hp-qlink hp-qlink--accent"><i class="fa-solid fa-arrow-right"></i>{t('qlink.view_all')}</a>
-                </div>
+                <!-- RIGHT: Featured Scheme Editorial Card (desktop only) -->
+                <aside class="hp-hero__right hidden-mobile" aria-label={isEn ? 'Featured Scheme' : 'विशेष योजना'}>
+                    <div class="hp-featured-scheme">
+                        <div class="hp-featured-scheme__eyebrow">
+                            <i class="fa-solid fa-fire" aria-hidden="true"></i>
+                            {isEn ? 'Most Popular Scheme' : 'सर्वाधिक लोकप्रिय योजना'}
+                        </div>
+                        {featuredSchemes[0] && (
+                            <Fragment>
+                                <div class="hp-featured-scheme__badge">{featuredSchemes[0].data.badge}</div>
+                                <h2 class="hp-featured-scheme__title">
+                                    {isEn && featuredSchemes[0].data.english_title
+                                        ? featuredSchemes[0].data.english_title
+                                        : featuredSchemes[0].data.title}
+                                </h2>
+                                <p class="hp-featured-scheme__desc">{featuredSchemes[0].data.description}</p>
+                                {featuredSchemes[0].data.key_stat && (
+                                    <div class="hp-featured-scheme__stat">
+                                        <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i>
+                                        <span>{featuredSchemes[0].data.key_stat}</span>
+                                    </div>
+                                )}
+                                <a href={`${p}/schemes/${featuredSchemes[0].id}`} class="hp-featured-scheme__cta">
+                                    {isEn ? 'View Full Details' : 'पूर्ण माहिती पहा'}
+                                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </Fragment>
+                        )}
+                        <!-- Trust stats strip -->
+                        <div class="hp-trust-stats">
+                            <div class="hp-trust-stat">
+                                <span class="hp-trust-stat__num">{totalSchemes}+</span>
+                                <span class="hp-trust-stat__label">{isEn ? 'Schemes' : 'योजना'}</span>
+                            </div>
+                            <div class="hp-trust-stat">
+                                <span class="hp-trust-stat__num">13</span>
+                                <span class="hp-trust-stat__label">{isEn ? 'Categories' : 'श्रेणी'}</span>
+                            </div>
+                            <div class="hp-trust-stat">
+                                <span class="hp-trust-stat__num">{isEn ? 'Free' : 'मोफत'}</span>
+                                <span class="hp-trust-stat__label">{isEn ? 'Always' : 'नेहमी'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick links below the card -->
+                    <div class="hp-quick-links" style="margin-top:1rem; justify-content:flex-start;">
+                        <a href={`${p}/categories/farmer`} class="hp-qlink"><i class="fa-solid fa-tractor"></i>{t('qlink.farmer')}</a>
+                        <a href={`${p}/categories/women`} class="hp-qlink"><i class="fa-solid fa-person-dress"></i>{t('qlink.women')}</a>
+                        <a href={`${p}/categories/business`} class="hp-qlink"><i class="fa-solid fa-briefcase"></i>{t('hero.title.business')}</a>
+                        <a href={`${p}/schemes`} class="hp-qlink hp-qlink--accent"><i class="fa-solid fa-arrow-right"></i>{t('qlink.view_all')}</a>
+                    </div>
+                </aside>
 
             </div>
         </section>
@@ -752,6 +875,101 @@ document.addEventListener('astro:page-load', () => {
 
 const schemeDataEl = document.getElementById('scheme-data');
 const SCHEMES = schemeDataEl ? JSON.parse(schemeDataEl.textContent) : [];
+
+// ============================================================
+// PERSONA FILTERING
+// ============================================================
+(function initPersona() {
+  const tiles        = document.querySelectorAll('.persona-tile');
+  const banner       = document.getElementById('persona-banner');
+  const bannerText   = document.getElementById('persona-banner-text');
+  const bannerLink   = document.getElementById('persona-banner-link');
+  const clearBtn     = document.getElementById('persona-clear');
+  const schemesSection = document.getElementById('popular-schemes');
+
+  if (!tiles.length) return;
+
+  function countSchemes(category) {
+    return SCHEMES.filter(s =>
+      (s.category || '').toLowerCase().includes(category)
+    ).length;
+  }
+
+  function filterCards(category) {
+    const cards = document.querySelectorAll('#popular-schemes-list .scheme-card');
+    cards.forEach(card => {
+      const tags     = (card.dataset.tags     || '').toLowerCase();
+      const keywords = (card.dataset.keywords || '').toLowerCase();
+      const matches  = !category || tags.includes(category) || keywords.includes(category);
+      card.style.display   = matches ? '' : 'none';
+      card.style.opacity   = '1';
+      card.style.transform = '';
+    });
+  }
+
+  function activate(tile) {
+    const category = tile.dataset.category;
+    const color    = tile.dataset.color;
+    const href     = tile.dataset.href || '#';
+    const label    = tile.querySelector('.persona-tile__label')?.textContent?.trim() || category;
+
+    // Style active tile
+    tiles.forEach(t => {
+      t.classList.remove('active');
+      t.style.borderColor    = '';
+      t.style.background     = '';
+      t.style.boxShadow      = '';
+    });
+    tile.classList.add('active');
+    tile.style.borderColor = color;
+    tile.style.background  = color + '14';
+    tile.style.boxShadow   = `0 0 0 3px ${color}33`;
+
+    // Filter scheme cards
+    filterCards(category);
+
+    // Show banner
+    const total = countSchemes(category);
+    const countLabel = total > 0 ? `${total}+` : '';
+    bannerText.textContent    = `${label} ${countLabel ? `— ${countLabel}` : ''} योजना`;
+    bannerLink.href           = href;
+    banner.style.display      = 'flex';
+    banner.style.borderColor  = color + '99';
+    banner.style.background   = color + '0d';
+    banner.style.color        = color;
+    bannerText.style.color    = '';
+
+    // Scroll to schemes after a short delay
+    if (schemesSection) {
+      setTimeout(() => {
+        schemesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 180);
+    }
+  }
+
+  function deactivate() {
+    tiles.forEach(t => {
+      t.classList.remove('active');
+      t.style.borderColor = '';
+      t.style.background  = '';
+      t.style.boxShadow   = '';
+    });
+    filterCards('');
+    banner.style.display = 'none';
+  }
+
+  tiles.forEach(tile => {
+    tile.addEventListener('click', () => {
+      if (tile.classList.contains('active')) {
+        deactivate();
+      } else {
+        activate(tile);
+      }
+    });
+  });
+
+  if (clearBtn) clearBtn.addEventListener('click', deactivate);
+})();
 
 // Bento card keyword mapping (order matches DOM order of .hp-bento__card)
 const BENTO_DATA = [

@@ -525,3 +525,352 @@ body {
   border-radius: 3px;
   font-weight: 700;
 }
+
+/* ============================================
+   PERSONA-FIRST HERO — Pattern 1 + Pattern 3
+   ============================================ */
+
+/* Warm Maharashtra-inspired hero background */
+.hp-hero {
+  background: linear-gradient(150deg, #fffbf5 0%, #fff7ed 45%, #f0f4ff 100%) !important;
+}
+
+/* Split layout: left (persona + search) | right (featured card) */
+.hp-hero__split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: start;
+  text-align: left;
+}
+
+.hp-hero__left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Override centering from hp-hero__inner */
+.hp-hero__split .hp-hero__sub {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 560px;
+}
+
+.hp-hero__split .hp-search-wrap {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+/* Saffron accent on the key title word */
+.hp-hero__highlight {
+  color: #ea580c;
+}
+
+/* ---- Persona Grid ---- */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.persona-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.9rem 0.35rem 0.75rem;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s cubic-bezier(.22,.68,0,1.2), box-shadow 0.2s ease, background 0.2s ease;
+  font-family: inherit;
+}
+
+.persona-tile:hover {
+  border-color: var(--tile-color, #6366f1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.persona-tile.active {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.persona-tile__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+.persona-tile__label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.persona-tile__sub {
+  font-size: 0.63rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* ---- Persona Filter Banner ---- */
+.persona-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  padding: 0.55rem 0.9rem;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #166534;
+}
+
+.persona-banner__link {
+  margin-left: auto;
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.persona-banner__link:hover { color: #14532d; }
+
+.persona-banner__clear {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: rgba(0,0,0,0.07);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #64748b;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.persona-banner__clear:hover { background: rgba(0,0,0,0.14); }
+
+/* ---- Featured Scheme Card (right panel) ---- */
+.hp-hero__right {
+  position: sticky;
+  top: 5rem;
+}
+
+.hp-featured-scheme {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.75rem;
+  border: 1.5px solid #fde68a;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rainbow top accent line */
+.hp-featured-scheme::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #db2777, #7c3aed);
+}
+
+.hp-featured-scheme__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #ea580c;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hp-featured-scheme__badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  background: rgba(236,72,153,0.1);
+  color: #be185d;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hp-featured-scheme__title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+  margin: 0 0 0.6rem;
+}
+
+.hp-featured-scheme__desc {
+  color: #64748b;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hp-featured-scheme__stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.1rem;
+  padding: 0.55rem 0.85rem;
+  background: #f0fdf4;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #166534;
+}
+
+.hp-featured-scheme__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1e3a8a;
+  color: #fff;
+  padding: 0.68rem 1.35rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-bottom: 1.4rem;
+}
+
+.hp-featured-scheme__cta:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Trust stats strip inside the card */
+.hp-trust-stats {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.hp-trust-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hp-trust-stat__num {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  letter-spacing: -0.02em;
+}
+
+.hp-trust-stat__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #94a3b8;
+}
+
+/* ---- Colored left borders on Scheme Cards by category ---- */
+.scheme-card[data-tags*="farmer"]   { border-left: 4px solid #16a34a !important; }
+.scheme-card[data-tags*="शेतकरी"]  { border-left: 4px solid #16a34a !important; }
+.scheme-card[data-tags*="women"]    { border-left: 4px solid #db2777 !important; }
+.scheme-card[data-tags*="महिला"]    { border-left: 4px solid #db2777 !important; }
+.scheme-card[data-tags*="student"]  { border-left: 4px solid #7c3aed !important; }
+.scheme-card[data-tags*="business"] { border-left: 4px solid #ea580c !important; }
+.scheme-card[data-tags*="worker"]   { border-left: 4px solid #0d9488 !important; }
+.scheme-card[data-tags*="housing"]  { border-left: 4px solid #d97706 !important; }
+.scheme-card[data-tags*="health"]   { border-left: 4px solid #dc2626 !important; }
+.scheme-card[data-tags*="pension"]  { border-left: 4px solid #475569 !important; }
+.scheme-card[data-tags*="insurance"]{ border-left: 4px solid #3b82f6 !important; }
+
+/* ---- FAQ chevron rotation on open ---- */
+details summary .fa-chevron-down {
+  transition: transform 0.2s ease;
+}
+details[open] summary .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .hp-hero__split {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hp-hero__left {
+    align-items: center;
+  }
+  .hp-hero__split .hp-hero__sub,
+  .hp-hero__split .hp-search-wrap {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hp-hero__right {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .persona-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.45rem;
+  }
+  .persona-tile {
+    padding: 0.65rem 0.2rem 0.55rem;
+    border-radius: 12px;
+    gap: 0.3rem;
+  }
+  .persona-tile__icon {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+  .persona-tile__label {
+    font-size: 0.68rem;
+  }
+  .persona-tile__sub {
+    display: none;
+  }
+  .hp-hero__title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+  }
+  .persona-banner {
+    font-size: 0.78rem;
+  }
+}
