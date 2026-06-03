@@ -59,31 +59,36 @@ const t = useTranslations(lang);
 
 <style>
   .village-eligibility-checker {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
   }
 
   .village-eligibility-checker h3 {
     margin-top: 0;
-    color: #1e293b;
-    font-size: 1.25rem;
+    color: #0f172a;
+    font-size: 1.35rem;
     font-weight: 700;
+    font-family: 'Mukta', sans-serif;
   }
 
   .eligibility-desc {
     color: #475569;
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
 
   .checker-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .form-group {
@@ -96,66 +101,82 @@ const t = useTranslations(lang);
     font-weight: 600;
     color: #334155;
     font-size: 0.9rem;
+    font-family: 'Mukta', sans-serif;
   }
 
   .form-group select, .form-group input[type="number"] {
     padding: 0.75rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 1rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
     background-color: #ffffff;
     color: #0f172a;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
   }
 
   .form-group select:focus, .form-group input[type="number"]:focus {
     outline: none;
     border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
   }
 
   .form-group select:disabled, .form-group input[type="number"]:disabled {
     background-color: #f1f5f9;
     color: #94a3b8;
+    border-color: #e2e8f0;
     cursor: not-allowed;
   }
 
   .btn-check {
     margin-top: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     background-color: #16a34a;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Mukta', sans-serif;
   }
 
   .btn-check:hover:not(:disabled) {
     background-color: #15803d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+  }
+
+  .btn-check:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .btn-check:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.35);
   }
 
   .btn-check:disabled {
-    background-color: #94a3b8;
+    background-color: #cbd5e1;
+    color: #94a3b8;
     cursor: not-allowed;
   }
 
   .eligibility-result {
     margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    animation: fadeIn 0.3s ease-out;
+    padding: 1.25rem;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Mukta', sans-serif;
   }
 
   .eligibility-result.success {
-    background-color: #dcfce7;
-    color: #166534;
-    border: 1px solid #bbf7d0;
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
   }
 
   .eligibility-result.error {
@@ -168,6 +189,7 @@ const t = useTranslations(lang);
     font-size: 0.8rem;
     color: #64748b;
     margin-top: -0.25rem;
+    line-height: 1.4;
   }
 
   .hidden {
@@ -175,14 +197,16 @@ const t = useTranslations(lang);
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
+    from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     .checker-form {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1.5rem;
+      row-gap: 1.25rem;
       align-items: start;
     }
     .btn-check {
@@ -206,16 +230,20 @@ const t = useTranslations(lang);
 })}></script>
 
 <script>
-  // @ts-nocheck
-  let villageData = null;
+  interface Translations {
+    [key: string]: string;
+  }
+
+  type VillageDataStructure = Record<string, Record<string, string[]>>;
+
+  let cachedVillageData: VillageDataStructure | null = null;
   
-  // Translation helper
-  function getTranslations() {
+  function getTranslations(): Translations {
     const el = document.getElementById('checker-translations');
-    return el ? JSON.parse(el.textContent) : {};
+    return el && el.textContent ? JSON.parse(el.textContent) : {};
   }
   
-  function t(key, params = {}) {
+  function t(key: string, params: Record<string, string> = {}): string {
     const dict = getTranslations();
     let str = dict[key] || '';
     for(let k in params) {
@@ -225,26 +253,34 @@ const t = useTranslations(lang);
   }
 
   async function loadData() {
+    const distSelect = document.getElementById('district-select') as HTMLSelectElement | null;
+    if (!distSelect) return;
+
     try {
-      const distSelect = document.getElementById('district-select');
+      if (cachedVillageData) {
+        populateDistricts(cachedVillageData);
+        return;
+      }
+
       distSelect.innerHTML = `<option value="">${t('loading')}</option>`;
       
       const response = await fetch('/data/villages.json');
-      villageData = await response.json();
+      const data = await response.json() as VillageDataStructure;
+      cachedVillageData = data;
       
-      populateDistricts();
+      populateDistricts(data);
     } catch (err) {
       console.error("Failed to load village data", err);
-      const distSelect = document.getElementById('district-select');
       distSelect.innerHTML = `<option value="">${t('error')}</option>`;
     }
   }
 
-  function populateDistricts() {
-    const distSelect = document.getElementById('district-select');
+  function populateDistricts(villageData: VillageDataStructure) {
+    const distSelect = document.getElementById('district-select') as HTMLSelectElement | null;
+    if (!distSelect) return;
+
     distSelect.innerHTML = `<option value="">${t('distOpt')}</option>`;
     
-    // Check if data is properly formatted
     if (!villageData || typeof villageData !== 'object') return;
     
     const districts = Object.keys(villageData).sort();
@@ -259,24 +295,27 @@ const t = useTranslations(lang);
     distSelect.disabled = false;
   }
 
-  // Set up event listeners when the component gets loaded by Astro's ClientRouter
   document.addEventListener('astro:page-load', () => {
-    // Only run if the component is actually on the page
-    const distSelect = document.getElementById('district-select');
+    const distSelect = document.getElementById('district-select') as HTMLSelectElement | null;
     if (!distSelect) return;
 
     loadData();
 
-    const talSelect = document.getElementById('taluka-select');
-    const vilSelect = document.getElementById('village-select');
-    const checkBtn = document.getElementById('check-eligibility-btn');
-    const resultDiv = document.getElementById('eligibility-result');
+    const talSelect = document.getElementById('taluka-select') as HTMLSelectElement | null;
+    const vilSelect = document.getElementById('village-select') as HTMLSelectElement | null;
+    const checkBtn = document.getElementById('check-eligibility-btn') as HTMLButtonElement | null;
+    const resultDiv = document.getElementById('eligibility-result') as HTMLDivElement | null;
+    const loanStatusEl = document.getElementById('loanStatus') as HTMLSelectElement | null;
+    const loanAmountGroup = document.getElementById('loanAmountGroup') as HTMLDivElement | null;
+    const loanAmountEl = document.getElementById('loanAmount') as HTMLInputElement | null;
 
-    // Handle District Change
+    if (!talSelect || !vilSelect || !checkBtn || !resultDiv || !loanStatusEl || !loanAmountGroup || !loanAmountEl) return;
+
     distSelect.addEventListener('change', (e) => {
-      const selectedDist = e.target.value;
+      const target = e.target as HTMLSelectElement | null;
+      if (!target) return;
+      const selectedDist = target.value;
       
-      // Reset dependent fields
       talSelect.innerHTML = `<option value="">${t('talOpt')}</option>`;
       vilSelect.innerHTML = `<option value="">${t('vilOpt')}</option>`;
       talSelect.disabled = true;
@@ -284,8 +323,8 @@ const t = useTranslations(lang);
       checkBtn.disabled = true;
       resultDiv.classList.add('hidden');
       
-      if (selectedDist && villageData[selectedDist]) {
-        const talukas = Object.keys(villageData[selectedDist]).sort();
+      if (selectedDist && cachedVillageData && cachedVillageData[selectedDist]) {
+        const talukas = Object.keys(cachedVillageData[selectedDist]).sort();
         talukas.forEach(tal => {
           const opt = document.createElement('option');
           opt.value = tal;
@@ -296,19 +335,19 @@ const t = useTranslations(lang);
       }
     });
 
-    // Handle Taluka Change
     talSelect.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement | null;
+      if (!target) return;
       const selectedDist = distSelect.value;
-      const selectedTal = e.target.value;
+      const selectedTal = target.value;
       
-      // Reset dependent fields
       vilSelect.innerHTML = `<option value="">${t('vilOpt')}</option>`;
       vilSelect.disabled = true;
       checkBtn.disabled = true;
       resultDiv.classList.add('hidden');
       
-      if (selectedDist && selectedTal && villageData[selectedDist][selectedTal]) {
-        const villages = villageData[selectedDist][selectedTal].sort();
+      if (selectedDist && selectedTal && cachedVillageData && cachedVillageData[selectedDist][selectedTal]) {
+        const villages = cachedVillageData[selectedDist][selectedTal].sort();
         villages.forEach(vil => {
           const opt = document.createElement('option');
           opt.value = vil;
@@ -319,30 +358,27 @@ const t = useTranslations(lang);
       }
     });
 
-    // Handle Village Change
     vilSelect.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement | null;
+      if (!target) return;
       resultDiv.classList.add('hidden');
-      if (e.target.value) {
+      if (target.value) {
         checkBtn.disabled = false;
       } else {
         checkBtn.disabled = true;
       }
     });
 
-    // Loan Status display toggle
-    const loanStatusEl = document.getElementById('loanStatus');
-    const loanAmountGroup = document.getElementById('loanAmountGroup');
-    const loanAmountEl = document.getElementById('loanAmount');
-
-    loanStatusEl.addEventListener('change', function() {
-        if(this.value === 'niyamit') {
-            loanAmountGroup.style.display = 'none';
-        } else {
-            loanAmountGroup.style.display = 'flex';
-        }
+    loanStatusEl.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement | null;
+      if (!target) return;
+      if (target.value === 'niyamit') {
+        loanAmountGroup.style.display = 'none';
+      } else {
+        loanAmountGroup.style.display = 'flex';
+      }
     });
 
-    // Handle Check Button
     checkBtn.addEventListener('click', () => {
       const village = vilSelect.value;
       const taluka = talSelect.value;
@@ -365,12 +401,12 @@ const t = useTranslations(lang);
       }
 
       if (status === 'thakit') {
-          if (amountStr === '' || amountStr <= 0) {
+          const amount = parseFloat(amountStr);
+          if (isNaN(amount) || amount <= 0) {
               resultDiv.innerHTML = t('errAmount');
               resultDiv.className = 'eligibility-result error';
               return;
           }
-          const amount = parseFloat(amountStr);
           if (amount <= 200000) {
               const formattedAmt = amount.toLocaleString('en-IN');
               resultDiv.innerHTML = t('succThakit', {village: village, amount: formattedAmt});
