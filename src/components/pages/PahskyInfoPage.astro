@@ -1,0 +1,407 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout 
+  title="शेतकरी कर्जमुक्ती योजना २०२६ - माहिती व कॅल्क्युलेटर | MahitiMarg"
+  description="पुण्यश्लोक अहिल्यादेवी होळकर शेतकरी कर्जमुक्ती योजना २०२६ - माहिती, आधार प्रमाणीकरण व कर्ज तडजोड (OTS) कॅल्क्युलेटर"
+>
+  <main class="static-page-wrapper mukta-font">
+    <section class="static-page-hero">
+      <div class="container">
+        <div class="static-hero-icon"><i class="fa-solid fa-calculator"></i></div>
+        <h1>पुण्यश्लोक अहिल्यादेवी होळकर <br/> <span class="hero-sub">शेतकरी कर्जमुक्ती योजना २०२६</span></h1>
+        <p class="lead">माहिती, आधार प्रमाणीकरण व कर्ज तडजोड (OTS) कॅल्क्युलेटर</p>
+      </div>
+    </section>
+
+    <section class="static-page-content">
+      <div class="container space-y-8">
+        <!-- How Calculator Works Info -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-indigo-200 mb-8" style="background:white; border-radius:0.75rem; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border:1px solid #c7d2fe; overflow:hidden; margin-bottom:2rem;">
+            <div class="bg-indigo-100 p-4 border-b border-indigo-200 flex items-center gap-2 text-indigo-800" style="background:#e0e7ff; padding:1rem; border-bottom:1px solid #c7d2fe; display:flex; align-items:center; gap:0.5rem; color:#3730a3;">
+                <span class="text-2xl" style="font-size:1.5rem;">💡</span>
+                <h3 class="text-xl font-bold m-0" style="margin:0; font-size:1.25rem;">कर्ज तडजोड (OTS) कॅल्क्युलेटर कसे काम करते? (रकमेनुसार कर्जमाफीचे सूत्र)</h3>
+            </div>
+            
+            <div class="p-6 md:p-8" style="padding:1.5rem;">
+                <p class="mb-6 text-gray-700 text-lg" style="color:#374151; margin-bottom:1.5rem; line-height:1.7; font-size:1.1rem;">
+                    या योजनेअंतर्गत राज्य शासनाकडून एका शेतकऱ्याला जास्तीत जास्त <strong style="color:#111827;">२ लाख रुपयांपर्यंतच</strong> लाभ दिला जाईल. थकीत (NPA) कर्जाच्या तारखेनुसार आणि रकमेनुसार परताव्याची रचना खालीलप्रमाणे असेल:
+                </p>
+
+                <div class="mb-8 p-5 rounded-lg bg-gray-50 border border-gray-200" style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:0.5rem; margin-bottom:2rem; padding:1.25rem;">
+                    <h4 class="font-bold text-gray-800 mb-3" style="font-weight:bold; color:#1f2937; margin-bottom:0.75rem; font-size:1.1rem; border-bottom:2px solid #e5e7eb; padding-bottom:0.5rem; display:inline-block;">📅 NPA तारखेनुसार परताव्याचे टप्पे:</h4>
+                    <ul class="resp-grid-list text-gray-700" style="color:#374151; list-style:none; padding:0; margin:0; margin-top:0.5rem;">
+                        <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-check-circle" style="color:#10b981;"></i> <span><strong>३०/०९/२०२१ पूर्वी:</strong> ३५% परतफेड</span></li>
+                        <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-check-circle" style="color:#10b981;"></i> <span><strong>०१/१०/२०२१ ते ३०/०९/२०२२:</strong> ४५% परतफेड</span></li>
+                        <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-check-circle" style="color:#10b981;"></i> <span><strong>०१/१०/२०२२ ते ३०/०९/२०२३:</strong> ५५% परतफेड</span></li>
+                        <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-check-circle" style="color:#10b981;"></i> <span><strong>०१/१०/२०२३ ते ३०/०९/२०२४:</strong> ७०% परतफेड</span></li>
+                        <li style="display:flex; align-items:center; gap:0.5rem;"><i class="fa-solid fa-check-circle" style="color:#10b981;"></i> <span><strong>०१/०९/२०२४ ते ३०/०९/२०२५:</strong> ८५% परतफेड</span></li>
+                    </ul>
+                </div>
+
+                <div class="resp-grid-2">
+                    <!-- Under 2 Lakhs -->
+                    <div class="bg-blue-50 p-5 rounded-xl border border-blue-200 shadow-sm relative overflow-hidden" style="background:#eff6ff; padding:1.25rem; border-radius:0.75rem; border:1px solid #bfdbfe; box-shadow:0 1px 2px 0 rgba(0,0,0,0.05); position:relative;">
+                        <div style="position:absolute; top:0; left:0; width:4px; height:100%; background:#3b82f6;"></div>
+                        <h4 class="font-bold text-blue-900 mb-3 text-lg flex items-center gap-2" style="font-weight:bold; color:#1e3a8a; margin-bottom:0.75rem; font-size:1.125rem; display:flex; align-items:center; gap:0.5rem;">
+                            <span style="background:#bfdbfe; color:#1e40af; width:1.75rem; height:1.75rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem;">१</span> 
+                            NPA रक्कम २ लाखांपेक्षा कमी असेल
+                        </h4>
+                        <p class="text-sm text-gray-700 mb-4 leading-relaxed" style="font-size:0.9rem; color:#374151; margin-bottom:1rem; line-height:1.625;">
+                            राज्य शासन वरील टक्केवारीच्या तक्त्यानुसार पात्र रक्कम निश्चित करेल आणि ती थेट शेतकऱ्याच्या कर्जखात्यात जमा करेल. उरलेली रक्कम बँक स्वतःहून माफ करेल (बँकेची सूट) आणि कर्जखाते बंद केले जाईल.
+                        </p>
+                        <div class="bg-white p-3 rounded border border-blue-100 text-sm" style="background:white; padding:0.75rem; border-radius:0.5rem; border:1px solid #dbeafe; font-size:0.875rem;">
+                            <strong style="color:#1d4ed8; display:block; margin-bottom:0.25rem;">उदाहरण:</strong>
+                            <span style="color:#4b5563;">जर NPA रक्कम ₹१.९० लाख असेल व टप्पा ५५% असेल, तर शासन ₹१,०४,५०० भरेल, बँक ₹८४,५०० माफ करेल आणि शेतकऱ्याला काहीही भरावे लागणार नाही.</span>
+                        </div>
+                    </div>
+
+                    <!-- Over 2 Lakhs -->
+                    <div class="bg-orange-50 p-5 rounded-xl border border-orange-200 shadow-sm relative overflow-hidden" style="background:#fff7ed; padding:1.25rem; border-radius:0.75rem; border:1px solid #fed7aa; box-shadow:0 1px 2px 0 rgba(0,0,0,0.05); position:relative;">
+                        <div style="position:absolute; top:0; left:0; width:4px; height:100%; background:#f97316;"></div>
+                        <h4 class="font-bold text-orange-900 mb-3 text-lg flex items-center gap-2" style="font-weight:bold; color:#7c2d12; margin-bottom:0.75rem; font-size:1.125rem; display:flex; align-items:center; gap:0.5rem;">
+                            <span style="background:#fed7aa; color:#9a3412; width:1.75rem; height:1.75rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem;">२</span> 
+                            NPA रक्कम २ लाखांपेक्षा जास्त असेल
+                        </h4>
+                        <p class="text-sm text-gray-700 mb-4 leading-relaxed" style="font-size:0.9rem; color:#374151; margin-bottom:1rem; line-height:1.625;">
+                            शासन जास्तीत जास्त ₹२ लाख देईल. टक्केवारीनुसार येणारी उरलेली रक्कम शेतकऱ्याला भरावी लागेल आणि त्यानंतर बँक आपली सूट देऊन खाते बंद करेल.
+                        </p>
+                        <div class="bg-white p-3 rounded border border-orange-100 text-sm" style="background:white; padding:0.75rem; border-radius:0.5rem; border:1px solid #ffedd5; font-size:0.875rem;">
+                            <strong style="color:#c2410c; display:block; margin-bottom:0.25rem;">उदाहरण:</strong>
+                            <span style="color:#4b5563;">जर NPA रक्कम ₹४.०० लाख असेल व टप्पा ५५% असेल, तर शासनाचा वाटा ₹२,२०,००० होतो. यात शासन केवळ ₹२,००,००० देईल, उरलेले ₹२०,००० शेतकऱ्याला भरावे लागतील आणि बँक ₹१,८०,००० माफ करेल.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Section -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 mb-8" style="background:white; border-radius:0.75rem; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border:1px solid #e5e7eb; overflow:hidden;">
+            <div class="bg-green-100 p-4 border-b border-green-200 flex items-center gap-2 text-green-800" style="background:#dcfce7; padding:1rem; border-bottom:1px solid #bbf7d0; display:flex; align-items:center; gap:0.5rem; color:#166534;">
+                <span class="text-2xl">🧮</span>
+                <h3 class="text-xl font-bold m-0" style="margin:0; font-size:1.25rem;">कर्ज तडजोड (OTS) कॅल्क्युलेटर</h3>
+            </div>
+            
+            <div class="p-6 md:p-8" style="padding:1.5rem;">
+                <form id="otsCalculator" class="space-y-6 mx-auto" style="max-width:42rem; margin:0 auto; display:flex; flex-direction:column; gap:1.5rem;">
+                    <!-- NPA Date Input -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="npaDate" style="display:block; margin-bottom:0.5rem; font-weight:600; color:#374151;">तुमची NPA (थकीत) तारीख निवडा</label>
+                        <input type="date" id="npaDate" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-gray-50 text-gray-800" style="width:100%; padding:0.75rem; border:1px solid #d1d5db; border-radius:0.5rem; background:#f9fafb; color:#1f2937;" />
+                    </div>
+
+                    <!-- Ledger Balance Input -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="npaAmount" style="display:block; margin-bottom:0.5rem; font-weight:600; color:#374151;">
+                            NPA तारखेच्या दिवशी असलेली थकीत कर्जाची रक्कम ₹ <br/>
+                            <span class="text-sm text-gray-500 font-normal" style="font-size:0.875rem; font-weight:400; color:#6b7280;">(NPA तारखेनुसार बँक खात्यातील थकीत रक्कम)</span>
+                        </label>
+                        <input type="number" id="npaAmount" placeholder="उदा. 400000" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-gray-50 text-gray-800" required min="1" style="width:100%; padding:0.75rem; border:1px solid #d1d5db; border-radius:0.5rem; background:#f9fafb; color:#1f2937;" />
+                    </div>
+
+                    <!-- Calculate Button -->
+                    <button type="button" id="calcBtn" onclick="window.calculateOTS()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md" style="width:100%; background:#16a34a; color:white; font-weight:bold; padding:0.75rem 1rem; border-radius:0.5rem; border:none; cursor:pointer;">
+                        हिशोब पहा
+                    </button>
+                </form>
+
+                <!-- Results Section -->
+                <div id="resultSection" class="mt-8 mx-auto" style="display:none; max-width:48rem; margin:2rem auto 0;">
+                    <h3 class="text-lg font-bold text-gray-800 border-b pb-2 mb-4 text-center" style="font-size:1.125rem; font-weight:bold; color:#1f2937; border-bottom:1px solid #e5e7eb; padding-bottom:0.5rem; margin-bottom:1rem; text-align:center;">
+                        तुमचा हिशोब <br/>
+                        <span id="appliedSlab" class="text-sm font-normal text-green-700" style="font-size:0.9rem; font-weight:normal; color:#15803d;"></span>
+                    </h3>
+                    
+                    <div class="resp-results-grid">
+                        <div class="bg-green-50 border border-green-200 p-4 rounded-lg text-center shadow-sm" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:1rem; border-radius:0.5rem; text-align:center;">
+                            <p class="text-sm text-gray-600 mb-2 font-semibold m-0" style="font-size:0.875rem; color:#4b5563; margin-bottom:0.5rem; font-weight:600;">शासन भरणार</p>
+                            <p id="govShare" class="text-2xl font-bold text-green-700 m-0" style="font-size:1.5rem; font-weight:bold; color:#15803d; margin:0;">₹ 0</p>
+                        </div>
+                        <div class="bg-orange-50 border border-orange-200 p-4 rounded-lg text-center shadow-sm" style="background:#fff7ed; border:1px solid #ffedd5; padding:1rem; border-radius:0.5rem; text-align:center;">
+                            <p class="text-sm text-gray-600 mb-2 font-semibold m-0" style="font-size:0.875rem; color:#4b5563; margin-bottom:0.5rem; font-weight:600;">शेतकऱ्याने भरायची रक्कम</p>
+                            <p id="farmerShare" class="text-2xl font-bold text-orange-700 m-0" style="font-size:1.5rem; font-weight:bold; color:#c2410c; margin:0;">₹ 0</p>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg text-center shadow-sm" style="background:#eff6ff; border:1px solid #bfdbfe; padding:1rem; border-radius:0.5rem; text-align:center;">
+                            <p class="text-sm text-gray-600 mb-2 font-semibold m-0" style="font-size:0.875rem; color:#4b5563; margin-bottom:0.5rem; font-weight:600;">बँकेची सूट (माफी)</p>
+                            <p id="bankSacrifice" class="text-2xl font-bold text-blue-700 m-0" style="font-size:1.5rem; font-weight:bold; color:#1d4ed8; margin:0;">₹ 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aadhaar Authentication Process Section -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-blue-200 mb-8" style="background:white; border-radius:0.75rem; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border:1px solid #bfdbfe; overflow:hidden; margin-bottom:2rem;">
+            <div class="bg-blue-600 p-4 border-b border-blue-200 text-white flex items-center gap-2" style="background:#2563eb; padding:1rem; border-bottom:1px solid #bfdbfe; color:white; display:flex; align-items:center; gap:0.5rem;">
+                <span class="text-2xl" style="font-size:1.5rem;">🆔</span>
+                <h3 class="text-xl font-bold m-0" style="margin:0; font-size:1.25rem;">आपले सरकार सेवा केंद्रावरील आधार प्रमाणीकरणाची कार्यपद्धती</h3>
+            </div>
+            
+            <div class="p-6 md:p-8" style="padding:1.5rem;">
+                <h4 class="font-bold text-gray-800 mb-4 text-lg border-b pb-2" style="font-weight:bold; color:#1f2937; margin-bottom:1rem; font-size:1.125rem; border-bottom:1px solid #e5e7eb; padding-bottom:0.5rem;">सामान्य प्रमाणीकरण प्रक्रिया</h4>
+                <ol class="space-y-4 text-gray-700 list-decimal list-inside mb-8" style="display:flex; flex-direction:column; gap:1rem; color:#374151; list-style-type:decimal; list-style-position:inside; margin-bottom:2rem;">
+                    <li class="pl-2">शेतकऱ्यांनी केंद्र चालकास <strong>आधार क्रमांक</strong> किंवा कर्जमुक्ती यादीतील त्याच्या नावासमोरील <strong>विशिष्ट क्रमांक</strong> सादर करावा.</li>
+                    <li class="pl-2">केंद्र चालकाने शेतकऱ्यांची <strong>अॅग्रीस्टॅक (Agristack)</strong> नोंदणी पोर्टलवर तपासावी.</li>
+                    <li class="pl-2">शेतकऱ्यांची अॅग्रीस्टॅक नोंदणी झाली नसल्यास केंद्र चालकाने शेतकऱ्यांची अॅग्रीस्टॅक पोर्टलवर <strong>नोंदणी करावी</strong>.</li>
+                    <li class="pl-2">नोंदणी झाल्याची खात्री झाल्यानंतर शेतकऱ्यांच्या <strong>कर्ज खात्याचा तपशील</strong> प्राप्त करावा.</li>
+                    <li class="pl-2">संगणक पडद्यावर दिसत असलेला आधार क्रमांक, कर्ज खाते क्रमांक व कर्ज खात्यातील व्यक्तीगत रकमेवर <strong>शेतकऱ्याकडून खात्री करून घ्यावी</strong>.</li>
+                    <li class="pl-2 text-green-700 font-semibold" style="color:#15803d; font-weight:600;">शेतकऱ्यांनी सर्व माहितीस सहमती दर्शवल्यास बायोमेट्रिक पद्धतीने प्रमाणीकरण करावे. <strong>"Agree & Submit"</strong> ही प्रक्रिया पूर्ण करावी व प्रणालीतून प्राप्त झालेली पावती शेतकऱ्याला द्यावी.</li>
+                </ol>
+
+                <h4 class="font-bold text-gray-800 mb-4 text-lg border-b pb-2" style="font-weight:bold; color:#1f2937; margin-bottom:1rem; font-size:1.125rem; border-bottom:1px solid #e5e7eb; padding-bottom:0.5rem;">माहितीत तफावत किंवा अडचण असल्यास...</h4>
+                
+                <div class="resp-grid-3">
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 shadow-sm" style="background:#fef2f2; border:1px solid #fecaca; border-radius:0.5rem; padding:1rem; box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);">
+                        <h5 class="font-bold text-red-800 mb-3 border-b border-red-200 pb-2" style="font-weight:bold; color:#991b1b; margin-bottom:0.75rem; border-bottom:1px solid #fecaca; padding-bottom:0.5rem;">१. आधार क्रमांकाबाबत असहमती असल्यास</h5>
+                        <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside" style="font-size:0.875rem; color:#374151; display:flex; flex-direction:column; gap:0.5rem; list-style-type:disc; list-style-position:inside;">
+                            <li>केंद्र चालकाने प्रथम शेतकऱ्याचे <strong>मूळ आधारकार्ड</strong> तपासावे.</li>
+                            <li>त्यानंतर योग्य आधार क्रमांक नोंदवून शेतकऱ्याचे बायोमेट्रिक पद्धतीने प्रमाणीकरण करावे.</li>
+                            <li>आधार क्रमांक चुकीचा असल्याची तक्रार <strong>यशवंतराव चव्हाण RSTC जिल्हास्तरीय समितीकडे</strong> पाठविण्याची माहिती द्यावी.</li>
+                            <li>प्रणालीतून प्राप्त झालेली तक्रार पावती शेतकऱ्यास द्यावी.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 shadow-sm" style="background:#fff7ed; border:1px solid #ffedd5; border-radius:0.5rem; padding:1rem; box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);">
+                        <h5 class="font-bold text-orange-800 mb-3 border-b border-orange-200 pb-2" style="font-weight:bold; color:#9a3412; margin-bottom:0.75rem; border-bottom:1px solid #ffedd5; padding-bottom:0.5rem;">२. कर्ज रक्कम/क्रमांकाबाबत असहमती असल्यास</h5>
+                        <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside" style="font-size:0.875rem; color:#374151; display:flex; flex-direction:column; gap:0.5rem; list-style-type:disc; list-style-position:inside;">
+                            <li>केंद्र चालकाने <strong>प्रथम</strong> शेतकऱ्याचे बायोमेट्रिक पद्धतीने आधार प्रमाणीकरण करावे.</li>
+                            <li>त्यानंतर कर्जखात्याच्या तपशीलाविरुद्ध <strong>असहमतीची नोंद</strong> करावी.</li>
+                            <li>याबाबतची तक्रार <strong>जिल्हास्तरीय समितीकडे</strong> पाठविण्याची माहिती द्यावी.</li>
+                            <li>प्रणालीतून प्राप्त झालेली तक्रार पावती शेतकऱ्यास द्यावी.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 shadow-sm" style="background:#faf5ff; border:1px solid #e9d5ff; border-radius:0.5rem; padding:1rem; box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);">
+                        <h5 class="font-bold text-purple-800 mb-3 border-b border-purple-200 pb-2" style="font-weight:bold; color:#6b21a8; margin-bottom:0.75rem; border-bottom:1px solid #e9d5ff; padding-bottom:0.5rem;">३. बायोमेट्रिक प्रमाणीकरण होत नसल्यास</h5>
+                        <ul class="text-sm text-gray-700 space-y-2 list-disc list-inside" style="font-size:0.875rem; color:#374151; display:flex; flex-direction:column; gap:0.5rem; list-style-type:disc; list-style-position:inside;">
+                            <li>शेतकऱ्यांच्या इतर बोटांचे ठसे वापरून <strong>दोन ते तीन वेळा</strong> प्रयत्न करावा.</li>
+                            <li>तरीही प्रमाणीकरण होत नसल्यास <strong>"Unable To Authenticate"</strong> हा पर्याय वापरावा.</li>
+                            <li>केंद्र चालकाने <strong>स्वतःच्या ठशाद्वारे (Thumb)</strong> आधार प्रमाणीकरण करावे.</li>
+                            <li>याबाबतची तक्रार <strong>तहसीलदार</strong> यांच्याकडे दाखल होईल. प्रणालीतून प्राप्त झालेली तक्रार पावती शेतकऱ्यास द्यावी.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMPORTANT NOTICES SECTION -->
+        <div class="resp-grid-2">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-yellow-400" style="background:white; border-radius:0.75rem; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border:1px solid #facc15; overflow:hidden;">
+                <div class="bg-yellow-100 p-4 border-b border-yellow-400 flex items-center justify-center gap-2" style="background:#fef9c3; padding:1rem; border-bottom:1px solid #facc15; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+                    <span class="text-2xl" style="font-size:1.5rem;">📢</span>
+                    <h3 class="text-xl font-bold text-yellow-800 m-0" style="margin:0; font-size:1.25rem; font-weight:bold; color:#854d0e;">KYC तांत्रिक अडचण (Re-Verify)</h3>
+                </div>
+                <div class="p-6" style="padding:1.5rem;">
+                    <p class="text-gray-800 font-semibold mb-4 text-center" style="color:#1f2937; font-weight:600; margin-bottom:1rem; text-align:center;">ज्या शेतकऱ्यांची KYC होत नाही किंवा अडचण येत आहे, अशा शेतकऱ्यांनी...</p>
+                    <div class="bg-green-100 text-green-800 p-3 rounded-lg text-center font-bold mb-5 border border-green-300" style="background:#dcfce7; color:#166534; padding:0.75rem; border-radius:0.5rem; text-align:center; font-weight:bold; margin-bottom:1.25rem; border:1px solid #86efac;">
+                        आपल्या Farmer ID मध्ये Login करून <br/> <span class="text-xl" style="font-size:1.25rem;">"Farmer ID Re-Verify"</span> करावे.
+                    </div>
+                    <ol class="space-y-2 text-sm text-gray-700 list-decimal list-inside" style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.875rem; color:#374151; list-style-type:decimal; list-style-position:inside;">
+                        <li><strong>Farmer ID वेबसाईट/App</strong> ओपन करा.</li>
+                        <li>Farmer ID व User ID ने <strong>Login करा</strong>.</li>
+                        <li><strong>Re-Verify</strong> पर्यायावर क्लिक करा.</li>
+                        <li><strong>आधार पडताळणी</strong> पूर्ण करून सबमिट करा.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-300" style="background:white; border-radius:0.75rem; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); border:1px solid #d1d5db; overflow:hidden;">
+                <div class="bg-gray-200 p-4 border-b border-gray-300 flex items-center justify-center gap-2" style="background:#e5e7eb; padding:1rem; border-bottom:1px solid #d1d5db; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+                    <span class="text-2xl" style="font-size:1.5rem;">🙏</span>
+                    <h3 class="text-xl font-bold text-gray-800 m-0" style="margin:0; font-size:1.25rem; font-weight:bold; color:#1f2937;">मयत शेतकऱ्यांसाठी प्रक्रिया</h3>
+                </div>
+                <div class="p-6" style="padding:1.5rem;">
+                    <p class="text-gray-800 font-semibold mb-4 text-center text-sm" style="color:#1f2937; font-weight:600; margin-bottom:1rem; text-align:center; font-size:0.875rem;">आधार प्रमाणीकरण व तक्रार नोंदविण्याची प्रक्रिया (सेतू संचालकांसाठी)</p>
+                    <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside" style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.875rem; color:#374151; list-style-type:decimal; list-style-position:inside;">
+                        <li>सेतू संचालकांनी मयत शेतकऱ्याचा <strong>विशिष्ट क्रमांक (Unique ID)</strong> टाकून लॉग इन करावे.</li>
+                        <li><strong>"Unable to Authenticate"</strong> वर क्लिक करावे.</li>
+                        <li>कारण विचारल्यास <strong>"मयत" (Deceased)</strong> पर्याय निवडून OK करावे.</li>
+                        <li>सेतू संचालकांनी <strong>स्वतःचा अंगठ्याचा ठसा</strong> देऊन तक्रार नोंदवावी.</li>
+                        <li>पावती काढून <strong>संबंधित सचिवांनकडे</strong> जमा करावी.</li>
+                    </ol>
+                    <div class="mt-4 bg-red-50 text-red-700 p-2 rounded text-xs text-center border border-red-200 font-bold" style="margin-top:1rem; background:#fef2f2; color:#b91c1c; padding:0.5rem; border-radius:0.25rem; font-size:0.75rem; text-align:center; border:1px solid #fecaca; font-weight:bold;">
+                        ⚠️ योग्य माहिती व कागदपत्रांशिवाय तक्रार ग्राह्य धरली जाणार नाही.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+    function getSlabPercentage(dateString) {
+        const npaDate = new Date(dateString);
+
+        // तारखांच्या मर्यादा (Slab Boundaries)
+        const slab1End = new Date('2021-09-30');
+        const slab2End = new Date('2022-09-30');
+        const slab3End = new Date('2023-09-30');
+        const slab4End = new Date('2024-09-30');
+        const slab5End = new Date('2025-09-30');
+
+        // तारखेनुसार टक्केवारी ठरवणे
+        if (npaDate <= slab1End) return 0.35; // ३०/०९/२०२१ पूर्वी
+        if (npaDate > slab1End && npaDate <= slab2End) return 0.45; // ०१/१०/२०२१ ते ३०/०९/२०२२
+        if (npaDate > slab2End && npaDate <= slab3End) return 0.55; // ०१/१०/२०२२ ते ३०/०९/२०२३
+        if (npaDate > slab3End && npaDate <= slab4End) return 0.70; // ०१/१०/२०२३ ते ३०/०९/२०२४
+        if (npaDate > slab4End && npaDate <= slab5End) return 0.85; // ०१/०९/२०२४ ते ३०/०९/२०२५
+
+        return null; // योजनेच्या तारखेबाहेरील कर्ज असल्यास
+    }
+
+    function calculateFarmerOTS(npaAmount, npaDateString) {
+        if (!npaAmount || npaAmount <= 0) {
+            return { success: false, message: "कृपया योग्य रक्कम टाका." };
+        }
+
+        const npaPercentage = getSlabPercentage(npaDateString);
+        if (npaPercentage === null) {
+            return { success: false, message: "तुमची NPA तारीख या योजनेच्या मर्यादेत बसत नाही. (३०/०९/२०२५ नंतरची तारीख असू नये)" };
+        }
+
+        const maxGovtLimit = 200000; // २ लाख रुपयांची कमाल मर्यादा
+        
+        const settlementAmount = Math.round(npaAmount * npaPercentage);
+        const bankSacrifice = npaAmount - settlementAmount;
+
+        let govtPays = 0;
+        let farmerPays = 0;
+
+        if (settlementAmount <= maxGovtLimit) {
+            govtPays = settlementAmount;
+            farmerPays = 0;
+        } else {
+            govtPays = maxGovtLimit;
+            farmerPays = settlementAmount - maxGovtLimit;
+        }
+
+        const formatCurrency = (num) => '₹ ' + num.toLocaleString('mr-IN');
+
+        return {
+            success: true,
+            data: {
+                appliedPercentage: (npaPercentage * 100) + '%',
+                formatted: {
+                    govtPays: formatCurrency(govtPays),
+                    farmerPays: formatCurrency(farmerPays),
+                    bankSacrifice: formatCurrency(bankSacrifice)
+                }
+            }
+        };
+    }
+
+    window.calculateOTS = function() {
+        const amountInput = document.getElementById('npaAmount');
+        const dateInput = document.getElementById('npaDate');
+        
+        if (!amountInput || !dateInput) return;
+        
+        const amount = parseFloat(amountInput.value);
+        const dateString = dateInput.value;
+        
+        if(!dateString) {
+            alert("कृपया NPA तारीख निवडा.");
+            return;
+        }
+
+        const result = calculateFarmerOTS(amount, dateString);
+
+        if (!result.success) {
+            alert(result.message);
+            return;
+        }
+
+        const govShareEl = document.getElementById('govShare');
+        const farmerShareEl = document.getElementById('farmerShare');
+        const bankSacrificeEl = document.getElementById('bankSacrifice');
+        const resultSection = document.getElementById('resultSection');
+        const appliedSlabEl = document.getElementById('appliedSlab');
+
+        if(govShareEl) govShareEl.innerText = result.data.formatted.govtPays;
+        if(farmerShareEl) farmerShareEl.innerText = result.data.formatted.farmerPays;
+        if(bankSacrificeEl) bankSacrificeEl.innerText = result.data.formatted.bankSacrifice;
+        if(appliedSlabEl) appliedSlabEl.innerText = "(लागू झालेला टप्पा: " + result.data.appliedPercentage + " परतफेड)";
+
+        if(resultSection) {
+            resultSection.classList.remove('hidden');
+            resultSection.style.display = 'block';
+        }
+    };
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&display=swap');
+  
+  .mukta-font { 
+    font-family: 'Mukta', sans-serif; 
+  }
+
+  .static-page-wrapper {
+    min-height: 60vh;
+  }
+
+  .static-page-hero {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+  }
+
+  .static-hero-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .static-page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub {
+    font-weight: 400;
+    opacity: 0.8;
+    font-size: 0.7em;
+    display: block;
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    opacity: 0.92;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .static-page-content {
+    padding: 3rem 0 4rem;
+    background: #f8fafc;
+  }
+
+  /* Responsive Grids for Mobile Layout */
+  .resp-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .resp-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+  .resp-grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .resp-results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+
+  @media (max-width: 768px) {
+    .resp-grid-2, .resp-grid-3, .resp-grid-list, .resp-results-grid {
+      grid-template-columns: 1fr;
+    }
+    .static-page-hero h1 {
+      font-size: 1.7rem;
+    }
+    .p-6, .md\:p-8 {
+      padding: 1rem !important;
+    }
+  }
+</style>
