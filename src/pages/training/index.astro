@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'प्रशिक्षण', url: 'https://mahitimarg.in/training/' },
+];
+
+const keywords = 'PMKVY प्रशिक्षण, skill development Maharashtra, मोफत प्रशिक्षण सरकारी, कौशल्य विकास योजना, free training scheme Marathi, vocational training yojana';
+
+const trainings = [
+  { icon: 'fa-laptop-code', label: 'डिजिटल साक्षरता', color: 'bg-blue', desc: 'संगणक, इंटरनेट आणि डिजिटल पेमेंटचे प्रशिक्षण', link: null },
+  { icon: 'fa-tractor', label: 'कृषी प्रशिक्षण', color: 'bg-green', desc: 'आधुनिक शेती, ड्रिप इरिगेशन आणि जैविक शेती प्रशिक्षण', link: null },
+  { icon: 'fa-scissors', label: 'कौशल्य विकास (PMKVY)', color: 'bg-orange', desc: 'सरकारी मोफत प्रशिक्षण – शिवणकाम, इलेक्ट्रिकल, प्लंबिंग', link: '/jobs/skills' },
+  { icon: 'fa-store', label: 'उद्योजकता प्रशिक्षण', color: 'bg-purple', desc: 'स्वतःचा व्यवसाय सुरू करण्यासाठी तज्ञांचे मार्गदर्शन', link: null },
+  { icon: 'fa-chart-line', label: 'आर्थिक साक्षरता', color: 'bg-yellow', desc: 'बचत, गुंतवणूक आणि बँकिंगचे सोपे ज्ञान', link: '/learn' },
+  { icon: 'fa-person-dress', label: 'महिला उद्योग प्रशिक्षण', color: 'bg-pink', desc: 'SHG, बचत गट आणि महिला उद्योजकता', link: null },
+];
+---
+
+<Layout
+  title="प्रशिक्षण – मोफत सरकारी कौशल्य विकास | MahitiMarg"
+  description="PMKVY आणि इतर सरकारी मोफत प्रशिक्षण योजनांची माहिती. डिजिटल, कृषी, आणि उद्योजकता प्रशिक्षण मिळवा."
+  keywords={keywords}
+  canonical="https://mahitimarg.in/training/"
+  breadcrumbs={breadcrumbs}
+>
+  <main class="container py-12 max-w-5xl mx-auto min-h-[75vh]">
+    <div class="mb-8 animate-on-load">
+      <a href="/" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> मुख्यपृष्ठावर परत जा
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="glass-panel animate-on-load mb-10 text-center" style="padding: 3rem 2rem; border-top: 4px solid var(--primary);">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i></div>
+      <h1 class="title-gradient" style="font-size: 2.5rem; margin-bottom: 0.75rem;">प्रशिक्षण (Training)</h1>
+      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">मोफत सरकारी कौशल्य विकास प्रशिक्षण घ्या आणि तुमच्या करिअरला नवी दिशा द्या. PMKVY, डिजिटल इंडिया आणि आणखी बरेच काही.</p>
+    </div>
+
+    <!-- Training Grid -->
+    <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      {trainings.map((t) => (
+        <a href={t.link ?? '#'} class="glass-panel" style={`padding: 2rem; text-align: center; border-radius: 16px; text-decoration: none; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; ${!t.link ? 'pointer-events: none; opacity: 0.85;' : ''}`}
+          onmouseenter={t.link ? "this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.1)'" : undefined}
+          onmouseleave={t.link ? "this.style.transform=''; this.style.boxShadow=''" : undefined}
+        >
+          {!t.link && <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: white; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;">लवकरच</span>}
+          <div class={`scheme-icon-bg ${t.color}`} style="width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 1.75rem;">
+            <i class={`fa-solid ${t.icon}`}></i>
+          </div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">{t.label}</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">{t.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <!-- Ad Space -->
+    <div class="animate-on-scroll" style="margin-top: 3rem; min-height: 250px; background: rgba(0,0,0,0.02); border: 2px dashed rgba(0,0,0,0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;">
+      <span><i class="fa-solid fa-ad" style="margin-right: 0.5rem;"></i> जाहीरात (Ad Space)</span>
+    </div>
+  </main>
+</Layout>

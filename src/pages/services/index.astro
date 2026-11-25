@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { name: 'मुख्यपृष्ठ', url: 'https://mahitimarg.in/' },
+  { name: 'सरकारी सेवा', url: 'https://mahitimarg.in/services/' },
+];
+
+const keywords = 'सरकारी सेवा महाराष्ट्र, government services online Maharashtra, MahaOnline, आधार कार्ड नोंदणी, रेशन कार्ड ऑनलाईन, जन्म दाखला, जात प्रमाणपत्र, online government service portal';
+
+const services = [
+  { icon: 'fa-id-card', label: 'आधार सेवा (Aadhaar)', color: 'bg-blue', desc: 'आधार नोंदणी, अपडेट, डाउनलोड', link: 'https://myaadhaar.uidai.gov.in/', external: true },
+  { icon: 'fa-wheat-awn', label: 'रेशन कार्ड (Ration Card)', color: 'bg-green', desc: 'नवीन रेशन कार्ड, यादी तपासा', link: 'https://rcms.mahafood.gov.in/', external: true },
+  { icon: 'fa-baby', label: 'जन्म / मृत्यू दाखला', color: 'bg-orange', desc: 'जन्म-मृत्यू प्रमाणपत्र ऑनलाईन', link: 'https://aaplesarkar.mahaonline.gov.in/', external: true },
+  { icon: 'fa-passport', label: 'पासपोर्ट सेवा', color: 'bg-purple', desc: 'पासपोर्ट अर्ज व निवडणूक', link: 'https://passportindia.gov.in/', external: true },
+  { icon: 'fa-user-shield', label: 'जात प्रमाणपत्र', color: 'bg-yellow', desc: 'अनुसूचित जाती / जमाती प्रमाणपत्र', link: 'https://aaplesarkar.mahaonline.gov.in/', external: true },
+  { icon: 'fa-building-columns', label: 'MahaOnline पोर्टल', color: 'bg-pink', desc: 'महाराष्ट्राच्या ऑनलाईन सर्व सेवा', link: 'https://mahaonline.gov.in/', external: true },
+  { icon: 'fa-car', label: 'वाहन RC / Driving Licence', color: 'bg-blue', desc: 'RTO वाहन नोंदणी व परवाना', link: 'https://parivahan.gov.in/', external: true },
+  { icon: 'fa-file-invoice', label: 'उत्पन्न प्रमाणपत्र', color: 'bg-green', desc: 'उत्पन्न / निवासी प्रमाणपत्र', link: 'https://aaplesarkar.mahaonline.gov.in/', external: true },
+];
+---
+
+<Layout
+  title="सरकारी सेवा ऑनलाईन (Government Services) | MahitiMarg"
+  description="आधार, रेशन कार्ड, जन्म दाखला, जात प्रमाणपत्र आणि महाराष्ट्राच्या सर्व ऑनलाईन सरकारी सेवा एकाच ठिकाणी."
+  keywords={keywords}
+  canonical="https://mahitimarg.in/services/"
+  breadcrumbs={breadcrumbs}
+>
+  <main class="container py-12 max-w-5xl mx-auto min-h-[75vh]">
+    <div class="mb-8 animate-on-load">
+      <a href="/" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors">
+        <i class="fa-solid fa-arrow-left"></i> मुख्यपृष्ठावर परत जा
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="glass-panel animate-on-load mb-10 text-center" style="padding: 3rem 2rem; border-top: 4px solid var(--primary);">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-landmark" style="color: var(--primary);"></i></div>
+      <h1 class="title-gradient" style="font-size: 2.5rem; margin-bottom: 0.75rem;">सरकारी सेवा (Government Services)</h1>
+      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">महाराष्ट्राच्या सर्व महत्त्वाच्या सरकारी सेवांचे थेट दुवे – आता घरबसल्या ऑनलाईन करा.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+      {services.map((s) => (
+        <a href={s.link} target={s.external ? '_blank' : '_self'} rel={s.external ? 'noopener noreferrer' : undefined}
+          class="glass-panel"
+          style="padding: 2rem; text-align: center; border-radius: 16px; text-decoration: none; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+          onmouseenter="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.1)'"
+          onmouseleave="this.style.transform=''; this.style.boxShadow=''"
+        >
+          <div class={`scheme-icon-bg ${s.color}`} style="width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 1.75rem;">
+            <i class={`fa-solid ${s.icon}`}></i>
+          </div>
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--text-main);">{s.label}</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0 0 1rem 0;">{s.desc}</p>
+          {s.external && <span style="font-size: 0.75rem; color: var(--primary); font-weight: 600;"><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 4px;"></i> अधिकृत पोर्टल</span>}
+        </a>
+      ))}
+    </div>
+
+    <p class="animate-on-scroll" style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem;">
+      <i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i>
+      वरील सर्व बाह्य दुवे अधिकृत सरकारी वेबसाइटवर नेतात. MahitiMarg फक्त मार्गदर्शन करतो.
+    </p>
+
+    <!-- Ad Space -->
+    <div class="animate-on-scroll" style="margin-top: 2rem; min-height: 250px; background: rgba(0,0,0,0.02); border: 2px dashed rgba(0,0,0,0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem;">
+      <span><i class="fa-solid fa-ad" style="margin-right: 0.5rem;"></i> जाहीरात (Ad Space)</span>
+    </div>
+  </main>
+</Layout>

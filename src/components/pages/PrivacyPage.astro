@@ -1,0 +1,168 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const lastUpdated = "19 मार्च 2026";
+---
+
+<Layout
+  title="गोपनीयता धोरण | MahitiMarg"
+  description="MahitiMarg च्या गोपनीयता धोरणाबद्दल जाणून घ्या. आम्ही तुमची माहिती कशी गोळा करतो, वापरतो आणि सुरक्षित ठेवतो."
+>
+  <main class="static-page-wrapper">
+    <section class="static-page-hero pp-hero">
+      <div class="container">
+        <div class="static-hero-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h1>{t('privacy.title')}<span class="hero-sub">{t('privacy.title.sub')}</span></h1>
+        <p class="lead">{t('privacy.lead')}</p>
+        <p class="pp-date"><i class="fa-regular fa-calendar"></i> शेवटचे अपडेट: {lastUpdated}</p>
+      </div>
+    </section>
+
+    <section class="static-page-content">
+      <div class="container">
+        <div class="pp-card">
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-info-circle"></i>{t('privacy.s1.title')}</h2>
+            <p>{t('privacy.s1.p1')}</p>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-database"></i>{t('privacy.s2.title')}</h2>
+            <p>{t('privacy.s2.p1')}</p>
+            <ul>
+              <li>{t('privacy.s2.li1')}</li>
+              <li>{t('privacy.s2.li2')}</li>
+              <li>{t('privacy.s2.li3')}</li>
+            </ul>
+            <p>{t('privacy.s2.p2')}</p>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-cookie-bite"></i>{t('privacy.s3.title')}</h2>
+            <p>{t('privacy.s3.p1')}</p>
+            <ul>
+              <li><strong>Google, as a third-party vendor, uses cookies to serve ads on this site.</strong></li>
+              <li>Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our sites and/or other sites on the Internet.</li>
+              <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google's Ads Settings</a>.</li>
+              <li>अधिक माहितीसाठी <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> पहा.</li>
+            </ul>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-chart-bar"></i>{t('privacy.s4.title')}</h2>
+            <p>{t('privacy.s4.p1')}</p>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-link"></i>{t('privacy.s5.title')}</h2>
+            <p>{t('privacy.s5.p1')}</p>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-child"></i> मुलांची गोपनीयता (Children's Privacy)</h2>
+            <p>{t('privacy.s6.p1')}</p>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-pen-to-square"></i>{t('privacy.s7.title')}</h2>
+            <p>{t('privacy.s7.p1')}</p>
+          </div>
+
+          <div class="pp-section">
+            <h2><i class="fa-solid fa-envelope"></i>{t('privacy.s8.title')}</h2>
+            <p>{t('privacy.s8.p1')}</p>
+            <p><strong>ईमेल:</strong> <a href="mailto:contact@logicpathsystems.com">contact@logicpathsystems.com</a></p>
+            <p><strong>वेबसाईट:</strong> <a href="https://mahitimarg.in">www.mahitimarg.in</a></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .static-page-wrapper { min-height: 60vh; }
+
+  .static-page-hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5f8a 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+  }
+
+  .static-hero-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.9; }
+
+  .static-page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .hero-sub { font-weight: 400; opacity: 0.8; font-size: 0.7em; }
+
+  .lead {
+    font-size: 1.1rem;
+    opacity: 0.92;
+    max-width: 700px;
+    margin: 0 auto 0.75rem;
+    line-height: 1.8;
+  }
+
+  .pp-date { opacity: 0.7; font-size: 0.9rem; }
+
+  .static-page-content { padding: 3rem 0 4rem; background: #f8fafc; }
+
+  .pp-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid #e8edf2;
+  }
+
+  .pp-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .pp-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .pp-section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .pp-section h2 i { color: #2563eb; }
+
+  .pp-section p {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .pp-section ul {
+    color: #475569;
+    padding-left: 1.5rem;
+    line-height: 2;
+  }
+
+  .pp-section a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+</style>

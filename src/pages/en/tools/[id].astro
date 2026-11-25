@@ -1,0 +1,77 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import EmiCalculator from '../../../components/tools/EmiCalculator.astro';
+import AgeCalculator from '../../../components/tools/AgeCalculator.astro';
+
+export function getStaticPaths() {
+  const toolPages = [
+    {
+      id: 'emi-calculator',
+      title: 'EMI Calculator',
+      description: 'Calculate your monthly installment (EMI) for home loan, vehicle loan, or personal loan – free online. With interest rate, duration, and interest chart.',
+      keywords: 'EMI calculator, loan EMI calculator, home loan EMI, monthly installment, interest rate, vehicle loan EMI, loan calculator Maharashtra',
+    },
+    {
+      id: 'eligibility-checker',
+      title: 'Eligibility Checker',
+      description: 'Find out which government scheme you are eligible for. Free online eligibility check.',
+      keywords: 'government scheme eligibility, scheme eligibility checker, who is eligible for government scheme, Maharashtra government scheme 2025',
+    },
+    {
+      id: 'age-calculator',
+      title: 'Age Calculator',
+      description: 'Calculate your exact age in years, months, and days. Useful for government jobs, scheme applications, and scholarships.',
+      keywords: 'age calculator, calculate age, age in years months days, date of birth calculator',
+    }
+  ];
+
+  return toolPages.map(page => ({
+    params: { id: page.id },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://mahitimarg.in/en/' },
+  { name: 'Smart Tools', url: 'https://mahitimarg.in/en/tools/' },
+  { name: page.title, url: `https://mahitimarg.in/en/tools/${page.id}/` },
+];
+---
+
+<Layout
+  title={`${page.title} | MahitiMarg`}
+  description={page.description}
+  keywords={page.keywords}
+  canonical={`https://mahitimarg.in/en/tools/${page.id}/`}
+  breadcrumbs={breadcrumbs}
+>
+    <main class="container py-8 max-w-4xl mx-auto" style="min-height: 80vh;">
+        <div class="mb-6 animate-on-load">
+            <a href="/en/tools" class="inline-flex items-center gap-2 text-primary font-medium hover:underline transition-colors" style="font-family: 'Mukta', sans-serif;">
+                <i class="fa-solid fa-arrow-left"></i> Smart Tools Hub
+            </a>
+        </div>
+        <article class="glass-panel animate-on-scroll shadow-md" style="padding: 3rem; border-radius: 16px; background: rgba(255, 255, 255, 0.95); border-top: 4px solid var(--accent);">
+            <header style="margin-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 1.5rem;">
+                <h1 class="title-gradient" style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: 'Mukta', sans-serif;">{page.title}</h1>
+            </header>
+            
+            <div class="article-content scheme-detail" style="font-family: 'Mukta', sans-serif;">
+                {page.id === 'emi-calculator' && <EmiCalculator />}
+                {page.id === 'age-calculator' && <AgeCalculator />}
+                {page.id === 'eligibility-checker' && (
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Which government scheme are you eligible for?</h2>
+                    <p class="mb-8 text-slate-600">Coming soon...</p>
+                    <div class="w-full min-h-[250px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center mb-8 text-slate-400 text-sm">
+                      Ad Space
+                    </div>
+                  </div>
+                )}
+            </div>
+            
+        </article>
+    </main>
+</Layout>

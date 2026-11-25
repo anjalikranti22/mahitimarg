@@ -1,0 +1,119 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const jobsData = [
+  {
+    id: "govt-jobs",
+    title: "Government Jobs (Govt Jobs)",
+    description: "Latest updates on MPSC, Zilla Parishad, and Police recruitment.",
+    icon: "fa-solid fa-building-columns",
+    link: "/en/jobs/government",
+    featured: true
+  },
+  {
+    id: "skill-india",
+    title: "Skill Development Training",
+    description: "PMKVY and other free government training schemes.",
+    icon: "fa-solid fa-graduation-cap",
+    link: "/en/jobs/skills",
+    featured: false
+  },
+  {
+    id: "resume-guide",
+    title: "How to Build a Resume?",
+    description: "Tips for making an effective resume and free templates.",
+    icon: "fa-solid fa-file-contract",
+    link: "/en/jobs/resume-guide",
+    featured: false
+  },
+  {
+    id: "freelance",
+    title: "Freelancing Guide",
+    description: "Learn how to earn money online from home.",
+    icon: "fa-solid fa-globe",
+    link: "/en/jobs/freelance",
+    featured: false
+  }
+];
+
+const jobsBreadcrumbs = [
+  { name: 'Home', url: 'https://mahitimarg.in/en/' },
+  { name: 'Jobs & Employment', url: 'https://mahitimarg.in/en/jobs/' },
+];
+
+const jobsKeywords = 'government jobs Maharashtra, MPSC recruitment 2025, सरकारी नोकरी, Zilla Parishad recruitment, police recruitment, PMKVY training, employment opportunities, mahitimarg jobs';
+---
+
+<Layout
+  title="Jobs & Employment | MahitiMarg"
+  description="All government recruitment updates, MPSC, Zilla Parishad, Police recruitment, and employment opportunities in Maharashtra."
+  keywords={jobsKeywords}
+  canonical="https://mahitimarg.in/en/jobs/"
+  breadcrumbs={jobsBreadcrumbs}
+>
+    <main>
+        <section class="hero" aria-labelledby="jobs-hero-title">
+            <div class="hero-bg-accent"></div>
+            <div class="container glass-panel hero-glass animate-on-load" style="padding: 3rem 2rem; text-align: center;">
+                <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h1 id="jobs-hero-title" class="title-gradient">Jobs & Employment</h1>
+                <p class="hero-description" style="max-width: 700px; margin: 0 auto;">
+                    Municipal corporations, MHADA, police recruitment, and all private job opportunities in one place...
+                </p>
+            </div>
+        </section>
+
+        <section class="container scheme-category-section" style="padding-top: 2rem; padding-bottom: 4rem;">
+            <div class="section-header animate-on-scroll">
+                <h2>Employment Categories</h2>
+                <p>Select your preferred section below</p>
+            </div>
+            
+            <div class="schemes-grid animate-on-scroll" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                {jobsData.map((job) => (
+                    <a href={job.link} class="glass-panel" style={`
+                        display: flex; 
+                        flex-direction: column; 
+                        padding: 2.5rem 2rem; 
+                        text-decoration: none; 
+                        border: 1px solid rgba(255,255,255,0.2); 
+                        border-radius: 16px; 
+                        background: rgba(255, 255, 255, 0.85);
+                        backdrop-filter: blur(12px);
+                        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+                        position: relative;
+                        overflow: hidden;
+                        ${job.featured ? 'border-top: 4px solid var(--primary-color); box-shadow: 0 4px 15px -3px rgba(34, 197, 94, 0.1);' : 'border-top: 4px solid var(--accent);'}
+                    `}
+                    onmouseenter="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 30px -5px rgba(0, 0, 0, 0.1)'"
+                    onmouseleave="this.style.transform='scale(1)'; this.style.boxShadow='none'"
+                    >
+                        {job.featured && (
+                            <div style="position: absolute; top: 1rem; right: 1rem; background: var(--primary-color); color: white; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                <i class="fa-solid fa-fire"></i> Trending
+                            </div>
+                        )}
+                        <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class={job.icon}></i>
+                        </div>
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.75rem; font-family: 'Mukta', sans-serif;">
+                            {job.title}
+                        </h3>
+                        <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+                            {job.description}
+                        </p>
+                        <div style="color: var(--primary-color); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-top: auto; font-size: 0.95rem;">
+                            More Details <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+                ))}
+            </div>
+            
+            <div class="view-all-cta animate-on-scroll" style="margin-top: 2rem;">
+                <p style="color: var(--text-muted); font-size: 0.95rem;"><i class="fa-solid fa-circle-info margin-right-0-5"></i> This information is updated regularly. Visit again for new job opportunities.</p>
+            </div>
+        </section>
+    </main>
+</Layout>
