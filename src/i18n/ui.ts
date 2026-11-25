@@ -199,7 +199,7 @@ export const ui = {
     'privacy.s5.p1': 'आमच्या वेबसाईटवर सरकारी वेबसाईट्स आणि इतर बाह्य लिंक्स असू शकतात. या बाह्य वेबसाईट्सच्या गोपनीयता धोरणांसाठी आम्ही जबाबदार नाही. अर्ज करण्यापूर्वी त्या वेबसाईटचे धोरण तपासावे.',
     
     'privacy.s6.title': 'मुलांची गोपनीयता (Children\'s Privacy)',
-    'privacy.s6.p1': 'MahitiMarg हे 13 वर्षांखालील मुलांकडून जाणीवपूर्वक माहिती गोळा करत नाही. जर तुम्हाला असे वाटत असेल की आम्ही मुलाची माहिती गोळा केली आहे, तर कृपया आम्हाला <a href="mailto:contact@logicpathsystems.com">contact@logicpathsystems.com</a> वर ईमेल करा.',
+    'privacy.s6.p1': 'MahitiMarg हे 13 वर्षांखालील मुलांकडून जाणीवपूर्वक माहिती गोळा करत नाही. जर तुम्हाला असे वाटत असेल की आम्ही मुलाची माहिती गोळा केली आहे, तर कृपया आम्हाला <a href="mailto:contact@mahitimarg.in">contact@mahitimarg.in</a> वर ईमेल करा.',
     
     'privacy.s7.title': 'धोरणात बदल (Changes to This Policy)',
     'privacy.s7.p1': 'आम्ही हे गोपनीयता धोरण वेळोवेळी अपडेट करू शकतो. कोणतेही महत्त्वपूर्ण बदल या पेजवर प्रकाशित केले जातील. तुम्ही नियमितपणे हे पेज तपासण्याचा सल्ला दिला जातो.',
@@ -428,7 +428,7 @@ export const ui = {
     'privacy.s5.p1': 'Our website may contain government websites and other external links. We are not responsible for the privacy policies of these external websites. Please check the policy of that website before applying.',
     
     'privacy.s6.title': 'Children\'s Privacy',
-    'privacy.s6.p1': 'MahitiMarg does not knowingly collect information from children under 13. If you believe we have collected a child\'s information, please email us at <a href="mailto:contact@logicpathsystems.com">contact@logicpathsystems.com</a>.',
+    'privacy.s6.p1': 'MahitiMarg does not knowingly collect information from children under 13. If you believe we have collected a child\'s information, please email us at <a href="mailto:contact@mahitimarg.in">contact@mahitimarg.in</a>.',
     
     'privacy.s7.title': 'Changes to This Policy',
     'privacy.s7.p1': 'We may update this privacy policy from time to time. Any significant changes will be published on this page. You are advised to review this page periodically.',
